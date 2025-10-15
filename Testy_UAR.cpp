@@ -4,11 +4,11 @@
 #include <iostream>
 #include <iomanip>
 #include "ARX.h"
-//#include "RegulatorPID.h"
+#include "RegulatorPID.h"
 //#include "RegulatorOnOFF.h" // Tylko sekcje 3 osobowe
 //#include "ProstyUAR.h"
 
-#define MAIN2  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
+#define MAIN  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
 
 
 
@@ -189,7 +189,7 @@ void TESTY_ModelARX::test_skokJednostkowy_3()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
-#ifdef DEBUG
+
 
 // testy dla samego Regulatora PID:
 
@@ -199,7 +199,7 @@ namespace TESTY_RegulatorPID
 	void test_P_brakPobudzenia();
 	void test_P_skokJednostkowy();
 	void test_PI_skokJednostkowy_1();
-	void test_PI_skokJednostkowy_2());
+    void test_PI_skokJednostkowy_2();
 	void test_PID_skokJednostkowy();
 	void test_PI_skokJednostkowy_3();
 }
@@ -209,7 +209,7 @@ void TESTY_RegulatorPID::wykonaj_testy()
 	test_P_brakPobudzenia();
 	test_P_skokJednostkowy();
 	test_PI_skokJednostkowy_1();
-	test_PI_skokJednostkowy_2());
+    test_PI_skokJednostkowy_2();
 	test_PID_skokJednostkowy();
 	test_PI_skokJednostkowy_3();
 }
@@ -230,7 +230,7 @@ void TESTY_RegulatorPID::test_P_brakPobudzenia()
 		// Symulacja modelu:
 
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -263,7 +263,7 @@ void TESTY_RegulatorPID::test_P_skokJednostkowy()
 
 		// Symulacja modelu:
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -297,7 +297,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_1()
 
 		// Symulacja modelu:
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -330,7 +330,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_2()
 
 		// Symulacja modelu:
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -363,7 +363,7 @@ void TESTY_RegulatorPID::test_PID_skokJednostkowy()
 
 		// Symulacja modelu:
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -398,14 +398,14 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_3()
 		for (int i = 0; i < LICZ_ITER; i++)
 		{
 			if (i == LICZ_ITER * 1 / 5) // przelaczenie na wew. liczenie calki - nie powinno być zauważalane
-				instancjaTestowa.setLiczCalk(RegulatorPID::LiczCalk::Wew);
+                instancjaTestowa.setIntegrationType(IntegType::insde);
 			if (i == LICZ_ITER * 2 / 5) // zmiana stalej calkowania - powinna byc tylko zmiana nachylenia 
-				instancjaTestowa.setStalaCalk(5.0);
+                instancjaTestowa.setT_i(5.0);
 			if (i == LICZ_ITER * 3 / 5) // przelaczenie na zew. liczenie calki - nie powinno być zauważalane
-				instancjaTestowa.setLiczCalk(RegulatorPID::LiczCalk::Zew);
+                instancjaTestowa.setIntegrationType(IntegType::outside);
 			if (i == LICZ_ITER * 4 / 5) // zmiana stalej calkowania - powinien wsytapic skok wartosci i zmiana nachylenia 
-				instancjaTestowa.setStalaCalk(10.0);
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+                instancjaTestowa.setT_i(10.0);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 		}
 		// Uwaga przy poprawnej implementacji zmiany sposobu liczenia całki, nie powinno dość do sytuacji, gdy
 		// zmiana sposobu liczenia powoduje skokową zmianę wartości sterowania. dla liczenia całki zwenetrznie
@@ -420,7 +420,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_3()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
-
+#ifdef DEBUG
 // testy dla samego Regulatora ON/OFF:
 
 namespace TESTY_RegulatorOnOff
@@ -787,6 +787,7 @@ int main()
 int main()
 {
     TESTY_ModelARX::wykonaj_testy();
+    TESTY_RegulatorPID::wykonaj_testy();
 }
 
 #endif

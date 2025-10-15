@@ -2,7 +2,7 @@
 #include <chrono>
 #include "ARX.h"
 
-
+#ifdef MAIN2
 int main()
 {
     ARX arx({0.4, 0.7, 0.44, 0.6}, { -0.6, -3.0, 2.1, 6.7}, 1);
@@ -14,3 +14,4 @@ int main()
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
 }
+#endif

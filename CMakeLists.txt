@@ -17,7 +17,11 @@ add_executable(PK-Symulator_UAR
   Testy_UAR.cpp
   ARX.h ARX.cpp
   Klasy.uxf
-  PID.h PID.cpp
+  RegulatorPID.h RegulatorPID.cpp
+  Klasy.qmodel
+  mainwindow.ui
+  UAR.h UAR.cpp
+  Generator.h Generator.cpp
 )
 target_link_libraries(PK-Symulator_UAR Qt${QT_VERSION_MAJOR}::Core)
 
