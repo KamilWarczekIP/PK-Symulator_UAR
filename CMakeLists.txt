@@ -22,6 +22,8 @@ add_executable(PK-Symulator_UAR
   mainwindow.ui
   UAR.h UAR.cpp
   Generator.h Generator.cpp
+  GeneratorSinusoida.h GeneratorSinusoida.cpp
+  GeneratorProstokatny.h GeneratorProstokatny.cpp
 )
 target_link_libraries(PK-Symulator_UAR Qt${QT_VERSION_MAJOR}::Core)
 

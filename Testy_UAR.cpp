@@ -6,7 +6,7 @@
 #include "ARX.h"
 #include "RegulatorPID.h"
 //#include "RegulatorOnOFF.h" // Tylko sekcje 3 osobowe
-//#include "ProstyUAR.h"
+#include "UAR.h"
 
 #define MAIN  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
 
@@ -527,7 +527,7 @@ void TESTY_RegulatorOnOff::test_skokPonizHist()
 	}
 }
 
-
+#endif
 // testy dla pelnego UAR:
 
 namespace TESTY_ProstyUAR
@@ -547,8 +547,8 @@ void TESTY_ProstyUAR::wykonaj_testy()
 	test_UAR_1_skokJednostkowyPID();
 	test_UAR_2_skokJednostkowyPID();
 	test_UAR_3_skokJednostkowyPID();
-	test_UAR_4_skokJednostkowyONOFF();
-	test_UAR_5_skokJednostkowyONOFF();
+    //test_UAR_4_skokJednostkowyONOFF();
+    //test_UAR_5_skokJednostkowyONOFF();
 }
 
 void TESTY_ProstyUAR::test_UAR_1_brakPobudzenia()
@@ -559,8 +559,8 @@ void TESTY_ProstyUAR::test_UAR_1_brakPobudzenia()
 	{
 		// Przygotowanie danych:
 		RegulatorPID testPID(0.5, 5.0, 0.2);
-		ModelARX testARX({ -0.4 }, { 0.6 });
-		ProstyUAR instancjaTestowa(testARX, testPID);
+        ARX testARX({ -0.4 }, { 0.6 });
+        UAR instancjaTestowa(&testARX, &testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -569,7 +569,7 @@ void TESTY_ProstyUAR::test_UAR_1_brakPobudzenia()
 		// Symulacja UAR:
 
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -588,8 +588,8 @@ void TESTY_ProstyUAR::test_UAR_1_skokJednostkowyPID()
 	{
 		// Przygotowanie danych:
 		RegulatorPID testPID(0.5, 5.0, 0.2);
-		ModelARX testARX({ -0.4 }, { 0.6 });
-		ProstyUAR instancjaTestowa(testARX, testPID);
+        ARX testARX({ -0.4 }, { 0.6 });
+        UAR instancjaTestowa(&testARX, &testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -607,7 +607,7 @@ void TESTY_ProstyUAR::test_UAR_1_skokJednostkowyPID()
 		// Symulacja UAR:
 
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -626,8 +626,8 @@ void TESTY_ProstyUAR::test_UAR_2_skokJednostkowyPID()
 	{
 		// Przygotowanie danych:
 		RegulatorPID testPID(0.5, 5.0, 0.2);
-		ModelARX testARX({ -0.4 }, { 0.6 }, 2);
-		ProstyUAR instancjaTestowa(testARX, testPID);
+        ARX testARX({ -0.4 }, { 0.6 }, 2);
+        UAR instancjaTestowa(&testARX, &testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -644,7 +644,7 @@ void TESTY_ProstyUAR::test_UAR_2_skokJednostkowyPID()
 		// Symulacja UAR:
 
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -663,8 +663,8 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 	{
 		// Przygotowanie danych:
 		RegulatorPID testPID(1.0, 2.0, 0.2);
-		ModelARX testARX({ -0.4 }, { 0.6 }, 1);
-		ProstyUAR instancjaTestowa(testARX, testPID);
+        ARX testARX({ -0.4 }, { 0.6 }, 1);
+        UAR instancjaTestowa(&testARX, &testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -681,7 +681,7 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 		// Symulacja UAR:
 
 		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+            faktSygWy[i] = instancjaTestowa.tick(sygWe[i]);
 
 		// Walidacja poprawności i raport:
 		myAssert(spodzSygWy, faktSygWy);
@@ -691,7 +691,7 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
-
+/*
 void TESTY_ProstyUAR::test_UAR_4_skokJednostkowyONOFF()
 {
 	//Sygnatura testu:
@@ -778,7 +778,7 @@ int main()
 }
 
 #endif
-
+*/
 
 
 #ifdef MAIN
@@ -788,6 +788,7 @@ int main()
 {
     TESTY_ModelARX::wykonaj_testy();
     TESTY_RegulatorPID::wykonaj_testy();
+    TESTY_ProstyUAR::wykonaj_testy();
 }
 
 #endif
