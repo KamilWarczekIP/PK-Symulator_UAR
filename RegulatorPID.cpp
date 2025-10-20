@@ -16,7 +16,6 @@ double RegulatorPID::tick(double e_i)
         u_i_I = 0;
     else
     {
-        std::cout << (int) integration_type;
         sum_of_e_outside_integ += e_i;
         sum_of_e_inside_integ += e_i / T_i;
         if(integration_type == IntegType::outside)

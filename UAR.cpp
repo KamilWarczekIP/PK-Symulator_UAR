@@ -1,6 +1,4 @@
 #include "UAR.h"
-#include "GeneratorProstokatny.h"
-#include "GeneratorSinusoida.h"
 #include <stdexcept>
 
 
@@ -31,4 +29,12 @@ void UAR::resetAll()
         generator->resetClock();
     arx->reset();
     pid->reset();
+}
+void UAR::setGenerator(Generator* generator)
+{
+    this->generator = generator;
+}
+Generator* UAR::getGenerator()
+{
+    return this->generator;
 }

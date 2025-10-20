@@ -1,92 +1,109 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
   <help_text>Space for diagram notes</help_text>
-  <zoom_level>10</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>60</y>
-      <w>410</w>
-      <h>280</h>
+      <x>52</x>
+      <y>923</y>
+      <w>507</w>
+      <h>455</h>
     </coordinates>
     <panel_attributes>ARX
 --
--a: std::vector&lt;double&gt;
--b: std::vector&lt;double&gt;
--k: uint_16t
--z: double
--y_i: std::queue&lt;double&gt;
--u_i: std::queue&lt;double&gt;
+- a: std::vector&lt;double&gt;
+- b: std::vector&lt;double&gt;
+- k: uint_16t
+- standard_deviation: double
+- y_i: std::vector&lt;double&gt;
+- u_i: std::vector&lt;double&gt;
+- limits_active: bool
+- input_limits: std::pair&lt;double, double&gt;
+- output_limits: std::pair&lt;double, double&gt;
+- applyLimits(): double
+- getGaussianDistribValue(): double
 --
-+tick(double u) : double
-+ARX(std::vector&lt;double&gt; a, std::vector&lt;double&gt; b, uint16_t k, double z)
-+setK(uint16_t k)
-+getK(): double
-+setAB(std::vector&lt;double&gt; a, std::vector&lt;double&gt; b)
-+getA(): std::vector&lt;double&gt;
-+getB(): std::vector&lt;double&gt;
-+reset()</panel_attributes>
++ tick(double u) : double
++ setK(uint16_t k)
++ getK(): double
++ setAB(std::vector&lt;double&gt; a, std::vector&lt;double&gt; b)
++ getA(): std::vector&lt;double&gt;
++ getB(): std::vector&lt;double&gt;
++ reset()
++ enableLimits()
++ disableLimits()
++ setInputLimits(double low, double high)
++ setOutputLimits(double low, double high)
++ getInputLimits(): std::pair&lt;double, double&gt;
++ getOutputLimits(): std::pair&lt;double, double&gt;
++ setStandardDeviation(double standard_deviation)
++ getStandardDeviation(): double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>350</y>
-      <w>410</w>
-      <h>270</h>
+      <x>728</x>
+      <y>1027</y>
+      <w>312</w>
+      <h>286</h>
     </coordinates>
-    <panel_attributes>PID
+    <panel_attributes>RegulatorPID
 --
--k: double
--T_i: double
--T_d: double
--sum_of_e: double
--previous_e: double
--integration_type: IntegType
+- k: double
+- T_i: double
+- T_d: double
+- sum_of_e_inside_integ: double
+- sum_of_e_outside_integ: double
+- previous_e: double
+- integration_type: IntegType
 --
-+tick(double e_i) : double 
-+PID(double T_d, double T_i, double k)
-+setK(double k)
-+setT_i(double T_i)
-+setT_d(double T_d)
-+getK(): double
-+getT_i(): double
-+getT_d(): double
-+reset()</panel_attributes>
++ tick(double e_i) : double 
++ setK(double k)
++ setT_i(double T_i)
++ setT_d(double T_d)
++ getK(): double
++ getT_i(): double
++ getT_d(): double
++ reset()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>920</y>
-      <w>410</w>
-      <h>90</h>
+      <x>273</x>
+      <y>624</y>
+      <w>533</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>UAR
 --
--arx :ARX*
--pid :PID*
--generator: Generator*
+- arx :ARX*
+- pid :RegulatorPID*
+- generator: Generator*
+- previous_y_i: double
 --
-+tick(): TickReport
++ tick(bool): double
++ tick(double input): double
++ resetAll()
++ setGenerator(Generator* generator)
++ getGenerator(): Generator*
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>50</y>
-      <w>220</w>
-      <h>190</h>
+      <x>1209</x>
+      <y>416</y>
+      <w>182</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>State
 --
-Ustawienia w GUI
--uar :UAR*
+// TODO
+- uar :UAR
 --
 </panel_attributes>
     <additional_attributes/>
@@ -94,21 +111,21 @@ Ustawienia w GUI
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
-      <y>40</y>
-      <w>100</w>
-      <h>50</h>
+      <x>1872</x>
+      <y>260</y>
+      <w>234</w>
+      <h>65</h>
     </coordinates>
-    <panel_attributes>Qxx</panel_attributes>
+    <panel_attributes>DialogARXCooeficients</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>820</x>
+      <x>1846</x>
       <y>0</y>
-      <w>260</w>
-      <h>650</h>
+      <w>338</w>
+      <h>845</h>
     </coordinates>
     <panel_attributes>Prezentacji (GUI)
 --
@@ -118,10 +135,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>530</x>
-      <y>0</y>
-      <w>260</w>
-      <h>650</h>
+      <x>1183</x>
+      <y>78</y>
+      <w>338</w>
+      <h>494</h>
     </coordinates>
     <panel_attributes>Usług
 --
@@ -131,10 +148,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>0</x>
-      <y>0</y>
-      <w>460</w>
-      <h>1260</h>
+      <x>13</x>
+      <y>13</y>
+      <w>1105</w>
+      <h>1378</h>
     </coordinates>
     <panel_attributes>Danych (symulacji)
 --
@@ -144,55 +161,63 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>490</y>
-      <w>230</w>
-      <h>150</h>
+      <x>1196</x>
+      <y>130</y>
+      <w>299</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>SettingsStorage
 --
--state :State*
+- state :State*
 --
-+setState(State* state)
-+getState(): State*
-+save()
-+load()
-+setLocation(std::string path)
++ setState(State* state)
++ getState(): State*
++ save()
++ load()
++ setLocation(std::string path)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>640</y>
-      <w>410</w>
-      <h>90</h>
+      <x>208</x>
+      <y>78</y>
+      <w>468</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>/Generator/
 --
--amplitude: double
--period: uint_16t
--bias: double
+# amplitude: double
+# samples_per_cycle: uint16_t
+# internal_clock: uint16_t;
+# bias: double
 --
-/+tick(): double/
+/+ tick(): double/
++ setAmplitude(double amplitude)
++ setSamplesPerCycle(uint16_t samples_per_cycle)
++ setBias(double bias)
++ getAmplitude(): double
++ getSamplesPerCycle(): uint16_t
++ getBias(): double
++ resetClock()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>750</y>
-      <w>410</w>
-      <h>80</h>
+      <x>26</x>
+      <y>403</y>
+      <w>312</w>
+      <h>104</h>
     </coordinates>
-    <panel_attributes>SquareWaveGenerator
+    <panel_attributes>GeneratorProstokatny
 --
-dutyCycle: double
+duty_cycle: double
 --
-+setDutyCycle(double dutyCycle)
-+getDutyCycle(): double
++ setDutyCycle(double dutyCycle)
++ getDutyCycle(): double
 
 </panel_attributes>
     <additional_attributes/>
@@ -200,17 +225,259 @@ dutyCycle: double
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>850</y>
-      <w>410</w>
-      <h>40</h>
+      <x>468</x>
+      <y>403</y>
+      <w>221</w>
+      <h>104</h>
     </coordinates>
-    <panel_attributes>SineWaveGenerator
+    <panel_attributes>GeneratorSinusoida
 --
+
+
 --
 
 
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>364</x>
+      <y>299</y>
+      <w>52</w>
+      <h>351</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>286</x>
+      <y>806</y>
+      <w>130</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>637</x>
+      <y>806</y>
+      <w>260</w>
+      <h>247</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>533</x>
+      <y>299</y>
+      <w>65</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>169</x>
+      <y>299</y>
+      <w>130</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>793</x>
+      <y>507</y>
+      <w>442</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1937</x>
+      <y>78</y>
+      <w>130</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>MainWindow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1898</x>
+      <y>481</y>
+      <w>234</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>DialogARXGAussianNoise</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1950</x>
+      <y>702</y>
+      <w>130</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>Plots</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1287</x>
+      <y>312</y>
+      <w>52</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=
+m2=1</panel_attributes>
+    <additional_attributes>10.0;80.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1378</x>
+      <y>91</y>
+      <w>585</w>
+      <h>364</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;260.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1378</x>
+      <y>273</y>
+      <w>520</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;140.0;380.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1378</x>
+      <y>468</y>
+      <w>546</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1378</x>
+      <y>494</y>
+      <w>598</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;440.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1183</x>
+      <y>663</y>
+      <w>338</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Test
+--
+- passed_tests: int
+- total_tests: int
+--
++ testARX_test_zmian_wspol()
+
+bg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>676</x>
+      <y>494</y>
+      <w>533</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;390.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>325</x>
+      <y>494</y>
+      <w>884</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;660.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>793</x>
+      <y>702</y>
+      <w>416</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1027</x>
+      <y>767</y>
+      <w>182</w>
+      <h>286</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;200.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>741</y>
+      <w>663</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;160.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1417</x>
+      <y>312</y>
+      <w>78</w>
+      <h>377</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;270.0</additional_attributes>
   </element>
 </diagram>

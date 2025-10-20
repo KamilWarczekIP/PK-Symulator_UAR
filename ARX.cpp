@@ -1,8 +1,24 @@
 #include "ARX.h"
 #include <stdexcept>
+#include <random>
 
-
-ARX::ARX(std::vector<double>&& a, std::vector<double>&& b, uint16_t k, double z)
+double ARX::getGaussianDistribValue()
+{
+    static std::random_device random_device{};
+    static std::mt19937 generator{random_device()};
+    std::normal_distribution<double> distribution(0.0, standard_deviation);
+    return distribution(generator);
+}
+double ARX::applyLimits(std::pair<double, double>& limits, double value)
+{
+    if(limits_active)
+        return std::max(std::min(value, limits.second), limits.first);
+    else
+        return value;
+}
+ARX::ARX(std::vector<double>&& a, std::vector<double>&& b, uint16_t k, double standard_deviation)
+    : limits_active(true), input_limits(std::make_pair(-10.0, 10.0)),
+    output_limits(std::make_pair(-10.0, 10.0))
 {
     if(a.size() != b.size())
         throw std::invalid_argument("Rozmiary wektorów wspołaczynników a i b są różne");
@@ -11,13 +27,13 @@ ARX::ARX(std::vector<double>&& a, std::vector<double>&& b, uint16_t k, double z)
     this->a = a;
     this->b = b;
     this->k = k;
-    this->z = z;
+    this->standard_deviation = standard_deviation;
     u_i = std::vector<double>(a.size() + k, 0);
     y_i = std::vector<double>(a.size(), 0);
 }
 double ARX::tick(double u)
 {
-
+    u = applyLimits(input_limits, u);
     double y = 0.0;
     for(int i = 0; i < a.size(); i++)
     {
@@ -25,19 +41,14 @@ double ARX::tick(double u)
         y -= a[i] * y_i[i];
     }
 
-    y += (rand() / RAND_MAX + 0.5) * z;
+    y += getGaussianDistribValue();
+
+    y = applyLimits(output_limits, y);
 
     u_i.insert(u_i.begin(), u);
     y_i.insert(y_i.begin(), y);
-
-    if(u_i.size() > a.size() + k)
-    {
-        u_i.pop_back();
-    }
-    if(y_i.size() > a.size())
-    {
-        y_i.pop_back();
-    }
+    u_i.pop_back();
+    y_i.pop_back();
 
     return y;
 }
@@ -70,4 +81,41 @@ void ARX::reset()
 {
     u_i = std::vector<double>(a.size(), 0);
     y_i = std::vector<double>(a.size(), 0);
+}
+void ARX::disableLimits()
+{
+    this->limits_active = false;
+}
+void ARX::enableLimits()
+{
+    this->limits_active = true;
+}
+
+void ARX::setInputLimits(double low, double high)
+{
+    if(low >= high)
+        throw std::invalid_argument("Dolne ograniczenie nie może być wyższe niż górne");
+    this->input_limits = std::make_pair(low, high);
+}
+void ARX::setOutputLimits(double low, double high)
+{
+    if(low >= high)
+        throw std::invalid_argument("Dolne ograniczenie nie może być wyższe niż górne");
+    this->output_limits = std::make_pair(low, high);
+}
+std::pair<double, double> ARX::getInputLimits()
+{
+    return this->input_limits;
+}
+std::pair<double, double> ARX::getOutputLimits()
+{
+    return this->output_limits;
+}
+void ARX::setStandardDeviation(double standard_deviation)
+{
+    this->standard_deviation = standard_deviation;
+}
+double ARX::getStandardDeviation()
+{
+    return standard_deviation;
 }

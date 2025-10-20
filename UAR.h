@@ -13,6 +13,8 @@ class UAR
 public:
     using UsesGenerator = bool;
     UAR(ARX* arx, RegulatorPID* pid, Generator* generator = nullptr);
+    void setGenerator(Generator* generator);
+    Generator* getGenerator();
     double tick(UsesGenerator = true);
     double tick(double input);
     void resetAll();
