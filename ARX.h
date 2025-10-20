@@ -36,7 +36,6 @@ public:
     std::pair<double, double> getOutputLimits();
     void setStandardDeviation(double standard_deviation);
     double getStandardDeviation();
-
 };
 
 #endif // ARX_H

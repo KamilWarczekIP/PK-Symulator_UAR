@@ -14,6 +14,12 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="minimumSize">
     <size>
      <width>1317</width>
@@ -25,13 +31,13 @@
      <rect>
       <x>20</x>
       <y>0</y>
-      <width>1231</width>
-      <height>751</height>
+      <width>1271</width>
+      <height>741</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,3">
      <property name="sizeConstraint">
-      <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
+      <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
      </property>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout" stretch="1,2,2,1">
@@ -191,10 +197,16 @@
              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
             </property>
             <item>
-             <widget class="QPushButton" name="pushButton_6">
+             <widget class="QRadioButton" name="radioButton_3">
               <property name="text">
-               <string>RESET PAMIĘCI
-CAŁKUJĄCEJ</string>
+               <string>Stała całkowania przed całką</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton">
+              <property name="text">
+               <string>Stała całkowania pod całką</string>
               </property>
              </widget>
             </item>
@@ -210,6 +222,14 @@ CAŁKUJĄCEJ</string>
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_6">
+              <property name="text">
+               <string>RESET PAMIĘCI
+CAŁKUJĄCEJ</string>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_7">
@@ -461,7 +481,7 @@ CAŁKUJĄCEJ</string>
      <x>0</x>
      <y>0</y>
      <width>1317</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuplik">

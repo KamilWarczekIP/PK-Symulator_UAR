@@ -1,14 +1,16 @@
 #include <iostream>
 #include <chrono>
 #include "ARX.h"
+#define MAIN
 
 #ifdef MAIN2
 int main()
 {
     ARX arx({0.4, 0.7, 0.44, 0.6}, { -0.6, -3.0, 2.1, 6.7}, 1);
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    arx.setStandardDeviation(0.01);
     for(int i = 0; i < 10000; i++)
-        arx.tick(1.0);
+        std::cout << arx.tick(1.0);
 
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();

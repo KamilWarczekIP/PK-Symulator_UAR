@@ -560,7 +560,7 @@ void TESTY_ProstyUAR::test_UAR_1_brakPobudzenia()
 		// Przygotowanie danych:
 		RegulatorPID testPID(0.5, 5.0, 0.2);
         ARX testARX({ -0.4 }, { 0.6 });
-        UAR instancjaTestowa(&testARX, &testPID);
+        UAR instancjaTestowa(testARX, testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -589,7 +589,7 @@ void TESTY_ProstyUAR::test_UAR_1_skokJednostkowyPID()
 		// Przygotowanie danych:
 		RegulatorPID testPID(0.5, 5.0, 0.2);
         ARX testARX({ -0.4 }, { 0.6 });
-        UAR instancjaTestowa(&testARX, &testPID);
+        UAR instancjaTestowa(testARX, testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -627,7 +627,7 @@ void TESTY_ProstyUAR::test_UAR_2_skokJednostkowyPID()
 		// Przygotowanie danych:
 		RegulatorPID testPID(0.5, 5.0, 0.2);
         ARX testARX({ -0.4 }, { 0.6 }, 2);
-        UAR instancjaTestowa(&testARX, &testPID);
+        UAR instancjaTestowa(testARX, testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
@@ -664,7 +664,7 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 		// Przygotowanie danych:
 		RegulatorPID testPID(1.0, 2.0, 0.2);
         ARX testARX({ -0.4 }, { 0.6 }, 1);
-        UAR instancjaTestowa(&testARX, &testPID);
+        UAR instancjaTestowa(testARX, testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
 		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
