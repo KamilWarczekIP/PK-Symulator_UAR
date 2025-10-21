@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>1138</width>
     <height>480</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>440</y>
-     <width>621</width>
+     <y>430</y>
+     <width>1101</width>
      <height>32</height>
     </rect>
    </property>
@@ -217,7 +217,7 @@
     <rect>
      <x>20</x>
      <y>370</y>
-     <width>181</width>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -243,6 +243,160 @@
     <rect>
      <x>290</x>
      <y>390</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>40</y>
+     <width>171</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Ograniczenia na wyjściu</string>
+   </property>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>40</y>
+      <width>63</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>110</y>
+      <width>63</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Maksimum:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Minimum:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>40</y>
+     <width>171</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Ograniczenia na wejściu</string>
+   </property>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_7">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>40</y>
+      <width>63</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_8">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>110</y>
+      <width>63</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Maksimum:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Minimum:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>240</y>
+     <width>211</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Odchylenie standardowe</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_6">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>270</y>
+     <width>261</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox_2">
+   <property name="geometry">
+    <rect>
+     <x>980</x>
+     <y>260</y>
      <width>81</width>
      <height>31</height>
     </rect>

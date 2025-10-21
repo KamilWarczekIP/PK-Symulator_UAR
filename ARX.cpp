@@ -28,16 +28,17 @@ ARX::ARX(std::vector<double>&& a, std::vector<double>&& b, uint16_t k, double st
     this->b = b;
     this->k = k;
     this->standard_deviation = standard_deviation;
-    u_i = std::vector<double>(a.size() + k, 0);
-    y_i = std::vector<double>(a.size(), 0);
+    u_i = std::deque<double>(a.size(), 0);
+    y_i = std::deque<double>(a.size(), 0);
 }
 double ARX::tick(double u)
 {
     u = applyLimits(input_limits, u);
+    u_i.push_front(u);
     double y = 0.0;
     for(int i = 0; i < a.size(); i++)
     {
-        y += b[i] * u_i[i + k - 1];
+        y += b[i] * u_i[i + k];
         y -= a[i] * y_i[i];
     }
 
@@ -45,8 +46,9 @@ double ARX::tick(double u)
 
     y = applyLimits(output_limits, y);
 
-    u_i.insert(u_i.begin(), u);
-    y_i.insert(y_i.begin(), y);
+    y_i.push_front(y);
+    // u_i.insert(u_i.begin(), u);
+    // y_i.insert(y_i.begin(), y);
     u_i.pop_back();
     y_i.pop_back();
 
@@ -79,8 +81,8 @@ void ARX::setAB(std::vector<double> a, std::vector<double> b)
 }
 void ARX::reset()
 {
-    u_i = std::vector<double>(a.size(), 0);
-    y_i = std::vector<double>(a.size(), 0);
+    u_i = std::deque<double>(a.size(), 0);
+    y_i = std::deque<double>(a.size(), 0);
 }
 void ARX::disableLimits()
 {

@@ -32,10 +32,10 @@
       <x>20</x>
       <y>0</y>
       <width>1271</width>
-      <height>741</height>
+      <height>789</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,3">
+    <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="0,1">
      <property name="sizeConstraint">
       <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
      </property>
@@ -275,6 +275,19 @@ CAŁKUJĄCEJ</string>
                 </item>
                </widget>
               </item>
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
              </layout>
             </item>
             <item>
@@ -329,14 +342,37 @@ CAŁKUJĄCEJ</string>
            </layout>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Amplituda</string>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="spacing">
+             <number>6</number>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox"/>
+            <property name="sizeConstraint">
+             <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Amplituda</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox"/>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QSlider" name="verticalSlider">
@@ -450,7 +486,7 @@ CAŁKUJĄCEJ</string>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,2,2,2">
        <item>
         <widget class="QOpenGLWidget" name="openGLWidget"/>
        </item>
@@ -481,7 +517,7 @@ CAŁKUJĄCEJ</string>
      <x>0</x>
      <y>0</y>
      <width>1317</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuplik">

@@ -1,6 +1,6 @@
 #include "GeneratorSinusoida.h"
 #define _USE_MATH_DEFINES
-#include <math.h>
+#include <cmath>
 
 GeneratorSinusoida::GeneratorSinusoida()
     :Generator()

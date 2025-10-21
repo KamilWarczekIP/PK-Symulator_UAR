@@ -2,6 +2,7 @@
 #define ARX_H
 #include <cstdint>
 #include <vector>
+#include <deque>
 #include "Test.h"
 
 class ARX
@@ -12,8 +13,8 @@ private:
     std::vector<double> b;
     uint16_t k;
     double standard_deviation;
-    std::vector<double> y_i;
-    std::vector<double> u_i;
+    std::deque<double> y_i;
+    std::deque<double> u_i;
     bool limits_active;
     std::pair<double, double> output_limits;
     std::pair<double, double> input_limits;

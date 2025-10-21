@@ -32,6 +32,7 @@ set(PROJECT_SOURCES
 qt_add_executable(PK-Symulator_UAR
   WIN32 MACOSX_BUNDLE
   ${PROJECT_SOURCES}
+  dialogARXConstraints.ui
   #dialogarxnoise.h dialogarxnoise.cpp dialogarxnoise.ui
 )
 target_link_libraries(PK-Symulator_UAR
