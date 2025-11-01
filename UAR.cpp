@@ -2,6 +2,10 @@
 #include <stdexcept>
 
 
+UAR::UAR(ARX&& arx, RegulatorPID&& pid, Generator* generator)
+    :previous_y_i(0.0), arx(arx), pid(pid)
+{
+}
 UAR::UAR(ARX& arx, RegulatorPID& pid, Generator* generator)
     :previous_y_i(0.0), arx(arx), pid(pid)
 {

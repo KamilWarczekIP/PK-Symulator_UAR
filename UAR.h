@@ -12,6 +12,7 @@ class UAR
     double previous_y_i;
 public:
     using UsesGenerator = bool;
+    UAR(ARX&& arx, RegulatorPID&& pid, Generator* generator = nullptr);
     UAR(ARX& arx, RegulatorPID& pid, Generator* generator = nullptr);
     void setGenerator(Generator* generator);
     Generator* getGenerator();

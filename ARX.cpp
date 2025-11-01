@@ -1,11 +1,15 @@
 #include "ARX.h"
 #include <stdexcept>
 #include <random>
+#include <iostream>
+#include <cassert>
 
 double ARX::getGaussianDistribValue()
 {
     static std::random_device random_device{};
     static std::mt19937 generator{random_device()};
+    if(standard_deviation == 0.0) return 0.0;
+
     std::normal_distribution<double> distribution(0.0, standard_deviation);
     return distribution(generator);
 }
@@ -28,27 +32,41 @@ ARX::ARX(std::vector<double>&& a, std::vector<double>&& b, uint16_t k, double st
     this->b = b;
     this->k = k;
     this->standard_deviation = standard_deviation;
-    u_i = std::deque<double>(a.size(), 0);
-    y_i = std::deque<double>(a.size(), 0);
+    u_i = std::deque<double>(a.size() + k, 0.0);
+    y_i = std::deque<double>(a.size(), 0.0);
 }
 double ARX::tick(double u)
 {
+    assert(a.size() == b.size());
+
+    double y = 0.0;
+
     u = applyLimits(input_limits, u);
     u_i.push_front(u);
-    double y = 0.0;
-    for(int i = 0; i < a.size(); i++)
+
+    auto u_i_iter = std::next(u_i.begin(), k);
+    auto y_i_iter = y_i.begin();
+    for(size_t i = 0; i < a.size(); i++)
     {
-        y += b[i] * u_i[i + k];
-        y -= a[i] * y_i[i];
+        y += b[i] * ( *u_i_iter );
+        y -= a[i] * ( *y_i_iter );
+        u_i_iter = std::next(u_i_iter);
+        y_i_iter = std::next(y_i_iter);
     }
+     // gorsza optymalizacja
+    // for(int i = 0; i < a.size(); i++)
+    // {
+    //     y += b[i] * u_i[i + k];
+    //     y -= a[i] * y_i[i];
+    // }
+
+
 
     y += getGaussianDistribValue();
 
     y = applyLimits(output_limits, y);
 
     y_i.push_front(y);
-    // u_i.insert(u_i.begin(), u);
-    // y_i.insert(y_i.begin(), y);
     u_i.pop_back();
     y_i.pop_back();
 
@@ -59,6 +77,18 @@ void ARX::setK(uint16_t k)
     if(k < 1)
         throw std::invalid_argument("K nie moze byc mniejsze od 1");
     this-> k = k;
+    while(this->u_i.size() != a.size() + k)
+    {
+        if(this->u_i.size() < a.size() + k)
+        {
+            u_i.push_back(0.0);
+        }
+        else
+        {
+            u_i.pop_back();
+        }
+    }
+
 }
 double ARX::getK()
 {
@@ -78,11 +108,25 @@ void ARX::setAB(std::vector<double> a, std::vector<double> b)
         throw std::invalid_argument("Rozmiary wektorów wspołaczynników a i b są różne");
     this->a = a;
     this->b = b;
+
+    while(this->u_i.size() != a.size() + k)
+    {
+        if(this->u_i.size() < a.size() + k)
+        {
+            u_i.push_back(0.0);
+            y_i.push_back(0.0);
+        }
+        else
+        {
+            y_i.pop_back();
+            u_i.pop_back();
+        }
+    }
 }
 void ARX::reset()
 {
-    u_i = std::deque<double>(a.size(), 0);
-    y_i = std::deque<double>(a.size(), 0);
+    u_i = std::deque<double>(a.size(), 0.0);
+    y_i = std::deque<double>(a.size(), 0.0);
 }
 void ARX::disableLimits()
 {

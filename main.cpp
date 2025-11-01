@@ -1,19 +1,16 @@
 #include <iostream>
-#include <chrono>
-#include "ARX.h"
-#define MAIN
+#include "State.h"
+#include "mainwindow.h"
+#include <QApplication>
+#define MAIN2
 
 #ifdef MAIN2
-int main()
+int main(int argc, char** argv)
 {
-    ARX arx({0.4, 0.7, 0.44, 0.6}, { -0.6, -3.0, 2.1, 6.7}, 1);
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    arx.setStandardDeviation(0.01);
-    for(int i = 0; i < 10000; i++)
-        std::cout << arx.tick(1.0);
-
-
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+    State::getInstance();
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
 #endif

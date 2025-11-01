@@ -1,0 +1,15 @@
+# ninja log v6
+2060	14451	7837044951041605	CMakeFiles/nienazwane.dir/main.cpp.obj	a24665c92d341056
+126	470	7837049808440658	nienazwane_autogen/timestamp	d30dd78c92ccf474
+126	470	7837049808440658	nienazwane_autogen/mocs_compilation.cpp	d30dd78c92ccf474
+126	470	7837049808440658	C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/nienazwane_autogen/timestamp	d30dd78c92ccf474
+126	470	7837049808440658	C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/nienazwane_autogen/mocs_compilation.cpp	d30dd78c92ccf474
+8410	8795	7837049891221418	nienazwane.exe	9ea558376fd56205
+473	8409	7837049811918794	CMakeFiles/nienazwane.dir/mainwindow.cpp.obj	106de27b96d62544
+2051	14411	7837044950953912	CMakeFiles/nienazwane.dir/nienazwane_autogen/mocs_compilation.cpp.obj	3b42834870af6e65
+169	2407	7837050452474030	nienazwane_autogen/timestamp	d30dd78c92ccf474
+169	2407	7837050452474030	nienazwane_autogen/mocs_compilation.cpp	d30dd78c92ccf474
+169	2407	7837050452474030	C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/nienazwane_autogen/timestamp	d30dd78c92ccf474
+169	2407	7837050452474030	C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/nienazwane_autogen/mocs_compilation.cpp	d30dd78c92ccf474
+2411	18427	7837050474892628	CMakeFiles/nienazwane.dir/mainwindow.cpp.obj	106de27b96d62544
+18428	19033	7837050635056058	nienazwane.exe	9ea558376fd56205

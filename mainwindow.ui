@@ -37,14 +37,14 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="0,1">
      <property name="sizeConstraint">
-      <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+      <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,2,2,1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,3,3,2">
        <property name="spacing">
         <number>6</number>
        </property>
-       <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
         <widget class="QGroupBox" name="groupBox">
          <property name="enabled">
           <bool>true</bool>
@@ -64,28 +64,15 @@
          <property name="title">
           <string>ARX</string>
          </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <widget class="QPushButton" name="pushButton_4">
-              <property name="text">
-               <string>Dostosuj losowe
- zakłócenia</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox">
-              <property name="text">
-               <string>Losowe zakłócenia</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="pushButton_dostosuj_parametry">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -93,23 +80,24 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Dostosuj współczynniki</string>
+             <string>Dostosuj parametry
+ obiektu</string>
             </property>
            </widget>
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QCheckBox" name="checkBox_ograniczenia">
               <property name="text">
-               <string>Dostosuj ograniczenia</string>
+               <string>Ograniczenia</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_2">
+             <widget class="QCheckBox" name="checkBox_losowe_zaklocenia">
               <property name="text">
-               <string>Ograniczenia</string>
+               <string>Losowe zakłócenia</string>
               </property>
              </widget>
             </item>
@@ -138,7 +126,7 @@
               <item>
                <widget class="QSlider" name="horizontalSlider_4">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
@@ -159,12 +147,16 @@
               <item>
                <widget class="QSlider" name="horizontalSlider_5">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_6"/>
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+                <property name="suffix">
+                 <string> ms</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -180,12 +172,16 @@
               <item>
                <widget class="QSlider" name="horizontalSlider_6">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_4"/>
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+                <property name="suffix">
+                 <string> ms</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -194,17 +190,20 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <property name="sizeConstraint">
-             <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+             <enum>QLayout::SetMinimumSize</enum>
             </property>
             <item>
-             <widget class="QRadioButton" name="radioButton_3">
+             <widget class="QRadioButton" name="radioButton_stala_calkowania_przed">
               <property name="text">
                <string>Stała całkowania przed całką</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton">
+             <widget class="QRadioButton" name="radioButton_stala_calkowania_pod">
               <property name="text">
                <string>Stała całkowania pod całką</string>
               </property>
@@ -213,7 +212,7 @@
             <item>
              <spacer name="verticalSpacer">
               <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
+               <enum>Qt::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -278,7 +277,7 @@ CAŁKUJĄCEJ</string>
               <item>
                <spacer name="horizontalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -302,12 +301,19 @@ CAŁKUJĄCEJ</string>
               <item>
                <widget class="QSlider" name="horizontalSlider_10">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_8"/>
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_8">
+                <property name="suffix">
+                 <string> ms</string>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -326,7 +332,7 @@ CAŁKUJĄCEJ</string>
                  <bool>false</bool>
                 </property>
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
@@ -334,6 +340,12 @@ CAŁKUJĄCEJ</string>
                <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
                 <property name="enabled">
                  <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -347,7 +359,7 @@ CAŁKUJĄCEJ</string>
              <number>6</number>
             </property>
             <property name="sizeConstraint">
-             <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+             <enum>QLayout::SetMinimumSize</enum>
             </property>
             <item>
              <widget class="QLabel" name="label_4">
@@ -360,26 +372,17 @@ CAŁKUJĄCEJ</string>
              <widget class="QSpinBox" name="spinBox"/>
             </item>
             <item>
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <item>
+               <widget class="QSlider" name="verticalSlider">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
-          </item>
-          <item>
-           <widget class="QSlider" name="verticalSlider">
-            <property name="orientation">
-             <enum>Qt::Orientation::Vertical</enum>
-            </property>
-           </widget>
           </item>
          </layout>
         </widget>
@@ -399,7 +402,7 @@ CAŁKUJĄCEJ</string>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <property name="sizeConstraint">
-             <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
+             <enum>QLayout::SetMaximumSize</enum>
             </property>
             <item>
              <widget class="QLabel" name="label_8">
@@ -413,12 +416,16 @@ CAŁKUJĄCEJ</string>
               <item>
                <widget class="QSlider" name="horizontalSlider_9">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+               <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                <property name="suffix">
+                 <string> ms</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -427,7 +434,7 @@ CAŁKUJĄCEJ</string>
               <item>
                <spacer name="horizontalSpacer_2">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -447,7 +454,7 @@ CAŁKUJĄCEJ</string>
               <item>
                <spacer name="horizontalSpacer">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -475,6 +482,11 @@ CAŁKUJĄCEJ</string>
               <height>128</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>18</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>START</string>
             </property>
@@ -486,25 +498,18 @@ CAŁKUJĄCEJ</string>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,2,2,2">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,2,2,5">
        <item>
-        <widget class="QOpenGLWidget" name="openGLWidget"/>
+        <widget class="QGraphicsView" name="graphicsView"/>
        </item>
        <item>
-        <widget class="QOpenGLWidget" name="openGLWidget_2"/>
+        <widget class="QGraphicsView" name="graphicsView_2"/>
        </item>
        <item>
-        <widget class="QOpenGLWidget" name="openGLWidget_4"/>
+        <widget class="QGraphicsView" name="graphicsView_3"/>
        </item>
        <item>
-        <widget class="QOpenGLWidget" name="openGLWidget_3">
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-        </widget>
+        <widget class="QGraphicsView" name="graphicsView_4"/>
        </item>
       </layout>
      </item>
@@ -517,7 +522,7 @@ CAŁKUJĄCEJ</string>
      <x>0</x>
      <y>0</y>
      <width>1317</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuplik">
@@ -535,7 +540,6 @@ CAŁKUJĄCEJ</string>
     <addaction name="separator"/>
     <addaction name="actionzatwierdzaj_zmiany_natychmiast"/>
     <addaction name="actionwy_wietlaj_wykresy_w_tej_samej_skali"/>
-    <addaction name="actionpraca_wielow_tkowa"/>
    </widget>
    <addaction name="menuplik"/>
    <addaction name="menuzachowanie"/>

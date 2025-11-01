@@ -8,7 +8,7 @@
 //#include "RegulatorOnOFF.h" // Tylko sekcje 3 osobowe
 #include "UAR.h"
 
-#define MAIN  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
+#define MAIN2  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
 
 
 
