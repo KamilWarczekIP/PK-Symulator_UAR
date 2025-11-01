@@ -612,6 +612,6 @@ C:/PK_proj/nienazwane/mainwindow.h
  mdp:C:/Qt/6.4.3/msvc2019_64/include/QtWidgets/qwidget.h
  mdp:C:/Qt/6.4.3/msvc2019_64/include/QtWidgets/qwidgetaction.h
  mdp:C:/Qt/6.4.3/msvc2019_64/include/QtWidgets/qwizard.h
-C:/PK_proj/nienazwane/main.cpp
 C:/PK_proj/nienazwane/mainwindow.cpp
  uic:./ui_mainwindow.h
+C:/PK_proj/nienazwane/main.cpp

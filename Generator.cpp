@@ -2,7 +2,7 @@
 #include <stdexcept>
 
 Generator::Generator()
-    : amplitude(1.0), bias(0.0), internal_clock(0), samples_per_cycle(128)
+    : amplitude(1.0), bias(0.0), internal_clock(0), samples_per_cycle(2)
 {
 
 }

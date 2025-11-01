@@ -1,4 +1,10 @@
 // TU includy:
+#include "BUILD_DEFINE.h"
+
+  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
+
+#ifdef DEBUG
+
 
 #include <cmath>
 #include <iostream>
@@ -7,10 +13,6 @@
 #include "RegulatorPID.h"
 //#include "RegulatorOnOFF.h" // Tylko sekcje 3 osobowe
 #include "UAR.h"
-
-#define MAIN2  // ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
-
-
 
 //Funkcje pomocnicze dla testów:
 
@@ -420,114 +422,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_3()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
-#ifdef DEBUG
-// testy dla samego Regulatora ON/OFF:
 
-namespace TESTY_RegulatorOnOff
-{
-	void wykonaj_testy();
-	void test_brakPobudzenia();
-	void test_skokPowyzHist();
-	void test_skokPonizHist();
-}
-
-void TESTY_RegulatorOnOff::wykonaj_testy()
-{
-	test_brakPobudzenia();
-	test_skokPowyzHist();
-	test_skokPonizHist();
-}
-
-void TESTY_RegulatorOnOff::test_brakPobudzenia()
-{
-	//Sygnatura testu:
-	std::cerr << "RegOnOff (1.0,0.1) -> test zerowego pobudzenia: ";
-	try
-	{
-		// Przygotowanie danych:
-		RegulatorOnOff instancjaTestowa(1.0,0.1);
-		constexpr size_t LICZ_ITER = 30;
-		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
-		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
-		std::vector<double> faktSygWy(LICZ_ITER);  // faktyczna sekwencja wy
-
-		// Symulacja modelu:
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		// Walidacja poprawności i raport:
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-void TESTY_RegulatorOnOff::test_skokPowyzHist()
-{
-	//Sygnatura testu:
-	std::cerr << "RegOnOff (1.0,0.1) -> test powyzej Hist: ";
-	try
-	{
-		// Przygotowanie danych:
-		RegulatorOnOff instancjaTestowa(1.0, 0.1);
-		constexpr size_t LICZ_ITER = 30;
-		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
-		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
-		std::vector<double> faktSygWy(LICZ_ITER);  // faktyczna sekwencja wy
-
-		// Symulacja skoku jednostkowego w chwili 1. (!!i - daje 1 dla i != 0);
-		for (int i = 0; i < LICZ_ITER; i++)
-			sygWe[i] = !!i;
-		spodzSygWy = { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-
-		// Symulacja modelu:
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		// Walidacja poprawności i raport:
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-void TESTY_RegulatorOnOff::test_skokPonizHist()
-{
-	//Sygnatura testu:
-	std::cerr << "RegOnOff (1.0,1.1) -> test ponizej Hist: ";
-	try
-	{
-		// Przygotowanie danych:
-		RegulatorOnOff instancjaTestowa(1.0, 1.1);
-		constexpr size_t LICZ_ITER = 30;
-		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
-		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
-		std::vector<double> faktSygWy(LICZ_ITER);  // faktyczna sekwencja wy
-
-		// Symulacja skoku jednostkowego w chwili 1. (!!i - daje 1 dla i != 0);
-		for (int i = 0; i < LICZ_ITER; i++)
-			sygWe[i] = !!i;
-		spodzSygWy = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-		// Symulacja modelu:
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		// Walidacja poprawności i raport:
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-#endif
 // testy dla pelnego UAR:
 
 namespace TESTY_ProstyUAR
@@ -691,98 +586,6 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
-/*
-void TESTY_ProstyUAR::test_UAR_4_skokJednostkowyONOFF()
-{
-	//Sygnatura testu:
-	std::cerr << "UAR_4 ONOFF (uON=2.0,Hist=0.1) -> test skoku jednostkowego: ";
-	try
-	{
-		// Przygotowanie danych:
-		RegulatorOnOff testOnOff(2.0,0.1);
-		// dynamika obiektu musi być bardzo wolna aby regulator OnOff miał szanse działać poprawnie.
-		ModelARX testARX({ -0.95 }, { 0.05 }, 1); 
-		ProstyUAR instancjaTestowa(testARX, testOnOff);
-		constexpr size_t LICZ_ITER = 30;
-		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
-		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
-		std::vector<double> faktSygWy(LICZ_ITER);  // faktyczna sekwencja wy
-
-		// Symulacja skoku jednostkowego w chwili 1. (!!i - daje 1 dla i != 0);
-		for (int i = 0; i < LICZ_ITER; i++)
-			sygWe[i] = !!i;
-		spodzSygWy = { 0, 0, 0.1, 0.195, 0.28525, 0.370988, 0.452438, 0.529816,
-			           0.603325, 0.673159, 0.739501, 0.802526, 0.8624, 0.91928,
-			           0.973316, 1.02465, 1.07342, 1.11975, 1.16376, 1.10557,
-			           1.05029, 0.997778, 0.947889, 0.900495, 0.85547, 0.812697,
-			           0.872062, 0.928459, 0.982036, 1.03293
-		};
-		// Symulacja UAR:
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		// Walidacja poprawności i raport:
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-void TESTY_ProstyUAR::test_UAR_5_skokJednostkowyONOFF()
-{
-	//Sygnatura testu:
-	std::cerr << "UAR_5 ONOFF (uON=4.0,Hist=0.2) -> test skoku jednostkowego: ";
-	try
-	{
-		// Przygotowanie danych:
-		RegulatorOnOff testOnOff(4.0, 0.2);
-		// dynamika obiektu musi być bardzo wolna aby regulator OnOff miał szanse działać poprawnie.
-		ModelARX testARX({ -0.95 }, { 0.05 }, 1);
-		ProstyUAR instancjaTestowa(testARX, testOnOff);
-		constexpr size_t LICZ_ITER = 30;
-		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
-		std::vector<double> spodzSygWy(LICZ_ITER); // spodziewana sekwencja wy (tu same 0)
-		std::vector<double> faktSygWy(LICZ_ITER);  // faktyczna sekwencja wy
-
-		// Symulacja skoku jednostkowego w chwili 1. (!!i - daje 1 dla i != 0);
-		for (int i = 0; i < LICZ_ITER; i++)
-			sygWe[i] = !!i;
-		spodzSygWy = { 0, 0, 0.2, 0.39, 0.5705, 0.741975, 0.904876, 1.05963, 1.20665, 1.34632, 1.279,
-			           1.21505, 1.1543, 1.09658, 1.04176, 0.989668, 0.940184, 0.893175, 0.848516, 0.80609,
-			           0.765786, 0.727497, 0.891122, 1.04657, 1.19424, 1.33453, 1.4678, 1.39441, 1.32469, 1.25845
-		};
-		// Symulacja UAR:
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		// Walidacja poprawności i raport:
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-
-int main()
-{
-	TESTY_ModelARX::wykonaj_testy();
-	TESTY_RegulatorPID::wykonaj_testy();
-	TESTY_RegulatorOnOff::wykonaj_testy();
-	TESTY_ProstyUAR::wykonaj_testy();
-}
-
-#endif
-*/
-
-
-#ifdef MAIN
-
 
 int main()
 {
@@ -790,6 +593,6 @@ int main()
     TESTY_RegulatorPID::wykonaj_testy();
     TESTY_ProstyUAR::wykonaj_testy();
 }
-
 #endif
+
 

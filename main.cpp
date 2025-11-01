@@ -1,10 +1,15 @@
-#include <iostream>
+#include "BUILD_DEFINE.h"
+
+#ifdef MAIN
+
 #include "State.h"
 #include "mainwindow.h"
 #include <QApplication>
-#define MAIN2
 
-#ifdef MAIN2
+
+
+
+
 int main(int argc, char** argv)
 {
     State::getInstance();
@@ -14,3 +19,4 @@ int main(int argc, char** argv)
     return a.exec();
 }
 #endif
+

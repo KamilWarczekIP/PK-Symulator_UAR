@@ -1,5 +1,4 @@
 #include "RegulatorPID.h"
-#include <iostream>
 
 /**
  * @brief PID::tick metoda symulacji pojedynczego kroku regulatora

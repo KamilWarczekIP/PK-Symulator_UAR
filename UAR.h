@@ -2,22 +2,25 @@
 #define UAR_H
 #include "RegulatorPID.h"
 #include "ARX.h"
-#include "Generator.h"
+
+struct TickData
+{
+    double wartosc_zadana;
+    double wartosc_regulowana;
+    double uchyb;
+    double wartosc_sterowania;
+};
 
 class UAR
 {
     ARX arx;
     RegulatorPID pid;
-    Generator* generator;
     double previous_y_i;
 public:
-    using UsesGenerator = bool;
-    UAR(ARX&& arx, RegulatorPID&& pid, Generator* generator = nullptr);
-    UAR(ARX& arx, RegulatorPID& pid, Generator* generator = nullptr);
-    void setGenerator(Generator* generator);
-    Generator* getGenerator();
-    double tick(UsesGenerator = true);
+    UAR(ARX&& arx, RegulatorPID&& pid);
+    UAR(ARX& arx, RegulatorPID& pid);
     double tick(double input);
+    TickData tick_more_info(double input);
     void resetAll();
     ARX& getARX();
     RegulatorPID& getRegulatorPID();

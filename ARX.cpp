@@ -1,7 +1,5 @@
 #include "ARX.h"
-#include <stdexcept>
 #include <random>
-#include <iostream>
 #include <cassert>
 
 double ARX::getGaussianDistribValue()
@@ -24,10 +22,10 @@ ARX::ARX(std::vector<double>&& a, std::vector<double>&& b, uint16_t k, double st
     : limits_active(true), input_limits(std::make_pair(-10.0, 10.0)),
     output_limits(std::make_pair(-10.0, 10.0))
 {
-    if(a.size() != b.size())
-        throw std::invalid_argument("Rozmiary wektorów wspołaczynników a i b są różne");
-    if(k < 1)
-        throw std::invalid_argument("K nie moze byc mniejsze od 1");
+    assert(a.size() == b.size());
+        // Rozmiary wektorów wspołaczynników a i b są różne
+    assert(k >= 1);
+        //K nie moze byc mniejsze od 1
     this->a = a;
     this->b = b;
     this->k = k;
@@ -74,8 +72,8 @@ double ARX::tick(double u)
 }
 void ARX::setK(uint16_t k)
 {
-    if(k < 1)
-        throw std::invalid_argument("K nie moze byc mniejsze od 1");
+    assert(k >= 1);
+        //K nie moze byc mniejsze od 1
     this-> k = k;
     while(this->u_i.size() != a.size() + k)
     {
@@ -104,8 +102,8 @@ std::vector<double> ARX::getB()
 }
 void ARX::setAB(std::vector<double> a, std::vector<double> b)
 {
-    if(a.size() != b.size())
-        throw std::invalid_argument("Rozmiary wektorów wspołaczynników a i b są różne");
+    assert(a.size() == b.size());
+       //Rozmiary wektorów wspołaczynników a i b są różne
     this->a = a;
     this->b = b;
 
@@ -139,14 +137,14 @@ void ARX::enableLimits()
 
 void ARX::setInputLimits(double low, double high)
 {
-    if(low >= high)
-        throw std::invalid_argument("Dolne ograniczenie nie może być wyższe niż górne");
+    assert(low < high);
+       //Dolne ograniczenie nie może być wyższe niż górne
     this->input_limits = std::make_pair(low, high);
 }
 void ARX::setOutputLimits(double low, double high)
 {
-    if(low >= high)
-        throw std::invalid_argument("Dolne ograniczenie nie może być wyższe niż górne");
+    assert(low < high);
+        //Dolne ograniczenie nie może być wyższe niż górne
     this->output_limits = std::make_pair(low, high);
 }
 std::pair<double, double> ARX::getInputLimits()
