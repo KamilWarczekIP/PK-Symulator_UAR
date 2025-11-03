@@ -8,5 +8,6 @@ GeneratorSinusoida::GeneratorSinusoida()
 double GeneratorSinusoida::tick()
 {
     internal_clock++;
+    if(internal_clock == samples_per_cycle) internal_clock = 0;
     return amplitude * std::sin( (double)(internal_clock % samples_per_cycle) / samples_per_cycle * 2.0 * M_PI ) + bias;
 }

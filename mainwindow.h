@@ -30,11 +30,22 @@ private slots:
 
     void on_horizontalSlider_symulacja_interwal_sliderReleased();
 
+    void on_pushButton_dostosuj_parametry_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QChart* q_chart;
-    QLineSeries* seria_wartosc_zadana;
-    qreal temp = 0.01;
+
+    QChart* chart_wartosc_zadana_i_regulowana;
+    QChart* chart_uchyb;
+    QChart* chart_sterowanie;
+    QChart* chart_wszystko;
+
+
+    QList<QPointF>* lista_wartosc_zadana;
+    QList<QPointF>* lista_wartosc_regulowana;
+    QList<QPointF>* lista_uchyb;
+    QList<QPointF>* lista_sterowanie;
+    qreal temp = 0.0;
 
 };
 

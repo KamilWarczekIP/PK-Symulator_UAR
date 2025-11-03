@@ -19,8 +19,8 @@ TickData UAR::tick_more_info(double input)
 
     tick_data.wartosc_zadana = input;
     tick_data.uchyb = tick_data.wartosc_zadana - previous_y_i;
-    tick_data.wartosc_sterowania = this->pid.tick(tick_data.uchyb);
-    tick_data.wartosc_regulowana = this->arx.tick(tick_data.wartosc_sterowania);
+    tick_data.sterowanie = this->pid.tick(tick_data.uchyb);
+    tick_data.wartosc_regulowana = this->arx.tick(tick_data.sterowanie);
     previous_y_i = tick_data.wartosc_regulowana;
     return tick_data;
 }

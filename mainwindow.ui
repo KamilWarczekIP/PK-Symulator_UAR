@@ -458,6 +458,9 @@ CAŁKUJĄCEJ</string>
                 <property name="maximum">
                  <number>2000</number>
                 </property>
+                <property name="value">
+                 <number>200</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -473,6 +476,52 @@ CAŁKUJĄCEJ</string>
                 </property>
                 <property name="maximum">
                  <number>2000</number>
+                </property>
+                <property name="value">
+                 <number>200</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Okno obserwacji</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_15">
+              <item>
+               <widget class="QSlider" name="horizontalSlider_symulacja_okno_obserwacji">
+                <property name="minimum">
+                 <number>5</number>
+                </property>
+                <property name="maximum">
+                 <number>50</number>
+                </property>
+                <property name="value">
+                 <number>10</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_symulacja_okno_obserwacji">
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="minimum">
+                 <number>5</number>
+                </property>
+                <property name="maximum">
+                 <number>50</number>
+                </property>
+                <property name="value">
+                 <number>10</number>
                 </property>
                </widget>
               </item>
@@ -547,20 +596,7 @@ CAŁKUJĄCEJ</string>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_wykresy" stretch="2,2,2,5">
-       <item>
-        <widget class="QGraphicsView" name="graphicsView_wartosc_zadana_i_regulowana"/>
-       </item>
-       <item>
-        <widget class="QGraphicsView" name="graphicsView_uchyb"/>
-       </item>
-       <item>
-        <widget class="QGraphicsView" name="graphicsView_sterowanie"/>
-       </item>
-       <item>
-        <widget class="QGraphicsView" name="graphicsView_wszystko"/>
-       </item>
-      </layout>
+      <layout class="QVBoxLayout" name="verticalLayout_wykresy" stretch=""/>
      </item>
     </layout>
    </widget>
@@ -571,7 +607,7 @@ CAŁKUJĄCEJ</string>
      <x>0</x>
      <y>0</y>
      <width>1317</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuplik">
@@ -589,6 +625,8 @@ CAŁKUJĄCEJ</string>
     <addaction name="separator"/>
     <addaction name="actionzatwierdzaj_zmiany_natychmiast"/>
     <addaction name="actionwy_wietlaj_wykresy_w_tej_samej_skali"/>
+    <addaction name="separator"/>
+    <addaction name="actionMINECRAAAAAAFT"/>
    </widget>
    <addaction name="menuplik"/>
    <addaction name="menuzachowanie"/>
@@ -633,6 +671,11 @@ CAŁKUJĄCEJ</string>
   <action name="actionpraca_wielow_tkowa">
    <property name="text">
     <string>praca wielowątkowa</string>
+   </property>
+  </action>
+  <action name="actionMINECRAAAAAAFT">
+   <property name="text">
+    <string>MINECRAAAAAAFT</string>
    </property>
   </action>
  </widget>

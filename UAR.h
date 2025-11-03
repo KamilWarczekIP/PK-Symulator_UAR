@@ -8,7 +8,7 @@ struct TickData
     double wartosc_zadana;
     double wartosc_regulowana;
     double uchyb;
-    double wartosc_sterowania;
+    double sterowanie;
 };
 
 class UAR
