@@ -1,17 +1,18 @@
 #include "State.h"
 #include <QDebug>
 #include "mainwindow.h"
+#include <cassert>
 
 State::State(UAR&& uar)
     :uar(uar), symulacja_dziala(false), wybrany_generator(&this->gen_sin)
 {
     symulacja_timer = new QTimer();
     symulacja_timer->setSingleShot(false);
-    symulacja_timer->setInterval(300);
+    symulacja_timer->setInterval(200);
     symulacja_timer->connect(symulacja_timer, &QTimer::timeout, this, &State::tick);
 
     //TODO: usunac to tu
-    gen_sin.setAmplitude(4.0);
+    gen_sin.setAmplitude(1.0);
     gen_sin.setSamplesPerCycle(100);
 
 }
@@ -22,7 +23,7 @@ State::~State()
 
 State& State::getInstance()
 {
-    static State instance(UAR(ARX({1.0}, {1.0}), RegulatorPID(1.0)));
+    static State instance(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)));
     return instance;
 }
 UAR& State::getUAR()
@@ -66,6 +67,11 @@ bool State::getSymulacjaDziala()
 uint32_t State::getInterwalSymulacjiMS()
 {
     return symulacja_timer->interval();
+}
+void State::setGenerator(Generator* generator)
+{
+    assert(generator == &this->gen_sin || generator == &this->gen_pros);
+    this->wybrany_generator = generator;
 }
 void State::tick()
 {

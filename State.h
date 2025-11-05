@@ -33,6 +33,7 @@ public:
     void setInterwalSymulacjiMS(uint32_t interwal);
     bool getSymulacjaDziala();
     uint32_t getInterwalSymulacjiMS();
+    void setGenerator(Generator* generator);
 public slots:
     void tick();
 signals:

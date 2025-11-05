@@ -8,6 +8,8 @@ double GeneratorProstokatny::tick()
 {
     internal_clock++;
     if(internal_clock == samples_per_cycle) internal_clock = 0;
+    if(amplitude == 0)
+        return 0;
     if(internal_clock % samples_per_cycle < duty_cycle * samples_per_cycle)
         return amplitude + bias;
     else

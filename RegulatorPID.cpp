@@ -37,7 +37,7 @@ double RegulatorPID::tick(double e_i)
 RegulatorPID::RegulatorPID(double k, double T_i, double T_d, IntegType integration_type)
     :T_d(T_d), T_i(T_i), k(k), integration_type(integration_type)
 {
-    reset();
+    resetIntegrationPart();
 }
 void RegulatorPID::setK(double k)
 {
@@ -78,9 +78,18 @@ double RegulatorPID::getT_d()
 {
     return T_d;
 }
-void RegulatorPID::reset()
+void RegulatorPID::resetIntegrationPart()
 {
     sum_of_e_inside_integ = 0.0;
     sum_of_e_outside_integ = 0.0;
+}
+void RegulatorPID::resetDerrivativePart()
+{
     previous_e = 0.0;
 }
+void RegulatorPID::reset()
+{
+    resetDerrivativePart();
+    resetIntegrationPart();
+}
+

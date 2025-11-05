@@ -27,6 +27,8 @@ public:
     double getK();
     double getT_i();
     double getT_d();
+    void resetIntegrationPart();
+    void resetDerrivativePart();
     void reset();
 };
 

@@ -32,7 +32,80 @@ private slots:
 
     void on_pushButton_dostosuj_parametry_clicked();
 
+    void on_verticalSlider_generator_amplituda_sliderMoved(int position);
+
+    void on_doubleSpinBox_generator_amplituda_valueChanged(double arg1);
+
+    void on_doubleSpinBox_generator_amplituda_editingFinished();
+
+    void on_verticalSlider_generator_amplituda_sliderReleased();
+
+    void on_horizontalSlider_generator_okres_valueChanged(int value);
+
+    void on_spinBox_generator_okres_valueChanged(int arg1);
+
+    void on_spinBox_generator_okres_editingFinished();
+
+    void on_horizontalSlider_generator_okres_sliderReleased();
+
+    void on_comboBox_generator_typ_currentTextChanged(const QString &arg1);
+
+
+    void on_spinBox_generator_wypelnienie_editingFinished();
+
+    void on_horizontalSlider_generator_wypelnienie_sliderReleased();
+
+    void on_horizontalSlider_generator_wypelnienie_valueChanged(int value);
+
+    void on_spinBox_generator_wypelnienie_valueChanged(int arg1);
+
+    void on_pushButton_symulacja_reset_clicked();
+
+    void on_horizontalSlider_symulacja_okno_obserwacji_valueChanged(int value);
+
+    void on_spinBox_symulacja_okno_obserwacji_valueChanged(int arg1);
+
+    void on_spinBox_symulacja_okno_obserwacji_editingFinished();
+
+    void on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased();
+
+    void on_checkBox_ograniczenia_checkStateChanged(const Qt::CheckState &arg1);
+
+    void on_pushButton_reset_pam_calk_clicked();
+
+    void on_radioButton_stala_calkowania_przed_clicked();
+
+    void on_radioButton_stala_calkowania_pod_clicked();
+
+    void on_horizontalSlider_pid_k_valueChanged(int value);
+
+    void on_doubleSpinBox_pid_k_editingFinished();
+
+    void on_horizontalSlider_pid_k_sliderReleased();
+
+    void on_doubleSpinBox_pid_k_valueChanged(double arg1);
+
+    void on_horizontalSlider_pid_Ti_valueChanged(int value);
+
+    void on_horizontalSlider_pid_Ti_sliderReleased();
+
+    void on_doubleSpinBox_pid_Ti_valueChanged(double arg1);
+
+    void on_doubleSpinBox_pid_Ti_editingFinished();
+
+    void on_horizontalSlider_pid_Td_valueChanged(int value);
+
+    void on_doubleSpinBox_pid_Td_valueChanged(double arg1);
+
+    void on_doubleSpinBox_pid_Td_editingFinished();
+
+    void on_horizontalSlider_pid_Td_sliderReleased();
+
+    void on_pushButton_reset_pam_roz_clicked();
+
 private:
+    uint32_t samples_count;
+
     Ui::MainWindow *ui;
 
     QChart* chart_wartosc_zadana_i_regulowana;
@@ -45,7 +118,10 @@ private:
     QList<QPointF>* lista_wartosc_regulowana;
     QList<QPointF>* lista_uchyb;
     QList<QPointF>* lista_sterowanie;
-    qreal temp = 0.0;
+    qint64 miliseconds_of_simulation = 0;
+
+    QElapsedTimer debug_timer;
+    int debug_last_time;
 
 };
 

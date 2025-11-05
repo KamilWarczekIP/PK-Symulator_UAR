@@ -24,7 +24,7 @@ set(PROJECT_SOURCES
     GeneratorProstokatny.h GeneratorProstokatny.cpp
     State.h State.cpp
     Test.h Test.cpp
-    dialogarxcooeficients.ui mainwindow.ui
+    dialogarx.ui mainwindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

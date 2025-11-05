@@ -13,9 +13,12 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -26,10 +29,13 @@
      <height>591</height>
     </size>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <widget class="QWidget" name="horizontalLayoutWidget_9">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>0</y>
       <width>1271</width>
       <height>789</height>
@@ -109,14 +115,11 @@
             <item>
              <widget class="QCheckBox" name="checkBox_ograniczenia">
               <property name="text">
-               <string>Ograniczenia</string>
+               <string>Ograniczenia 
+wartości we/wy</string>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox_losowe_zaklocenia">
-              <property name="text">
-               <string>Losowe zakłócenia</string>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -157,13 +160,35 @@
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
                <widget class="QSlider" name="horizontalSlider_pid_k">
+                <property name="minimum">
+                 <number>-1000</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_pid_k"/>
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_pid_k">
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+                <property name="stepType">
+                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -178,6 +203,12 @@
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
                <widget class="QSlider" name="horizontalSlider_pid_Ti">
+                <property name="minimum">
+                 <number>-1000</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -186,7 +217,19 @@
               <item>
                <widget class="QDoubleSpinBox" name="doubleSpinBox_pid_Ti">
                 <property name="suffix">
-                 <string> ms</string>
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+                <property name="stepType">
+                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
                 </property>
                </widget>
               </item>
@@ -203,6 +246,12 @@
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
                <widget class="QSlider" name="horizontalSlider_pid_Td">
+                <property name="minimum">
+                 <number>-1000</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -211,7 +260,19 @@
               <item>
                <widget class="QDoubleSpinBox" name="doubleSpinBox_pid_Td">
                 <property name="suffix">
-                 <string> ms</string>
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+                <property name="stepType">
+                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
                 </property>
                </widget>
               </item>
@@ -224,23 +285,6 @@
             <property name="sizeConstraint">
              <enum>QLayout::SetMinimumSize</enum>
             </property>
-            <item>
-             <widget class="QRadioButton" name="radioButton_stala_calkowania_przed">
-              <property name="text">
-               <string>Stała całkowania przed całką</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="radioButton_stala_calkowania_pod">
-              <property name="text">
-               <string>Stała całkowania pod całką</string>
-              </property>
-             </widget>
-            </item>
             <item>
              <spacer name="verticalSpacer">
               <property name="orientation">
@@ -255,6 +299,23 @@
              </spacer>
             </item>
             <item>
+             <widget class="QRadioButton" name="radioButton_stala_calkowania_pod">
+              <property name="text">
+               <string>Stała całkowania pod całką</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_stala_calkowania_przed">
+              <property name="text">
+               <string>Stała całkowania przed całką</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton_reset_pam_calk">
               <property name="text">
                <string>RESET PAMIĘCI
@@ -263,10 +324,10 @@ CAŁKUJĄCEJ</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_reset_pam_rozniczkojacej">
+             <widget class="QPushButton" name="pushButton_reset_pam_roz">
               <property name="text">
                <string>RESET PAMIĘCI
- RÓŻNICZKUJĄCEJ</string>
+RÓŻNICZKUJĄCEJ</string>
               </property>
              </widget>
             </item>
@@ -337,18 +398,39 @@ CAŁKUJĄCEJ</string>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <item>
                <widget class="QSlider" name="horizontalSlider_generator_okres">
+                <property name="minimum">
+                 <number>4</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+                <property name="value">
+                 <number>100</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="tickPosition">
+                 <enum>QSlider::NoTicks</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_generator_okres">
+               <widget class="QSpinBox" name="spinBox_generator_okres">
                 <property name="suffix">
-                 <string> ms</string>
+                 <string> próbek</string>
+                </property>
+                <property name="minimum">
+                 <number>2</number>
                 </property>
                 <property name="maximum">
-                 <double>100.000000000000000</double>
+                 <number>10000</number>
+                </property>
+                <property name="stepType">
+                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+                </property>
+                <property name="value">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -368,21 +450,36 @@ CAŁKUJĄCEJ</string>
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>50</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_generator_wypelnienie">
+               <widget class="QSpinBox" name="spinBox_generator_wypelnienie">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
                 <property name="suffix">
-                 <string>%</string>
+                 <string> %</string>
                 </property>
                 <property name="maximum">
-                 <double>100.000000000000000</double>
+                 <number>100</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>50</number>
+                </property>
+                <property name="displayIntegerBase">
+                 <number>10</number>
                 </property>
                </widget>
               </item>
@@ -406,12 +503,31 @@ CAŁKUJĄCEJ</string>
              </widget>
             </item>
             <item>
-             <widget class="QDoubleSpinBox" name="doubleSpinBox_generator_amplituda"/>
+             <widget class="QDoubleSpinBox" name="doubleSpinBox_generator_amplituda">
+              <property name="maximum">
+               <double>100.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.100000000000000</double>
+              </property>
+              <property name="value">
+               <double>1.000000000000000</double>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_14">
               <item>
                <widget class="QSlider" name="verticalSlider_generator_amplituda">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+                <property name="pageStep">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>10</number>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
@@ -472,7 +588,7 @@ CAŁKUJĄCEJ</string>
                  <string> ms</string>
                 </property>
                 <property name="minimum">
-                 <number>20</number>
+                 <number>1</number>
                 </property>
                 <property name="maximum">
                  <number>2000</number>
@@ -596,7 +712,11 @@ CAŁKUJĄCEJ</string>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_wykresy" stretch=""/>
+      <layout class="QVBoxLayout" name="verticalLayout_wykresy">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+      </layout>
      </item>
     </layout>
    </widget>
@@ -607,7 +727,7 @@ CAŁKUJĄCEJ</string>
      <x>0</x>
      <y>0</y>
      <width>1317</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuplik">
@@ -620,11 +740,9 @@ CAŁKUJĄCEJ</string>
    </widget>
    <widget class="QMenu" name="menuzachowanie">
     <property name="title">
-     <string>zachowanie</string>
+     <string>wygląd</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="actionzatwierdzaj_zmiany_natychmiast"/>
-    <addaction name="actionwy_wietlaj_wykresy_w_tej_samej_skali"/>
     <addaction name="separator"/>
     <addaction name="actionMINECRAAAAAAFT"/>
    </widget>
