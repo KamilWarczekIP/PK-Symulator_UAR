@@ -3,8 +3,10 @@
 #include "mainwindow.h"
 #include <cassert>
 
-State::State(UAR&& uar)
-    :uar(uar), symulacja_dziala(false), wybrany_generator(&this->gen_sin)
+State::State(UAR &&uar)
+    : uar(uar)
+    , symulacja_dziala(false)
+    , wybrany_generator(&this->gen_sin)
 {
     symulacja_timer = new QTimer();
     symulacja_timer->setSingleShot(false);
@@ -14,35 +16,34 @@ State::State(UAR&& uar)
     //TODO: usunac to tu
     gen_sin.setAmplitude(1.0);
     gen_sin.setSamplesPerCycle(100);
-
 }
 State::~State()
 {
     delete symulacja_timer;
 }
 
-State& State::getInstance()
+State &State::getInstance()
 {
     static State instance(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)));
     return instance;
 }
-UAR& State::getUAR()
+UAR &State::getUAR()
 {
     return this->uar;
 }
-GeneratorSinusoida& State::getGeneratorSinusoida()
+GeneratorSinusoida &State::getGeneratorSinusoida()
 {
     return this->gen_sin;
 }
-GeneratorProstokatny& State::getGeneratorProstokatny()
+GeneratorProstokatny &State::getGeneratorProstokatny()
 {
     return this->gen_pros;
 }
-ARX& State::getARX()
+ARX &State::getARX()
 {
     return this->uar.getARX();
 }
-RegulatorPID& State::getPID()
+RegulatorPID &State::getPID()
 {
     return this->uar.getRegulatorPID();
 }
@@ -50,11 +51,10 @@ RegulatorPID& State::getPID()
 void State::setSymulacjaDziala(bool symulacja_dziala)
 {
     this->symulacja_dziala = symulacja_dziala;
-    if(symulacja_dziala)
+    if (symulacja_dziala)
         symulacja_timer->start();
     else
         symulacja_timer->stop();
-
 }
 void State::setInterwalSymulacjiMS(uint32_t interwal)
 {
@@ -68,7 +68,7 @@ uint32_t State::getInterwalSymulacjiMS()
 {
     return symulacja_timer->interval();
 }
-void State::setGenerator(Generator* generator)
+void State::setGenerator(Generator *generator)
 {
     assert(generator == &this->gen_sin || generator == &this->gen_pros);
     this->wybrany_generator = generator;

@@ -2,10 +2,11 @@
 #include <cassert>
 
 Generator::Generator()
-    : amplitude(1.0), bias(0.0), internal_clock(0), samples_per_cycle(2)
-{
-
-}
+    : amplitude(1.0)
+    , bias(0.0)
+    , internal_clock(0)
+    , samples_per_cycle(2)
+{}
 void Generator::setAmplitude(double amplitude)
 {
     assert(amplitude >= 0.0);

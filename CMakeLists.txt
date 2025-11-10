@@ -24,6 +24,7 @@ set(PROJECT_SOURCES
     GeneratorProstokatny.h GeneratorProstokatny.cpp
     State.h State.cpp
     Test.h Test.cpp
+    dialogarx.h dialogarx.cpp
     dialogarx.ui mainwindow.ui
 )
 
@@ -33,6 +34,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         BUILD_DEFINE.h
         media/minecraft_grass.png
+        dialogarx.h dialogarx.cpp dialogarx.ui
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET nienazwane APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -2,15 +2,11 @@
 
 #ifdef MAIN
 
+#include <QApplication>
 #include "State.h"
 #include "mainwindow.h"
-#include <QApplication>
 
-
-
-
-
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     State::getInstance();
     QApplication a(argc, argv);
@@ -19,4 +15,3 @@ int main(int argc, char** argv)
     return a.exec();
 }
 #endif
-

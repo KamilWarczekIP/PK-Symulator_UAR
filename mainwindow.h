@@ -21,7 +21,6 @@ public slots:
 private slots:
     void on_pushButton_symulacja_star_stop_released();
 
-
     void on_spinBox_symulacja_interwal_valueChanged(int arg1);
 
     void on_horizontalSlider_symulacja_interwal_valueChanged(int value);
@@ -49,7 +48,6 @@ private slots:
     void on_horizontalSlider_generator_okres_sliderReleased();
 
     void on_comboBox_generator_typ_currentTextChanged(const QString &arg1);
-
 
     void on_spinBox_generator_wypelnienie_editingFinished();
 
@@ -108,21 +106,19 @@ private:
 
     Ui::MainWindow *ui;
 
-    QChart* chart_wartosc_zadana_i_regulowana;
-    QChart* chart_uchyb;
-    QChart* chart_sterowanie;
-    QChart* chart_wszystko;
+    QChart *chart_wartosc_zadana_i_regulowana;
+    QChart *chart_uchyb;
+    QChart *chart_sterowanie;
+    QChart *chart_wszystko;
 
-
-    QList<QPointF>* lista_wartosc_zadana;
-    QList<QPointF>* lista_wartosc_regulowana;
-    QList<QPointF>* lista_uchyb;
-    QList<QPointF>* lista_sterowanie;
+    QList<QPointF> *lista_wartosc_zadana;
+    QList<QPointF> *lista_wartosc_regulowana;
+    QList<QPointF> *lista_uchyb;
+    QList<QPointF> *lista_sterowanie;
     qint64 miliseconds_of_simulation = 0;
 
     QElapsedTimer debug_timer;
     int debug_last_time;
-
 };
 
 #endif // MAINWINDOW_H

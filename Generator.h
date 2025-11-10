@@ -9,6 +9,7 @@ protected:
     uint16_t samples_per_cycle;
     double bias;
     uint16_t internal_clock;
+
 public:
     Generator();
     virtual double tick() = 0;
