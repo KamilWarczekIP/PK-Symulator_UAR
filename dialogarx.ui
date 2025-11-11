@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DialogARXCooeficients</class>
- <widget class="QDialog" name="DialogARXCooeficients">
+ <class>DialogArx</class>
+ <widget class="QDialog" name="DialogArx">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,6 +14,9 @@
    <string>Dialog</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -22,11 +25,14 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
+    <enum>Qt::Horizontal</enum>
    </property>
    <property name="standardButtons">
-    <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
   <widget class="QScrollArea" name="scrollArea">
@@ -80,7 +86,7 @@
       <item>
        <widget class="QSlider" name="horizontalSlider">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -90,7 +96,7 @@
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -110,7 +116,7 @@
       <item>
        <widget class="QSlider" name="horizontalSlider_2">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -139,7 +145,7 @@
       <item>
        <widget class="QSlider" name="horizontalSlider_4">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -149,7 +155,7 @@
       <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -169,7 +175,7 @@
       <item>
        <widget class="QSlider" name="horizontalSlider_5">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -198,7 +204,7 @@
       <item>
        <widget class="QSlider" name="horizontalSlider_7">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -208,7 +214,7 @@
       <item>
        <spacer name="horizontalSpacer_3">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -228,7 +234,7 @@
       <item>
        <widget class="QSlider" name="horizontalSlider_8">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -294,7 +300,7 @@
     </rect>
    </property>
    <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
+    <enum>Qt::Horizontal</enum>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">
@@ -481,7 +487,7 @@
      </rect>
     </property>
     <property name="orientation">
-     <enum>Qt::Orientation::Horizontal</enum>
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
@@ -532,7 +538,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>DialogARXCooeficients</receiver>
+   <receiver>DialogArx</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -548,7 +554,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>DialogARXCooeficients</receiver>
+   <receiver>DialogArx</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

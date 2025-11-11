@@ -6,6 +6,7 @@
 class GeneratorProstokatny : public Generator
 {
     double duty_cycle;
+
 public:
     GeneratorProstokatny();
     double tick() override;

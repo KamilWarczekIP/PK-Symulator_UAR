@@ -1,13 +1,15 @@
 #include "UAR.h"
 
-UAR::UAR(ARX&& arx, RegulatorPID&& pid)
-    :previous_y_i(0.0), arx(arx), pid(pid)
-{
-}
-UAR::UAR(ARX& arx, RegulatorPID& pid)
-    :previous_y_i(0.0), arx(arx), pid(pid)
-{
-}
+UAR::UAR(ARX &&arx, RegulatorPID &&pid)
+    : previous_y_i(0.0)
+    , arx(arx)
+    , pid(pid)
+{}
+UAR::UAR(ARX &arx, RegulatorPID &pid)
+    : previous_y_i(0.0)
+    , arx(arx)
+    , pid(pid)
+{}
 double UAR::tick(double input)
 {
     previous_y_i = this->arx.tick(this->pid.tick(input - previous_y_i));
@@ -29,11 +31,11 @@ void UAR::resetAll()
     arx.reset();
     pid.reset();
 }
-ARX& UAR::getARX()
+ARX &UAR::getARX()
 {
     return this->arx;
 }
-RegulatorPID& UAR::getRegulatorPID()
+RegulatorPID &UAR::getRegulatorPID()
 {
     return this->pid;
 }
