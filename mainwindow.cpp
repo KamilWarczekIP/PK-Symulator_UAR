@@ -34,8 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     {
         auto seria = new QScatterSeries();
         seria->setName("Sterowanie");
-        seria->setMarkerSize(13.0);
-        seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
+        seria->setMarkerSize(10.0);
+        //seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
         seria->setColor(QColor(30, 30, 220));
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_sterowanie->addSeries(seria);
@@ -43,8 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
     {
         auto seria = new QScatterSeries();
         seria->setName("Uchyb");
-        seria->setMarkerSize(10);
-        seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
+        seria->setMarkerSize(10.0);
+        //seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
         seria->setColor(QColor(185, 0, 80));
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_uchyb->addSeries(seria);
@@ -52,8 +52,8 @@ MainWindow::MainWindow(QWidget *parent)
     {
         auto seria = new QScatterSeries();
         seria->setName("Wartość zadana");
-        seria->setMarkerSize(13);
-        seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
+        seria->setMarkerSize(10.0);
+        //seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
         seria->setColor(QColor(0, 180, 55));
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
@@ -61,31 +61,31 @@ MainWindow::MainWindow(QWidget *parent)
         seria = new QScatterSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
-        seria->setMarkerSize(10);
+        seria->setMarkerSize(10.0);
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
     }
     {
         auto seria = new QScatterSeries();
         seria->setName("Sterowanie");
-        seria->setMarkerSize(13.0);
-        seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
+        seria->setMarkerSize(10.0);
+        //seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
         seria->setColor(QColor(30, 30, 220));
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
         seria = new QScatterSeries();
         seria->setName("Uchyb");
-        seria->setMarkerSize(10);
-        seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
+        seria->setMarkerSize(10.0);
+        //seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
         seria->setColor(QColor(185, 0, 80));
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
         seria = new QScatterSeries();
         seria->setName("Wartość zadana");
-        seria->setMarkerSize(13);
-        seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
+        seria->setMarkerSize(10.0);
+        //seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
         seria->setColor(QColor(0, 180, 55));
         seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
@@ -94,7 +94,7 @@ MainWindow::MainWindow(QWidget *parent)
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
         seria->setBorderColor(QColor(0, 0, 0, 0));
-        seria->setMarkerSize(10);
+        seria->setMarkerSize(10.0);
         chart_wszystko->addSeries(seria);
     }
 
@@ -131,6 +131,7 @@ MainWindow::MainWindow(QWidget *parent)
     chart_wartosc_zadana_i_regulowana->series().at(1)->attachAxis(chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0));
     chart_wartosc_zadana_i_regulowana->series().at(1)->attachAxis(chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical).at(0));
 
+
     chart_wszystko->series().at(0)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
     chart_wszystko->series().at(0)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
     chart_wszystko->series().at(1)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
@@ -140,21 +141,43 @@ MainWindow::MainWindow(QWidget *parent)
     chart_wszystko->series().at(3)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
     chart_wszystko->series().at(3)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
 
+    chart_sterowanie->series().at(0)->setUseOpenGL(true);
+    chart_uchyb->series().at(0)->setUseOpenGL(true);
+    chart_wartosc_zadana_i_regulowana->series().at(0)->setUseOpenGL(true);
+    chart_wartosc_zadana_i_regulowana->series().at(1)->setUseOpenGL(true);
+    chart_wszystko->series().at(0)->setUseOpenGL(true);
+    chart_wszystko->series().at(1)->setUseOpenGL(true);
+    chart_wszystko->series().at(2)->setUseOpenGL(true);
+    chart_wszystko->series().at(3)->setUseOpenGL(true);
+
 
     auto q_chart_view = new QChartView(chart_sterowanie);
     chart_sterowanie->setMargins(QMargins(0,0,0,0));
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 2);
+
 
     q_chart_view = new QChartView(chart_uchyb);
     chart_uchyb->setMargins(QMargins(0,0,0,0));
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 2);
 
     q_chart_view = new QChartView(chart_wartosc_zadana_i_regulowana);
     chart_wartosc_zadana_i_regulowana->setMargins(QMargins(0,0,0,0));
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 2);
 
     q_chart_view = new QChartView(chart_wszystko);
     chart_wszystko->setMargins(QMargins(0,0,0,0));
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
+    q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 4);
 
     QObject::connect(&State::getInstance(), &State::sendTickDataToMainWindow, this, &MainWindow::addToPlots);
