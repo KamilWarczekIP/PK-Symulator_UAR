@@ -84,7 +84,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider">
+       <widget class="QSlider" name="slider">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -245,7 +245,7 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="dodaj_wspolczynnik">
    <property name="geometry">
     <rect>
      <x>370</x>
@@ -261,7 +261,7 @@
     <iconset theme="QIcon::ThemeIcon::ListAdd"/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="usun_wspolczynnik">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -270,11 +270,20 @@
      <height>29</height>
     </rect>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Usuń</string>
    </property>
    <property name="icon">
     <iconset theme="QIcon::ThemeIcon::ListRemove"/>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -290,7 +299,7 @@
     <string>Opóżnienie transportowe (k)</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_3">
+  <widget class="QSlider" name="opoznienie_suwak">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -303,7 +312,7 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="opoznienie_wartosc">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -331,7 +340,7 @@
    <property name="title">
     <string>Ograniczenia na wyjściu</string>
    </property>
-   <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+   <widget class="QDoubleSpinBox" name="ograniczenie_wyj_max">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -344,7 +353,7 @@
      <double>10.000000000000000</double>
     </property>
    </widget>
-   <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+   <widget class="QDoubleSpinBox" name="ograniczenie_wyj_min">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -399,7 +408,7 @@
    <property name="title">
     <string>Ograniczenia na wejściu</string>
    </property>
-   <widget class="QDoubleSpinBox" name="doubleSpinBox_7">
+   <widget class="QDoubleSpinBox" name="ograniczenie_wej_max">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -412,7 +421,7 @@
      <double>10.000000000000000</double>
     </property>
    </widget>
-   <widget class="QDoubleSpinBox" name="doubleSpinBox_8">
+   <widget class="QDoubleSpinBox" name="ograniczenie_wej_min">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -467,22 +476,22 @@
    <property name="title">
     <string>Zakłócenia</string>
    </property>
-   <widget class="QSpinBox" name="spinBox_2">
+   <widget class="QSpinBox" name="zaklocenie_wartosc">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>340</x>
       <y>150</y>
       <width>81</width>
       <height>31</height>
      </rect>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_6">
+   <widget class="QSlider" name="zaklocenie_suwak">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>160</y>
-      <width>261</width>
+      <width>321</width>
       <height>18</height>
      </rect>
     </property>
@@ -503,15 +512,16 @@
      <string>Odchylenie standardowe</string>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>40</y>
-      <width>391</width>
-      <height>71</height>
+      <x>9</x>
+      <y>19</y>
+      <width>421</width>
+      <height>121</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="chart_zaklocenia_view"/>
    </widget>
   </widget>
   <widget class="QLabel" name="label_13">

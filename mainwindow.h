@@ -67,7 +67,7 @@ private slots:
 
     void on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased();
 
-    void on_checkBox_ograniczenia_checkStateChanged(const Qt::CheckState &arg1);
+    void on_checkBoxOgraniczenia_checkStateChanged(const Qt::CheckState &arg1);
 
     void on_pushButton_reset_pam_calk_clicked();
 

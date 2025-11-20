@@ -347,10 +347,8 @@ void MainWindow::on_horizontalSlider_symulacja_interwal_sliderReleased()
 //Włączanie okna ustawień obiektu ARX
 void MainWindow::on_pushButton_dostosuj_parametry_clicked()
 {
-    //this->hide();
     DialogArx arxDialog(this);
     arxDialog.exec();
-    //arxDialog->show();
 }
 
 // Amplituda generatora
@@ -476,7 +474,7 @@ void MainWindow::on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased()
     //TODO
 }
 
-void MainWindow::on_checkBox_ograniczenia_checkStateChanged(const Qt::CheckState &arg1)
+void MainWindow::on_checkBoxOgraniczenia_checkStateChanged(const Qt::CheckState &arg1)
 {
     if (arg1 == Qt::Checked)
         State::getInstance().getARX().disableLimits();
