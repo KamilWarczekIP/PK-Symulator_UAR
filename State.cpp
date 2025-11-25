@@ -1,21 +1,20 @@
 #include "State.h"
 #include <QDebug>
-#include "mainwindow.h"
 #include <cassert>
 
 State::State(UAR &&uar)
     : uar(uar)
-    , symulacja_dziala(false)
-    , wybrany_generator(&this->gen_sin)
+    , simmulation_running(false)
+    , choosen_type(TypGeneratora::Sinusoidalny)
 {
-    symulacja_timer = new QTimer();
-    symulacja_timer->setSingleShot(false);
-    symulacja_timer->setInterval(200);
-    symulacja_timer->connect(symulacja_timer, &QTimer::timeout, this, &State::tick);
+    simmulation_timer = new QTimer();
+    simmulation_timer->setSingleShot(false);
+    simmulation_timer->setInterval(200);
+    simmulation_timer->connect(simmulation_timer, &QTimer::timeout, this, &State::tick);
 }
 State::~State()
 {
-    delete symulacja_timer;
+    delete simmulation_timer;
 }
 
 State &State::getInstance()
@@ -23,53 +22,151 @@ State &State::getInstance()
     static State instance(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)));
     return instance;
 }
-UAR &State::getUAR()
+
+
+void State::setSimmulationRunning(bool simmulation_running)
 {
-    return this->uar;
+    this->simmulation_running = simmulation_running;
+    if (simmulation_running)
+        simmulation_timer->start();
+    else
+        simmulation_timer->stop();
 }
-GeneratorSinusoida &State::getGeneratorSinusoida()
+void State::setSimmulationIntervalMS(uint32_t interwal)
 {
-    return this->gen_sin;
+    this->simmulation_timer->setInterval(interwal);
 }
-GeneratorProstokatny &State::getGeneratorProstokatny()
+bool State::getSimmulationRunning()
 {
-    return this->gen_pros;
+    return simmulation_running;
 }
-ARX &State::getARX()
+uint32_t State::getSimmulationIntervalMS()
 {
-    return this->uar.getARX();
+    return simmulation_timer->interval();
 }
-RegulatorPID &State::getPID()
+void State::setOutputCallback(const std::function<void(TickData)> callback)
 {
-    return this->uar.getRegulatorPID();
+    assert(callback != nullptr); // Przeslany callback musi być poprawny
+    this->tick_callback = callback;
+}
+void State::resetSimmulation()
+{
+    resetGenerator();
+    this->uar.resetAll();
 }
 
-void State::setSymulacjaDziala(bool symulacja_dziala)
+void State::setGenerator(TypGeneratora type)
 {
-    this->symulacja_dziala = symulacja_dziala;
-    if (symulacja_dziala)
-        symulacja_timer->start();
+    choosen_type = type;
+}
+State::TypGeneratora State::getGenerator()
+{
+    return this->choosen_type;
+}
+void State::setGeneneratorAmplitude(const double& amplitude)
+{
+    this->gen_pros.setAmplitude(amplitude);
+    this->gen_sin.setAmplitude(amplitude);
+}
+void State::setGeneneratorDutyCycle(const double& duty_cycle)
+{
+    this->gen_pros.setDutyCycle(duty_cycle);
+}
+void State::setGeneneratorPeriodMS(uint32_t period)
+{
+    this->gen_pros.setSamplesPerCycle(period / getSimmulationIntervalMS());
+    this->gen_sin.setSamplesPerCycle(period / getSimmulationIntervalMS());
+}
+uint8_t State::getGeneneratorPeriodJumpMS()
+{
+    return getSimmulationIntervalMS();
+}
+void State::resetGenerator()
+{
+    this->gen_pros.resetClock();
+    this->gen_sin.resetClock();
+}
+
+void State::setPIDProportional(double k)
+{
+    this->uar.getRegulatorPID().setK(k);
+}
+void State::setPIDIntegration(double T_i)
+{
+    this->uar.getRegulatorPID().setT_i(T_i);
+}
+void State::setPIDDerrivative(double T_d)
+{
+    this->uar.getRegulatorPID().setT_d(T_d);
+}
+void State::setPIDIntegrationType(IntegType integration_type)
+{
+    this->uar.getRegulatorPID().setIntegrationType(integration_type);
+}
+void State::resetPIDIntegration()
+{
+    this->uar.getRegulatorPID().resetIntegrationPart();
+}
+void State::resetPIDDerrivative()
+{
+    this->uar.getRegulatorPID().resetDerrivativePart();
+}
+
+
+void State::setARXCoefficients(std::vector<double> a, std::vector<double> b)
+{
+    this->uar.getARX().setAB(a, b);
+}
+void State::setARXTransportDelay(uint16_t k)
+{
+    this->uar.getARX().setK(k);
+}
+void State::setARXInputLimits(double low, double high)
+{
+    this->uar.getARX().setInputLimits(low, high);
+}
+void State::setARXOutputLimits(double low, double high)
+{
+    this->uar.getARX().setOutputLimits(low, high);
+}
+void State::setARXNoiseStandardDeviation(double standard_deviation)
+{
+    this->uar.getARX().setStandardDeviation(standard_deviation);
+}
+void State::setARXLimitsEnabled(bool enabled)
+{
+    if(enabled)
+        this->uar.getARX().enableLimits();
     else
-        symulacja_timer->stop();
+        this->uar.getARX().disableLimits();
 }
-void State::setInterwalSymulacjiMS(uint32_t interwal)
+void State::resetARX()
 {
-    this->symulacja_timer->setInterval(interwal);
+    this->uar.getARX().reset();
 }
-bool State::getSymulacjaDziala()
+
+void State::saveToFile()
 {
-    return symulacja_dziala;
+    //TODO
+    assert(1==0);
 }
-uint32_t State::getInterwalSymulacjiMS()
+void State::readFromFile()
 {
-    return symulacja_timer->interval();
+    //TODO
+    assert(1==0);
 }
-void State::setGenerator(Generator *generator)
-{
-    assert(generator == &this->gen_sin || generator == &this->gen_pros);
-    this->wybrany_generator = generator;
-}
+
 void State::tick()
 {
-    emit sendTickDataToMainWindow(uar.tick_more_info(wybrany_generator->tick()));
+    Generator* curr_gen;
+    switch (this->choosen_type) {
+    case TypGeneratora::Prostokatny:
+        curr_gen = &this->gen_pros;
+        break;
+    case TypGeneratora::Sinusoidalny:
+    default:
+        curr_gen = &this->gen_sin;
+        break;
+    }
+    this->tick_callback(uar.tick_more_info(curr_gen->tick()));
 }

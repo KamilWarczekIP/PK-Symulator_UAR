@@ -79,6 +79,8 @@ private:
 
     QElapsedTimer debug_timer;
     int debug_last_time;
+
+    void recalculate_generator_period();
 };
 
 #endif // MAINWINDOW_H

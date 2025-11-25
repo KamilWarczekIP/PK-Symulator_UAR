@@ -15,6 +15,9 @@ void Generator::setAmplitude(double amplitude)
 void Generator::setSamplesPerCycle(uint16_t samples_per_cycle)
 {
     assert(samples_per_cycle >= 1);
+
+    // zmiana długości cyklu nie zmienia momentu w którym aktualnie jest generator w cyklu
+    this->internal_clock = ((double) this->internal_clock / this->samples_per_cycle) * samples_per_cycle;
     this->samples_per_cycle = samples_per_cycle;
 }
 void Generator::setBias(double bias)

@@ -30,6 +30,7 @@ void UAR::resetAll()
 {
     arx.reset();
     pid.reset();
+    previous_y_i = 0.0;
 }
 ARX &UAR::getARX()
 {

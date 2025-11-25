@@ -36,7 +36,6 @@ MainWindow::MainWindow(QWidget *parent)
         auto seria = new QLineSeries();
         seria->setName("Sterowanie");
         seria->setMarkerSize(10.0);
-        //seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
         seria->setColor(QColor(30, 30, 220));
         //seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_sterowanie->addSeries(seria);
@@ -45,77 +44,66 @@ MainWindow::MainWindow(QWidget *parent)
         auto seria = new QLineSeries();
         seria->setName("Uchyb");
         seria->setMarkerSize(10.0);
-        //seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
         seria->setColor(QColor(185, 0, 80));
-      //  seria->setBorderColor(QColor(0, 0, 0, 0));
+        //seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_uchyb->addSeries(seria);
     }
     {
         auto seria = new QLineSeries();
         seria->setName("Wartość zadana");
         seria->setMarkerSize(10.0);
-        //seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
         seria->setColor(QColor(0, 180, 55));
-     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
         seria->setMarkerSize(10.0);
-      //  seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
     }
     {
         auto seria = new QLineSeries();
         seria->setName("Sterowanie");
         seria->setMarkerSize(10.0);
-        //seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
         seria->setColor(QColor(30, 30, 220));
-     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Uchyb");
         seria->setMarkerSize(10.0);
-        //seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
         seria->setColor(QColor(185, 0, 80));
-    //    seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Wartość zadana");
         seria->setMarkerSize(10.0);
-        //seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
         seria->setColor(QColor(0, 180, 55));
-     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
-     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         seria->setMarkerSize(10.0);
         chart_wszystko->addSeries(seria);
     }
 
     chart_sterowanie->addAxis(new QValueAxis(), Qt::AlignBottom);
-    chart_sterowanie->axes(Qt::Horizontal).at(0)->setRange(0.0, 4.0);
+    chart_sterowanie->axes(Qt::Horizontal).at(0)->setRange(0.0, 1.0);
     chart_sterowanie->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_sterowanie->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
 
     chart_uchyb->addAxis(new QValueAxis(), Qt::AlignBottom);
-    chart_uchyb->axes(Qt::Horizontal).at(0)->setRange(0.0, 4.0);
+    chart_uchyb->axes(Qt::Horizontal).at(0)->setRange(0.0, 1.0);
     chart_uchyb->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_uchyb->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
 
     chart_wartosc_zadana_i_regulowana->addAxis(new QValueAxis(), Qt::AlignBottom);
-    chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setRange(0.0, 4.0);
+    chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setRange(0.0, 1.0);
     chart_wartosc_zadana_i_regulowana->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
 
     chart_wszystko->addAxis(new QValueAxis(), Qt::AlignBottom);
-    chart_wszystko->axes(Qt::Horizontal).at(0)->setRange(0.0, 4.0);
+    chart_wszystko->axes(Qt::Horizontal).at(0)->setRange(0.0, 1.0);
     chart_wszystko->axes(Qt::Horizontal).at(0)->setTitleText("Czas [s]");
     chart_wszystko->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_wszystko->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
@@ -143,14 +131,14 @@ MainWindow::MainWindow(QWidget *parent)
     chart_wszystko->series().at(2)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
     chart_wszystko->series().at(3)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
     chart_wszystko->series().at(3)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
-    chart_sterowanie->series().at(0)->setUseOpenGL(true);
-    chart_uchyb->series().at(0)->setUseOpenGL(true);
-    chart_wartosc_zadana_i_regulowana->series().at(0)->setUseOpenGL(true);
-    chart_wartosc_zadana_i_regulowana->series().at(1)->setUseOpenGL(true);
-    chart_wszystko->series().at(0)->setUseOpenGL(true);
-    chart_wszystko->series().at(1)->setUseOpenGL(true);
-    chart_wszystko->series().at(2)->setUseOpenGL(true);
-    chart_wszystko->series().at(3)->setUseOpenGL(true);
+    // chart_sterowanie->series().at(0)->setUseOpenGL(true);
+    // chart_uchyb->series().at(0)->setUseOpenGL(true);
+    // chart_wartosc_zadana_i_regulowana->series().at(0)->setUseOpenGL(true);
+    // chart_wartosc_zadana_i_regulowana->series().at(1)->setUseOpenGL(true);
+    // chart_wszystko->series().at(0)->setUseOpenGL(true);
+    // chart_wszystko->series().at(1)->setUseOpenGL(true);
+    // chart_wszystko->series().at(2)->setUseOpenGL(true);
+    // chart_wszystko->series().at(3)->setUseOpenGL(true);
 
 
     auto q_chart_view = new QChartView(chart_sterowanie);
@@ -182,24 +170,24 @@ MainWindow::MainWindow(QWidget *parent)
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 4);
 
-    QObject::connect(&State::getInstance(),
-                     &State::sendTickDataToMainWindow,
-                     this,
-                     &MainWindow::addToPlots);
+    State::getInstance().setOutputCallback(std::bind(&MainWindow::addToPlots, this, std::placeholders::_1));
+
     debug_timer.start();
     debug_last_time = 0;
+
+    on_spinBox_generator_okres_editingFinished();
 }
 void MainWindow::addToPlots(TickData tick_data)
 {
     int debug_current_time = debug_timer.elapsed();
     qDebug() << debug_current_time - debug_last_time;
     debug_last_time = debug_current_time;
-    qint64 interwal_symulacji = State::getInstance().getInterwalSymulacjiMS();
+    qint64 interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
     qint64 liczba_probek = (double) ui->spinBox_symulacja_okno_obserwacji->value()
                            / ((double) interwal_symulacji / 1000.0);
 
-    qreal seconds_of_simulation = (double) (miliseconds_of_simulation += interwal_symulacji)
-                                  / 1000.0;
+    qreal seconds_of_simulation = (double) (miliseconds_of_simulation += interwal_symulacji) / 1000.0;
+
     lista_wartosc_zadana->append(QPointF(seconds_of_simulation, tick_data.wartosc_zadana));
     lista_wartosc_regulowana->append(QPointF(seconds_of_simulation, tick_data.wartosc_regulowana));
     lista_uchyb->append(QPointF(seconds_of_simulation, tick_data.uchyb));
@@ -209,21 +197,19 @@ void MainWindow::addToPlots(TickData tick_data)
 
     dynamic_cast<QLineSeries *>(chart_uchyb->series().at(0))->replace(*lista_uchyb);
 
-    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))
-        ->replace(*lista_wartosc_zadana);
-    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))
-        ->replace(*lista_wartosc_regulowana);
+    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))->replace(*lista_wartosc_zadana);
+    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))->replace(*lista_wartosc_regulowana);
 
     dynamic_cast<QLineSeries *>(chart_wszystko->series().at(0))->replace(*lista_sterowanie);
     dynamic_cast<QLineSeries *>(chart_wszystko->series().at(1))->replace(*lista_uchyb);
     dynamic_cast<QLineSeries *>(chart_wszystko->series().at(2))->replace(*lista_wartosc_zadana);
-    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(3))
-        ->replace(*lista_wartosc_regulowana);
+    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(3))->replace(*lista_wartosc_regulowana);
 
     // Osie poziome - skalowanie
-    qreal range_start = seconds_of_simulation
-                        - (qreal) (liczba_probek * interwal_symulacji) / 1000.0;
-    qreal range_end = seconds_of_simulation + 4.0 * (qreal) (interwal_symulacji) / 1000.0;
+    constexpr const qreal LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ = 4.0;
+    qreal range_start = seconds_of_simulation - (qreal) (liczba_probek * interwal_symulacji) / 1000.0;
+    qreal range_end = seconds_of_simulation + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
+
     chart_sterowanie->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_uchyb->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
@@ -232,38 +218,34 @@ void MainWindow::addToPlots(TickData tick_data)
     // Osie pionowe - skalowanie
     qreal max_uchyb = 0.0;
     qreal min_uchyb = 0.0;
-    for (QList<QPointF>::iterator point = lista_uchyb->begin(); point != lista_uchyb->end();
-         point = std::next<>(point)) {
+    for (QList<QPointF>::iterator point = lista_uchyb->begin(); point != lista_uchyb->end(); point = std::next<>(point))
+    {
         if (point->y() > max_uchyb)
             max_uchyb = point->y();
         else if (point->y() < min_uchyb)
             min_uchyb = point->y();
     }
     qreal range_width_uchyb = (max_uchyb - min_uchyb) * 0.1;
-    chart_uchyb->axes(Qt::Vertical)
-        .at(0)
-        ->setRange(min_uchyb - range_width_uchyb, max_uchyb + range_width_uchyb);
+    chart_uchyb->axes(Qt::Vertical).at(0)->setRange(min_uchyb - range_width_uchyb, max_uchyb + range_width_uchyb);
 
     qreal max_sterowanie = 0.0;
     qreal min_sterowanie = 0.0;
-    for (QList<QPointF>::iterator point = lista_sterowanie->begin();
-         point != lista_sterowanie->end();
-         point = std::next<>(point)) {
+    for (QList<QPointF>::iterator point = lista_sterowanie->begin(); point != lista_sterowanie->end(); point = std::next<>(point))
+    {
         if (point->y() > max_sterowanie)
             max_sterowanie = point->y();
         else if (point->y() < min_sterowanie)
             min_sterowanie = point->y();
     }
     qreal range_width_sterowanie = (max_sterowanie - min_sterowanie) * 0.1;
-    chart_sterowanie->axes(Qt::Vertical)
-        .at(0)
-        ->setRange(min_sterowanie - range_width_sterowanie, max_sterowanie + range_width_sterowanie);
+    chart_sterowanie->axes(Qt::Vertical).at(0)->setRange(min_sterowanie - range_width_sterowanie, max_sterowanie + range_width_sterowanie);
 
     qreal max_wartosc_zadana = 0.0;
     qreal min_wartosc_zadana = 0.0;
     for (QList<QPointF>::iterator point = lista_wartosc_zadana->begin();
          point != lista_wartosc_zadana->end();
-         point = std::next<>(point)) {
+         point = std::next<>(point))
+    {
         if (point->y() > max_wartosc_zadana)
             max_wartosc_zadana = point->y();
         else if (point->y() < min_wartosc_zadana)
@@ -274,7 +256,8 @@ void MainWindow::addToPlots(TickData tick_data)
     qreal min_wartosc_regulowana = 0.0;
     for (QList<QPointF>::iterator point = lista_wartosc_regulowana->begin();
          point != lista_wartosc_regulowana->end();
-         point = std::next<>(point)) {
+         point = std::next<>(point))
+    {
         if (point->y() > max_wartosc_regulowana)
             max_wartosc_regulowana = point->y();
         else if (point->y() < min_wartosc_regulowana)
@@ -324,11 +307,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_symulacja_star_stop_released()
 {
-    if (State::getInstance().getSymulacjaDziala()) {
-        State::getInstance().setSymulacjaDziala(false);
+    if (State::getInstance().getSimmulationRunning()) {
+        State::getInstance().setSimmulationRunning(false);
         ui->pushButton_symulacja_star_stop->setText(tr("START"));
     } else {
-        State::getInstance().setSymulacjaDziala(true);
+        State::getInstance().setSimmulationRunning(true);
         ui->pushButton_symulacja_star_stop->setText(tr("STOP"));
     }
 }
@@ -342,13 +325,39 @@ void MainWindow::on_horizontalSlider_symulacja_interwal_valueChanged(int value)
 {
     ui->spinBox_symulacja_interwal->setValue(value);
 }
+
+void MainWindow::recalculate_generator_period()
+{
+
+    uint32_t interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
+    int new_generator_okres_value = ui->spinBox_generator_okres->value() / interwal_symulacji * interwal_symulacji;
+    if(ui->spinBox_generator_okres->value() % interwal_symulacji > interwal_symulacji / 2)
+        new_generator_okres_value += interwal_symulacji;
+
+    ui->spinBox_generator_okres->setValue(new_generator_okres_value);
+}
+
 void MainWindow::on_spinBox_symulacja_interwal_editingFinished()
 {
-    State::getInstance().setInterwalSymulacjiMS(ui->spinBox_symulacja_interwal->value());
+    State::getInstance().setSimmulationIntervalMS(ui->spinBox_symulacja_interwal->value());
+
+    uint32_t interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
+
+
+    recalculate_generator_period();
+
+    ui->spinBox_generator_okres->setMinimum(interwal_symulacji * 4);
+    ui->spinBox_generator_okres->setMaximum(interwal_symulacji * 100);
+    ui->spinBox_generator_okres->setSingleStep(interwal_symulacji);
+
+    ui->horizontalSlider_generator_okres->setMinimum(interwal_symulacji * 4);
+    ui->horizontalSlider_generator_okres->setMaximum(interwal_symulacji * 100);
+    ui->horizontalSlider_generator_okres->setSingleStep(interwal_symulacji);
+    ui->horizontalSlider_generator_okres->setPageStep(interwal_symulacji);
 }
 void MainWindow::on_horizontalSlider_symulacja_interwal_sliderReleased()
 {
-    State::getInstance().setInterwalSymulacjiMS(ui->horizontalSlider_symulacja_interwal->value());
+    on_spinBox_symulacja_interwal_editingFinished();
 }
 
 //Włączanie okna ustawień obiektu ARX
@@ -369,17 +378,12 @@ void MainWindow::on_doubleSpinBox_generator_amplituda_valueChanged(double arg1)
 }
 void MainWindow::on_doubleSpinBox_generator_amplituda_editingFinished()
 {
-    State::getInstance().getGeneratorProstokatny().setAmplitude(
-        ui->doubleSpinBox_generator_amplituda->value());
-    State::getInstance().getGeneratorSinusoida().setAmplitude(
+    State::getInstance().setGeneneratorAmplitude(
         ui->doubleSpinBox_generator_amplituda->value());
 }
 void MainWindow::on_verticalSlider_generator_amplituda_sliderReleased()
 {
-    State::getInstance().getGeneratorProstokatny().setAmplitude(
-        (double) ui->verticalSlider_generator_amplituda->value() / 100.0);
-    State::getInstance().getGeneratorSinusoida().setAmplitude(
-        (double) ui->verticalSlider_generator_amplituda->value() / 100.0);
+    on_doubleSpinBox_generator_amplituda_editingFinished();
 }
 
 // Okres generatora (T)
@@ -393,46 +397,43 @@ void MainWindow::on_spinBox_generator_okres_valueChanged(int arg1)
 }
 void MainWindow::on_spinBox_generator_okres_editingFinished()
 {
-    State::getInstance().getGeneratorProstokatny().setSamplesPerCycle(
-        ui->spinBox_generator_okres->value());
-    State::getInstance().getGeneratorSinusoida().setSamplesPerCycle(
-        ui->spinBox_generator_okres->value());
+    recalculate_generator_period();
+    State::getInstance().setGeneneratorPeriodMS(ui->spinBox_generator_okres->value());
 }
 void MainWindow::on_horizontalSlider_generator_okres_sliderReleased()
 {
-    State::getInstance().getGeneratorProstokatny().setSamplesPerCycle(
-        ui->horizontalSlider_generator_okres->value());
-    State::getInstance().getGeneratorSinusoida().setSamplesPerCycle(
-        ui->horizontalSlider_generator_okres->value());
+    on_spinBox_generator_okres_editingFinished();
 }
 
 //Zmiana używanego generatora
 void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg1)
 {
-    if (arg1 == "Prostokątny") {
+    if (arg1 == "Prostokątny")
+    {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(true);
         ui->spinBox_generator_wypelnienie->setEnabled(true);
-        State::getInstance().setGenerator(&State::getInstance().getGeneratorProstokatny());
-    } else {
+        State::getInstance().setGenerator(State::TypGeneratora::Prostokatny);
+    }
+    else
+    {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(false);
         ui->spinBox_generator_wypelnienie->setEnabled(false);
         if (arg1 == "Sinusoida")
-            State::getInstance().setGenerator(&State::getInstance().getGeneratorSinusoida());
+            State::getInstance().setGenerator(State::TypGeneratora::Sinusoidalny);
         else if (arg1 == "Ręczny") // TODO: dodac generator ręczny
-            State::getInstance().setGenerator(&State::getInstance().getGeneratorSinusoida());
+            State::getInstance().setGenerator(State::TypGeneratora::Reczny);
     }
 }
 
 // Wypelnienie generatora (P)
 void MainWindow::on_spinBox_generator_wypelnienie_editingFinished()
 {
-    State::getInstance().getGeneratorProstokatny().setDutyCycle(
+    State::getInstance().setGeneneratorDutyCycle(
         (double) ui->spinBox_generator_wypelnienie->value() / 100.0);
 }
 void MainWindow::on_horizontalSlider_generator_wypelnienie_sliderReleased()
 {
-    State::getInstance().getGeneratorProstokatny().setDutyCycle(
-        (double) ui->horizontalSlider_generator_wypelnienie->value() / 100.0);
+    on_spinBox_generator_wypelnienie_editingFinished();
 }
 void MainWindow::on_horizontalSlider_generator_wypelnienie_valueChanged(int value)
 {
@@ -446,9 +447,7 @@ void MainWindow::on_spinBox_generator_wypelnienie_valueChanged(int arg1)
 // reset symulacji
 void MainWindow::on_pushButton_symulacja_reset_clicked()
 {
-    State::getInstance().getUAR().resetAll();
-    State::getInstance().getGeneratorProstokatny().resetClock();
-    State::getInstance().getGeneratorSinusoida().resetClock();
+    State::getInstance().resetSimmulation();
 
     delete this->lista_sterowanie;
     delete this->lista_uchyb;
@@ -483,28 +482,25 @@ void MainWindow::on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased()
 
 void MainWindow::on_checkBoxOgraniczenia_checkStateChanged(const Qt::CheckState &arg1)
 {
-    if (arg1 == Qt::Checked)
-        State::getInstance().getARX().disableLimits();
-    else
-        State::getInstance().getARX().enableLimits();
+    State::getInstance().setARXLimitsEnabled(arg1 == Qt::Checked);
 }
 
 // PID - kontrolki całkowania i rozniczkowania
-void MainWindow::on_pushButton_reset_pam_calk_clicked()
-{
-    State::getInstance().getPID().resetIntegrationPart();
-}
 void MainWindow::on_radioButton_stala_calkowania_przed_clicked()
 {
-    State::getInstance().getPID().setIntegrationType(IntegType::outside);
+    State::getInstance().setPIDIntegrationType(IntegType::outside);
 }
 void MainWindow::on_radioButton_stala_calkowania_pod_clicked()
 {
-    State::getInstance().getPID().setIntegrationType(IntegType::insde);
+    State::getInstance().setPIDIntegrationType(IntegType::insde);
+}
+void MainWindow::on_pushButton_reset_pam_calk_clicked()
+{
+    State::getInstance().resetPIDIntegration();
 }
 void MainWindow::on_pushButton_reset_pam_roz_clicked()
 {
-    State::getInstance().getPID().resetDerrivativePart();
+    State::getInstance().resetPIDDerrivative();
 }
 
 // PID - część proporcjonalna (K)
@@ -514,15 +510,15 @@ void MainWindow::on_horizontalSlider_pid_k_valueChanged(int value)
 }
 void MainWindow::on_doubleSpinBox_pid_k_editingFinished()
 {
-    State::getInstance().getPID().setK(ui->doubleSpinBox_pid_k->value());
-}
-void MainWindow::on_horizontalSlider_pid_k_sliderReleased()
-{
-    State::getInstance().getPID().setK((double) ui->horizontalSlider_pid_k->value() / 100.0);
+    State::getInstance().setPIDProportional(ui->doubleSpinBox_pid_k->value());
 }
 void MainWindow::on_doubleSpinBox_pid_k_valueChanged(double arg1)
 {
     ui->horizontalSlider_pid_k->setValue(arg1 * 100.0);
+}
+void MainWindow::on_horizontalSlider_pid_k_sliderReleased()
+{
+    on_doubleSpinBox_pid_k_editingFinished();
 }
 
 // PID - część całkująca (Ti)
@@ -530,17 +526,17 @@ void MainWindow::on_horizontalSlider_pid_Ti_valueChanged(int value)
 {
     ui->doubleSpinBox_pid_Ti->setValue((double) value / 100.0);
 }
-void MainWindow::on_horizontalSlider_pid_Ti_sliderReleased()
-{
-    State::getInstance().getPID().setT_i((double) ui->horizontalSlider_pid_Ti->value() / 100.0);
-}
 void MainWindow::on_doubleSpinBox_pid_Ti_valueChanged(double arg1)
 {
     ui->horizontalSlider_pid_Ti->setValue(arg1 * 100.0);
 }
 void MainWindow::on_doubleSpinBox_pid_Ti_editingFinished()
 {
-    State::getInstance().getPID().setT_i(ui->doubleSpinBox_pid_Ti->value());
+    State::getInstance().setPIDIntegration(ui->doubleSpinBox_pid_Ti->value());
+}
+void MainWindow::on_horizontalSlider_pid_Ti_sliderReleased()
+{
+    on_doubleSpinBox_pid_Ti_editingFinished();
 }
 
 // PID - część różniczkująca (Td)
@@ -554,9 +550,9 @@ void MainWindow::on_doubleSpinBox_pid_Td_valueChanged(double arg1)
 }
 void MainWindow::on_doubleSpinBox_pid_Td_editingFinished()
 {
-    State::getInstance().getPID().setT_d(ui->doubleSpinBox_pid_Td->value());
+    State::getInstance().setPIDDerrivative(ui->doubleSpinBox_pid_Td->value());
 }
 void MainWindow::on_horizontalSlider_pid_Td_sliderReleased()
 {
-    State::getInstance().getPID().setT_d((double) ui->horizontalSlider_pid_Td->value() / 100.0);
+    on_doubleSpinBox_pid_Td_editingFinished();
 }
