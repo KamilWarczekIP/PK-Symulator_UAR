@@ -16,7 +16,6 @@ class State : public QObject
     bool symulacja_dziala;
     Generator *wybrany_generator;
     QTimer *symulacja_timer;
-    //bool natychmiastowa_edycja;
 
     State(const State &) = delete;
     State &operator=(const State &) = delete;
@@ -35,8 +34,10 @@ public:
     bool getSymulacjaDziala();
     uint32_t getInterwalSymulacjiMS();
     void setGenerator(Generator *generator);
+
 public slots:
     void tick();
+
 signals:
     void sendTickDataToMainWindow(TickData tick_data);
 };

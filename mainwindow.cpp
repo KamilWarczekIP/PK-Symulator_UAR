@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , samples_count(40)
+    , miliseconds_of_simulation(0)
 {
     ui->setupUi(this);
     this->ui->centralwidget->setLayout(ui->horizontalLayout_13);
@@ -32,68 +33,68 @@ MainWindow::MainWindow(QWidget *parent)
     lista_wartosc_regulowana = new QList<QPointF>();
 
     {
-        auto seria = new QScatterSeries();
+        auto seria = new QLineSeries();
         seria->setName("Sterowanie");
         seria->setMarkerSize(10.0);
         //seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
         seria->setColor(QColor(30, 30, 220));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+        //seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_sterowanie->addSeries(seria);
     }
     {
-        auto seria = new QScatterSeries();
+        auto seria = new QLineSeries();
         seria->setName("Uchyb");
         seria->setMarkerSize(10.0);
         //seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
         seria->setColor(QColor(185, 0, 80));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+      //  seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_uchyb->addSeries(seria);
     }
     {
-        auto seria = new QScatterSeries();
+        auto seria = new QLineSeries();
         seria->setName("Wartość zadana");
         seria->setMarkerSize(10.0);
         //seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
         seria->setColor(QColor(0, 180, 55));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
 
-        seria = new QScatterSeries();
+        seria = new QLineSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
         seria->setMarkerSize(10.0);
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+      //  seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
     }
     {
-        auto seria = new QScatterSeries();
+        auto seria = new QLineSeries();
         seria->setName("Sterowanie");
         seria->setMarkerSize(10.0);
         //seria->setMarkerShape(QScatterSeries::MarkerShapePentagon);
         seria->setColor(QColor(30, 30, 220));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
-        seria = new QScatterSeries();
+        seria = new QLineSeries();
         seria->setName("Uchyb");
         seria->setMarkerSize(10.0);
         //seria->setMarkerShape(QScatterSeries::MarkerShapeTriangle);
         seria->setColor(QColor(185, 0, 80));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+    //    seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
-        seria = new QScatterSeries();
+        seria = new QLineSeries();
         seria->setName("Wartość zadana");
         seria->setMarkerSize(10.0);
         //seria->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
         seria->setColor(QColor(0, 180, 55));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_wszystko->addSeries(seria);
 
-        seria = new QScatterSeries();
+        seria = new QLineSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
-        seria->setBorderColor(QColor(0, 0, 0, 0));
+     //   seria->setBorderColor(QColor(0, 0, 0, 0));
         seria->setMarkerSize(10.0);
         chart_wszystko->addSeries(seria);
     }
@@ -204,19 +205,19 @@ void MainWindow::addToPlots(TickData tick_data)
     lista_uchyb->append(QPointF(seconds_of_simulation, tick_data.uchyb));
     lista_sterowanie->append(QPointF(seconds_of_simulation, tick_data.sterowanie));
 
-    dynamic_cast<QScatterSeries *>(chart_sterowanie->series().at(0))->replace(*lista_sterowanie);
+    dynamic_cast<QLineSeries *>(chart_sterowanie->series().at(0))->replace(*lista_sterowanie);
 
-    dynamic_cast<QScatterSeries *>(chart_uchyb->series().at(0))->replace(*lista_uchyb);
+    dynamic_cast<QLineSeries *>(chart_uchyb->series().at(0))->replace(*lista_uchyb);
 
-    dynamic_cast<QScatterSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))
+    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))
         ->replace(*lista_wartosc_zadana);
-    dynamic_cast<QScatterSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))
+    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))
         ->replace(*lista_wartosc_regulowana);
 
-    dynamic_cast<QScatterSeries *>(chart_wszystko->series().at(0))->replace(*lista_sterowanie);
-    dynamic_cast<QScatterSeries *>(chart_wszystko->series().at(1))->replace(*lista_uchyb);
-    dynamic_cast<QScatterSeries *>(chart_wszystko->series().at(2))->replace(*lista_wartosc_zadana);
-    dynamic_cast<QScatterSeries *>(chart_wszystko->series().at(3))
+    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(0))->replace(*lista_sterowanie);
+    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(1))->replace(*lista_uchyb);
+    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(2))->replace(*lista_wartosc_zadana);
+    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(3))
         ->replace(*lista_wartosc_regulowana);
 
     // Osie poziome - skalowanie
@@ -307,6 +308,12 @@ void MainWindow::addToPlots(TickData tick_data)
         lista_wartosc_regulowana->removeFirst();
         lista_uchyb->removeFirst();
         lista_sterowanie->removeFirst();
+        if (lista_wartosc_zadana->count() > liczba_probek) {
+            lista_wartosc_zadana->removeFirst();
+            lista_wartosc_regulowana->removeFirst();
+            lista_uchyb->removeFirst();
+            lista_sterowanie->removeFirst();
+        }
     }
 }
 

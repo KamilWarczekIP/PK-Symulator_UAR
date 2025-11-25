@@ -20,14 +20,12 @@ double ARX::applyLimits(std::pair<double, double> &limits, double value)
         return value;
 }
 ARX::ARX(std::vector<double> &&a, std::vector<double> &&b, uint16_t k, double standard_deviation)
-    : limits_active(true)
-    , input_limits(std::make_pair(-10.0, 10.0))
-    , output_limits(std::make_pair(-10.0, 10.0))
+    : limits_active(true),
+    input_limits(std::make_pair(-10.0, 10.0)),
+    output_limits(std::make_pair(-10.0, 10.0))
 {
-    assert(a.size() == b.size());
-    // Rozmiary wektorów wspołaczynników a i b są różne
-    assert(k >= 1);
-    //K nie moze byc mniejsze od 1
+    assert(a.size() == b.size()); // Rozmiary wektorów wspołaczynników a i b są różne
+    assert(k >= 1); //K nie moze byc mniejsze od 1
     this->a = a;
     this->b = b;
     this->k = k;
@@ -71,13 +69,15 @@ double ARX::tick(double u)
 }
 void ARX::setK(uint16_t k)
 {
-    assert(k >= 1);
-    //K nie moze byc mniejsze od 1
+    assert(k >= 1); // K nie moze byc mniejsze od 1
     this->k = k;
-    while (this->u_i.size() != a.size() + k) {
-        if (this->u_i.size() < a.size() + k) {
+    while (this->u_i.size() != a.size() + k)
+    {
+        if (this->u_i.size() < a.size() + k)
+        {
             u_i.push_back(0.0);
-        } else {
+        } else
+        {
             u_i.pop_back();
         }
     }
@@ -101,11 +101,15 @@ void ARX::setAB(std::vector<double> a, std::vector<double> b)
     this->a = a;
     this->b = b;
 
-    while (this->u_i.size() != a.size() + k) {
-        if (this->u_i.size() < a.size() + k) {
+    while (this->u_i.size() != a.size() + k)
+    {
+        if (this->u_i.size() < a.size() + k)
+        {
             u_i.push_back(0.0);
             y_i.push_back(0.0);
-        } else {
+        }
+        else
+        {
             y_i.pop_back();
             u_i.pop_back();
         }

@@ -12,10 +12,6 @@ State::State(UAR &&uar)
     symulacja_timer->setSingleShot(false);
     symulacja_timer->setInterval(200);
     symulacja_timer->connect(symulacja_timer, &QTimer::timeout, this, &State::tick);
-
-    //TODO: usunac to tu
-    gen_sin.setAmplitude(1.0);
-    gen_sin.setSamplesPerCycle(100);
 }
 State::~State()
 {

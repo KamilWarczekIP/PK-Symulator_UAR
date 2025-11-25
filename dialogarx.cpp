@@ -1,7 +1,5 @@
 #include "dialogarx.h"
 #include "ui_dialogarx.h"
-#include <QtCharts/QValueAxis>
-#include <qgraphicslayout.h>
 #include <random>
 
 DialogArx::DialogArx(QWidget *parent)

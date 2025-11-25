@@ -2,10 +2,7 @@
 #define DIALOGARX_H
 
 #include <QDialog>
-#include <QtCharts/QChartView>
-#include <QtCharts/QLineSeries>
-#include <qscatterseries.h>
-#include <qvalueaxis.h>
+#include <QtCharts>
 
 namespace Ui {
 class DialogArx;
