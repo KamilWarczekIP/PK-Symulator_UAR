@@ -207,8 +207,12 @@ void MainWindow::addToPlots(TickData tick_data)
 
     // Osie poziome - skalowanie
     constexpr const qreal LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ = 4.0;
-    qreal range_start = seconds_of_simulation - (qreal) (liczba_probek * interwal_symulacji) / 1000.0;
-    qreal range_end = seconds_of_simulation + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
+    //qreal range_start = seconds_of_simulation - (qreal) (liczba_probek * interwal_symulacji) / 1000.0;
+    //qreal range_end = seconds_of_simulation + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
+
+
+    qreal range_start = lista_uchyb->front().x();
+    qreal range_end = lista_uchyb->back().x() + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
 
     chart_sterowanie->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_uchyb->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);

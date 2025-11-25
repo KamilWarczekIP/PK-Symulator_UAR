@@ -117,21 +117,45 @@ void State::setARXCoefficients(std::vector<double> a, std::vector<double> b)
 {
     this->uar.getARX().setAB(a, b);
 }
+const std::vector<double>& State::getARXCoefficientsA()
+{
+    return this->uar.getARX().getA();
+}
+const std::vector<double>& State::getARXCoefficientsB()
+{
+    return this->uar.getARX().getB();
+}
 void State::setARXTransportDelay(uint16_t k)
 {
     this->uar.getARX().setK(k);
+}
+uint16_t State::getARXTransportDelay()
+{
+    return this->uar.getARX().getK();
 }
 void State::setARXInputLimits(double low, double high)
 {
     this->uar.getARX().setInputLimits(low, high);
 }
+const std::pair<double, double>& State::getARXInputLimits()
+{
+    return this->uar.getARX().getInputLimits();
+}
 void State::setARXOutputLimits(double low, double high)
 {
     this->uar.getARX().setOutputLimits(low, high);
 }
+const std::pair<double, double>& State::getARXOutputLimits()
+{
+    return this->uar.getARX().getOutputLimits();
+}
 void State::setARXNoiseStandardDeviation(double standard_deviation)
 {
     this->uar.getARX().setStandardDeviation(standard_deviation);
+}
+double State::getARXNoiseStandardDeviation()
+{
+    return this->uar.getARX().getStandardDeviation();
 }
 void State::setARXLimitsEnabled(bool enabled)
 {

@@ -86,11 +86,11 @@ double ARX::getK()
 {
     return k;
 }
-std::vector<double> ARX::getA()
+const std::vector<double>& ARX::getA()
 {
     return a;
 }
-std::vector<double> ARX::getB()
+const std::vector<double>& ARX::getB()
 {
     return b;
 }
@@ -141,11 +141,11 @@ void ARX::setOutputLimits(double low, double high)
     //Dolne ograniczenie nie może być wyższe niż górne
     this->output_limits = std::make_pair(low, high);
 }
-std::pair<double, double> ARX::getInputLimits()
+const std::pair<double, double>& ARX::getInputLimits()
 {
     return this->input_limits;
 }
-std::pair<double, double> ARX::getOutputLimits()
+const std::pair<double, double>& ARX::getOutputLimits()
 {
     return this->output_limits;
 }

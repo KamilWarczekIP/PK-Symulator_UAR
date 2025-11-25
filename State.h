@@ -37,10 +37,16 @@ public:
     void resetPIDDerrivative();
 
     void setARXCoefficients(std::vector<double> a, std::vector<double> b);
+    const std::vector<double>& getARXCoefficientsA();
+    const std::vector<double>& getARXCoefficientsB();
     void setARXTransportDelay(uint16_t k);
+    uint16_t getARXTransportDelay();
     void setARXInputLimits(double low, double high);
+    const std::pair<double, double>& getARXInputLimits();
     void setARXOutputLimits(double low, double high);
+    const std::pair<double, double>& getARXOutputLimits();
     void setARXNoiseStandardDeviation(double standard_deviation);
+    double getARXNoiseStandardDeviation();
     void setARXLimitsEnabled(bool enabled);
     void resetARX();
 
