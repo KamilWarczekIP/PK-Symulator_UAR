@@ -1,5 +1,4 @@
 #include "State.h"
-#include <QDebug>
 #include <cassert>
 
 State::State(UAR &&uar)
@@ -117,11 +116,11 @@ void State::setARXCoefficients(std::vector<double> a, std::vector<double> b)
 {
     this->uar.getARX().setAB(a, b);
 }
-const std::vector<double>& State::getARXCoefficientsA()
+const std::vector<double> State::getARXCoefficientsA()
 {
     return this->uar.getARX().getA();
 }
-const std::vector<double>& State::getARXCoefficientsB()
+const std::vector<double> State::getARXCoefficientsB()
 {
     return this->uar.getARX().getB();
 }

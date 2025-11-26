@@ -30,8 +30,8 @@ public:
     double tick(double u);
     void setK(uint16_t k);
     double getK();
-    const std::vector<double>& getA();
-    const std::vector<double>& getB();
+    const std::vector<double> getA();
+    const std::vector<double> getB();
     void setAB(std::vector<double> a, std::vector<double> b);
     void reset();
     void disableLimits();

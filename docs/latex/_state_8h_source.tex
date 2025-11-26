@@ -1,0 +1,80 @@
+\doxysection{State.\+h}
+\hypertarget{_state_8h_source}{}\label{_state_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STATE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STATE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}GeneratorProstokatny.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}GeneratorSinusoida.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}UAR.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }State\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{enum\ class}\ TypGeneratora\ \{\ Sinusoidalny,\ Prostokatny,\ Reczny\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ State\ \&getInstance();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ setSimmulationRunning(\textcolor{keywordtype}{bool}\ simmulation\_running);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ getSimmulationRunning();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ setSimmulationIntervalMS(uint32\_t\ interval);}
+\DoxyCodeLine{00020\ \ \ \ \ uint32\_t\ getSimmulationIntervalMS();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ setOutputCallback(\textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{struct_tick_data}{TickData}})>\ callback);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ resetSimmulation();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ setGenerator(TypGeneratora\ type);}
+\DoxyCodeLine{00025\ \ \ \ \ TypGeneratora\ getGenerator();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ setGeneneratorAmplitude(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ amplitude);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ setGeneneratorDutyCycle(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ duty\_cycle);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ setGeneneratorPeriodMS(uint32\_t\ period);}
+\DoxyCodeLine{00029\ \ \ \ \ uint8\_t\ getGeneneratorPeriodJumpMS();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ resetGenerator();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ setPIDProportional(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setPIDIntegration(\textcolor{keywordtype}{double}\ T\_i);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setPIDDerrivative(\textcolor{keywordtype}{double}\ T\_d);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setPIDIntegrationType(IntegType\ integration\_type);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ resetPIDIntegration();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ resetPIDDerrivative();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ setARXCoefficients(std::vector<double>\ a,\ std::vector<double>\ b);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ getARXCoefficientsA();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ getARXCoefficientsB();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ setARXTransportDelay(uint16\_t\ k);}
+\DoxyCodeLine{00043\ \ \ \ \ uint16\_t\ getARXTransportDelay();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ setARXInputLimits(\textcolor{keywordtype}{double}\ low,\ \textcolor{keywordtype}{double}\ high);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ std::pair<double,\ double>\&\ getARXInputLimits();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ setARXOutputLimits(\textcolor{keywordtype}{double}\ low,\ \textcolor{keywordtype}{double}\ high);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ std::pair<double,\ double>\&\ getARXOutputLimits();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ setARXNoiseStandardDeviation(\textcolor{keywordtype}{double}\ standard\_deviation);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ getARXNoiseStandardDeviation();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ setARXLimitsEnabled(\textcolor{keywordtype}{bool}\ enabled);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ resetARX();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ saveToFile();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ readFromFile();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ tick();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_u_a_r}{UAR}}\ uar;}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_generator_sinusoida}{GeneratorSinusoida}}\ gen\_sin;}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_generator_prostokatny}{GeneratorProstokatny}}\ gen\_pros;}
+\DoxyCodeLine{00064\ \ \ \ \ TypGeneratora\ choosen\_type;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ simmulation\_running;}
+\DoxyCodeLine{00066\ \ \ \ \ QTimer\ *simmulation\_timer;}
+\DoxyCodeLine{00067\ \ \ \ \ std::function<void(\mbox{\hyperlink{struct_tick_data}{TickData}})>\ tick\_callback;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ State(\textcolor{keyword}{const}\ State\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00070\ \ \ \ \ State\ \&operator=(\textcolor{keyword}{const}\ State\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00071\ \ \ \ \ State(\mbox{\hyperlink{class_u_a_r}{UAR}}\ \&\&);}
+\DoxyCodeLine{00072\ \ \ \ \ \string~State();}
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STATE\_H}}
+
+\end{DoxyCode}

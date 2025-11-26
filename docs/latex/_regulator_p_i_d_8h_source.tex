@@ -1,0 +1,43 @@
+\doxysection{Regulator\+PID.\+h}
+\hypertarget{_regulator_p_i_d_8h_source}{}\label{_regulator_p_i_d_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ REGULATOR\_PID\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ REGULATOR\_PID\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum\ class}\ IntegType\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ outside,}
+\DoxyCodeLine{00010\ \ \ \ \ insde,}
+\DoxyCodeLine{00011\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_regulator_p_i_d_a5e95a7bffe8ace5719e720f4913884a1}{RegulatorPID}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ k;\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ T\_i;\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ T\_d;\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ sum\_of\_e\_inside\_integ;\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ sum\_of\_e\_outside\_integ;\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{double}\ previous\_e;\ }
+\DoxyCodeLine{00025\ \ \ \ \ IntegType\ integration\_type;\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_regulator_p_i_d_a9edafc5ac8d3fac2eb2732f567eeb9ce}{tick}}(\textcolor{keywordtype}{double}\ e\_i);}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_regulator_p_i_d_a5e95a7bffe8ace5719e720f4913884a1}{RegulatorPID}}(\textcolor{keywordtype}{double}\ k,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\_i\ =\ 0.0,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\_d\ =\ 0.0,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IntegType\ integration\_type\ =\ IntegType::outside);}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regulator_p_i_d_a97c267f8993ae8253e8030751cae7d22}{setK}}(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regulator_p_i_d_a1fd9ef980a24f6b438049d65189e2482}{setT\_i}}(\textcolor{keywordtype}{double}\ T\_i);}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regulator_p_i_d_a3c4a46bf9c755309718ff93ff458cec9}{setT\_d}}(\textcolor{keywordtype}{double}\ T\_d);}
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_regulator_p_i_d_aefc49ed86cab3f07f2cb9be1363c1471}{setIntegrationType}}(IntegType\ integ\_type);}
+\DoxyCodeLine{00076\ IntegType\ \mbox{\hyperlink{class_regulator_p_i_d_a60fd6c113ea70359f254e17c378d25c0}{getIntegrationType}}();}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_regulator_p_i_d_a88787257bb3d892d631161527feebc4e}{getK}}();}
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_regulator_p_i_d_aa001148a0cc8318d372b1a0c6d94f963}{getT\_i}}();}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_regulator_p_i_d_a71ccfe6c34b39400962c1d54f8e940fa}{getT\_d}}();}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ resetIntegrationPart();}
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ resetDerrivativePart();}
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ reset();}
+\DoxyCodeLine{00110\ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REGULATOR\_PID\_H}}
+
+\end{DoxyCode}

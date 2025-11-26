@@ -37,8 +37,8 @@ public:
     void resetPIDDerrivative();
 
     void setARXCoefficients(std::vector<double> a, std::vector<double> b);
-    const std::vector<double>& getARXCoefficientsA();
-    const std::vector<double>& getARXCoefficientsB();
+    const std::vector<double> getARXCoefficientsA();
+    const std::vector<double> getARXCoefficientsB();
     void setARXTransportDelay(uint16_t k);
     uint16_t getARXTransportDelay();
     void setARXInputLimits(double low, double high);

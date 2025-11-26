@@ -1,0 +1,30 @@
+\doxysection{Generator.\+h}
+\hypertarget{_generator_8h_source}{}\label{_generator_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GENERATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GENERATOR\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }Generator}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{double}\ amplitude;}
+\DoxyCodeLine{00009\ \ \ \ \ uint16\_t\ samples\_per\_cycle;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{double}\ bias;}
+\DoxyCodeLine{00011\ \ \ \ \ uint16\_t\ internal\_clock;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ Generator();}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ tick()\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ setAmplitude(\textcolor{keywordtype}{double}\ amplitude);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ setSamplesPerCycle(uint16\_t\ samples\_per\_cycle);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ setBias(\textcolor{keywordtype}{double}\ bias);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ getAmplitude();}
+\DoxyCodeLine{00020\ \ \ \ \ uint16\_t\ getSamplesPerCycle();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ getBias();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ resetClock();}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GENERATOR\_H}}
+
+\end{DoxyCode}

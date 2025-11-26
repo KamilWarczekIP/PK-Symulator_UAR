@@ -86,11 +86,11 @@ double ARX::getK()
 {
     return k;
 }
-const std::vector<double>& ARX::getA()
+const std::vector<double> ARX::getA()
 {
     return a;
 }
-const std::vector<double>& ARX::getB()
+const std::vector<double> ARX::getB()
 {
     return b;
 }

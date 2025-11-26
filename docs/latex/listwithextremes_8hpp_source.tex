@@ -1,0 +1,26 @@
+\doxysection{listwithextremes.\+hpp}
+\hypertarget{listwithextremes_8hpp_source}{}\label{listwithextremes_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LISTWITHEXTREMES\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LISTWITHEXTREMES\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <qlist.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <qpoint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }ListWithExtremes}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ QList<QPointF>\ list;}
+\DoxyCodeLine{00011\ \ \ \ \ std::map<qreal,\ uint16\_t>\ values;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ ListWithExtremes();}
+\DoxyCodeLine{00014\ \ \ \ \ QList<QPointF>*\ getList();}
+\DoxyCodeLine{00015\ \ \ \ \ qreal\ getMaxValue();}
+\DoxyCodeLine{00016\ \ \ \ \ qreal\ getMinValue();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ appendLastValue(QPointF\ new\_point);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ deleteFirstValue();}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LISTWITHEXTREMES\_HPP}}
+
+\end{DoxyCode}

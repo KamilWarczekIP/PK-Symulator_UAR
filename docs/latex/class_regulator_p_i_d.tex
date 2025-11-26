@@ -1,0 +1,183 @@
+\doxysection{Dokumentacja klasy Regulator\+PID}
+\hypertarget{class_regulator_p_i_d}{}\label{class_regulator_p_i_d}\index{RegulatorPID@{RegulatorPID}}
+
+
+Diagram współpracy dla Regulator\+PID\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{class_regulator_p_i_d__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_regulator_p_i_d_a9edafc5ac8d3fac2eb2732f567eeb9ce}{tick}} (double e\+\_\+i)
+\begin{DoxyCompactList}\small\item\em PID\+::tick metoda symulacji pojedynczego kroku regulatora. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_regulator_p_i_d_a5e95a7bffe8ace5719e720f4913884a1}{Regulator\+PID}} (double k, double T\+\_\+i=0.\+0, double T\+\_\+d=0.\+0, Integ\+Type integration\+\_\+type=Integ\+Type\+::outside)
+\item 
+void \mbox{\hyperlink{class_regulator_p_i_d_a97c267f8993ae8253e8030751cae7d22}{setK}} (double k)
+\item 
+void \mbox{\hyperlink{class_regulator_p_i_d_a1fd9ef980a24f6b438049d65189e2482}{set\+T\+\_\+i}} (double T\+\_\+i)
+\item 
+void \mbox{\hyperlink{class_regulator_p_i_d_a3c4a46bf9c755309718ff93ff458cec9}{set\+T\+\_\+d}} (double T\+\_\+d)
+\item 
+void \mbox{\hyperlink{class_regulator_p_i_d_aefc49ed86cab3f07f2cb9be1363c1471}{set\+Integration\+Type}} (Integ\+Type integ\+\_\+type)
+\item 
+Integ\+Type \mbox{\hyperlink{class_regulator_p_i_d_a60fd6c113ea70359f254e17c378d25c0}{get\+Integration\+Type}} ()
+\item 
+double \mbox{\hyperlink{class_regulator_p_i_d_a88787257bb3d892d631161527feebc4e}{getK}} ()
+\item 
+double \mbox{\hyperlink{class_regulator_p_i_d_aa001148a0cc8318d372b1a0c6d94f963}{get\+T\+\_\+i}} ()
+\item 
+double \mbox{\hyperlink{class_regulator_p_i_d_a71ccfe6c34b39400962c1d54f8e940fa}{get\+T\+\_\+d}} ()
+\item 
+\Hypertarget{class_regulator_p_i_d_a21274dd08872c175499cd04d0681a5f6}\label{class_regulator_p_i_d_a21274dd08872c175499cd04d0681a5f6} 
+void {\bfseries reset\+Integration\+Part} ()
+\item 
+\Hypertarget{class_regulator_p_i_d_a64dc02d3b15bf7074e1ba0272a92820f}\label{class_regulator_p_i_d_a64dc02d3b15bf7074e1ba0272a92820f} 
+void {\bfseries reset\+Derrivative\+Part} ()
+\item 
+\Hypertarget{class_regulator_p_i_d_a4a8e547b18693e8d94b7dd5ff27df7da}\label{class_regulator_p_i_d_a4a8e547b18693e8d94b7dd5ff27df7da} 
+void {\bfseries reset} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_regulator_p_i_d_doc-constructors}
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_regulator_p_i_d_a5e95a7bffe8ace5719e720f4913884a1}\index{RegulatorPID@{RegulatorPID}!RegulatorPID@{RegulatorPID}}
+\index{RegulatorPID@{RegulatorPID}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{RegulatorPID()}{RegulatorPID()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a5e95a7bffe8ace5719e720f4913884a1} 
+Regulator\+PID\+::\+Regulator\+PID (\begin{DoxyParamCaption}\item[{double}]{k}{, }\item[{double}]{T\+\_\+i}{ = {\ttfamily 0.0}, }\item[{double}]{T\+\_\+d}{ = {\ttfamily 0.0}, }\item[{Integ\+Type}]{integration\+\_\+type}{ = {\ttfamily IntegType\+:\+:outside}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametry}
+{\em k} & \\
+\hline
+{\em T\+\_\+i} & \\
+\hline
+{\em T\+\_\+d} & \\
+\hline
+{\em integration\+\_\+type} & \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_regulator_p_i_d_doc-func-members}
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_regulator_p_i_d_a60fd6c113ea70359f254e17c378d25c0}\index{RegulatorPID@{RegulatorPID}!getIntegrationType@{getIntegrationType}}
+\index{getIntegrationType@{getIntegrationType}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{getIntegrationType()}{getIntegrationType()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a60fd6c113ea70359f254e17c378d25c0} 
+Integ\+Type Regulator\+PID\+::get\+Integration\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Zwraca}
+Integ\+Type 
+\end{DoxyReturn}
+\Hypertarget{class_regulator_p_i_d_a88787257bb3d892d631161527feebc4e}\index{RegulatorPID@{RegulatorPID}!getK@{getK}}
+\index{getK@{getK}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{getK()}{getK()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a88787257bb3d892d631161527feebc4e} 
+double Regulator\+PID\+::getK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Zwraca}
+double 
+\end{DoxyReturn}
+\Hypertarget{class_regulator_p_i_d_a71ccfe6c34b39400962c1d54f8e940fa}\index{RegulatorPID@{RegulatorPID}!getT\_d@{getT\_d}}
+\index{getT\_d@{getT\_d}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{getT\_d()}{getT\_d()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a71ccfe6c34b39400962c1d54f8e940fa} 
+double Regulator\+PID\+::get\+T\+\_\+d (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Zwraca}
+double 
+\end{DoxyReturn}
+\Hypertarget{class_regulator_p_i_d_aa001148a0cc8318d372b1a0c6d94f963}\index{RegulatorPID@{RegulatorPID}!getT\_i@{getT\_i}}
+\index{getT\_i@{getT\_i}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{getT\_i()}{getT\_i()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_aa001148a0cc8318d372b1a0c6d94f963} 
+double Regulator\+PID\+::get\+T\+\_\+i (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Zwraca}
+double 
+\end{DoxyReturn}
+\Hypertarget{class_regulator_p_i_d_aefc49ed86cab3f07f2cb9be1363c1471}\index{RegulatorPID@{RegulatorPID}!setIntegrationType@{setIntegrationType}}
+\index{setIntegrationType@{setIntegrationType}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{setIntegrationType()}{setIntegrationType()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_aefc49ed86cab3f07f2cb9be1363c1471} 
+void Regulator\+PID\+::set\+Integration\+Type (\begin{DoxyParamCaption}\item[{Integ\+Type}]{integ\+\_\+type}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametry}
+{\em integ\+\_\+type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_regulator_p_i_d_a97c267f8993ae8253e8030751cae7d22}\index{RegulatorPID@{RegulatorPID}!setK@{setK}}
+\index{setK@{setK}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{setK()}{setK()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a97c267f8993ae8253e8030751cae7d22} 
+void Regulator\+PID\+::setK (\begin{DoxyParamCaption}\item[{double}]{k}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametry}
+{\em k} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_regulator_p_i_d_a3c4a46bf9c755309718ff93ff458cec9}\index{RegulatorPID@{RegulatorPID}!setT\_d@{setT\_d}}
+\index{setT\_d@{setT\_d}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{setT\_d()}{setT\_d()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a3c4a46bf9c755309718ff93ff458cec9} 
+void Regulator\+PID\+::set\+T\+\_\+d (\begin{DoxyParamCaption}\item[{double}]{T\+\_\+d}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametry}
+{\em T\+\_\+d} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_regulator_p_i_d_a1fd9ef980a24f6b438049d65189e2482}\index{RegulatorPID@{RegulatorPID}!setT\_i@{setT\_i}}
+\index{setT\_i@{setT\_i}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{setT\_i()}{setT\_i()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a1fd9ef980a24f6b438049d65189e2482} 
+void Regulator\+PID\+::set\+T\+\_\+i (\begin{DoxyParamCaption}\item[{double}]{T\+\_\+i}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parametry}
+{\em T\+\_\+i} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_regulator_p_i_d_a9edafc5ac8d3fac2eb2732f567eeb9ce}\index{RegulatorPID@{RegulatorPID}!tick@{tick}}
+\index{tick@{tick}!RegulatorPID@{RegulatorPID}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \label{class_regulator_p_i_d_a9edafc5ac8d3fac2eb2732f567eeb9ce} 
+double Regulator\+PID\+::tick (\begin{DoxyParamCaption}\item[{double}]{e\+\_\+i}{}\end{DoxyParamCaption})}
+
+
+
+PID\+::tick metoda symulacji pojedynczego kroku regulatora. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em e\+\_\+i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+double
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parametry}
+{\em e\+\_\+i} & -\/ dane wejściowe w danym momencie czasu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+wartość przekazywana do obiektu \doxylink{class_a_r_x}{ARX} 
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+Regulator\+PID.\+h\item 
+Regulator\+PID.\+cpp\end{DoxyCompactItemize}

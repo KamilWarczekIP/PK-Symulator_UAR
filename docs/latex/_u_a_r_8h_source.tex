@@ -1,0 +1,35 @@
+\doxysection{UAR.\+h}
+\hypertarget{_u_a_r_8h_source}{}\label{_u_a_r_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UAR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UAR\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}ARX.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}RegulatorPID.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_tick_data}{TickData}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{double}\ wartosc\_zadana;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{double}\ wartosc\_regulowana;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{double}\ uchyb;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{double}\ sterowanie;}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }UAR}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_a_r_x}{ARX}}\ arx;}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_regulator_p_i_d}{RegulatorPID}}\ pid;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ previous\_y\_i;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ UAR(\mbox{\hyperlink{class_a_r_x}{ARX}}\ \&\&arx,\ \mbox{\hyperlink{class_regulator_p_i_d}{RegulatorPID}}\ \&\&pid);}
+\DoxyCodeLine{00022\ \ \ \ \ UAR(\mbox{\hyperlink{class_a_r_x}{ARX}}\ \&arx,\ \mbox{\hyperlink{class_regulator_p_i_d}{RegulatorPID}}\ \&pid);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ tick(\textcolor{keywordtype}{double}\ input);}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_tick_data}{TickData}}\ tick\_more\_info(\textcolor{keywordtype}{double}\ input);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ resetAll();}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_a_r_x}{ARX}}\ \&getARX();}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_regulator_p_i_d}{RegulatorPID}}\ \&getRegulatorPID();}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UAR\_H}}
+
+\end{DoxyCode}

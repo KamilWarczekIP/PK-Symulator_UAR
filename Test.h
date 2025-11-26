@@ -7,33 +7,33 @@ class Test
 {
     /*
     //TODO
-    void TEST_ARX_ustawienie_K();
-    void TEST_ARX_zmiana_AB();
-    void TEST_ARX_zaklocenia();
-    void TEST_PID_czlon_D_przyspiesza_regulacje();
-    void TEST_PID_czlon_P_regulacja_odwrotna();
+    static std::pair<bool, const char*> TEST_ARX_ustawienie_K();
+    static std::pair<bool, const char*> TEST_ARX_zmiana_AB();
+    static std::pair<bool, const char*> TEST_ARX_zaklocenia();
+    static std::pair<bool, const char*> TEST_PID_czlon_D_przyspiesza_regulacje();
+    static std::pair<bool, const char*> TEST_PID_czlon_P_regulacja_odwrotna();
 
-    void TEST_Generator_Sinusoidalny();
-    void TEST_Generator_Sinusoidalny_bias();
-    void TEST_Generator_Sinusoidalny_zmiana_amplitudy();
-    void TEST_Generator_Sinusoidalny_zmiana_okresu();
-
-    void TEST_Generator_Prostokatny_zmiana_amplitudy();
-    void TEST_Generator_Prostokatny_zmiana_okresu();
-    void TEST_Generator_Prostokatny_bias();
-    void TEST_Generator_Prostokatny_100_procent();
-    void TEST_Generator_Prostokatny_50_procent();
-    void TEST_Generator_Prostokatny_10_procent();
-
-    void TEST_State_czy_jest_signletonem();
-    void TEST_State_zapis_i_odczyt_z_pliku();
+    static std::pair<bool, const char*> TEST_Generator_Sinusoidalny();
+    static std::pair<bool, const char*> TEST_Generator_Sinusoidalny_bias();
+    static std::pair<bool, const char*> TEST_Generator_Sinusoidalny_zmiana_amplitudy();
+    static std::pair<bool, const char*> TEST_Generator_Sinusoidalny_zmiana_okresu();
     */
-    bool TEST_ListWithExtremes_poprawne_dzialanie();
 
-    QDebug test_info;
+    static std::pair<bool, const char*> TEST_Generator_Prostokatny_zmiana_amplitudy();
+    static std::pair<bool, const char*> TEST_Generator_Prostokatny_zmiana_okresu();
+    static std::pair<bool, const char*> TEST_Generator_Prostokatny_bias();
+    static std::pair<bool, const char*> TEST_Generator_Prostokatny_100_procent();
+    static std::pair<bool, const char*> TEST_Generator_Prostokatny_50_procent();
+    static std::pair<bool, const char*> TEST_Generator_Prostokatny_10_procent();
+
+
+    static std::pair<bool, const char*> TEST_State_czy_jest_signletonem();
+    static std::pair<bool, const char*> TEST_State_zapis_i_odczyt_z_pliku();
+    static std::pair<bool, const char*> TEST_ListWithExtremes_poprawne_dzialanie();
+
 public:
-    Test();
-    void wykonajTesty();
+    Test() = delete;
+    static void wykonajTesty();
 };
 
 #endif // TEST_H
