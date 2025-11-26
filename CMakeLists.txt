@@ -36,6 +36,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         media/minecraft_grass.png
         dialogarx.h dialogarx.cpp dialogarx.ui
         listwithextremes.hpp listwithextremes.cpp
+        Doxyfile
+
 
     )
 # Define target properties for Android with Qt 6 as:

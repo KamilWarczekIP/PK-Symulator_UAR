@@ -2,13 +2,13 @@
 #define LISTWITHEXTREMES_HPP
 #include <qlist.h>
 #include <qpoint.h>
-#include <set>
+#include <map>
 
 
 class ListWithExtremes
 {
     QList<QPointF> list;
-    std::multiset<std::pair<qreal, uint16_t>> values;
+    std::map<qreal, uint16_t> values;
 public:
     ListWithExtremes();
     QList<QPointF>* getList();

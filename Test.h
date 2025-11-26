@@ -1,6 +1,8 @@
 #ifndef TEST_H
 #define TEST_H
 
+#include <qdebug.h>
+
 class Test
 {
     /*
@@ -26,9 +28,12 @@ class Test
     void TEST_State_czy_jest_signletonem();
     void TEST_State_zapis_i_odczyt_z_pliku();
     */
+    bool TEST_ListWithExtremes_poprawne_dzialanie();
 
+    QDebug test_info;
 public:
     Test();
+    void wykonajTesty();
 };
 
 #endif // TEST_H

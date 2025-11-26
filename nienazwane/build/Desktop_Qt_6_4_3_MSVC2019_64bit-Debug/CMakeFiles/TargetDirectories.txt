@@ -1,8 +1,0 @@
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/nienazwane.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/edit_cache.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/list_install_components.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/install.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/install/local.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/nienazwane_autogen_timestamp_deps.dir
-C:/PK_proj/nienazwane/build/Desktop_Qt_6_4_3_MSVC2019_64bit-Debug/CMakeFiles/nienazwane_autogen.dir

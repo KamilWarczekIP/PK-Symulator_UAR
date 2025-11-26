@@ -15,3 +15,14 @@ int main(int argc, char **argv)
     return a.exec();
 }
 #endif
+
+#ifdef TEST
+
+#include "Test.h"
+
+int main(int argc, char **argv)
+{
+    Test testy;
+    testy.wykonajTesty();
+}
+#endif

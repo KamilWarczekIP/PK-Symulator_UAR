@@ -1,38 +1,112 @@
 #ifndef REGULATOR_PID_H
 #define REGULATOR_PID_H
 
+/**
+ * @brief
+ *
+ */
 enum class IntegType {
     outside,
     insde,
 };
 
+/**
+ * @brief
+ *
+ */
 class RegulatorPID
 {
-    double k;
-    double T_i;
-    double T_d;
-    double sum_of_e_inside_integ;
-    double sum_of_e_outside_integ;
-    double previous_e;
-    IntegType integration_type;
+    double k; /**< TODO: describe */
+    double T_i; /**< TODO: describe */
+    double T_d; /**< TODO: describe */
+    double sum_of_e_inside_integ; /**< TODO: describe */
+    double sum_of_e_outside_integ; /**< TODO: describe */
+    double previous_e; /**< TODO: describe */
+    IntegType integration_type; /**< TODO: describe */
 
 public:
-    double tick(double e_i);
+    /**
+     * @brief
+     *
+     * @param e_i
+     * @return double
+     */
+double tick(double e_i);
+    /**
+     * @brief
+     *
+     * @param k
+     * @param T_i
+     * @param T_d
+     * @param integration_type
+     */
     RegulatorPID(double k,
                  double T_i = 0.0,
                  double T_d = 0.0,
                  IntegType integration_type = IntegType::outside);
-    void setK(double k);
-    void setT_i(double T_i);
-    void setT_d(double T_d);
-    void setIntegrationType(IntegType integ_type);
-    IntegType getIntegrationType();
-    double getK();
-    double getT_i();
-    double getT_d();
-    void resetIntegrationPart();
-    void resetDerrivativePart();
-    void reset();
+    /**
+     * @brief
+     *
+     * @param k
+     */
+void setK(double k);
+    /**
+     * @brief
+     *
+     * @param T_i
+     */
+void setT_i(double T_i);
+    /**
+     * @brief
+     *
+     * @param T_d
+     */
+void setT_d(double T_d);
+    /**
+     * @brief
+     *
+     * @param integ_type
+     */
+void setIntegrationType(IntegType integ_type);
+    /**
+     * @brief
+     *
+     * @return IntegType
+     */
+IntegType getIntegrationType();
+    /**
+     * @brief
+     *
+     * @return double
+     */
+double getK();
+    /**
+     * @brief
+     *
+     * @return double
+     */
+double getT_i();
+    /**
+     * @brief
+     *
+     * @return double
+     */
+double getT_d();
+    /**
+     * @brief
+     *
+     */
+void resetIntegrationPart();
+    /**
+     * @brief
+     *
+     */
+void resetDerrivativePart();
+    /**
+     * @brief
+     *
+     */
+void reset();
 };
 
 #endif // REGULATOR_PID_H

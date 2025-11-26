@@ -7,7 +7,7 @@ QList<QPointF>* ListWithExtremes::getList()
 }
 qreal ListWithExtremes::getMaxValue()
 {
-    return this->values.begin()->first;
+    return this->values.rbegin()->first;
 }
 qreal ListWithExtremes::getMinValue()
 {
@@ -15,11 +15,18 @@ qreal ListWithExtremes::getMinValue()
 }
 void ListWithExtremes::appendLastValue(QPointF new_point)
 {
+    list.append(new_point);
+    if(this->values.find(new_point.y()) == this->values.end())
+        this->values[new_point.y()] = 0;
 
+    this->values[new_point.y()]++;
 }
 void ListWithExtremes::deleteFirstValue()
 {
+    this->values[list.front().y()]--;
 
-    list.front();
+    if(this->values[list.front().y()] == 0)
+        this->values.erase(list.front().y());
+
     list.pop_front();
 }

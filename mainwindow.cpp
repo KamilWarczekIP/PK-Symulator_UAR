@@ -20,12 +20,12 @@ MainWindow::MainWindow(QWidget *parent)
     chart_uchyb->setTitle(tr("Uchyb"));
     chart_uchyb->legend()->hide();
 
-    chart_wszystko = new QChart();
-    chart_wszystko->setTitle(tr("Wszystko"));
-
     chart_wartosc_zadana_i_regulowana = new QChart();
     chart_wartosc_zadana_i_regulowana->setTitle(tr("Wartość zadana i regulowana"));
     chart_wartosc_zadana_i_regulowana->legend()->hide();
+
+    chart_wszystko = new QChart();
+    chart_wszystko->setTitle(tr("Wszystko"));
 
     lista_sterowanie = new QList<QPointF>();
     lista_uchyb = new QList<QPointF>();
@@ -35,55 +35,45 @@ MainWindow::MainWindow(QWidget *parent)
     {
         auto seria = new QLineSeries();
         seria->setName("Sterowanie");
-        seria->setMarkerSize(10.0);
         seria->setColor(QColor(30, 30, 220));
-        //seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_sterowanie->addSeries(seria);
     }
     {
         auto seria = new QLineSeries();
         seria->setName("Uchyb");
-        seria->setMarkerSize(10.0);
         seria->setColor(QColor(185, 0, 80));
-        //seria->setBorderColor(QColor(0, 0, 0, 0));
         chart_uchyb->addSeries(seria);
     }
     {
         auto seria = new QLineSeries();
         seria->setName("Wartość zadana");
-        seria->setMarkerSize(10.0);
         seria->setColor(QColor(0, 180, 55));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
-        seria->setMarkerSize(10.0);
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
     }
     {
         auto seria = new QLineSeries();
         seria->setName("Sterowanie");
-        seria->setMarkerSize(10.0);
         seria->setColor(QColor(30, 30, 220));
         chart_wszystko->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Uchyb");
-        seria->setMarkerSize(10.0);
         seria->setColor(QColor(185, 0, 80));
         chart_wszystko->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Wartość zadana");
-        seria->setMarkerSize(10.0);
         seria->setColor(QColor(0, 180, 55));
         chart_wszystko->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Wartość regulowana");
         seria->setColor(QColor(130, 20, 150));
-        seria->setMarkerSize(10.0);
         chart_wszystko->addSeries(seria);
     }
 
