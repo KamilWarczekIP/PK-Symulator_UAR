@@ -24,12 +24,48 @@
 */
 var menudata={children:[
 {text:"Strona główna",url:"index.html"},
+{text:"Przestrzenie nazw",url:"namespaces.html",children:[
+{text:"Lista przestrzeni nazw",url:"namespaces.html"}]},
 {text:"Klasy",url:"annotated.html",children:[
 {text:"Lista klas",url:"annotated.html"},
 {text:"Indeks klas",url:"classes.html"},
 {text:"Hierarchia klas",url:"inherits.html"},
 {text:"Składowe klas",url:"functions.html",children:[
-{text:"Wszystko",url:"functions.html"},
-{text:"Funkcje",url:"functions_func.html"}]}]},
+{text:"Wszystko",url:"functions.html",children:[
+{text:"a",url:"functions.html#index_a"},
+{text:"b",url:"functions.html#index_b"},
+{text:"d",url:"functions.html#index_d"},
+{text:"e",url:"functions.html#index_e"},
+{text:"g",url:"functions.html#index_g"},
+{text:"i",url:"functions.html#index_i"},
+{text:"l",url:"functions.html#index_l"},
+{text:"m",url:"functions.html#index_m"},
+{text:"r",url:"functions.html#index_r"},
+{text:"s",url:"functions.html#index_s"},
+{text:"t",url:"functions.html#index_t"},
+{text:"u",url:"functions.html#index_u"},
+{text:"w",url:"functions.html#index_w"},
+{text:"~",url:"functions.html#index__7E"}]},
+{text:"Funkcje",url:"functions_func.html",children:[
+{text:"a",url:"functions_func.html#index_a"},
+{text:"d",url:"functions_func.html#index_d"},
+{text:"e",url:"functions_func.html#index_e"},
+{text:"g",url:"functions_func.html#index_g"},
+{text:"l",url:"functions_func.html#index_l"},
+{text:"m",url:"functions_func.html#index_m"},
+{text:"r",url:"functions_func.html#index_r"},
+{text:"s",url:"functions_func.html#index_s"},
+{text:"t",url:"functions_func.html#index_t"},
+{text:"u",url:"functions_func.html#index_u"},
+{text:"w",url:"functions_func.html#index_w"},
+{text:"~",url:"functions_func.html#index__7E"}]},
+{text:"Zmienne",url:"functions_vars.html"},
+{text:"Wyliczenia",url:"functions_enum.html"},
+{text:"Powiązane symbole",url:"functions_rela.html"}]}]},
 {text:"Pliki",url:"files.html",children:[
-{text:"Lista plików",url:"files.html"}]}]}
+{text:"Lista plików",url:"files.html"},
+{text:"Składowe plików",url:"globals.html",children:[
+{text:"Wszystko",url:"globals.html"},
+{text:"Funkcje",url:"globals_func.html"},
+{text:"Wyliczenia",url:"globals_enum.html"},
+{text:"Definicje",url:"globals_defs.html"}]}]}]}

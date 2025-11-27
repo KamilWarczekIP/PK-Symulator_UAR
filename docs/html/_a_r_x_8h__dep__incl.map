@@ -1,0 +1,20 @@
+<map id="ARX.h" name="ARX.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="136,5,197,32"/>
+<area shape="rect" id="Node000002" href="$_a_r_x_8cpp.html" title=" " alt="" coords="84,80,158,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,43,131,81,127,78,149,48"/>
+<area shape="rect" id="Node000003" href="$_u_a_r_8h.html" title=" " alt="" coords="183,80,244,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,43,208,80,203,80,182,48"/>
+<area shape="rect" id="Node000004" href="$_state_8h.html" title=" " alt="" coords="88,155,152,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="183,118,138,156,134,152,187,115"/>
+<area shape="rect" id="Node000008" href="$_u_a_r_8cpp.html" title=" " alt="" coords="176,155,251,181"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="215,120,216,155,211,153,212,125"/>
+<area shape="rect" id="Node000009" href="$mainwindow_8h.html" title=" " alt="" coords="275,155,378,181"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="246,113,309,154,304,154,245,118"/>
+<area shape="rect" id="Node000005" href="$_state_8cpp.html" title=" " alt="" coords="5,229,83,256"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="99,192,59,231,55,227,93,192"/>
+<area shape="rect" id="Node000006" href="$_test_8cpp.html" title=" " alt="" coords="107,229,178,256"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="130,194,141,230,136,228,127,198"/>
+<area shape="rect" id="Node000007" href="$mainwindow_8cpp.html" title=" " alt="" coords="247,229,364,256"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="167,185,275,228,270,230,166,190"/>
+<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="321,195,311,231,307,227,317,198"/>
+</map>

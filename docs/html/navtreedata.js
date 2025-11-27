@@ -25,24 +25,36 @@
 var NAVTREE =
 [
   [ "Symulator UAR", "index.html", [
+    [ "Przestrzenie nazw", "namespaces.html", [
+      [ "Lista przestrzeni nazw", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Klasy", "annotated.html", [
       [ "Lista klas", "annotated.html", "annotated_dup" ],
       [ "Indeks klas", "classes.html", null ],
       [ "Hierarchia klas", "hierarchy.html", "hierarchy" ],
       [ "Składowe klas", "functions.html", [
         [ "Wszystko", "functions.html", null ],
-        [ "Funkcje", "functions_func.html", null ]
+        [ "Funkcje", "functions_func.html", null ],
+        [ "Zmienne", "functions_vars.html", null ],
+        [ "Wyliczenia", "functions_enum.html", null ],
+        [ "Powiązane symbole", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Pliki", "files.html", [
-      [ "Lista plików", "files.html", "files_dup" ]
+      [ "Lista plików", "files.html", "files_dup" ],
+      [ "Składowe plików", "globals.html", [
+        [ "Wszystko", "globals.html", null ],
+        [ "Funkcje", "globals_func.html", null ],
+        [ "Wyliczenia", "globals_enum.html", null ],
+        [ "Definicje", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_a_r_x_8h_source.html"
+"_a_r_x_8cpp.html"
 ];
 
 var SYNCONMSG = 'kliknij żeby wyłączyć pokazywanie otwartego elementu w drzewie zawartości';

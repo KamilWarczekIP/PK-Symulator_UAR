@@ -7,6 +7,14 @@ Generator::Generator()
     , internal_clock(0)
     , samples_per_cycle(2)
 {}
+
+double Generator::advanceClockAndReturn(double value)
+{
+    internal_clock++;
+    if (internal_clock == samples_per_cycle)
+        internal_clock = 0;
+    return value + bias;
+}
 void Generator::setAmplitude(double amplitude)
 {
     assert(amplitude >= 0.0);

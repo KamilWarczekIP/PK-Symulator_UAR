@@ -12,12 +12,12 @@ class Test
     static std::pair<bool, const char*> TEST_ARX_zaklocenia();
     static std::pair<bool, const char*> TEST_PID_czlon_D_przyspiesza_regulacje();
     static std::pair<bool, const char*> TEST_PID_czlon_P_regulacja_odwrotna();
-
+*/
     static std::pair<bool, const char*> TEST_Generator_Sinusoidalny();
     static std::pair<bool, const char*> TEST_Generator_Sinusoidalny_bias();
     static std::pair<bool, const char*> TEST_Generator_Sinusoidalny_zmiana_amplitudy();
     static std::pair<bool, const char*> TEST_Generator_Sinusoidalny_zmiana_okresu();
-    */
+
 
     static std::pair<bool, const char*> TEST_Generator_Prostokatny_zmiana_amplitudy();
     static std::pair<bool, const char*> TEST_Generator_Prostokatny_zmiana_okresu();

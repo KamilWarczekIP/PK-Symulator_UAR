@@ -91,17 +91,17 @@ $(function(){initNavTree('_a_r_x_8h_source.html','',''); });
   <div class="headertitle"><div class="title">ARX.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ARX_H</span></div>
+<a href="_a_r_x_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ARX_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ARX_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;Test.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_test_8h.html">Test.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;deque&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_a_r_x.html">    8</a></span><span class="keyword">class </span>ARX</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_a_r_x.html">    8</a></span><span class="keyword">class </span><a class="code hl_function" href="class_a_r_x.html#ae2852296666fda6486b80314cad16b52">ARX</a></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">friend</span> <span class="keyword">class </span>Test;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_a_r_x.html#a5b78b1c2e1fa07ffed92da365593eaa4">   10</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="class_a_r_x.html#a5b78b1c2e1fa07ffed92da365593eaa4">Test</a>;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    std::vector&lt;double&gt; a;</div>
@@ -117,36 +117,54 @@ $(function(){initNavTree('_a_r_x_8h_source.html','',''); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">inline</span> <span class="keywordtype">double</span> getGaussianDistribValue();</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    ARX(std::vector&lt;double&gt; &amp;&amp;a,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="class_a_r_x.html#ae2852296666fda6486b80314cad16b52">ARX</a>(std::vector&lt;double&gt; &amp;&amp;a,</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        std::vector&lt;double&gt; &amp;&amp;b,</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        uint16_t k = 1,</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">double</span> standard_deviation = 0.0);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">double</span> tick(<span class="keywordtype">double</span> u);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> setK(uint16_t k);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">double</span> getK();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">const</span> std::vector&lt;double&gt;&amp; getA();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">const</span> std::vector&lt;double&gt;&amp; getB();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> setAB(std::vector&lt;double&gt; a, std::vector&lt;double&gt; b);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> reset();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> disableLimits();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> enableLimits();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> setInputLimits(<span class="keywordtype">double</span> low, <span class="keywordtype">double</span> high);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> setOutputLimits(<span class="keywordtype">double</span> low, <span class="keywordtype">double</span> high);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">const</span> std::pair&lt;double, double&gt;&amp; getInputLimits();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">const</span> std::pair&lt;double, double&gt;&amp; getOutputLimits();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> setStandardDeviation(<span class="keywordtype">double</span> standard_deviation);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">double</span> getStandardDeviation();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_a_r_x.html#ade537f24f33ba60fd4ac77214d11da05">tick</a>(<span class="keywordtype">double</span> u);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#afe2718758d4c13483425103a72659f80">setK</a>(uint16_t k);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_a_r_x.html#a3a266b40e95a08752a14552e35bffe24">getK</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">const</span> std::vector&lt;double&gt; <a class="code hl_function" href="class_a_r_x.html#a47d5a82faadf62ffa44b5e957ab9ebdc">getA</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">const</span> std::vector&lt;double&gt; <a class="code hl_function" href="class_a_r_x.html#a4dec9bbca78257fea8bdaddf8c7bec3d">getB</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#aa3f9d12a24e81dba88cc7d64e471a8d8">setAB</a>(std::vector&lt;double&gt; a, std::vector&lt;double&gt; b);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#a8c8b7fe3b0de9023d68c30d6be3f64af">reset</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#a52ba1f41750cb8940c6bbcf7f6a1bd67">disableLimits</a>();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#a7b8c1614ff11f72c1141e8ea33477b58">enableLimits</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#a9870be5f917a9b57fe6f30628fcb506b">setInputLimits</a>(<span class="keywordtype">double</span> low, <span class="keywordtype">double</span> high);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#acb43c40299e7cbda5077ac0546cab0c5">setOutputLimits</a>(<span class="keywordtype">double</span> low, <span class="keywordtype">double</span> high);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">const</span> std::pair&lt;double, double&gt;&amp; <a class="code hl_function" href="class_a_r_x.html#a25720498a89c692501abc0191f1271f5">getInputLimits</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">const</span> std::pair&lt;double, double&gt;&amp; <a class="code hl_function" href="class_a_r_x.html#a5d189b9c527a7decf8a95cb46d575d3d">getOutputLimits</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_r_x.html#af238ca6925d01891725c938d1cee2996">setStandardDeviation</a>(<span class="keywordtype">double</span> standard_deviation);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_a_r_x.html#a0b58c60c32fc07b6f8fac657badb64ae">getStandardDeviation</a>();</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
 </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">// ARX_H</span></div>
+<div class="ttc" id="a_test_8h_html"><div class="ttname"><a href="_test_8h.html">Test.h</a></div></div>
+<div class="ttc" id="aclass_a_r_x_html_a0b58c60c32fc07b6f8fac657badb64ae"><div class="ttname"><a href="class_a_r_x.html#a0b58c60c32fc07b6f8fac657badb64ae">ARX::getStandardDeviation</a></div><div class="ttdeci">double getStandardDeviation()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:156</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a25720498a89c692501abc0191f1271f5"><div class="ttname"><a href="class_a_r_x.html#a25720498a89c692501abc0191f1271f5">ARX::getInputLimits</a></div><div class="ttdeci">const std::pair&lt; double, double &gt; &amp; getInputLimits()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:144</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a3a266b40e95a08752a14552e35bffe24"><div class="ttname"><a href="class_a_r_x.html#a3a266b40e95a08752a14552e35bffe24">ARX::getK</a></div><div class="ttdeci">double getK()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:85</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a47d5a82faadf62ffa44b5e957ab9ebdc"><div class="ttname"><a href="class_a_r_x.html#a47d5a82faadf62ffa44b5e957ab9ebdc">ARX::getA</a></div><div class="ttdeci">const std::vector&lt; double &gt; getA()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:89</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a4dec9bbca78257fea8bdaddf8c7bec3d"><div class="ttname"><a href="class_a_r_x.html#a4dec9bbca78257fea8bdaddf8c7bec3d">ARX::getB</a></div><div class="ttdeci">const std::vector&lt; double &gt; getB()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:93</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a52ba1f41750cb8940c6bbcf7f6a1bd67"><div class="ttname"><a href="class_a_r_x.html#a52ba1f41750cb8940c6bbcf7f6a1bd67">ARX::disableLimits</a></div><div class="ttdeci">void disableLimits()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:123</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a5b78b1c2e1fa07ffed92da365593eaa4"><div class="ttname"><a href="class_a_r_x.html#a5b78b1c2e1fa07ffed92da365593eaa4">ARX::Test</a></div><div class="ttdeci">friend class Test</div><div class="ttdef"><b>Definicja</b> ARX.h:10</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a5d189b9c527a7decf8a95cb46d575d3d"><div class="ttname"><a href="class_a_r_x.html#a5d189b9c527a7decf8a95cb46d575d3d">ARX::getOutputLimits</a></div><div class="ttdeci">const std::pair&lt; double, double &gt; &amp; getOutputLimits()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:148</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a7b8c1614ff11f72c1141e8ea33477b58"><div class="ttname"><a href="class_a_r_x.html#a7b8c1614ff11f72c1141e8ea33477b58">ARX::enableLimits</a></div><div class="ttdeci">void enableLimits()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:127</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a8c8b7fe3b0de9023d68c30d6be3f64af"><div class="ttname"><a href="class_a_r_x.html#a8c8b7fe3b0de9023d68c30d6be3f64af">ARX::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definicja</b> ARX.cpp:118</div></div>
+<div class="ttc" id="aclass_a_r_x_html_a9870be5f917a9b57fe6f30628fcb506b"><div class="ttname"><a href="class_a_r_x.html#a9870be5f917a9b57fe6f30628fcb506b">ARX::setInputLimits</a></div><div class="ttdeci">void setInputLimits(double low, double high)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:132</div></div>
+<div class="ttc" id="aclass_a_r_x_html_aa3f9d12a24e81dba88cc7d64e471a8d8"><div class="ttname"><a href="class_a_r_x.html#aa3f9d12a24e81dba88cc7d64e471a8d8">ARX::setAB</a></div><div class="ttdeci">void setAB(std::vector&lt; double &gt; a, std::vector&lt; double &gt; b)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:97</div></div>
+<div class="ttc" id="aclass_a_r_x_html_acb43c40299e7cbda5077ac0546cab0c5"><div class="ttname"><a href="class_a_r_x.html#acb43c40299e7cbda5077ac0546cab0c5">ARX::setOutputLimits</a></div><div class="ttdeci">void setOutputLimits(double low, double high)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:138</div></div>
+<div class="ttc" id="aclass_a_r_x_html_ade537f24f33ba60fd4ac77214d11da05"><div class="ttname"><a href="class_a_r_x.html#ade537f24f33ba60fd4ac77214d11da05">ARX::tick</a></div><div class="ttdeci">double tick(double u)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:36</div></div>
+<div class="ttc" id="aclass_a_r_x_html_ae2852296666fda6486b80314cad16b52"><div class="ttname"><a href="class_a_r_x.html#ae2852296666fda6486b80314cad16b52">ARX::ARX</a></div><div class="ttdeci">ARX(std::vector&lt; double &gt; &amp;&amp;a, std::vector&lt; double &gt; &amp;&amp;b, uint16_t k=1, double standard_deviation=0.0)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:22</div></div>
+<div class="ttc" id="aclass_a_r_x_html_af238ca6925d01891725c938d1cee2996"><div class="ttname"><a href="class_a_r_x.html#af238ca6925d01891725c938d1cee2996">ARX::setStandardDeviation</a></div><div class="ttdeci">void setStandardDeviation(double standard_deviation)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:152</div></div>
+<div class="ttc" id="aclass_a_r_x_html_afe2718758d4c13483425103a72659f80"><div class="ttname"><a href="class_a_r_x.html#afe2718758d4c13483425103a72659f80">ARX::setK</a></div><div class="ttdeci">void setK(uint16_t k)</div><div class="ttdef"><b>Definicja</b> ARX.cpp:70</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>ARX.h</b></li>
+    <li class="navelem"><a href="_a_r_x_8h.html">ARX.h</a></li>
     <li class="footer">Wygenerowano za pomocą <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
   </ul>
 </div>

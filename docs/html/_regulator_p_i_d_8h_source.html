@@ -91,13 +91,15 @@ $(function(){initNavTree('_regulator_p_i_d_8h_source.html','',''); });
   <div class="headertitle"><div class="title">RegulatorPID.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef REGULATOR_PID_H</span></div>
+<a href="_regulator_p_i_d_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef REGULATOR_PID_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define REGULATOR_PID_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">enum class</span> IntegType {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    outside,</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    insde,</div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">    8</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">IntegType</a> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537ac30163615770c8b2b8873288e828de41">    9</a></span>    <a class="code hl_enumvalue" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537ac30163615770c8b2b8873288e828de41">outside</a>,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537a5bd4531b3402d8bd9cbd05bbe129a733">   10</a></span>    <a class="code hl_enumvalue" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537a5bd4531b3402d8bd9cbd05bbe129a733">insde</a>,</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
+</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_regulator_p_i_d.html">   17</a></span><span class="keyword">class </span><a class="code hl_function" href="class_regulator_p_i_d.html#a5e95a7bffe8ace5719e720f4913884a1">RegulatorPID</a></div>
@@ -108,33 +110,39 @@ $(function(){initNavTree('_regulator_p_i_d_8h_source.html','',''); });
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">double</span> sum_of_e_inside_integ; </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">double</span> sum_of_e_outside_integ; </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">double</span> previous_e; </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    IntegType integration_type; </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_enumeration" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">IntegType</a> integration_type; </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">double</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a9edafc5ac8d3fac2eb2732f567eeb9ce">tick</a>(<span class="keywordtype">double</span> e_i);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="class_regulator_p_i_d.html#a5e95a7bffe8ace5719e720f4913884a1">RegulatorPID</a>(<span class="keywordtype">double</span> k,</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                 <span class="keywordtype">double</span> T_i = 0.0,</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                 <span class="keywordtype">double</span> T_d = 0.0,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                 IntegType integration_type = IntegType::outside);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                 <a class="code hl_enumeration" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">IntegType</a> integration_type = <a class="code hl_enumvalue" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537ac30163615770c8b2b8873288e828de41">IntegType::outside</a>);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a97c267f8993ae8253e8030751cae7d22">setK</a>(<span class="keywordtype">double</span> k);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a1fd9ef980a24f6b438049d65189e2482">setT_i</a>(<span class="keywordtype">double</span> T_i);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a3c4a46bf9c755309718ff93ff458cec9">setT_d</a>(<span class="keywordtype">double</span> T_d);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#aefc49ed86cab3f07f2cb9be1363c1471">setIntegrationType</a>(IntegType integ_type);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>IntegType <a class="code hl_function" href="class_regulator_p_i_d.html#a60fd6c113ea70359f254e17c378d25c0">getIntegrationType</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#aefc49ed86cab3f07f2cb9be1363c1471">setIntegrationType</a>(<a class="code hl_enumeration" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">IntegType</a> integ_type);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><a class="code hl_enumeration" href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">IntegType</a> <a class="code hl_function" href="class_regulator_p_i_d.html#a60fd6c113ea70359f254e17c378d25c0">getIntegrationType</a>();</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keywordtype">double</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a88787257bb3d892d631161527feebc4e">getK</a>();</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">double</span> <a class="code hl_function" href="class_regulator_p_i_d.html#aa001148a0cc8318d372b1a0c6d94f963">getT_i</a>();</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">double</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a71ccfe6c34b39400962c1d54f8e940fa">getT_d</a>();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> resetIntegrationPart();</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> resetDerrivativePart();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span> reset();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a21274dd08872c175499cd04d0681a5f6">resetIntegrationPart</a>();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a64dc02d3b15bf7074e1ba0272a92820f">resetDerrivativePart</a>();</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span> <a class="code hl_function" href="class_regulator_p_i_d.html#a4a8e547b18693e8d94b7dd5ff27df7da">reset</a>();</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>};</div>
 </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif </span><span class="comment">// REGULATOR_PID_H</span></div>
+<div class="ttc" id="a_regulator_p_i_d_8h_html_af43c48dd2710c212494ba6a7d8773537"><div class="ttname"><a href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537">IntegType</a></div><div class="ttdeci">IntegType</div><div class="ttdef"><b>Definicja</b> RegulatorPID.h:8</div></div>
+<div class="ttc" id="a_regulator_p_i_d_8h_html_af43c48dd2710c212494ba6a7d8773537a5bd4531b3402d8bd9cbd05bbe129a733"><div class="ttname"><a href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537a5bd4531b3402d8bd9cbd05bbe129a733">IntegType::insde</a></div><div class="ttdeci">@ insde</div><div class="ttdef"><b>Definicja</b> RegulatorPID.h:10</div></div>
+<div class="ttc" id="a_regulator_p_i_d_8h_html_af43c48dd2710c212494ba6a7d8773537ac30163615770c8b2b8873288e828de41"><div class="ttname"><a href="_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537ac30163615770c8b2b8873288e828de41">IntegType::outside</a></div><div class="ttdeci">@ outside</div><div class="ttdef"><b>Definicja</b> RegulatorPID.h:9</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a1fd9ef980a24f6b438049d65189e2482"><div class="ttname"><a href="class_regulator_p_i_d.html#a1fd9ef980a24f6b438049d65189e2482">RegulatorPID::setT_i</a></div><div class="ttdeci">void setT_i(double T_i)</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:50</div></div>
+<div class="ttc" id="aclass_regulator_p_i_d_html_a21274dd08872c175499cd04d0681a5f6"><div class="ttname"><a href="class_regulator_p_i_d.html#a21274dd08872c175499cd04d0681a5f6">RegulatorPID::resetIntegrationPart</a></div><div class="ttdeci">void resetIntegrationPart()</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:86</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a3c4a46bf9c755309718ff93ff458cec9"><div class="ttname"><a href="class_regulator_p_i_d.html#a3c4a46bf9c755309718ff93ff458cec9">RegulatorPID::setT_d</a></div><div class="ttdeci">void setT_d(double T_d)</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:54</div></div>
+<div class="ttc" id="aclass_regulator_p_i_d_html_a4a8e547b18693e8d94b7dd5ff27df7da"><div class="ttname"><a href="class_regulator_p_i_d.html#a4a8e547b18693e8d94b7dd5ff27df7da">RegulatorPID::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:95</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a5e95a7bffe8ace5719e720f4913884a1"><div class="ttname"><a href="class_regulator_p_i_d.html#a5e95a7bffe8ace5719e720f4913884a1">RegulatorPID::RegulatorPID</a></div><div class="ttdeci">RegulatorPID(double k, double T_i=0.0, double T_d=0.0, IntegType integration_type=IntegType::outside)</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:37</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a60fd6c113ea70359f254e17c378d25c0"><div class="ttname"><a href="class_regulator_p_i_d.html#a60fd6c113ea70359f254e17c378d25c0">RegulatorPID::getIntegrationType</a></div><div class="ttdeci">IntegType getIntegrationType()</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:70</div></div>
+<div class="ttc" id="aclass_regulator_p_i_d_html_a64dc02d3b15bf7074e1ba0272a92820f"><div class="ttname"><a href="class_regulator_p_i_d.html#a64dc02d3b15bf7074e1ba0272a92820f">RegulatorPID::resetDerrivativePart</a></div><div class="ttdeci">void resetDerrivativePart()</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:91</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a71ccfe6c34b39400962c1d54f8e940fa"><div class="ttname"><a href="class_regulator_p_i_d.html#a71ccfe6c34b39400962c1d54f8e940fa">RegulatorPID::getT_d</a></div><div class="ttdeci">double getT_d()</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:82</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a88787257bb3d892d631161527feebc4e"><div class="ttname"><a href="class_regulator_p_i_d.html#a88787257bb3d892d631161527feebc4e">RegulatorPID::getK</a></div><div class="ttdeci">double getK()</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:74</div></div>
 <div class="ttc" id="aclass_regulator_p_i_d_html_a97c267f8993ae8253e8030751cae7d22"><div class="ttname"><a href="class_regulator_p_i_d.html#a97c267f8993ae8253e8030751cae7d22">RegulatorPID::setK</a></div><div class="ttdeci">void setK(double k)</div><div class="ttdef"><b>Definicja</b> RegulatorPID.cpp:46</div></div>
@@ -147,7 +155,7 @@ $(function(){initNavTree('_regulator_p_i_d_8h_source.html','',''); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>RegulatorPID.h</b></li>
+    <li class="navelem"><a href="_regulator_p_i_d_8h.html">RegulatorPID.h</a></li>
     <li class="footer">Wygenerowano za pomocą <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
   </ul>
 </div>

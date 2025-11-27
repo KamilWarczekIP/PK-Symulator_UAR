@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['test_0',['Test',['../class_test.html',1,'']]],
-  ['tick_1',['tick',['../class_regulator_p_i_d.html#a9edafc5ac8d3fac2eb2732f567eeb9ce',1,'RegulatorPID']]],
-  ['tickdata_2',['TickData',['../struct_tick_data.html',1,'']]]
+  ['listwithextremes_0',['ListWithExtremes',['../class_list_with_extremes.html',1,'ListWithExtremes'],['../class_list_with_extremes.html#abee921f30a348dc000b9a81139a9b60d',1,'ListWithExtremes::ListWithExtremes()']]],
+  ['listwithextremes_2ecpp_1',['listwithextremes.cpp',['../listwithextremes_8cpp.html',1,'']]],
+  ['listwithextremes_2ehpp_2',['listwithextremes.hpp',['../listwithextremes_8hpp.html',1,'']]]
 ];

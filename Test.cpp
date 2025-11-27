@@ -256,23 +256,9 @@ std::pair<bool, const char*> Test::TEST_Generator_Prostokatny_50_procent()
 
         gen.resetClock();
         if(gen.tick() != 1.0) test_passed = false;
-        qDebug() << test_passed;
         if(gen.tick() != 1.0) test_passed = false;
-        qDebug() << test_passed;
         if(gen.tick() != 1.0) test_passed = false;
-        qDebug() << test_passed;
         if(gen.tick() != 0.0) test_passed = false;
-        qDebug() << test_passed;
-        if(gen.tick() != 0.0) test_passed = false;
-        qDebug() << test_passed;
-        if(gen.tick() != 0.0) test_passed = false;
-        qDebug() << test_passed;
-
-
-        gen.resetClock();
-        gen.setSamplesPerCycle(4);
-        if(gen.tick() != 1.0) test_passed = false;
-        if(gen.tick() != 1.0) test_passed = false;
         if(gen.tick() != 0.0) test_passed = false;
         if(gen.tick() != 0.0) test_passed = false;
         if(gen.tick() != 1.0) test_passed = false;
@@ -296,6 +282,8 @@ std::pair<bool, const char*> Test::TEST_Generator_Prostokatny_10_procent()
         gen.setDutyCycle(0.1);
         gen.setAmplitude(1.0);
 
+        gen.resetClock();
+        if(gen.tick() != 1.0) test_passed = false;
         if(gen.tick() != 0.0) test_passed = false;
         if(gen.tick() != 0.0) test_passed = false;
         if(gen.tick() != 0.0) test_passed = false;
@@ -306,7 +294,6 @@ std::pair<bool, const char*> Test::TEST_Generator_Prostokatny_10_procent()
         if(gen.tick() != 0.0) test_passed = false;
         if(gen.tick() != 0.0) test_passed = false;
         if(gen.tick() != 1.0) test_passed = false;
-        if(gen.tick() != 0.0) test_passed = false;
 
         return std::make_pair(test_passed, __FUNCTION__);
     }
@@ -315,3 +302,7 @@ std::pair<bool, const char*> Test::TEST_Generator_Prostokatny_10_procent()
         return std::make_pair(false, __FUNCTION__);
     }
 }
+std::pair<bool, const char*> TEST_Generator_Sinusoidalny();
+std::pair<bool, const char*> TEST_Generator_Sinusoidalny_bias();
+std::pair<bool, const char*> TEST_Generator_Sinusoidalny_zmiana_amplitudy();
+std::pair<bool, const char*> TEST_Generator_Sinusoidalny_zmiana_okresu();

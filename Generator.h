@@ -10,6 +10,7 @@ protected:
     double bias;
     uint16_t internal_clock;
 
+    double advanceClockAndReturn(double);
 public:
     Generator();
     virtual double tick() = 0;

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['setintegrationtype_0',['setIntegrationType',['../class_regulator_p_i_d.html#aefc49ed86cab3f07f2cb9be1363c1471',1,'RegulatorPID']]],
-  ['setk_1',['setK',['../class_regulator_p_i_d.html#a97c267f8993ae8253e8030751cae7d22',1,'RegulatorPID']]],
-  ['sett_5fd_2',['setT_d',['../class_regulator_p_i_d.html#a3c4a46bf9c755309718ff93ff458cec9',1,'RegulatorPID']]],
-  ['sett_5fi_3',['setT_i',['../class_regulator_p_i_d.html#a1fd9ef980a24f6b438049d65189e2482',1,'RegulatorPID']]],
-  ['state_4',['State',['../class_state.html',1,'']]]
+  ['insde_0',['insde',['../_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537a5bd4531b3402d8bd9cbd05bbe129a733',1,'RegulatorPID.h']]],
+  ['integtype_1',['IntegType',['../_regulator_p_i_d_8h.html#af43c48dd2710c212494ba6a7d8773537',1,'RegulatorPID.h']]],
+  ['internal_5fclock_2',['internal_clock',['../class_generator.html#a0a9529ddc1a3ea6c6b659e4e22c772b2',1,'Generator']]]
 ];
