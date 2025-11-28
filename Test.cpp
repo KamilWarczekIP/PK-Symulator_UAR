@@ -1,6 +1,7 @@
 #include "Test.h"
 #include "listwithextremes.hpp"
 #include "State.h"
+#include <filesystem>
 #include <random>
 
 void Test::wykonajTesty()
@@ -118,7 +119,8 @@ std::pair<bool, const char*> Test::TEST_State_zapis_i_odczyt_z_pliku()
         State::getInstance().setARXNoiseStandardDeviation(1.0);
         //TODO RESZTA PARAMATROW DO ZAPISU
 
-        State::getInstance().saveToFile();
+        // State::getInstance().saveToFile((std::filesystem::current_path() / "testowy.json").string());
+        State::getInstance().saveToFile(std::string("C:\\testowy.json"));
         State::getInstance().setGeneneratorAmplitude(5.0);
         State::getInstance().setGeneneratorPeriodMS(500);
         State::getInstance().setGeneneratorDutyCycle(5.0);
@@ -127,7 +129,7 @@ std::pair<bool, const char*> Test::TEST_State_zapis_i_odczyt_z_pliku()
         State::getInstance().setARXTransportDelay(2);
         State::getInstance().setARXNoiseStandardDeviation(5.0);
 
-        State::getInstance().readFromFile();
+        State::getInstance().readFromFile((std::filesystem::current_path() / "testowy.json").string());
         if(State::getInstance().getARXCoefficientsA() != std::vector({1.0, 2.0, 3.0, 4.0}))
             test_passed = false;
 

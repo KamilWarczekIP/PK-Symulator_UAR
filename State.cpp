@@ -1,4 +1,5 @@
 #include "State.h"
+#include "QSaveState.hpp"
 #include <cassert>
 
 
@@ -7,6 +8,7 @@ State::State(UAR &&uar)
     , simmulation_running(false)
     , choosen_type(TypGeneratora::Sinusoidalny)
 {
+    save = new QSaveState();
     simmulation_timer = new QTimer();
     simmulation_timer->setSingleShot(false);
     simmulation_timer->setInterval(200);
@@ -15,6 +17,7 @@ State::State(UAR &&uar)
 State::~State()
 {
     delete simmulation_timer;
+    delete save;
 }
 
 State &State::getInstance()
@@ -172,17 +175,17 @@ void State::setSaveStateObject(SaveStateInterface* object)
 {
     this->save = object;
 }
-void State::saveToFile(std::string& path)
+void State::saveToFile(std::string path)
 {
     if(save == nullptr)
         return;
-    this->save->saveToFile(path);
+    this->save->saveToFile(path, &uar, &simmulation_running, &choosen_type, &gen_pros, &gen_sin);
 }
-void State::readFromFile(std::string& path)
+void State::readFromFile(std::string path)
 {
     if(save == nullptr)
         return;
-    this->save->readFromFile(path);
+    this->save->readFromFile(path, &uar, &simmulation_running, &choosen_type, &gen_pros, &gen_sin);
 }
 
 void State::tick()
@@ -198,4 +201,9 @@ void State::tick()
         break;
     }
     this->tick_callback(uar.tick_more_info(curr_gen->tick()));
+}
+
+State& State::get()
+{
+    return State::getInstance();
 }

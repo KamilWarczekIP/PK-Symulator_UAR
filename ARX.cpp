@@ -128,6 +128,10 @@ void ARX::enableLimits()
 {
     this->limits_active = true;
 }
+bool ARX::getLimitsActive()
+{
+    return this->limits_active;
+}
 
 void ARX::setInputLimits(double low, double high)
 {

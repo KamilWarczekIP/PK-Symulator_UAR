@@ -36,6 +36,7 @@ public:
     void reset();
     void disableLimits();
     void enableLimits();
+    bool getLimitsActive();
     void setInputLimits(double low, double high);
     void setOutputLimits(double low, double high);
     const std::pair<double, double>& getInputLimits();

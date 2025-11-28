@@ -1,1 +1,1 @@
-#define MAIN // MAIN lub DEBUG lub TEST
+#define TEST // MAIN lub DEBUG lub TEST

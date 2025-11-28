@@ -6,12 +6,8 @@
 #include "GeneratorSinusoida.h"
 #include "UAR.h"
 
-class SaveStateInterface
-{
-public:
-    virtual void saveToFile(std::string& path) = 0;
-    virtual void readFromFile(std::string& path) = 0;
-};
+class SaveStateInterface;
+
 
 class State : public QObject
 {
@@ -21,6 +17,7 @@ public:
 
 
     static State &getInstance();
+    static State &get();
     void setSimmulationRunning(bool simmulation_running);
     bool getSimmulationRunning();
     void setSimmulationIntervalMS(uint32_t interval);
@@ -58,8 +55,8 @@ public:
     void resetARX();
 
     void setSaveStateObject(SaveStateInterface* object);
-    void saveToFile(std::string& path);
-    void readFromFile(std::string& path);
+    void saveToFile(std::string path);
+    void readFromFile(std::string path);
 
 
 public slots:
@@ -81,4 +78,10 @@ private:
     ~State();
 };
 
+class SaveStateInterface
+{
+public:
+    virtual void saveToFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
+    virtual void readFromFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
+};
 #endif // STATE_H
