@@ -4,6 +4,8 @@
 
 class QSaveState : public SaveStateInterface
 {
+    QJsonArray vectorToJsonArray(const std::vector<double>& vec);
+    std::vector<double> qJsonArrayToVector(const QJsonArray& jsonArray);
 public:
     QSaveState();
     void saveToFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) override;
