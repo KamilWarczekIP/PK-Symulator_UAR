@@ -1,6 +1,7 @@
 var class_generator =
 [
     [ "Generator", "class_generator.html#aaaf1e5f3a47ede3ef8a96a301ee04a10", null ],
+    [ "advanceClockAndReturn", "class_generator.html#aaea4dd2d574cf658962076427a1e95c6", null ],
     [ "getAmplitude", "class_generator.html#a88e65ee8e1332540f9649eddd7ae5c1f", null ],
     [ "getBias", "class_generator.html#a9a0b71c852b96e0f2ac606b20a875563", null ],
     [ "getSamplesPerCycle", "class_generator.html#a77ad0953b7fef298a707d8b8d6910c37", null ],

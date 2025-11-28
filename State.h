@@ -6,6 +6,13 @@
 #include "GeneratorSinusoida.h"
 #include "UAR.h"
 
+class SaveStateInterface
+{
+public:
+    virtual void saveToFile(std::string& path) = 0;
+    virtual void readFromFile(std::string& path) = 0;
+};
+
 class State : public QObject
 {
     Q_OBJECT
@@ -50,8 +57,9 @@ public:
     void setARXLimitsEnabled(bool enabled);
     void resetARX();
 
-    void saveToFile();
-    void readFromFile();
+    void setSaveStateObject(SaveStateInterface* object);
+    void saveToFile(std::string& path);
+    void readFromFile(std::string& path);
 
 
 public slots:
@@ -65,6 +73,7 @@ private:
     bool simmulation_running;
     QTimer *simmulation_timer;
     std::function<void(TickData)> tick_callback;
+    SaveStateInterface* save;
 
     State(const State &) = delete;
     State &operator=(const State &) = delete;

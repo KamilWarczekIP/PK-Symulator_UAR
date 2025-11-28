@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Symulator UAR", "index.html", [
+    [ "Symulator UAR", "md__r_e_a_d_m_e.html", null ],
     [ "Przestrzenie nazw", "namespaces.html", [
       [ "Lista przestrzeni nazw", "namespaces.html", "namespaces_dup" ]
     ] ],

@@ -9,7 +9,8 @@ var indexSectionsWithContent =
   6: "it",
   7: "ioprs",
   8: "t",
-  9: "_t"
+  9: "_t",
+  10: "su"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "enums",
   7: "enumvalues",
   8: "related",
-  9: "defines"
+  9: "defines",
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "Wyliczenia",
   7: "Wartości wyliczeń",
   8: "Przyjaciele",
-  9: "Definicje"
+  9: "Definicje",
+  10: "Strony"
 };
 

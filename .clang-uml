@@ -1,0 +1,6 @@
+compilation_database_dir: 'C:\Users\kamil\AppData\Local\Temp\QtCreator-EDECJq\Clang-TidyMABslg'
+output_directory: uml
+diagrams:
+  first_diagram_name:
+    type: class
+

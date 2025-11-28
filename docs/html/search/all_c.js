@@ -35,5 +35,6 @@ var searchData=
   ['state_32',['State',['../class_state.html',1,'']]],
   ['state_2ecpp_33',['State.cpp',['../_state_8cpp.html',1,'']]],
   ['state_2eh_34',['State.h',['../_state_8h.html',1,'']]],
-  ['sterowanie_35',['sterowanie',['../struct_tick_data.html#a978ee175dc7b592eb4a0cf059d42a8f2',1,'TickData']]]
+  ['sterowanie_35',['sterowanie',['../struct_tick_data.html#a978ee175dc7b592eb4a0cf059d42a8f2',1,'TickData']]],
+  ['symulator_20uar_36',['Symulator UAR',['../md__r_e_a_d_m_e.html',1,'']]]
 ];

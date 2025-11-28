@@ -1,6 +1,7 @@
 #include "State.h"
 #include <cassert>
 
+
 State::State(UAR &&uar)
     : uar(uar)
     , simmulation_running(false)
@@ -167,16 +168,21 @@ void State::resetARX()
 {
     this->uar.getARX().reset();
 }
-
-void State::saveToFile()
+void State::setSaveStateObject(SaveStateInterface* object)
 {
-    //TODO
-    assert(1==0);
+    this->save = object;
 }
-void State::readFromFile()
+void State::saveToFile(std::string& path)
 {
-    //TODO
-    assert(1==0);
+    if(save == nullptr)
+        return;
+    this->save->saveToFile(path);
+}
+void State::readFromFile(std::string& path)
+{
+    if(save == nullptr)
+        return;
+    this->save->readFromFile(path);
 }
 
 void State::tick()

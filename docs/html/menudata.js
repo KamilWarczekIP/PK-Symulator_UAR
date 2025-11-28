@@ -24,6 +24,7 @@
 */
 var menudata={children:[
 {text:"Strona główna",url:"index.html"},
+{text:"Powiązane strony",url:"pages.html"},
 {text:"Przestrzenie nazw",url:"namespaces.html",children:[
 {text:"Lista przestrzeni nazw",url:"namespaces.html"}]},
 {text:"Klasy",url:"annotated.html",children:[
