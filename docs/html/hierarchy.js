@@ -18,6 +18,9 @@ var hierarchy =
       [ "State", "class_state.html", null ]
     ] ],
     [ "RegulatorPID", "class_regulator_p_i_d.html", null ],
+    [ "SaveStateInterface", "class_save_state_interface.html", [
+      [ "QSaveState", "class_q_save_state.html", null ]
+    ] ],
     [ "Test", "class_test.html", null ],
     [ "TickData", "struct_tick_data.html", null ],
     [ "UAR", "class_u_a_r.html", null ]

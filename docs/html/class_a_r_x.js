@@ -7,6 +7,7 @@ var class_a_r_x =
     [ "getB", "class_a_r_x.html#a4dec9bbca78257fea8bdaddf8c7bec3d", null ],
     [ "getInputLimits", "class_a_r_x.html#a25720498a89c692501abc0191f1271f5", null ],
     [ "getK", "class_a_r_x.html#a3a266b40e95a08752a14552e35bffe24", null ],
+    [ "getLimitsActive", "class_a_r_x.html#a31f539ee303e5b832154504e7d5f162b", null ],
     [ "getOutputLimits", "class_a_r_x.html#a5d189b9c527a7decf8a95cb46d575d3d", null ],
     [ "getStandardDeviation", "class_a_r_x.html#a0b58c60c32fc07b6f8fac657badb64ae", null ],
     [ "reset", "class_a_r_x.html#a8c8b7fe3b0de9023d68c30d6be3f64af", null ],

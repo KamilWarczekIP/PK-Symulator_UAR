@@ -20,6 +20,8 @@ var files_dup =
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "mainwindow.cpp", "mainwindow_8cpp.html", null ],
     [ "mainwindow.h", "mainwindow_8h.html", "mainwindow_8h" ],
+    [ "QSaveState.cpp", "_q_save_state_8cpp.html", null ],
+    [ "QSaveState.hpp", "_q_save_state_8hpp.html", "_q_save_state_8hpp" ],
     [ "RegulatorPID.cpp", "_regulator_p_i_d_8cpp.html", null ],
     [ "RegulatorPID.h", "_regulator_p_i_d_8h.html", "_regulator_p_i_d_8h" ],
     [ "State.cpp", "_state_8cpp.html", null ],

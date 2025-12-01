@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['wartosc_5fregulowana_0',['wartosc_regulowana',['../struct_tick_data.html#ab83f2a622c4aea00ca6a3c2b85f747a2',1,'TickData']]],
-  ['wartosc_5fzadana_1',['wartosc_zadana',['../struct_tick_data.html#ad1db71a5195293053116c33bc9350427',1,'TickData']]],
-  ['wykonajtesty_2',['wykonajTesty',['../class_test.html#a5a6b9e292c690e8e5fe78890ac127c57',1,'Test']]]
+  ['uar_0',['UAR',['../md__r_e_a_d_m_e.html',1,'Symulator UAR'],['../class_u_a_r.html',1,'UAR'],['../class_u_a_r.html#a42a208694800c753d3a08561284f699d',1,'UAR::UAR(ARX &amp;&amp;arx, RegulatorPID &amp;&amp;pid)'],['../class_u_a_r.html#aa4123993963030aa607fe10739087eff',1,'UAR::UAR(ARX &amp;arx, RegulatorPID &amp;pid)']]],
+  ['uar_2ecpp_1',['UAR.cpp',['../_u_a_r_8cpp.html',1,'']]],
+  ['uar_2eh_2',['UAR.h',['../_u_a_r_8h.html',1,'']]],
+  ['uchyb_3',['uchyb',['../struct_tick_data.html#ac7e2c3634107f8e9434f1b9c74478da5',1,'TickData']]],
+  ['ui_4',['Ui',['../namespace_ui.html',1,'']]]
 ];

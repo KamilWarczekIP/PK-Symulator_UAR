@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wykonajtesty_0',['wykonajTesty',['../class_test.html#a5a6b9e292c690e8e5fe78890ac127c57',1,'Test']]]
+  ['uar_0',['UAR',['../class_u_a_r.html#a42a208694800c753d3a08561284f699d',1,'UAR::UAR(ARX &amp;&amp;arx, RegulatorPID &amp;&amp;pid)'],['../class_u_a_r.html#aa4123993963030aa607fe10739087eff',1,'UAR::UAR(ARX &amp;arx, RegulatorPID &amp;pid)']]]
 ];

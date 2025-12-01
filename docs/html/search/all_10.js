@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['_7edialogarx_0',['~DialogArx',['../class_dialog_arx.html#a891e8143e4836b4f75a825f62ecbec4f',1,'DialogArx']]],
-  ['_7edialogarxcooeficients_1',['~DialogARXCooeficients',['../class_dialog_a_r_x_cooeficients.html#a52cd6e9a217050f2bd71f9444196ff4b',1,'DialogARXCooeficients']]],
-  ['_7edialogarxnoise_2',['~DialogARXnoise',['../class_dialog_a_r_xnoise.html#abece361ec168d8ce742a37c5aa1daa61',1,'DialogARXnoise']]],
-  ['_7emainwindow_3',['~MainWindow',['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow']]]
+  ['wartosc_5fregulowana_0',['wartosc_regulowana',['../struct_tick_data.html#ab83f2a622c4aea00ca6a3c2b85f747a2',1,'TickData']]],
+  ['wartosc_5fzadana_1',['wartosc_zadana',['../struct_tick_data.html#ad1db71a5195293053116c33bc9350427',1,'TickData']]],
+  ['wykonajtesty_2',['wykonajTesty',['../class_test.html#a5a6b9e292c690e8e5fe78890ac127c57',1,'Test']]]
 ];

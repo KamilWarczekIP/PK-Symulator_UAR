@@ -6,7 +6,8 @@
 
 
 
-Diagram współpracy dla ARX\+:\nopagebreak
+Diagram współpracy dla ARX\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,6 +36,8 @@ void \mbox{\hyperlink{class_a_r_x_a8c8b7fe3b0de9023d68c30d6be3f64af}{reset}} ()
 void \mbox{\hyperlink{class_a_r_x_a52ba1f41750cb8940c6bbcf7f6a1bd67}{disable\+Limits}} ()
 \item 
 void \mbox{\hyperlink{class_a_r_x_a7b8c1614ff11f72c1141e8ea33477b58}{enable\+Limits}} ()
+\item 
+bool \mbox{\hyperlink{class_a_r_x_a31f539ee303e5b832154504e7d5f162b}{get\+Limits\+Active}} ()
 \item 
 void \mbox{\hyperlink{class_a_r_x_a9870be5f917a9b57fe6f30628fcb506b}{set\+Input\+Limits}} (double low, double high)
 \item 
@@ -104,6 +107,12 @@ const std\+::pair$<$ double, double $>$ \& ARX\+::get\+Input\+Limits (\begin{Dox
 \doxysubsubsection{\texorpdfstring{getK()}{getK()}}
 {\footnotesize\ttfamily \label{class_a_r_x_a3a266b40e95a08752a14552e35bffe24} 
 double ARX\+::getK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_a_r_x_a31f539ee303e5b832154504e7d5f162b}\index{ARX@{ARX}!getLimitsActive@{getLimitsActive}}
+\index{getLimitsActive@{getLimitsActive}!ARX@{ARX}}
+\doxysubsubsection{\texorpdfstring{getLimitsActive()}{getLimitsActive()}}
+{\footnotesize\ttfamily \label{class_a_r_x_a31f539ee303e5b832154504e7d5f162b} 
+bool ARX\+::get\+Limits\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_a_r_x_a5d189b9c527a7decf8a95cb46d575d3d}\index{ARX@{ARX}!getOutputLimits@{getOutputLimits}}
 \index{getOutputLimits@{getOutputLimits}!ARX@{ARX}}

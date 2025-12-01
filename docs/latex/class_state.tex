@@ -6,7 +6,8 @@
 
 
 
-Diagram dziedziczenia dla State\nopagebreak
+Diagram dziedziczenia dla State
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Diagram dziedziczenia dla State\nopagebreak
 \end{figure}
 
 
-Diagram współpracy dla State\+:\nopagebreak
+Diagram współpracy dla State\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -102,14 +104,18 @@ void \mbox{\hyperlink{class_state_a8b9ba7544bbbe85bcdfd6293be21cc86}{set\+ARXLim
 \item 
 void \mbox{\hyperlink{class_state_af07b6abc4b8bf6a57f9cf6af677c8586}{reset\+ARX}} ()
 \item 
-void \mbox{\hyperlink{class_state_a0e3fd1312fb76985d37746a3c1c5e007}{save\+To\+File}} ()
+void \mbox{\hyperlink{class_state_ae8423af0e5b03cb4ef2d3c02fc11f0b4}{set\+Save\+State\+Object}} (\mbox{\hyperlink{class_save_state_interface}{Save\+State\+Interface}} \texorpdfstring{$\ast$}{*}object)
 \item 
-void \mbox{\hyperlink{class_state_a5f99ce975c144cdb31623aa54fecb19b}{read\+From\+File}} ()
+void \mbox{\hyperlink{class_state_a6ef44c3a2e38f42557155fd14fb908c4}{save\+To\+File}} (std\+::string path)
+\item 
+void \mbox{\hyperlink{class_state_acc81c4cc4b52d64063a33a402e563d2b}{read\+From\+File}} (std\+::string path)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Statyczne metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{class_state}{State}} \& \mbox{\hyperlink{class_state_afb475ae6d18f17a89d4e469ba11da6e7}{get\+Instance}} ()
+\item 
+static \mbox{\hyperlink{class_state}{State}} \& \mbox{\hyperlink{class_state_ad42cea6ba3e967aefd83716a8ec5eb6a}{get}} ()
 \end{DoxyCompactItemize}
 
 
@@ -141,6 +147,12 @@ Reczny&\\
 \label{doc-func-members}
 \Hypertarget{class_state_doc-func-members}
 \doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_state_ad42cea6ba3e967aefd83716a8ec5eb6a}\index{State@{State}!get@{get}}
+\index{get@{get}!State@{State}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_state_ad42cea6ba3e967aefd83716a8ec5eb6a} 
+\mbox{\hyperlink{class_state}{State}} \& State\+::get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{class_state_aaf262a5c6d9a5bcc67646942da59cd7a}\index{State@{State}!getARXCoefficientsA@{getARXCoefficientsA}}
 \index{getARXCoefficientsA@{getARXCoefficientsA}!State@{State}}
 \doxysubsubsection{\texorpdfstring{getARXCoefficientsA()}{getARXCoefficientsA()}}
@@ -207,11 +219,11 @@ uint32\+\_\+t State\+::get\+Simmulation\+Interval\+MS (\begin{DoxyParamCaption}{
 {\footnotesize\ttfamily \label{class_state_ada966480fd99438beb2d1b9b6c94b928} 
 bool State\+::get\+Simmulation\+Running (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_state_a5f99ce975c144cdb31623aa54fecb19b}\index{State@{State}!readFromFile@{readFromFile}}
+\Hypertarget{class_state_acc81c4cc4b52d64063a33a402e563d2b}\index{State@{State}!readFromFile@{readFromFile}}
 \index{readFromFile@{readFromFile}!State@{State}}
 \doxysubsubsection{\texorpdfstring{readFromFile()}{readFromFile()}}
-{\footnotesize\ttfamily \label{class_state_a5f99ce975c144cdb31623aa54fecb19b} 
-void State\+::read\+From\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_state_acc81c4cc4b52d64063a33a402e563d2b} 
+void State\+::read\+From\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_state_af07b6abc4b8bf6a57f9cf6af677c8586}\index{State@{State}!resetARX@{resetARX}}
 \index{resetARX@{resetARX}!State@{State}}
@@ -243,11 +255,11 @@ void State\+::reset\+PIDIntegration (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 {\footnotesize\ttfamily \label{class_state_aefe26920d68714b87650f5cb9831d2cb} 
 void State\+::reset\+Simmulation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_state_a0e3fd1312fb76985d37746a3c1c5e007}\index{State@{State}!saveToFile@{saveToFile}}
+\Hypertarget{class_state_a6ef44c3a2e38f42557155fd14fb908c4}\index{State@{State}!saveToFile@{saveToFile}}
 \index{saveToFile@{saveToFile}!State@{State}}
 \doxysubsubsection{\texorpdfstring{saveToFile()}{saveToFile()}}
-{\footnotesize\ttfamily \label{class_state_a0e3fd1312fb76985d37746a3c1c5e007} 
-void State\+::save\+To\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_state_a6ef44c3a2e38f42557155fd14fb908c4} 
+void State\+::save\+To\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_state_a6e219e6dbaab2021d86f7ec44049ff46}\index{State@{State}!setARXCoefficients@{setARXCoefficients}}
 \index{setARXCoefficients@{setARXCoefficients}!State@{State}}
@@ -338,6 +350,12 @@ void State\+::set\+PIDIntegration\+Type (\begin{DoxyParamCaption}\item[{\mbox{\h
 \doxysubsubsection{\texorpdfstring{setPIDProportional()}{setPIDProportional()}}
 {\footnotesize\ttfamily \label{class_state_a571911a9003385f606db2e961a9e0b2c} 
 void State\+::set\+PIDProportional (\begin{DoxyParamCaption}\item[{double}]{k}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_state_ae8423af0e5b03cb4ef2d3c02fc11f0b4}\index{State@{State}!setSaveStateObject@{setSaveStateObject}}
+\index{setSaveStateObject@{setSaveStateObject}!State@{State}}
+\doxysubsubsection{\texorpdfstring{setSaveStateObject()}{setSaveStateObject()}}
+{\footnotesize\ttfamily \label{class_state_ae8423af0e5b03cb4ef2d3c02fc11f0b4} 
+void State\+::set\+Save\+State\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_save_state_interface}{Save\+State\+Interface}} \texorpdfstring{$\ast$}{*}}]{object}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_state_a3cd04aadf916149ef079006b59a2e441}\index{State@{State}!setSimmulationIntervalMS@{setSimmulationIntervalMS}}
 \index{setSimmulationIntervalMS@{setSimmulationIntervalMS}!State@{State}}
