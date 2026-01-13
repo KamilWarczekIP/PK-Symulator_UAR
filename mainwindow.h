@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtCharts>
 #include "UAR.h"
+#include "dialogdebug.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -18,9 +19,10 @@ public:
     ~MainWindow();
 public slots:
     void addToPlots(TickData tick_data);
+private slots:
     void zapiszDoPliku();
     void wczytajZPliku();
-private slots:
+    void przelaczOknoDebugowania();
     void on_pushButton_symulacja_star_stop_released();
     void on_spinBox_symulacja_interwal_valueChanged(int arg1);
     void on_horizontalSlider_symulacja_interwal_valueChanged(int value);
@@ -69,6 +71,7 @@ private:
     uint32_t samples_count;
 
     Ui::MainWindow *ui;
+    DialogDebug* debug_dialog;
 
     QChart *chart_wartosc_zadana_i_regulowana;
     QChart *chart_uchyb;

@@ -17,9 +17,9 @@ public:
     void setAmplitude(double amplitude);
     void setSamplesPerCycle(uint16_t samples_per_cycle);
     void setBias(double bias);
-    double getAmplitude();
-    uint16_t getSamplesPerCycle();
-    double getBias();
+    double getAmplitude() const;
+    uint16_t getSamplesPerCycle() const;
+    double getBias() const;
     void resetClock();
 };
 

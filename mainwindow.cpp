@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->ui->centralwidget->setLayout(ui->horizontalLayout_13);
+    debug_dialog = new DialogDebug(this);
 
     chart_sterowanie = new QChart();
     chart_sterowanie->setTitle(tr("Sterowanie (Wyjście z regulatora)"));
@@ -167,13 +168,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     QObject::connect(ui->actionzapisz_ustawienia, &QAction::triggered, this, &MainWindow::zapiszDoPliku);
     QObject::connect(ui->actionwczytaj_ustawienia, &QAction::triggered, this, &MainWindow::wczytajZPliku);
+    QObject::connect(ui->actionokno_debugowania, &QAction::triggered, this, &MainWindow::przelaczOknoDebugowania);
 
     on_spinBox_generator_okres_editingFinished();
+    updateUiFromState();
 }
 void MainWindow::addToPlots(TickData tick_data)
 {
     int debug_current_time = debug_timer.elapsed();
-    qDebug() << debug_current_time - debug_last_time;
+    debug_dialog->write(QString::number(debug_current_time - debug_last_time));
     debug_last_time = debug_current_time;
     qint64 interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
     qint64 liczba_probek = (double) ui->spinBox_symulacja_okno_obserwacji->value()
@@ -304,11 +307,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_symulacja_star_stop_released()
 {
-    if (State::getInstance().getSimmulationRunning()) {
-        State::getInstance().setSimmulationRunning(false);
+    if (State().getSimmulationRunning())
+    {
+        State().setSimmulationRunning(false);
         ui->pushButton_symulacja_star_stop->setText(tr("START"));
-    } else {
-        State::getInstance().setSimmulationRunning(true);
+    }
+    else
+    {
+        State().setSimmulationRunning(true);
         ui->pushButton_symulacja_star_stop->setText(tr("STOP"));
     }
 }
@@ -336,9 +342,9 @@ void MainWindow::recalculate_generator_period()
 
 void MainWindow::on_spinBox_symulacja_interwal_editingFinished()
 {
-    State::getInstance().setSimmulationIntervalMS(ui->spinBox_symulacja_interwal->value());
+    State().setSimmulationIntervalMS(ui->spinBox_symulacja_interwal->value());
 
-    uint32_t interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
+    uint32_t interwal_symulacji = State().getSimmulationIntervalMS();
 
 
     recalculate_generator_period();
@@ -375,8 +381,7 @@ void MainWindow::on_doubleSpinBox_generator_amplituda_valueChanged(double arg1)
 }
 void MainWindow::on_doubleSpinBox_generator_amplituda_editingFinished()
 {
-    State::getInstance().setGeneneratorAmplitude(
-        ui->doubleSpinBox_generator_amplituda->value());
+    State().setGeneneratorAmplitude(ui->doubleSpinBox_generator_amplituda->value());
 }
 void MainWindow::on_verticalSlider_generator_amplituda_sliderReleased()
 {
@@ -395,7 +400,7 @@ void MainWindow::on_spinBox_generator_okres_valueChanged(int arg1)
 void MainWindow::on_spinBox_generator_okres_editingFinished()
 {
     recalculate_generator_period();
-    State::getInstance().setGeneneratorPeriodMS(ui->spinBox_generator_okres->value());
+    State().setGeneneratorPeriodMS(ui->spinBox_generator_okres->value());
 }
 void MainWindow::on_horizontalSlider_generator_okres_sliderReleased()
 {
@@ -409,23 +414,23 @@ void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg
     {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(true);
         ui->spinBox_generator_wypelnienie->setEnabled(true);
-        State::getInstance().setGenerator(State::TypGeneratora::Prostokatny);
+        State().setGenerator(State::TypGeneratora::Prostokatny);
     }
     else
     {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(false);
         ui->spinBox_generator_wypelnienie->setEnabled(false);
         if (arg1 == "Sinusoida")
-            State::getInstance().setGenerator(State::TypGeneratora::Sinusoidalny);
+            State().setGenerator(State::TypGeneratora::Sinusoidalny);
         else if (arg1 == "Ręczny") // TODO: dodac generator ręczny
-            State::getInstance().setGenerator(State::TypGeneratora::Reczny);
+            State().setGenerator(State::TypGeneratora::Reczny);
     }
 }
 
 // Wypelnienie generatora (P)
 void MainWindow::on_spinBox_generator_wypelnienie_editingFinished()
 {
-    State::getInstance().setGeneneratorDutyCycle(
+    State().setGeneneratorDutyCycle(
         (double) ui->spinBox_generator_wypelnienie->value() / 100.0);
 }
 void MainWindow::on_horizontalSlider_generator_wypelnienie_sliderReleased()
@@ -444,7 +449,7 @@ void MainWindow::on_spinBox_generator_wypelnienie_valueChanged(int arg1)
 // reset symulacji
 void MainWindow::on_pushButton_symulacja_reset_clicked()
 {
-    State::getInstance().resetSimmulation();
+    State().resetSimmulation();
 
     delete this->lista_sterowanie;
     delete this->lista_uchyb;
@@ -479,25 +484,25 @@ void MainWindow::on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased()
 
 void MainWindow::on_checkBoxOgraniczenia_checkStateChanged(const Qt::CheckState &arg1)
 {
-    State::getInstance().setARXLimitsEnabled(arg1 == Qt::Checked);
+    State().setARXLimitsEnabled(arg1 == Qt::Checked);
 }
 
 // PID - kontrolki całkowania i rozniczkowania
 void MainWindow::on_radioButton_stala_calkowania_przed_clicked()
 {
-    State::getInstance().setPIDIntegrationType(IntegType::outside);
+    State().setPIDIntegrationType(IntegType::outside);
 }
 void MainWindow::on_radioButton_stala_calkowania_pod_clicked()
 {
-    State::getInstance().setPIDIntegrationType(IntegType::insde);
+    State().setPIDIntegrationType(IntegType::insde);
 }
 void MainWindow::on_pushButton_reset_pam_calk_clicked()
 {
-    State::getInstance().resetPIDIntegration();
+    State().resetPIDIntegration();
 }
 void MainWindow::on_pushButton_reset_pam_roz_clicked()
 {
-    State::getInstance().resetPIDDerrivative();
+    State().resetPIDDerrivative();
 }
 
 // PID - część proporcjonalna (K)
@@ -507,7 +512,7 @@ void MainWindow::on_horizontalSlider_pid_k_valueChanged(int value)
 }
 void MainWindow::on_doubleSpinBox_pid_k_editingFinished()
 {
-    State::getInstance().setPIDProportional(ui->doubleSpinBox_pid_k->value());
+    State().setPIDProportional(ui->doubleSpinBox_pid_k->value());
 }
 void MainWindow::on_doubleSpinBox_pid_k_valueChanged(double arg1)
 {
@@ -529,7 +534,7 @@ void MainWindow::on_doubleSpinBox_pid_Ti_valueChanged(double arg1)
 }
 void MainWindow::on_doubleSpinBox_pid_Ti_editingFinished()
 {
-    State::getInstance().setPIDIntegration(ui->doubleSpinBox_pid_Ti->value());
+    State().setPIDIntegration(ui->doubleSpinBox_pid_Ti->value());
 }
 void MainWindow::on_horizontalSlider_pid_Ti_sliderReleased()
 {
@@ -547,7 +552,7 @@ void MainWindow::on_doubleSpinBox_pid_Td_valueChanged(double arg1)
 }
 void MainWindow::on_doubleSpinBox_pid_Td_editingFinished()
 {
-    State::getInstance().setPIDDerrivative(ui->doubleSpinBox_pid_Td->value());
+    State().setPIDDerrivative(ui->doubleSpinBox_pid_Td->value());
 }
 void MainWindow::on_horizontalSlider_pid_Td_sliderReleased()
 {
@@ -566,19 +571,44 @@ void MainWindow::wczytajZPliku()
 
 void MainWindow::updateUiFromState()
 {
-    auto [arx, pid, gran_sinusoida, gen_prostokatny] = State().getAppState();
-    this->ui->checkBoxOgraniczenia->setCheckState(arx.getLimitsActive() ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
+    auto [arx, pid, typ_generatora, gen_sinusoida, gen_prostokatny] = State().getAppState();
+    this->ui->checkBoxOgraniczenia->setCheckState(arx->getLimitsActive() ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
 
 
-    this->ui->horizontalSlider_pid_k->setValue(pid.getK() * 100);
-    this->ui->doubleSpinBox_pid_k->setValue(pid.getK());
+    this->ui->doubleSpinBox_pid_k->setValue(pid->getK());
+    this->ui->doubleSpinBox_pid_Ti->setValue(pid->getT_i());
+    this->ui->doubleSpinBox_pid_Td->setValue(pid->getT_d());
 
-    this->ui->horizontalSlider_pid_Ti->setValue(pid.getT_i() * 100);
-    this->ui->doubleSpinBox_pid_Ti->setValue(pid.getT_i());
+    this->ui->radioButton_stala_calkowania_pod->setChecked(pid->getIntegrationType() == IntegType::insde);
+    this->ui->radioButton_stala_calkowania_przed->setChecked(pid->getIntegrationType() == IntegType::outside);
 
-    this->ui->horizontalSlider_pid_Td->setValue(pid.getT_d() * 100);
-    this->ui->doubleSpinBox_pid_Td->setValue(pid.getT_d());
+    const Generator* gen;
+    switch(typ_generatora)
+    {
+    case State::TypGeneratora::Sinusoidalny:
+        gen = gen_sinusoida;
+        this->ui->comboBox_generator_typ->setCurrentIndex(0);
+        break;
+    case State::TypGeneratora::Prostokatny:
+        gen = gen_prostokatny;
+        this->ui->comboBox_generator_typ->setCurrentIndex(1);
+        break;
+    case State::TypGeneratora::Reczny:
+        gen = gen_prostokatny; //TODO
+        this->ui->comboBox_generator_typ->setCurrentIndex(2);
+        break;
+    }
+    this->ui->doubleSpinBox_generator_amplituda->setValue(gen->getAmplitude());
+    this->ui->spinBox_generator_okres->setValue(gen->getSamplesPerCycle() * State().getSimmulationIntervalMS());
+    this->ui->spinBox_generator_wypelnienie->setValue(gen_prostokatny->getDutyCycle() * 100.0);
 
-    this->ui->radioButton_stala_calkowania_pod->setChecked(pid.getIntegrationType() == IntegType::insde);
-    this->ui->radioButton_stala_calkowania_przed->setChecked(pid.getIntegrationType() == IntegType::outside);
+    this->ui->spinBox_symulacja_interwal->setValue(State().getSimmulationIntervalMS());
+}
+
+void MainWindow::przelaczOknoDebugowania()
+{
+    if(debug_dialog->isHidden())
+        debug_dialog->show();
+    else
+        debug_dialog->hide();
 }

@@ -18,7 +18,7 @@ void GeneratorProstokatny::setDutyCycle(double duty_cycle)
         throw std::invalid_argument("duty_cycle must be between 0.0 and 1.0");
     this->duty_cycle = duty_cycle;
 }
-double GeneratorProstokatny::getDutyCycle()
+double GeneratorProstokatny::getDutyCycle() const
 {
     return this->duty_cycle;
 }

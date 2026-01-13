@@ -27,7 +27,7 @@ std::vector<double> QSaveState::qJsonArrayToVector(const QJsonArray& jsonArray)
     return result;
 }
 
-void QSaveState::saveToFile(std::string& path, UAR* uar, bool* simmulation_running, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin)
+void QSaveState::saveToFile(std::string& path, UAR* uar, bool simmulation_running, State::TypGeneratora typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin)
 {
     QJsonObject jsonObject;
 
@@ -36,8 +36,8 @@ void QSaveState::saveToFile(std::string& path, UAR* uar, bool* simmulation_runni
     QJsonObject jsonGenSin;
     QJsonObject jsonGenPros;
 
-    jsonObject["simmulation_running"] = *simmulation_running;
-    jsonObject["wybrany_typ_generatora"] = (int)*typ;
+    jsonObject["simmulation_running"] = simmulation_running;
+    jsonObject["wybrany_typ_generatora"] = (int)typ;
     jsonAXR["k"] = uar->getARX().getK();
     jsonAXR["standard_deviation"] = uar->getARX().getStandardDeviation();
     jsonAXR["input_limit_low"] = uar->getARX().getInputLimits().first;

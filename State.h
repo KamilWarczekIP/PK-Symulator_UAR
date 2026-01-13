@@ -57,7 +57,7 @@ public:
     void saveToFile(std::string path);
     void readFromFile(std::string path);
 
-    const std::tuple<const ARX&, const RegulatorPID&, const GeneratorSinusoida&, const GeneratorProstokatny&> getAppState();
+    const std::tuple<const ARX*, const RegulatorPID*, const TypGeneratora,  const GeneratorSinusoida*, const GeneratorProstokatny*> getAppState();
 
 
 public slots:
@@ -67,7 +67,7 @@ private:
     UAR uar;
     GeneratorSinusoida gen_sin;
     GeneratorProstokatny gen_pros;
-    TypGeneratora choosen_type;
+    Generator* choosen_generator;
     bool simmulation_running;
     QTimer *simmulation_timer;
     std::function<void(TickData)> tick_callback;
@@ -82,7 +82,7 @@ private:
 class SaveStateInterface
 {
 public:
-    virtual void saveToFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
+    virtual void saveToFile(std::string& path, UAR* uar, bool simmulation, State::TypGeneratora typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
     virtual void readFromFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
 };
 

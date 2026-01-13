@@ -32,15 +32,15 @@ void Generator::setBias(double bias)
 {
     this->bias = bias;
 }
-double Generator::getAmplitude()
+double Generator::getAmplitude() const
 {
     return this->amplitude;
 }
-uint16_t Generator::getSamplesPerCycle()
+uint16_t Generator::getSamplesPerCycle() const
 {
     return this->samples_per_cycle;
 }
-double Generator::getBias()
+double Generator::getBias() const
 {
     return this->bias;
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>50</y>
+      <w>530</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>ARX
+--
+- a: std::vector&lt;double&gt;
+- b: std::vector&lt;double&gt;
+- k: uint16_t
+- standard_deviation: double
+- y_i: std::deque&lt;double&gt;
+- u_i: std::deque&lt;double&gt;
+- limits_active: bool
+- output_limits: std::pair&lt;double, double&gt;
+- input_limits: std::pair&lt;double, double&gt;
++ ARX(std::vector&lt;double&gt; &amp;&amp;a, std::vector&lt;double&gt; &amp;&amp;b, uint16_t k = 1, double standard_deviation = 0.0)
++ tick(double u): double
++ setK(uint16_t k)
++ getK(): double
+    const std::vector&lt;double&gt; getA() const;
+    const std::vector&lt;double&gt; getB() const;
+    void setAB(std::vector&lt;double&gt; a, std::vector&lt;double&gt; b);
+    void reset();
+    void disableLimits();
+    void enableLimits();
+    bool getLimitsActive() const;
+    void setInputLimits(double low, double high);
+    void setOutputLimits(double low, double high);
+    const std::pair&lt;double, double&gt;&amp; getInputLimits() const;
+    const std::pair&lt;double, double&gt;&amp; getOutputLimits() const;
+    void setStandardDeviation(double standard_deviation);
+    double getStandardDeviation() const;
+
+--
+- applyLimits(std::pair&lt;double, double&gt; &amp;limits, double value): double 
+- getGaussianDistribValue(): double</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
