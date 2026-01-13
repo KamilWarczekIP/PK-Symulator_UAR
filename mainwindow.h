@@ -18,6 +18,8 @@ public:
     ~MainWindow();
 public slots:
     void addToPlots(TickData tick_data);
+    void zapiszDoPliku();
+    void wczytajZPliku();
 private slots:
     void on_pushButton_symulacja_star_stop_released();
     void on_spinBox_symulacja_interwal_valueChanged(int arg1);
@@ -62,6 +64,8 @@ private slots:
     void on_pushButton_reset_pam_roz_clicked();
 
 private:
+    void updateUiFromState();
+
     uint32_t samples_count;
 
     Ui::MainWindow *ui;

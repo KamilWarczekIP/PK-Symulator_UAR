@@ -1,10 +1,5 @@
 #include "RegulatorPID.h"
 
-/**
- * @brief PID::tick metoda symulacji pojedynczego kroku regulatora
- * @param e_i - dane wejściowe w danym momencie czasu
- * @return wartość przekazywana do obiektu ARX
- */
 double RegulatorPID::tick(double e_i)
 {
     double u_i_P = k * e_i;
@@ -67,19 +62,19 @@ void RegulatorPID::setIntegrationType(IntegType integ_type)
             sum_of_e_inside_integ = sum_of_e_outside_integ / T_i;
     }
 }
-IntegType RegulatorPID::getIntegrationType()
+IntegType RegulatorPID::getIntegrationType() const
 {
     return integration_type;
 }
-double RegulatorPID::getK()
+double RegulatorPID::getK() const
 {
     return k;
 }
-double RegulatorPID::getT_i()
+double RegulatorPID::getT_i() const
 {
     return T_i;
 }
-double RegulatorPID::getT_d()
+double RegulatorPID::getT_d() const
 {
     return T_d;
 }

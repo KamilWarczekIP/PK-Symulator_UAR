@@ -29,20 +29,20 @@ public:
         double standard_deviation = 0.0);
     double tick(double u);
     void setK(uint16_t k);
-    double getK();
-    const std::vector<double> getA();
-    const std::vector<double> getB();
+    double getK() const;
+    const std::vector<double> getA() const;
+    const std::vector<double> getB() const;
     void setAB(std::vector<double> a, std::vector<double> b);
     void reset();
     void disableLimits();
     void enableLimits();
-    bool getLimitsActive();
+    bool getLimitsActive() const;
     void setInputLimits(double low, double high);
     void setOutputLimits(double low, double high);
-    const std::pair<double, double>& getInputLimits();
-    const std::pair<double, double>& getOutputLimits();
+    const std::pair<double, double>& getInputLimits() const;
+    const std::pair<double, double>& getOutputLimits() const;
     void setStandardDeviation(double standard_deviation);
-    double getStandardDeviation();
+    double getStandardDeviation() const;
 };
 
 #endif // ARX_H

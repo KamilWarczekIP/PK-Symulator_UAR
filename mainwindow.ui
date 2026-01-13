@@ -146,7 +146,7 @@ wartości we/wy</string>
          <property name="title">
           <string>Regulator PID</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="4,1">
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
@@ -177,16 +177,16 @@ wartości we/wy</string>
               <item>
                <widget class="QDoubleSpinBox" name="doubleSpinBox_pid_k">
                 <property name="minimum">
-                 <double>-10.000000000000000</double>
+                 <double>-100.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <double>10.000000000000000</double>
+                 <double>100.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.010000000000000</double>
                 </property>
                 <property name="stepType">
-                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+                 <enum>QAbstractSpinBox::DefaultStepType</enum>
                 </property>
                </widget>
               </item>
@@ -220,16 +220,16 @@ wartości we/wy</string>
                  <string/>
                 </property>
                 <property name="minimum">
-                 <double>-10.000000000000000</double>
+                 <double>-100.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <double>10.000000000000000</double>
+                 <double>100.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.010000000000000</double>
                 </property>
                 <property name="stepType">
-                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+                 <enum>QAbstractSpinBox::DefaultStepType</enum>
                 </property>
                </widget>
               </item>
@@ -263,16 +263,16 @@ wartości we/wy</string>
                  <string/>
                 </property>
                 <property name="minimum">
-                 <double>-10.000000000000000</double>
+                 <double>-100.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <double>10.000000000000000</double>
+                 <double>100.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.010000000000000</double>
                 </property>
                 <property name="stepType">
-                 <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+                 <enum>QAbstractSpinBox::DefaultStepType</enum>
                 </property>
                </widget>
               </item>
@@ -301,14 +301,16 @@ wartości we/wy</string>
             <item>
              <widget class="QRadioButton" name="radioButton_stala_calkowania_pod">
               <property name="text">
-               <string>Stała całkowania pod całką</string>
+               <string>Stała całkowania
+pod całką</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="radioButton_stala_calkowania_przed">
               <property name="text">
-               <string>Stała całkowania przed całką</string>
+               <string>Stała całkowania
+przed całką</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -746,6 +748,7 @@ RÓŻNICZKUJĄCEJ</string>
     <addaction name="actionzapisz_ustawienia"/>
     <addaction name="actionwczytaj_ustawienia"/>
     <addaction name="actioneksport_wykres_w"/>
+    <addaction name="actionokno_debugowania"/>
    </widget>
    <widget class="QMenu" name="menuzachowanie">
     <property name="title">
@@ -774,35 +777,43 @@ RÓŻNICZKUJĄCEJ</string>
    <property name="text">
     <string>zapisz ustawienia</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionwczytaj_ustawienia">
    <property name="text">
     <string>wczytaj ustawienia</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actioneksport_wykres_w">
    <property name="text">
     <string>eksport wykresów</string>
    </property>
-  </action>
-  <action name="actionzatwierdzaj_zmiany_natychmiast">
-   <property name="text">
-    <string>zatwierdzaj zmiany natychmiast</string>
-   </property>
-  </action>
-  <action name="actionwy_wietlaj_wykresy_w_tej_samej_skali">
-   <property name="text">
-    <string>wyświetlaj wykresy w tej samej skali</string>
-   </property>
-  </action>
-  <action name="actionpraca_wielow_tkowa">
-   <property name="text">
-    <string>praca wielowątkowa</string>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
   <action name="actionMINECRAAAAAAFT">
    <property name="text">
     <string>MINECRAAAAAAFT</string>
+   </property>
+  </action>
+  <action name="actionokno_debugowania">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>okno debugowania</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::ApplicationSpecificRole</enum>
    </property>
   </action>
  </widget>

@@ -17,7 +17,6 @@ public:
 
 
     static State &getInstance();
-    static State &get();
     void setSimmulationRunning(bool simmulation_running);
     bool getSimmulationRunning();
     void setSimmulationIntervalMS(uint32_t interval);
@@ -58,6 +57,8 @@ public:
     void saveToFile(std::string path);
     void readFromFile(std::string path);
 
+    const std::tuple<const ARX&, const RegulatorPID&, const GeneratorSinusoida&, const GeneratorProstokatny&> getAppState();
+
 
 public slots:
     void tick();
@@ -74,7 +75,7 @@ private:
 
     State(const State &) = delete;
     State &operator=(const State &) = delete;
-    State(UAR &&);
+    State();
     ~State();
 };
 
@@ -84,4 +85,12 @@ public:
     virtual void saveToFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
     virtual void readFromFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
 };
+
+
+class StateGlobalAccess
+{
+public:
+    State& operator()();
+};
+extern StateGlobalAccess State;
 #endif // STATE_H

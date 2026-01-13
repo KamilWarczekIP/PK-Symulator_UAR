@@ -160,10 +160,13 @@ MainWindow::MainWindow(QWidget *parent)
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 4);
 
-    State::getInstance().setOutputCallback(std::bind(&MainWindow::addToPlots, this, std::placeholders::_1));
+    State().setOutputCallback(std::bind(&MainWindow::addToPlots, this, std::placeholders::_1));
 
     debug_timer.start();
     debug_last_time = 0;
+
+    QObject::connect(ui->actionzapisz_ustawienia, &QAction::triggered, this, &MainWindow::zapiszDoPliku);
+    QObject::connect(ui->actionwczytaj_ustawienia, &QAction::triggered, this, &MainWindow::wczytajZPliku);
 
     on_spinBox_generator_okres_editingFinished();
 }
@@ -549,4 +552,33 @@ void MainWindow::on_doubleSpinBox_pid_Td_editingFinished()
 void MainWindow::on_horizontalSlider_pid_Td_sliderReleased()
 {
     on_doubleSpinBox_pid_Td_editingFinished();
+}
+
+void MainWindow::zapiszDoPliku()
+{
+    State().saveToFile(QFileDialog::getSaveFileName(this, tr("Zapisz konfigurację"), QDir::homePath(), tr("JSON (*.json)")).toStdString());
+}
+void MainWindow::wczytajZPliku()
+{
+    State().readFromFile(QFileDialog::getOpenFileName(this, tr("Wczytaj konfigurację"), QDir::homePath(), tr("JSON (*.json)")).toStdString());
+    updateUiFromState();
+}
+
+void MainWindow::updateUiFromState()
+{
+    auto [arx, pid, gran_sinusoida, gen_prostokatny] = State().getAppState();
+    this->ui->checkBoxOgraniczenia->setCheckState(arx.getLimitsActive() ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
+
+
+    this->ui->horizontalSlider_pid_k->setValue(pid.getK() * 100);
+    this->ui->doubleSpinBox_pid_k->setValue(pid.getK());
+
+    this->ui->horizontalSlider_pid_Ti->setValue(pid.getT_i() * 100);
+    this->ui->doubleSpinBox_pid_Ti->setValue(pid.getT_i());
+
+    this->ui->horizontalSlider_pid_Td->setValue(pid.getT_d() * 100);
+    this->ui->doubleSpinBox_pid_Td->setValue(pid.getT_d());
+
+    this->ui->radioButton_stala_calkowania_pod->setChecked(pid.getIntegrationType() == IntegType::insde);
+    this->ui->radioButton_stala_calkowania_przed->setChecked(pid.getIntegrationType() == IntegType::outside);
 }

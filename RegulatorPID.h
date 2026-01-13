@@ -73,25 +73,25 @@ void setIntegrationType(IntegType integ_type);
      *
      * @return IntegType
      */
-IntegType getIntegrationType();
+IntegType getIntegrationType() const;
     /**
      * @brief
      *
      * @return double
      */
-double getK();
+double getK() const;
     /**
      * @brief
      *
      * @return double
      */
-double getT_i();
+double getT_i() const;
     /**
      * @brief
      *
      * @return double
      */
-double getT_d();
+double getT_d() const;
     /**
      * @brief
      *

@@ -95,8 +95,8 @@ std::pair<bool, const char*> Test::TEST_State_czy_jest_signletonem()
     try
     {
 
-        State* adres_State1 = &State::getInstance();
-        State* adres_State2 = &State::getInstance();
+        class State* adres_State1 = &State::getInstance();
+        class State* adres_State2 = &State::getInstance();
 
         return std::make_pair(adres_State1 == adres_State2, __FUNCTION__);
     }

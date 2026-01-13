@@ -50,9 +50,9 @@ void QSaveState::saveToFile(std::string& path, UAR* uar, bool* simmulation_runni
     jsonObject["arx"] = jsonAXR;
 
     jsonPID["itegration_type"] = (int)uar->getRegulatorPID().getIntegrationType();
-    jsonPID["k"] = (int)uar->getRegulatorPID().getK();
-    jsonPID["T_i"] = (int)uar->getRegulatorPID().getT_i();
-    jsonPID["T_d"] = (int)uar->getRegulatorPID().getT_d();
+    jsonPID["k"] = uar->getRegulatorPID().getK();
+    jsonPID["T_i"] = uar->getRegulatorPID().getT_i();
+    jsonPID["T_d"] = uar->getRegulatorPID().getT_d();
     jsonObject["pid"] = jsonPID;
 
     jsonGenSin["amplitude"] = gen_sin->getAmplitude();
@@ -80,7 +80,6 @@ void QSaveState::saveToFile(std::string& path, UAR* uar, bool* simmulation_runni
 }
 void QSaveState::readFromFile(std::string& path, UAR* uar, bool* simmulation_running, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin)
 {
-    //TODO bezpieczenstwo odczytu
     QFile file(path.c_str());
     if (!file.open(QIODevice::ReadOnly))
     {
@@ -93,7 +92,7 @@ void QSaveState::readFromFile(std::string& path, UAR* uar, bool* simmulation_run
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
     if (jsonDoc.isNull() || !jsonDoc.isObject())
     {
-        qWarning() << "Invalid JSON format in file U stupid" ;
+        qWarning() << "Invalid JSON format in file. U stupid" ;
         return;
     }
     QJsonObject jsonObject = jsonDoc.object();

@@ -82,15 +82,15 @@ void ARX::setK(uint16_t k)
         }
     }
 }
-double ARX::getK()
+double ARX::getK() const
 {
     return k;
 }
-const std::vector<double> ARX::getA()
+const std::vector<double> ARX::getA() const
 {
     return a;
 }
-const std::vector<double> ARX::getB()
+const std::vector<double> ARX::getB() const
 {
     return b;
 }
@@ -128,7 +128,7 @@ void ARX::enableLimits()
 {
     this->limits_active = true;
 }
-bool ARX::getLimitsActive()
+bool ARX::getLimitsActive() const
 {
     return this->limits_active;
 }
@@ -145,11 +145,11 @@ void ARX::setOutputLimits(double low, double high)
     //Dolne ograniczenie nie może być wyższe niż górne
     this->output_limits = std::make_pair(low, high);
 }
-const std::pair<double, double>& ARX::getInputLimits()
+const std::pair<double, double>& ARX::getInputLimits() const
 {
     return this->input_limits;
 }
-const std::pair<double, double>& ARX::getOutputLimits()
+const std::pair<double, double>& ARX::getOutputLimits() const
 {
     return this->output_limits;
 }
@@ -157,7 +157,7 @@ void ARX::setStandardDeviation(double standard_deviation)
 {
     this->standard_deviation = standard_deviation;
 }
-double ARX::getStandardDeviation()
+double ARX::getStandardDeviation() const
 {
     return standard_deviation;
 }

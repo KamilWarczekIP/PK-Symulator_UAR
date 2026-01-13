@@ -3,8 +3,8 @@
 #include <cassert>
 
 
-State::State(UAR &&uar)
-    : uar(uar)
+State::State()
+    : uar(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)))
     , simmulation_running(false)
     , choosen_type(TypGeneratora::Sinusoidalny)
 {
@@ -13,6 +13,11 @@ State::State(UAR &&uar)
     simmulation_timer->setSingleShot(false);
     simmulation_timer->setInterval(200);
     simmulation_timer->connect(simmulation_timer, &QTimer::timeout, this, &State::tick);
+    if(simmulation_running)
+        simmulation_timer->start();
+    else
+        simmulation_timer->stop();
+
 }
 State::~State()
 {
@@ -20,9 +25,9 @@ State::~State()
     delete save;
 }
 
-State &State::getInstance()
+class State &State::getInstance()
 {
-    static State instance(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)));
+    static State instance = State();
     return instance;
 }
 
@@ -178,13 +183,13 @@ void State::setSaveStateObject(SaveStateInterface* object)
 void State::saveToFile(std::string path)
 {
     if(save == nullptr)
-        return;
+        throw std::runtime_error("Brak obiektu do zapisywania w State");
     this->save->saveToFile(path, &uar, &simmulation_running, &choosen_type, &gen_pros, &gen_sin);
 }
 void State::readFromFile(std::string path)
 {
     if(save == nullptr)
-        return;
+        throw std::runtime_error("Brak obiektu do zapisywania w State");
     this->save->readFromFile(path, &uar, &simmulation_running, &choosen_type, &gen_pros, &gen_sin);
 }
 
@@ -203,7 +208,15 @@ void State::tick()
     this->tick_callback(uar.tick_more_info(curr_gen->tick()));
 }
 
-State& State::get()
+const std::tuple<const ARX&, const RegulatorPID&, const GeneratorSinusoida&, const GeneratorProstokatny&> State::getAppState()
+{
+    return std::make_tuple(this->uar.getARX(), this->uar.getRegulatorPID(), this->gen_sin, this->gen_pros);
+}
+
+class State& StateGlobalAccess::operator()()
 {
     return State::getInstance();
 }
+
+StateGlobalAccess State;
+
