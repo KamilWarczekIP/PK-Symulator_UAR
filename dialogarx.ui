@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1138</width>
-    <height>480</height>
+    <width>1300</width>
+    <height>525</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Parametry ARX</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="enabled">
@@ -19,8 +19,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>430</y>
+     <x>180</x>
+     <y>480</y>
      <width>1101</width>
      <height>32</height>
     </rect>
@@ -84,14 +84,33 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="slider">
+       <widget class="QSlider" name="SliderA1">
+        <property name="minimum">
+         <number>-10</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="singleStep">
+         <number>0</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+       <widget class="QDoubleSpinBox" name="SpinA1">
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer">
@@ -114,14 +133,30 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider_2">
+       <widget class="QSlider" name="SliderB1">
+        <property name="minimum">
+         <number>-5</number>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+       <widget class="QDoubleSpinBox" name="SpinB1">
+        <property name="minimum">
+         <double>-5.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>5.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -143,14 +178,30 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider_4">
+       <widget class="QSlider" name="SliderA2">
+        <property name="minimum">
+         <number>-10</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_3"/>
+       <widget class="QDoubleSpinBox" name="SpinA2">
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_2">
@@ -173,14 +224,30 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider_5">
+       <widget class="QSlider" name="SliderB2">
+        <property name="minimum">
+         <number>-5</number>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_4"/>
+       <widget class="QDoubleSpinBox" name="SpinB2">
+        <property name="minimum">
+         <double>-5.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>5.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -202,14 +269,30 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider_7">
+       <widget class="QSlider" name="SliderA3">
+        <property name="minimum">
+         <number>-10</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_9"/>
+       <widget class="QDoubleSpinBox" name="SpinA3">
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_3">
@@ -232,14 +315,30 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider_8">
+       <widget class="QSlider" name="SliderB3">
+        <property name="minimum">
+         <number>-5</number>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_10"/>
+       <widget class="QDoubleSpinBox" name="SpinB3">
+        <property name="minimum">
+         <double>-5.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>5.000000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -290,7 +389,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>370</y>
+     <y>420</y>
      <width>211</width>
      <height>20</height>
     </rect>
@@ -303,10 +402,13 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>400</y>
-     <width>261</width>
+     <y>440</y>
+     <width>451</width>
      <height>18</height>
     </rect>
+   </property>
+   <property name="maximum">
+    <number>100</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -315,14 +417,17 @@
   <widget class="QSpinBox" name="opoznienie_wartosc">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>390</y>
-     <width>81</width>
-     <height>31</height>
+     <x>490</x>
+     <y>435</y>
+     <width>90</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="minimum">
     <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
    </property>
    <property name="value">
     <number>1</number>
@@ -331,10 +436,10 @@
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>890</x>
-     <y>40</y>
-     <width>171</width>
-     <height>151</height>
+     <x>1030</x>
+     <y>20</y>
+     <width>250</width>
+     <height>150</height>
     </rect>
    </property>
    <property name="title">
@@ -345,9 +450,12 @@
      <rect>
       <x>90</x>
       <y>40</y>
-      <width>71</width>
-      <height>29</height>
+      <width>90</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <double>10.000000000000000</double>
     </property>
     <property name="value">
      <double>10.000000000000000</double>
@@ -358,12 +466,15 @@
      <rect>
       <x>90</x>
       <y>110</y>
-      <width>71</width>
-      <height>29</height>
+      <width>90</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="minimum">
-     <double>-99.000000000000000</double>
+     <double>-10.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>0.000000000000000</double>
     </property>
     <property name="value">
      <double>-10.000000000000000</double>
@@ -399,10 +510,10 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>710</x>
-     <y>40</y>
-     <width>171</width>
-     <height>151</height>
+     <x>650</x>
+     <y>20</y>
+     <width>250</width>
+     <height>150</height>
     </rect>
    </property>
    <property name="title">
@@ -413,9 +524,12 @@
      <rect>
       <x>90</x>
       <y>40</y>
-      <width>71</width>
-      <height>29</height>
+      <width>90</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <double>10.000000000000000</double>
     </property>
     <property name="value">
      <double>10.000000000000000</double>
@@ -426,12 +540,15 @@
      <rect>
       <x>90</x>
       <y>110</y>
-      <width>71</width>
-      <height>29</height>
+      <width>90</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="minimum">
-     <double>-90.000000000000000</double>
+     <double>-10.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>0.000000000000000</double>
     </property>
     <property name="value">
      <double>-10.000000000000000</double>
@@ -467,10 +584,10 @@
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>210</y>
-     <width>431</width>
-     <height>191</height>
+     <x>650</x>
+     <y>180</y>
+     <width>631</width>
+     <height>291</height>
     </rect>
    </property>
    <property name="title">
@@ -479,21 +596,27 @@
    <widget class="QSpinBox" name="zaklocenie_wartosc">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>150</y>
+      <x>530</x>
+      <y>250</y>
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>100</number>
     </property>
    </widget>
    <widget class="QSlider" name="zaklocenie_suwak">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
-      <width>321</width>
-      <height>18</height>
+      <y>260</y>
+      <width>501</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>100</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -503,7 +626,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>140</y>
+      <y>240</y>
       <width>211</width>
       <height>20</height>
      </rect>
@@ -517,8 +640,8 @@
      <rect>
       <x>9</x>
       <y>19</y>
-      <width>421</width>
-      <height>121</height>
+      <width>611</width>
+      <height>211</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="chart_zaklocenia_view"/>
@@ -527,15 +650,15 @@
   <widget class="QLabel" name="label_13">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>10</y>
+     <x>20</x>
+     <y>19</y>
      <width>141</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">

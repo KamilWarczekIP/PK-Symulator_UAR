@@ -1,11 +1,12 @@
 #ifndef DIALOGARX_H
 #define DIALOGARX_H
 
+#include "State.h"
 #include <QDialog>
 #include <QtCharts>
 
 namespace Ui {
-class DialogArx;
+    class DialogArx;
 }
 
 class DialogArx : public QDialog
@@ -17,21 +18,28 @@ class DialogArx : public QDialog
         ~DialogArx();
 
     private slots:
-        //void onPreviewToggled(bool checked);
+        void zaczytaj_dane();
         void on_zaklocenie_suwak_valueChanged(int value);
         void on_zaklocenie_wartosc_valueChanged(int arg1);
+        void on_opoznienie_suwak_valueChanged(int value);
+        void on_opoznienie_wartosc_valueChanged(int arg1);
+        void on_dodaj_wspolczynnik_clicked();
+        void on_usun_wspolczynnik_clicked();
+        void on_buttonBox_accepted();
 
     private:
         void ustaw_wykres();
         void aktualizuj_widok(double odchylenie);
 
         QChart *chart_zaklocenia = nullptr;
-        QLineSeries *seria_zaklocen = nullptr;
-        double odchylenie = 0.0;
-        const int LICZBA_PROBEK = 200;
-        QValueAxis *axisX = nullptr;
-        QValueAxis *axisY = nullptr;
+        QBarSeries *barSeries = nullptr;
 
+        double odchylenie = 0.0;
+        static constexpr int LICZBA_PROBEK = 5000;
+        static constexpr double ILOSC_BINOW = 20;
+
+        QBarCategoryAxis *axisX = nullptr;
+        QValueAxis *axisY = nullptr;
 
         Ui::DialogArx *ui;
 };
