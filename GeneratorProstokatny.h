@@ -11,7 +11,7 @@ public:
     GeneratorProstokatny();
     double tick() override;
     void setDutyCycle(double duty_cycle);
-    double getDutyCycle();
+    double getDutyCycle() const;
 };
 
 #endif // GENERATORPROSTOKATNY_H

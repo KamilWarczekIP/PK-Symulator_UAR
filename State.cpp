@@ -6,8 +6,10 @@
 State::State()
     : uar(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)))
     , simmulation_running(false)
-    , choosen_type(TypGeneratora::Sinusoidalny)
+    , gen_pros{}
+    , gen_sin{}
 {
+    choosen_generator = &gen_sin;
     save = new QSaveState();
     simmulation_timer = new QTimer();
     simmulation_timer->setSingleShot(false);
@@ -65,11 +67,26 @@ void State::resetSimmulation()
 
 void State::setGenerator(TypGeneratora type)
 {
-    choosen_type = type;
+    switch(type)
+    {
+    case TypGeneratora::Prostokatny:
+        choosen_generator = &gen_pros;
+        break;
+    case TypGeneratora::Sinusoidalny:
+        choosen_generator = &gen_sin;
+        break;
+    case TypGeneratora::Reczny:
+        choosen_generator = &gen_pros; //TODO
+        break;
+    }
 }
 State::TypGeneratora State::getGenerator()
 {
-    return this->choosen_type;
+    if(choosen_generator == &gen_pros)
+        return TypGeneratora::Prostokatny;
+    if(choosen_generator == &gen_sin)
+        return TypGeneratora::Sinusoidalny;
+    return TypGeneratora::Reczny;
 }
 void State::setGeneneratorAmplitude(const double& amplitude)
 {
@@ -184,33 +201,25 @@ void State::saveToFile(std::string path)
 {
     if(save == nullptr)
         throw std::runtime_error("Brak obiektu do zapisywania w State");
-    this->save->saveToFile(path, &uar, &simmulation_running, &choosen_type, &gen_pros, &gen_sin);
+    this->save->saveToFile(path, &uar, simmulation_running, getGenerator(), &gen_pros, &gen_sin);
 }
 void State::readFromFile(std::string path)
 {
     if(save == nullptr)
         throw std::runtime_error("Brak obiektu do zapisywania w State");
-    this->save->readFromFile(path, &uar, &simmulation_running, &choosen_type, &gen_pros, &gen_sin);
+    TypGeneratora typ_generatora;
+    this->save->readFromFile(path, &uar, &simmulation_running, &typ_generatora, &gen_pros, &gen_sin);
+    setGenerator(typ_generatora);
 }
 
 void State::tick()
 {
-    Generator* curr_gen;
-    switch (this->choosen_type) {
-    case TypGeneratora::Prostokatny:
-        curr_gen = &this->gen_pros;
-        break;
-    case TypGeneratora::Sinusoidalny:
-    default:
-        curr_gen = &this->gen_sin;
-        break;
-    }
-    this->tick_callback(uar.tick_more_info(curr_gen->tick()));
+    this->tick_callback(uar.tick_more_info(choosen_generator->tick()));
 }
 
-const std::tuple<const ARX&, const RegulatorPID&, const GeneratorSinusoida&, const GeneratorProstokatny&> State::getAppState()
+const std::tuple<const ARX*, const RegulatorPID*, const State::TypGeneratora, const GeneratorSinusoida*, const GeneratorProstokatny*> State::getAppState()
 {
-    return std::make_tuple(this->uar.getARX(), this->uar.getRegulatorPID(), this->gen_sin, this->gen_pros);
+    return std::make_tuple(&uar.getARX(), &uar.getRegulatorPID(), getGenerator(), &gen_sin, &gen_pros);
 }
 
 class State& StateGlobalAccess::operator()()

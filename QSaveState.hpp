@@ -8,8 +8,8 @@ class QSaveState : public SaveStateInterface
     std::vector<double> qJsonArrayToVector(const QJsonArray& jsonArray);
 public:
     QSaveState();
-    void saveToFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) override;
-    void readFromFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) override;
+    void saveToFile(std::string& path, UAR* uar, bool simmulation_running, State::TypGeneratora typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) override;
+    void readFromFile(std::string& path, UAR* uar, bool* simmulation_running, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) override;
 };
 
 #endif // QSAVESTATE_HPP
