@@ -1,6 +1,7 @@
 #include "State.h"
 #include "QSaveState.hpp"
 #include <cassert>
+#include <stdexcept>
 
 
 State::State()
