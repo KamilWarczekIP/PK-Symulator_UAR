@@ -31,15 +31,13 @@ class DialogArx : public QDialog
         void ustaw_wykres();
         void aktualizuj_widok(double odchylenie);
 
-        QChart *chart_zaklocenia = nullptr;
-        QBarSeries *barSeries = nullptr;
+        QChart *chart_zaklocenia;
 
-        double odchylenie = 0.0;
-        static constexpr int LICZBA_PROBEK = 5000;
-        static constexpr double ILOSC_BINOW = 20;
+        QLineSeries *lineSeries;
+        QValueAxis  *axisX_val;
+        QValueAxis  *axisY;
 
-        QBarCategoryAxis *axisX = nullptr;
-        QValueAxis *axisY = nullptr;
+        const int LICZBA_PUNKTOW = 300;
 
         Ui::DialogArx *ui;
 };

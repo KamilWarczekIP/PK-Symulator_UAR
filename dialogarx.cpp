@@ -1,7 +1,7 @@
 #include "dialogarx.h"
 #include "ui_dialogarx.h"
-#include <random>
 #include <QtCharts/QBarCategoryAxis>
+#include <QLineSeries>
 
 
 DialogArx::DialogArx(QWidget *parent)
@@ -30,10 +30,10 @@ DialogArx::DialogArx(QWidget *parent)
     connect(ui->SliderB3, &QSlider::valueChanged, ui->SpinB3, &QDoubleSpinBox::setValue);
     connect(ui->SpinB3, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderB3, &QSlider::setValue);
 
-    barSeries = new QBarSeries(chart_zaklocenia);
-    axisX = new QBarCategoryAxis(chart_zaklocenia);
-    axisY = new QValueAxis(chart_zaklocenia);
+    lineSeries = new QLineSeries();
+    lineSeries->setName("Rozkład normalny");
 
+    chart_zaklocenia->addSeries(lineSeries);
     ustaw_wykres();
 
     zaczytaj_dane();
@@ -98,105 +98,72 @@ void DialogArx::on_zaklocenie_wartosc_valueChanged(int arg1)
 void DialogArx::ustaw_wykres()
 {
     chart_zaklocenia->removeAllSeries();
+    chart_zaklocenia->removeAxis(axisX_val);
+    chart_zaklocenia->removeAxis(axisY);
 
-    barSeries = new QBarSeries(chart_zaklocenia);
-    chart_zaklocenia->addSeries(barSeries);
+    lineSeries = new QLineSeries(chart_zaklocenia);
+    lineSeries->setName("Gauss");
+    chart_zaklocenia->addSeries(lineSeries);
+
+    axisX_val = new QValueAxis(chart_zaklocenia);
+    chart_zaklocenia->addAxis(axisX_val, Qt::AlignBottom);
+    lineSeries->attachAxis(axisX_val);
+
+    axisY = new QValueAxis(chart_zaklocenia);
+    axisY->setRange(0.0, 1.0);
+    chart_zaklocenia->addAxis(axisY, Qt::AlignLeft);
+
+    lineSeries->attachAxis(axisY);
 
     chart_zaklocenia->legend()->hide();
 
-    // --- OŚ X: KATEGORIE ---
-    axisX = new QBarCategoryAxis(chart_zaklocenia);
-    chart_zaklocenia->addAxis(axisX, Qt::AlignBottom);
-    barSeries->attachAxis(axisX);
-    QFont font;
-    font.setPointSize(6);
-    axisX->setLabelsFont(font);
-
-    // --- OŚ Y: WARTOŚCI ---
-    axisY = new QValueAxis(chart_zaklocenia);
-    axisY->setRange(0, 1);
-    chart_zaklocenia->addAxis(axisY, Qt::AlignLeft);
-    barSeries->attachAxis(axisY);
-    axisY->setLabelsFont(font);
-
     auto *chartView = new QChartView(chart_zaklocenia, this);
     chartView->setRenderHint(QPainter::Antialiasing);
-
-    chart_zaklocenia->setMargins(QMargins(0,0,0,0));
-    chart_zaklocenia->layout()->setContentsMargins(0,0,0,0);
-    chartView->setContentsMargins(0,0,0,0);
-
     ui->chart_zaklocenia_view->addWidget(chartView);
 }
 
-//------------ GENERATOR SZUMU ------------
-static double generuj_zaklocenia(double sigma)
+
+static double gauss(double x, double sigma)
 {
-    static std::mt19937 gen(std::random_device{}());
-    std::normal_distribution<double> dist(0.0, sigma);
-    return dist(gen);
+    if (sigma <= 0.0)
+        return 0.0;
+
+    const double coef = 1.0 / (sigma * std::sqrt(2.0 * M_PI));
+    return coef * std::exp(-(x * x) / (2.0 * sigma * sigma));
 }
+
 
 void DialogArx::aktualizuj_widok(double sigma)
 {
-    barSeries->clear();
-    axisX->clear();
+    lineSeries->clear();
 
-    auto *set = new QBarSet("Zakłócenia");
-
-    // ---------- PRZYPADEK sigma = 0 ----------
     if (sigma <= 0.0)
     {
-        QStringList kategorie;
-        for (int i = 0; i < ILOSC_BINOW; ++i)
-        {
-            *set << 0;
-            kategorie << "";
-        }
-
-        barSeries->append(set);
-        axisX->append(kategorie);
-        axisY->setRange(0, 1);
+        axisX_val->setRange(-1.0, 1.0);
+        axisY->setRange(0.0, 1.0);
         return;
     }
 
-    // ---------- NORMALNY PRZYPADEK ----------
-    const double minVal = -3.0 * sigma;
-    const double maxVal =  3.0 * sigma;
-    const double binWidth = (maxVal - minVal) / ILOSC_BINOW;
+    const double minX = -3.0 * sigma;
+    const double maxX =  3.0 * sigma;
 
-    QVector<int> histogram(ILOSC_BINOW, 0);
+    const double dx = (maxX - minX) / LICZBA_PUNKTOW;
 
-    // generowanie próbek
-    for (int i = 0; i < LICZBA_PROBEK; ++i)
+    double maxY = 0.0;
+
+    for (int i = 0; i <= LICZBA_PUNKTOW; ++i)
     {
-        double val = generuj_zaklocenia(sigma);
-        int bin = static_cast<int>((val - minVal) / binWidth);
+        double x = minX + i * dx;
+        double y = gauss(x, sigma);
 
-        if (bin >= 0 && bin < ILOSC_BINOW)
-            histogram[bin]++;
+        lineSeries->append(x, y);
+
+        if (y > maxY)
+            maxY = y;
     }
 
-    QStringList kategorie;
-    int maxY = 0;
-
-    for (int i = 0; i < ILOSC_BINOW; ++i)
-    {
-        *set << histogram[i];
-
-        double from = minVal + i * binWidth;
-        double to   = from + binWidth;
-
-        kategorie << QString::number(from, 'f', 1);
-
-        if (histogram[i] > maxY)
-            maxY = histogram[i];
-    }
-
-    barSeries->append(set);
-    axisX->append(kategorie);
-
-    axisY->setRange(0, maxY * 1.1);
+    axisX_val->setRange(minX, maxX);
+    axisY->setRange(0.0, maxY * 1.1);
 }
 
 void DialogArx::on_dodaj_wspolczynnik_clicked()
