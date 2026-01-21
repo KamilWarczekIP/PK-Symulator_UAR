@@ -174,7 +174,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     update_charts_timer = new QTimer(this);
-    update_charts_timer->setInterval(200);
+    update_charts_timer->setInterval(250);
     update_charts_timer->start();
     QObject::connect(update_charts_timer, &QTimer::timeout, this, &MainWindow::updateCharts);
 
@@ -227,13 +227,18 @@ void MainWindow::updateCharts()
         .at(0)
         ->setRange(min_skladowych_sterowania - range_width_skladowych_sterowania, max_skladowych_sterowania + range_width_skladowych_sterowania);
 
+    // qDebug() << "P: " << lista_sterowanie_P->max()
+    //     << "I: " << lista_sterowanie_I->max()
+    //     << "D: " << lista_sterowanie_D->max();
 }
 
 void MainWindow::addToPlots(TickData tick_data)
 {
+#ifdef DEBUGING
     int debug_current_time = debug_timer.elapsed();
     debug_dialog->write(QString::number(debug_current_time - debug_last_time));
     debug_last_time = debug_current_time;
+#endif
     const qint64 interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
     const qint64 liczba_probek = (double) ui->spinBox_symulacja_okno_obserwacji->value()
                            / ((double) interwal_symulacji / 1000.0);
@@ -250,9 +255,6 @@ void MainWindow::addToPlots(TickData tick_data)
 
     // Osie poziome - skalowanie
     constexpr const qreal LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ = 4.0;
-    //qreal range_start = seconds_of_simulation - (qreal) (liczba_probek * interwal_symulacji) / 1000.0;
-    //qreal range_end = seconds_of_simulation + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
-
 
     qreal range_start = uchyb->getList()->front().x();
     qreal range_end = uchyb->getList()->back().x() + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
@@ -268,11 +270,17 @@ void MainWindow::addToPlots(TickData tick_data)
         lista_wartosc_regulowana->deleteFirstValue();
         uchyb->deleteFirstValue();
         lista_sterowanie->deleteFirstValue();
+        lista_sterowanie_P->deleteFirstValue();
+        lista_sterowanie_I->deleteFirstValue();
+        lista_sterowanie_D->deleteFirstValue();
         if (uchyb->getList()->count() > liczba_probek) {
             lista_wartosc_zadana->deleteFirstValue();
             lista_wartosc_regulowana->deleteFirstValue();
             uchyb->deleteFirstValue();
             lista_sterowanie->deleteFirstValue();
+            lista_sterowanie_P->deleteFirstValue();
+            lista_sterowanie_I->deleteFirstValue();
+            lista_sterowanie_D->deleteFirstValue();
         }
     }
 }
