@@ -2,6 +2,7 @@
 #define DIALOGARX_H
 
 #include "State.h"
+#include "arxcoefficientitem.hpp"
 #include <QDialog>
 #include <QtCharts>
 
@@ -30,12 +31,18 @@ class DialogArx : public QDialog
     private:
         void ustaw_wykres();
         void aktualizuj_widok(double odchylenie);
+        static constexpr const int MAX_WSPOLCZYNNIKOW = 10;
+        static constexpr const int MIN_WSPOLCZYNNIKOW = 3;
+        void addAXRCoefficientItem(const double A, const double B);
 
         QChart *chart_zaklocenia;
 
         QLineSeries *lineSeries;
         QValueAxis  *axisX_val;
         QValueAxis  *axisY;
+        QWidget* arx_coefficients_widget;
+        QVBoxLayout* arx_coefficients_layout;
+        QVector<arxCoefficientItem*> arx_coefficients_items;
 
         const int LICZBA_PUNKTOW = 300;
 

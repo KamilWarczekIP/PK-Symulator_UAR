@@ -15,6 +15,5 @@ DialogDebug::~DialogDebug()
 
 void DialogDebug::write(QString message)
 {
-    this->ui->textEdit->append(message);
-    this->ui->textEdit->append(tr("=").repeated(50));
+    this->ui->textEdit->append("> " + message);
 }

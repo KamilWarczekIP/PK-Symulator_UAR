@@ -41,6 +41,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         .clang-uml
         QSaveState.hpp QSaveState.cpp
         dialogdebug.hpp dialogdebug.cpp dialogdebug.ui
+        arxcoefficientitem.hpp arxcoefficientitem.cpp arxcoefficientitem.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET nienazwane APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

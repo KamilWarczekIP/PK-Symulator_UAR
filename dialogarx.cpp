@@ -1,4 +1,5 @@
 #include "dialogarx.h"
+#include "arxcoefficientitem.hpp"
 #include "ui_dialogarx.h"
 #include <QtCharts/QBarCategoryAxis>
 #include <QLineSeries>
@@ -36,6 +37,12 @@ DialogArx::DialogArx(QWidget *parent)
     chart_zaklocenia->addSeries(lineSeries);
     ustaw_wykres();
 
+
+    arx_coefficients_widget = new QWidget();
+    arx_coefficients_layout = new QVBoxLayout(arx_coefficients_widget);
+    arx_coefficients_widget->setLayout(arx_coefficients_layout);
+    ui->scrollArea->setWidget(arx_coefficients_widget);
+
     zaczytaj_dane();
 }
 
@@ -51,16 +58,20 @@ void DialogArx::zaczytaj_dane()
     std::vector<double> a = State().getARXCoefficientsA();
     std::vector<double> b = State().getARXCoefficientsB();
 
-    a.resize(3, 0.0);
-    b.resize(3, 0.0);
+    for(int i = 0; i < a.size(); i++)
+    {
+        addAXRCoefficientItem(a[i], b[i]);
+    }
 
-    ui->SpinA1->setValue(a[0]);
-    ui->SpinA2->setValue(a[1]);
-    ui->SpinA3->setValue(a[2]);
+    while(arx_coefficients_items.size() < MIN_WSPOLCZYNNIKOW)
+    {
+        addAXRCoefficientItem(0.0, 0.0);
+        ui->usun_wspolczynnik->setEnabled(false);
+    }
 
-    ui->SpinB1->setValue(b[0]);
-    ui->SpinB2->setValue(b[1]);
-    ui->SpinB3->setValue(b[2]);
+    if(a.size() >= MAX_WSPOLCZYNNIKOW)
+        ui->dodaj_wspolczynnik->setEnabled(false);
+
 
     ui->opoznienie_wartosc->setValue(State().getARXTransportDelay());
 
@@ -166,29 +177,57 @@ void DialogArx::aktualizuj_widok(double sigma)
     axisY->setRange(0.0, maxY * 1.1);
 }
 
+void DialogArx::addAXRCoefficientItem(const double A, const double B)
+{
+    arxCoefficientItem* item = new arxCoefficientItem(arx_coefficients_items.size() + 1, A, B);
+    arx_coefficients_items.push_back(item);
+    arx_coefficients_layout->addWidget(item);
+    arx_coefficients_widget->adjustSize();
+}
+
 void DialogArx::on_dodaj_wspolczynnik_clicked()
 {
+
+    addAXRCoefficientItem(0.0, 0.0);
+
+    if(arx_coefficients_items.size() >= MAX_WSPOLCZYNNIKOW)
+    {
+        ui->dodaj_wspolczynnik->setEnabled(false);
+    }
+    if(arx_coefficients_items.size() > MIN_WSPOLCZYNNIKOW)
+        ui->usun_wspolczynnik->setEnabled(true);
+
     return;
 }
 
 
 void DialogArx::on_usun_wspolczynnik_clicked()
 {
+
+
+    arxCoefficientItem* item = arx_coefficients_items.back();
+    arx_coefficients_layout->removeWidget(item);
+    item->deleteLater();
+    arx_coefficients_items.pop_back();
+
+    if(arx_coefficients_items.size() < MAX_WSPOLCZYNNIKOW)
+        ui->dodaj_wspolczynnik->setEnabled(true);
+
+    if(arx_coefficients_items.size() <= MIN_WSPOLCZYNNIKOW)
+        ui->usun_wspolczynnik->setEnabled(false);
     return;
 }
 
 
 void DialogArx::on_buttonBox_accepted()
 {
-    std::vector<double> a(3), b(3);
+    std::vector<double> a(arx_coefficients_items.size()), b(arx_coefficients_items.size());
 
-    a[0] = ui->SpinA1->value();
-    a[1] = ui->SpinA2->value();
-    a[2] = ui->SpinA3->value();
-
-    b[0] = ui->SpinB1->value();
-    b[1] = ui->SpinB2->value();
-    b[2] = ui->SpinB3->value();
+    for(size_t index = 0; index < arx_coefficients_items.size(); index++)
+    {
+        a[index] = arx_coefficients_items[index]->getA();
+        b[index] = arx_coefficients_items[index]->getB();
+    }
 
     State().setARXCoefficients(a, b);
     State().setARXTransportDelay(ui->opoznienie_wartosc->value());

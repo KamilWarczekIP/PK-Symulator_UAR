@@ -46,13 +46,13 @@ MainWindow::MainWindow(QWidget *parent)
     {
         auto seria = new QLineSeries();
         seria->setName("Uchyb");
-        seria->setColor(QColor(185, 0, 80));
+        seria->setColor(QColor(235, 0, 80));
         chart_uchyb->addSeries(seria);
     }
     {
         auto seria = new QLineSeries();
         seria->setName("Wartość zadana");
-        seria->setColor(QColor(0, 180, 55));
+        seria->setColor(QColor(0, 200, 55));
         chart_wartosc_zadana_i_regulowana->addSeries(seria);
 
         seria = new QLineSeries();
@@ -63,17 +63,17 @@ MainWindow::MainWindow(QWidget *parent)
     {
         auto seria = new QLineSeries();
         seria->setName("Część proporcjonalna");
-        seria->setColor(QColor(10, 200, 200));
+        seria->setColor(QColor(100, 200, 50));
         chart_skladowe_sterowania->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Część całkująca");
-        seria->setColor(QColor(200, 250, 0));
+        seria->setColor(QColor(220, 220, 10));
         chart_skladowe_sterowania->addSeries(seria);
 
         seria = new QLineSeries();
         seria->setName("Część różniczkująca");
-        seria->setColor(QColor(18, 30, 80));
+        seria->setColor(QColor(20, 10, 20));
         chart_skladowe_sterowania->addSeries(seria);
 
     }
@@ -94,10 +94,10 @@ MainWindow::MainWindow(QWidget *parent)
     chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setRange(0.0, AXES_X_WIDTH);
     chart_wartosc_zadana_i_regulowana->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical).at(0)->setRange(-AXES_Y_HALFWIDTH, AXES_Y_HALFWIDTH);
+    chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setTitleText("Czas [s]");
 
     chart_skladowe_sterowania->addAxis(new QValueAxis(), Qt::AlignBottom);
     chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setRange(0.0, AXES_X_WIDTH);
-    chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setTitleText("Czas [s]");
     chart_skladowe_sterowania->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_skladowe_sterowania->axes(Qt::Vertical).at(0)->setRange(-AXES_Y_HALFWIDTH, AXES_Y_HALFWIDTH);
 
@@ -147,15 +147,17 @@ MainWindow::MainWindow(QWidget *parent)
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 2);
 
-    q_chart_view = new QChartView(chart_wartosc_zadana_i_regulowana);
-    chart_wartosc_zadana_i_regulowana->setMargins(QMargins(0,0,0,0));
+
+    q_chart_view = new QChartView(chart_skladowe_sterowania);
+    chart_skladowe_sterowania->setMargins(QMargins(0,0,0,0));
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 2);
 
-    q_chart_view = new QChartView(chart_skladowe_sterowania);
-    chart_skladowe_sterowania->setMargins(QMargins(0,0,0,0));
+
+    q_chart_view = new QChartView(chart_wartosc_zadana_i_regulowana);
+    chart_wartosc_zadana_i_regulowana->setMargins(QMargins(0,0,0,0));
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
@@ -561,6 +563,7 @@ void MainWindow::updateUiFromState()
         break;
     }
     this->ui->doubleSpinBox_generator_amplituda->setValue(gen->getAmplitude());
+    this->ui->doubleSpinBox_generator_bias->setValue(gen->getBias());
     this->ui->spinBox_generator_okres->setValue(gen->getSamplesPerCycle() * State().getSimmulationIntervalMS());
     this->ui->spinBox_generator_wypelnienie->setValue(gen_prostokatny->getDutyCycle() * 100.0);
 
