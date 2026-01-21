@@ -174,7 +174,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     update_charts_timer = new QTimer(this);
-    update_charts_timer->setInterval(100);
+    update_charts_timer->setInterval(200);
     update_charts_timer->start();
     QObject::connect(update_charts_timer, &QTimer::timeout, this, &MainWindow::updateCharts);
 
@@ -194,6 +194,39 @@ void MainWindow::updateCharts()
     dynamic_cast<QLineSeries *>(chart_skladowe_sterowania->series().at(0))->replace(*lista_sterowanie_P->getList());
     dynamic_cast<QLineSeries *>(chart_skladowe_sterowania->series().at(1))->replace(*lista_sterowanie_I->getList());
     dynamic_cast<QLineSeries *>(chart_skladowe_sterowania->series().at(2))->replace(*lista_sterowanie_D->getList());
+
+
+    constexpr const qreal ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE = 0.1;
+
+    // Osie pionowe - skalowanie
+    qreal range_width_uchyb = (uchyb->max() - uchyb->min()) * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
+    chart_uchyb->axes(Qt::Vertical).at(0)->setRange(uchyb->min() - range_width_uchyb, uchyb->max() + range_width_uchyb);
+
+
+    qreal range_width_sterowanie = (lista_sterowanie->max() - lista_sterowanie->min()) * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
+    chart_sterowanie->axes(Qt::Vertical).at(0)->setRange(lista_sterowanie->min() - range_width_sterowanie, lista_sterowanie->max() + range_width_sterowanie);
+
+    qreal range_width_wartosc_zadana_i_regulowana = (std::max(lista_wartosc_regulowana->max(), lista_wartosc_zadana->max())
+                                                     - std::min(lista_wartosc_regulowana->min(), lista_wartosc_zadana->min()))
+                                                    * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
+
+    chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical)
+        .at(0)
+        ->setRange(std::min(lista_wartosc_regulowana->min(), lista_wartosc_zadana->min())
+                       - range_width_wartosc_zadana_i_regulowana,
+                   std::max(lista_wartosc_regulowana->max(), lista_wartosc_zadana->max())
+                       + range_width_wartosc_zadana_i_regulowana);
+
+    qreal max_skladowych_sterowania = std::max(std::max(lista_sterowanie_P->max(), lista_sterowanie_I->max()),
+                                               lista_sterowanie_D->max());
+    qreal min_skladowych_sterowania = std::min(std::min(lista_sterowanie_P->min(), lista_sterowanie_I->min()),
+                                               lista_sterowanie_D->min());
+    qreal range_width_skladowych_sterowania = (max_skladowych_sterowania - min_skladowych_sterowania) * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
+
+    chart_skladowe_sterowania->axes(Qt::Vertical)
+        .at(0)
+        ->setRange(min_skladowych_sterowania - range_width_skladowych_sterowania, max_skladowych_sterowania + range_width_skladowych_sterowania);
+
 }
 
 void MainWindow::addToPlots(TickData tick_data)
@@ -229,34 +262,6 @@ void MainWindow::addToPlots(TickData tick_data)
     chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
 
-    // Osie pionowe - skalowanie
-    qreal range_width_uchyb = (uchyb->max() - uchyb->min()) * 0.1;
-    chart_uchyb->axes(Qt::Vertical).at(0)->setRange(uchyb->min() - range_width_uchyb, uchyb->max() + range_width_uchyb);
-
-
-    qreal range_width_sterowanie = (lista_sterowanie->max() - lista_sterowanie->min()) * 0.1;
-    chart_sterowanie->axes(Qt::Vertical).at(0)->setRange(lista_sterowanie->min() - range_width_sterowanie, lista_sterowanie->max() + range_width_sterowanie);
-
-    qreal range_width_wartosc_zadana_i_regulowana = (std::max(lista_wartosc_regulowana->max(), lista_wartosc_zadana->max())
-                                                    - std::min(lista_wartosc_regulowana->min(), lista_wartosc_zadana->min()))
-                                                    * 0.1;
-
-    chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical)
-        .at(0)
-        ->setRange(std::min(lista_wartosc_regulowana->min(), lista_wartosc_zadana->min())
-                       - range_width_wartosc_zadana_i_regulowana,
-                   std::max(lista_wartosc_regulowana->max(), lista_wartosc_zadana->max())
-                       + range_width_wartosc_zadana_i_regulowana);
-
-    qreal max_skladowych_sterowania = std::max(std::max(lista_sterowanie_P->max(), lista_sterowanie_I->max()),
-                                  lista_sterowanie_D->max());
-    qreal min_skladowych_sterowania = std::min(std::min(lista_sterowanie_P->min(), lista_sterowanie_I->min()),
-                                  lista_sterowanie_D->min());
-    qreal range_width_skladowych_sterowania = (max_skladowych_sterowania - min_skladowych_sterowania) * 0.1;
-
-    chart_skladowe_sterowania->axes(Qt::Vertical)
-        .at(0)
-        ->setRange(min_skladowych_sterowania - range_width_skladowych_sterowania, max_skladowych_sterowania + range_width_skladowych_sterowania);
 
     if (uchyb->getList()->count() > liczba_probek) {
         lista_wartosc_zadana->deleteFirstValue();
@@ -327,6 +332,7 @@ void MainWindow::on_spinBox_symulacja_interwal_editingFinished()
 
 
     recalculate_generator_period();
+    emit ui->horizontalSlider_generator_okres->sliderReleased();
 }
 void MainWindow::on_horizontalSlider_symulacja_interwal_sliderReleased()
 {
