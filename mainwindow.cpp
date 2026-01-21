@@ -14,24 +14,27 @@ MainWindow::MainWindow(QWidget *parent)
     debug_dialog = new DialogDebug(this);
 
     chart_sterowanie = new QChart();
-    chart_sterowanie->setTitle(tr("Sterowanie (Wyjście z regulatora)"));
-    chart_sterowanie->legend()->hide();
+    // chart_sterowanie->setTitle(tr("Sterowanie (Wyjście z regulatora)"));
+    // chart_sterowanie->legend()->hide();
 
     chart_uchyb = new QChart();
-    chart_uchyb->setTitle(tr("Uchyb"));
-    chart_uchyb->legend()->hide();
+    // chart_uchyb->setTitle(tr("Uchyb"));
+    // chart_uchyb->legend()->hide();
 
     chart_wartosc_zadana_i_regulowana = new QChart();
-    chart_wartosc_zadana_i_regulowana->setTitle(tr("Wartość zadana i regulowana"));
-    chart_wartosc_zadana_i_regulowana->legend()->hide();
+    // chart_wartosc_zadana_i_regulowana->setTitle(tr("Wartość zadana i regulowana"));
+    // chart_wartosc_zadana_i_regulowana->legend()->hide();
 
-    chart_wszystko = new QChart();
-    chart_wszystko->setTitle(tr("Wszystko"));
+    chart_skladowe_sterowania = new QChart();
+    // chart_wszystko->setTitle(tr("Wszystko"));
 
     lista_sterowanie = new QList<QPointF>();
     lista_uchyb = new QList<QPointF>();
     lista_wartosc_zadana = new QList<QPointF>();
     lista_wartosc_regulowana = new QList<QPointF>();
+    lista_sterowanie_P = new QList<QPointF>();
+    lista_sterowanie_I = new QList<QPointF>();
+    lista_sterowanie_D = new QList<QPointF>();
 
     {
         auto seria = new QLineSeries();
@@ -58,24 +61,19 @@ MainWindow::MainWindow(QWidget *parent)
     }
     {
         auto seria = new QLineSeries();
-        seria->setName("Sterowanie");
-        seria->setColor(QColor(30, 30, 220));
-        chart_wszystko->addSeries(seria);
-
-        seria = new QLineSeries();
-        seria->setName("Uchyb");
-        seria->setColor(QColor(185, 0, 80));
-        chart_wszystko->addSeries(seria);
-
-        seria = new QLineSeries();
-        seria->setName("Wartość zadana");
+        seria->setName("Część proporcjonalna");
         seria->setColor(QColor(0, 180, 55));
-        chart_wszystko->addSeries(seria);
+        chart_skladowe_sterowania->addSeries(seria);
 
         seria = new QLineSeries();
-        seria->setName("Wartość regulowana");
+        seria->setName("Część różniczkująca");
+        seria->setColor(QColor(185, 0, 80));
+        chart_skladowe_sterowania->addSeries(seria);
+
+        seria = new QLineSeries();
+        seria->setName("Część całkująca");
         seria->setColor(QColor(130, 20, 150));
-        chart_wszystko->addSeries(seria);
+        chart_skladowe_sterowania->addSeries(seria);
     }
 
     chart_sterowanie->addAxis(new QValueAxis(), Qt::AlignBottom);
@@ -93,11 +91,11 @@ MainWindow::MainWindow(QWidget *parent)
     chart_wartosc_zadana_i_regulowana->addAxis(new QValueAxis(), Qt::AlignLeft);
     chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
 
-    chart_wszystko->addAxis(new QValueAxis(), Qt::AlignBottom);
-    chart_wszystko->axes(Qt::Horizontal).at(0)->setRange(0.0, 1.0);
-    chart_wszystko->axes(Qt::Horizontal).at(0)->setTitleText("Czas [s]");
-    chart_wszystko->addAxis(new QValueAxis(), Qt::AlignLeft);
-    chart_wszystko->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
+    chart_skladowe_sterowania->addAxis(new QValueAxis(), Qt::AlignBottom);
+    chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setRange(0.0, 1.0);
+    chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setTitleText("Czas [s]");
+    chart_skladowe_sterowania->addAxis(new QValueAxis(), Qt::AlignLeft);
+    chart_skladowe_sterowania->axes(Qt::Vertical).at(0)->setRange(-5.0, 5.0);
 
     chart_sterowanie->series().at(0)->attachAxis(chart_sterowanie->axes(Qt::Horizontal).at(0));
     chart_sterowanie->series().at(0)->attachAxis(chart_sterowanie->axes(Qt::Vertical).at(0));
@@ -114,22 +112,20 @@ MainWindow::MainWindow(QWidget *parent)
     chart_wartosc_zadana_i_regulowana->series().at(1)->attachAxis(
         chart_wartosc_zadana_i_regulowana->axes(Qt::Vertical).at(0));
 
-    chart_wszystko->series().at(0)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
-    chart_wszystko->series().at(0)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
-    chart_wszystko->series().at(1)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
-    chart_wszystko->series().at(1)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
-    chart_wszystko->series().at(2)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
-    chart_wszystko->series().at(2)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
-    chart_wszystko->series().at(3)->attachAxis(chart_wszystko->axes(Qt::Horizontal).at(0));
-    chart_wszystko->series().at(3)->attachAxis(chart_wszystko->axes(Qt::Vertical).at(0));
+    chart_skladowe_sterowania->series().at(0)->attachAxis(chart_skladowe_sterowania->axes(Qt::Horizontal).at(0));
+    chart_skladowe_sterowania->series().at(0)->attachAxis(chart_skladowe_sterowania->axes(Qt::Vertical).at(0));
+    chart_skladowe_sterowania->series().at(1)->attachAxis(chart_skladowe_sterowania->axes(Qt::Horizontal).at(0));
+    chart_skladowe_sterowania->series().at(1)->attachAxis(chart_skladowe_sterowania->axes(Qt::Vertical).at(0));
+    chart_skladowe_sterowania->series().at(2)->attachAxis(chart_skladowe_sterowania->axes(Qt::Horizontal).at(0));
+    chart_skladowe_sterowania->series().at(2)->attachAxis(chart_skladowe_sterowania->axes(Qt::Vertical).at(0));
+
     // chart_sterowanie->series().at(0)->setUseOpenGL(true);
     // chart_uchyb->series().at(0)->setUseOpenGL(true);
     // chart_wartosc_zadana_i_regulowana->series().at(0)->setUseOpenGL(true);
     // chart_wartosc_zadana_i_regulowana->series().at(1)->setUseOpenGL(true);
-    // chart_wszystko->series().at(0)->setUseOpenGL(true);
-    // chart_wszystko->series().at(1)->setUseOpenGL(true);
-    // chart_wszystko->series().at(2)->setUseOpenGL(true);
-    // chart_wszystko->series().at(3)->setUseOpenGL(true);
+    // chart_skladowe_sterowania->series().at(0)->setUseOpenGL(true);
+    // chart_skladowe_sterowania->series().at(1)->setUseOpenGL(true);
+    // chart_skladowe_sterowania->series().at(2)->setUseOpenGL(true);
 
 
     auto q_chart_view = new QChartView(chart_sterowanie);
@@ -154,8 +150,8 @@ MainWindow::MainWindow(QWidget *parent)
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
     ui->verticalLayout_wykresy->addWidget(q_chart_view, 2);
 
-    q_chart_view = new QChartView(chart_wszystko);
-    chart_wszystko->setMargins(QMargins(0,0,0,0));
+    q_chart_view = new QChartView(chart_skladowe_sterowania);
+    chart_skladowe_sterowania->setMargins(QMargins(0,0,0,0));
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontAdjustForAntialiasing);
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::DontSavePainterState);
     q_chart_view->setOptimizationFlags(QGraphicsView::OptimizationFlag::IndirectPainting);
@@ -172,6 +168,25 @@ MainWindow::MainWindow(QWidget *parent)
 
     on_spinBox_generator_okres_editingFinished();
     updateUiFromState();
+
+    update_charts_timer = new QTimer(this);
+    update_charts_timer->setInterval(500);
+    update_charts_timer->start();
+    QObject::connect(update_charts_timer, &QTimer::timeout, this, &MainWindow::updateCharts);
+
+}
+void MainWindow::updateCharts()
+{
+    dynamic_cast<QLineSeries *>(chart_sterowanie->series().at(0))->replace(*lista_sterowanie);
+
+    dynamic_cast<QLineSeries *>(chart_uchyb->series().at(0))->replace(*lista_uchyb);
+
+    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))->replace(*lista_wartosc_zadana);
+    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))->replace(*lista_wartosc_regulowana);
+
+    dynamic_cast<QLineSeries *>(chart_skladowe_sterowania->series().at(0))->replace(*lista_sterowanie_P);
+    dynamic_cast<QLineSeries *>(chart_skladowe_sterowania->series().at(1))->replace(*lista_sterowanie_I);
+    dynamic_cast<QLineSeries *>(chart_skladowe_sterowania->series().at(2))->replace(*lista_sterowanie_D);
 }
 void MainWindow::addToPlots(TickData tick_data)
 {
@@ -187,19 +202,10 @@ void MainWindow::addToPlots(TickData tick_data)
     lista_wartosc_zadana->append(QPointF(seconds_of_simulation, tick_data.wartosc_zadana));
     lista_wartosc_regulowana->append(QPointF(seconds_of_simulation, tick_data.wartosc_regulowana));
     lista_uchyb->append(QPointF(seconds_of_simulation, tick_data.uchyb));
-    lista_sterowanie->append(QPointF(seconds_of_simulation, tick_data.sterowanie));
-
-    dynamic_cast<QLineSeries *>(chart_sterowanie->series().at(0))->replace(*lista_sterowanie);
-
-    dynamic_cast<QLineSeries *>(chart_uchyb->series().at(0))->replace(*lista_uchyb);
-
-    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))->replace(*lista_wartosc_zadana);
-    dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))->replace(*lista_wartosc_regulowana);
-
-    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(0))->replace(*lista_sterowanie);
-    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(1))->replace(*lista_uchyb);
-    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(2))->replace(*lista_wartosc_zadana);
-    dynamic_cast<QLineSeries *>(chart_wszystko->series().at(3))->replace(*lista_wartosc_regulowana);
+    lista_sterowanie->append(QPointF(seconds_of_simulation, static_cast<double>(tick_data.sterowanie)));
+    lista_sterowanie_P->append(QPointF(seconds_of_simulation, static_cast<double>(tick_data.sterowanie.Proportional)));
+    lista_sterowanie_I->append(QPointF(seconds_of_simulation, static_cast<double>(tick_data.sterowanie.Integral)));
+    lista_sterowanie_D->append(QPointF(seconds_of_simulation, static_cast<double>(tick_data.sterowanie.Derrivative)));
 
     // Osie poziome - skalowanie
     constexpr const qreal LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ = 4.0;
@@ -213,7 +219,7 @@ void MainWindow::addToPlots(TickData tick_data)
     chart_sterowanie->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_uchyb->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_wartosc_zadana_i_regulowana->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
-    chart_wszystko->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
+    chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
 
     // Osie pionowe - skalowanie
     qreal max_uchyb = 0.0;
@@ -282,7 +288,7 @@ void MainWindow::addToPlots(TickData tick_data)
                                   std::min(min_wartosc_zadana, min_wartosc_regulowana));
     qreal range_width_wszystko = (max_wszystko - min_wszystko) * 0.1;
 
-    chart_wszystko->axes(Qt::Vertical)
+    chart_skladowe_sterowania->axes(Qt::Vertical)
         .at(0)
         ->setRange(min_wszystko - range_width_wszystko, max_wszystko + range_width_wszystko);
 

@@ -1,6 +1,6 @@
 #include "RegulatorPID.h"
 
-double RegulatorPID::tick(double e_i)
+PIDTickData RegulatorPID::tickMoreData(double e_i)
 {
     double u_i_P = k * e_i;
     double u_i_I;
@@ -26,7 +26,12 @@ double RegulatorPID::tick(double e_i)
     double u_i_D = T_d * (e_i - previous_e);
     previous_e = e_i;
 
-    return u_i_P + u_i_I + u_i_D;
+    return PIDTickData{u_i_P, u_i_I, u_i_D};
+}
+
+double RegulatorPID::tick(double e_i)
+{
+    return static_cast<double>(tickMoreData(e_i));
 }
 
 RegulatorPID::RegulatorPID(double k, double T_i, double T_d, IntegType integration_type)

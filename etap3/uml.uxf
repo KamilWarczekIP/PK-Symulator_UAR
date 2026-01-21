@@ -56,7 +56,7 @@
     <panel_attributes>&lt;&lt;Q_OBJECT&gt;&gt;
 DialogDebug
 --
-- Ui::DialogDebug* ui
+- ui: Ui::DialogDebug*
 --
 + write(QString message)
 + DialogDebug(QWidget *parent = nullptr)
@@ -155,7 +155,7 @@ DialogDebug
     <panel_attributes>&lt;&lt;Q_OBJECT&gt;&gt;
 MainWindow
 --
-- Ui::MainWindow* ui
+- ui: Ui::MainWindow*
 - samples_count: uint32_t
 - debug_dialog: DialogDebug*
 - chart_wartosc_zadana_i_regulowana: QChart*
@@ -602,23 +602,23 @@ sterowanie: double</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>468</x>
-      <y>639</y>
+      <y>594</y>
       <w>441</w>
-      <h>108</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;100.0;100.0;100.0;210.0;10.0;470.0;10.0</additional_attributes>
+    <additional_attributes>470.0;10.0;260.0;10.0;70.0;150.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>513</y>
-      <w>765</w>
-      <h>225</h>
+      <x>135</x>
+      <y>558</y>
+      <w>774</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;230.0;10.0;190.0;420.0;190.0;620.0;10.0;830.0;10.0</additional_attributes>
+    <additional_attributes>840.0;10.0;530.0;10.0;360.0;140.0;10.0;140.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -669,25 +669,38 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2043</x>
+      <x>2034</x>
       <y>333</y>
-      <w>270</w>
-      <h>225</h>
+      <w>315</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Q_OBJECT&gt;&gt;
 DialogArx
 --
-- Ui::DialogArx* ui
+- ui: Ui::DialogArx*
+- chart_zaklocenia: QChart*
+- barSeries: QBarSeries*
+- odchylenie: double
+- LICZBA_PROBEK: static constexpr int
+- ILOSC_BINOW: static constexpr double
+- axisX: QBarCategoryAxis*
+- axisY: QValueAxis*
+
 --
 + DialogArx(QWidget *parent = nullptr)
 + ~DialogArx()
 
-
-
-
-
-TODO 
-
+*SLOTS:*
+- zaczytaj_dane()
+- on_zaklocenie_suwak_valueChanged(int value)
+- on_zaklocenie_wartosc_valueChanged(int arg1)
+- on_opoznienie_suwak_valueChanged(int value)
+- on_opoznienie_wartosc_valueChanged(int arg1)
+- on_dodaj_wspolczynnik_clicked()
+- on_usun_wspolczynnik_clicked()
+- on_buttonBox_accepted()
+- ustaw_wykres()
+- aktualizuj_widok(double odchylenie);
 
 
 
@@ -705,12 +718,12 @@ TODO
     <id>Relation</id>
     <coordinates>
       <x>2133</x>
-      <y>549</y>
+      <y>612</y>
       <w>27</w>
-      <h>414</h>
+      <h>351</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;440.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -732,7 +745,7 @@ TODO
       <h>387</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;10.0;100.0;410.0;790.0;410.0;790.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0;100.0;410.0;790.0;410.0;790.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -762,23 +775,23 @@ m2=</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2016</x>
-      <y>549</y>
-      <w>72</w>
-      <h>54</h>
+      <y>612</y>
+      <w>63</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>60.0;10.0;60.0;40.0;10.0;40.0</additional_attributes>
+    <additional_attributes>50.0;10.0;50.0;110.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>459</x>
-      <y>468</y>
+      <y>495</y>
       <w>450</w>
-      <h>108</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;100.0;130.0;100.0;130.0;10.0;480.0;10.0</additional_attributes>
+    <additional_attributes>480.0;10.0;110.0;10.0;110.0;60.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -844,7 +857,7 @@ m2=</panel_attributes>
       <h>774</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;250.0;10.0;250.0;840.0;920.0;840.0;920.0;550.0</additional_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0;250.0;840.0;920.0;840.0;920.0;620.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

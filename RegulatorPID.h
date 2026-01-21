@@ -10,6 +10,17 @@ enum class IntegType {
     insde,
 };
 
+struct PIDTickData
+{
+    double Proportional;
+    double Integral;
+    double Derrivative;
+    explicit operator double()
+    {
+        return Proportional + Integral + Derrivative;
+    }
+};
+
 /**
  * @brief
  *
@@ -32,6 +43,13 @@ public:
      * @return double
      */
 double tick(double e_i);
+    /**
+     * @brief
+     *
+     * @param e_i
+     * @return double
+     */
+PIDTickData tickMoreData(double e_i);
     /**
      * @brief
      *

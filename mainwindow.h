@@ -20,6 +20,7 @@ public:
 public slots:
     void addToPlots(TickData tick_data);
 private slots:
+    void updateCharts();
     void zapiszDoPliku();
     void wczytajZPliku();
     void przelaczOknoDebugowania();
@@ -76,12 +77,18 @@ private:
     QChart *chart_wartosc_zadana_i_regulowana;
     QChart *chart_uchyb;
     QChart *chart_sterowanie;
-    QChart *chart_wszystko;
+    QChart *chart_skladowe_sterowania;
+
+    QTimer *update_charts_timer;
 
     QList<QPointF> *lista_wartosc_zadana;
     QList<QPointF> *lista_wartosc_regulowana;
     QList<QPointF> *lista_uchyb;
     QList<QPointF> *lista_sterowanie;
+    QList<QPointF> *lista_sterowanie_P;
+    QList<QPointF> *lista_sterowanie_I;
+    QList<QPointF> *lista_sterowanie_D;
+
     qint64 miliseconds_of_simulation;
 
     QElapsedTimer debug_timer;

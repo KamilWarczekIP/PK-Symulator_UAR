@@ -8,7 +8,7 @@ struct TickData
     double wartosc_zadana;
     double wartosc_regulowana;
     double uchyb;
-    double sterowanie;
+    PIDTickData sterowanie;
 };
 
 class UAR
@@ -21,7 +21,7 @@ public:
     UAR(ARX &&arx, RegulatorPID &&pid);
     UAR(ARX &arx, RegulatorPID &pid);
     double tick(double input);
-    TickData tick_more_info(double input);
+    TickData tickMoreInfo(double input);
     void resetAll();
     ARX &getARX();
     RegulatorPID &getRegulatorPID();

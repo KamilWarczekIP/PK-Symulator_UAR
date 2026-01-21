@@ -215,7 +215,7 @@ void State::readFromFile(std::string path)
 
 void State::tick()
 {
-    this->tick_callback(uar.tick_more_info(choosen_generator->tick()));
+    this->tick_callback(uar.tickMoreInfo(choosen_generator->tick()));
 }
 
 const std::tuple<const ARX*, const RegulatorPID*, const State::TypGeneratora, const GeneratorSinusoida*, const GeneratorProstokatny*> State::getAppState()
