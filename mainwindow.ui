@@ -38,7 +38,7 @@
       <x>0</x>
       <y>0</y>
       <width>1271</width>
-      <height>789</height>
+      <height>844</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="0,1">
@@ -364,6 +364,11 @@ RÓŻNICZKUJĄCEJ</string>
                 </item>
                 <item>
                  <property name="text">
+                  <string>Skok Jednostkowy</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
                   <string>Prostokątny</string>
                  </property>
                 </item>
@@ -578,6 +583,29 @@ RÓŻNICZKUJĄCEJ</string>
               </item>
              </layout>
             </item>
+            <item>
+             <widget class="QLabel" name="label_11_generator_czas_skoku">
+              <property name="text">
+               <string>Czas skoku:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="doubleSpinBox_generator_czas_skoku">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="suffix">
+               <string> s</string>
+              </property>
+              <property name="maximum">
+               <double>50.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
          </layout>
@@ -770,7 +798,7 @@ RÓŻNICZKUJĄCEJ</string>
      <x>0</x>
      <y>0</y>
      <width>1317</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuplik">

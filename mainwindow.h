@@ -75,6 +75,8 @@ private slots:
 
     void on_horizontalSlider_generator_bias_valueChanged(int value);
 
+    void on_doubleSpinBox_generator_czas_skoku_editingFinished();
+
 private:
     void updateUiFromState();
     void recalculate_generator_period();

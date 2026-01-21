@@ -395,21 +395,33 @@ void MainWindow::on_horizontalSlider_generator_okres_sliderReleased()
 //Zmiana używanego generatora
 void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg1)
 {
+    ui->horizontalSlider_generator_okres->setEnabled(true);
+    ui->doubleSpinBox_generator_czas_skoku->setEnabled(false);
+    ui->verticalSlider_generator_amplituda->setEnabled(true);
+    ui->doubleSpinBox_generator_amplituda->setEnabled(true);
+    ui->spinBox_generator_okres->setEnabled(true);
     if (arg1 == "Prostokątny")
     {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(true);
         ui->spinBox_generator_wypelnienie->setEnabled(true);
         State().setGenerator(State::TypGeneratora::Prostokatny);
     }
-    else
+    if (arg1 == "Sinusoida")
     {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(false);
-        ui->spinBox_generator_wypelnienie->setEnabled(false);
-        if (arg1 == "Sinusoida")
-            State().setGenerator(State::TypGeneratora::Sinusoidalny);
-        else if (arg1 == "Ręczny") // TODO: dodac generator ręczny
-            State().setGenerator(State::TypGeneratora::Reczny);
+        State().setGenerator(State::TypGeneratora::Sinusoidalny);
     }
+    if (arg1 == "Skok Jednostkowy") // TODO: dodac skok
+    {
+        State().setGenerator(State::TypGeneratora::SkokJednostkowy);
+        ui->horizontalSlider_generator_wypelnienie->setEnabled(false);
+        ui->horizontalSlider_generator_okres->setEnabled(false);
+        ui->verticalSlider_generator_amplituda->setEnabled(false);
+        ui->doubleSpinBox_generator_amplituda->setEnabled(false);
+        ui->spinBox_generator_okres->setEnabled(false);
+        ui->doubleSpinBox_generator_czas_skoku->setEnabled(true);
+    }
+
 }
 
 // Wypelnienie generatora (P)
@@ -572,7 +584,7 @@ void MainWindow::updateUiFromState()
         gen = gen_prostokatny;
         this->ui->comboBox_generator_typ->setCurrentIndex(1);
         break;
-    case State::TypGeneratora::Reczny:
+    case State::TypGeneratora::SkokJednostkowy:
         gen = gen_prostokatny; //TODO
         this->ui->comboBox_generator_typ->setCurrentIndex(2);
         break;
@@ -621,5 +633,11 @@ void MainWindow::on_horizontalSlider_generator_bias_sliderReleased()
 void MainWindow::on_horizontalSlider_generator_bias_valueChanged(int value)
 {
     ui->doubleSpinBox_generator_bias->setValue(value / 100.0);
+}
+
+
+void MainWindow::on_doubleSpinBox_generator_czas_skoku_editingFinished()
+{
+    State().setGeneratorUnitJumpTimeMS(ui->doubleSpinBox_generator_czas_skoku->value() * 1000);
 }
 

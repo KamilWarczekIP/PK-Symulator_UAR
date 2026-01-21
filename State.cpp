@@ -9,6 +9,7 @@ State::State()
     , simmulation_running(false)
     , gen_pros{}
     , gen_sin{}
+    , gen_skok{}
 {
     choosen_generator = &gen_sin;
     save = new QSaveState();
@@ -76,8 +77,8 @@ void State::setGenerator(TypGeneratora type)
     case TypGeneratora::Sinusoidalny:
         choosen_generator = &gen_sin;
         break;
-    case TypGeneratora::Reczny:
-        choosen_generator = &gen_pros; //TODO
+    case TypGeneratora::SkokJednostkowy:
+        choosen_generator = &gen_skok;
         break;
     }
 }
@@ -87,7 +88,7 @@ State::TypGeneratora State::getGenerator()
         return TypGeneratora::Prostokatny;
     if(choosen_generator == &gen_sin)
         return TypGeneratora::Sinusoidalny;
-    return TypGeneratora::Reczny;
+    return TypGeneratora::SkokJednostkowy;
 }
 void State::setGeneneratorAmplitude(const double& amplitude)
 {
@@ -102,6 +103,7 @@ void State::setGeneratorSkladowaStala(double skladowa_stala)
 {
     this->gen_pros.setBias(skladowa_stala);
     this->gen_sin.setBias(skladowa_stala);
+    this->gen_skok.setBias(skladowa_stala);
 }
 void State::setGeneneratorPeriodMS(uint32_t period)
 {
@@ -112,10 +114,15 @@ uint8_t State::getGeneneratorPeriodJumpMS()
 {
     return getSimmulationIntervalMS();
 }
+void State::setGeneratorUnitJumpTimeMS(uint32_t time)
+{
+    this->gen_skok.setActivationTime(time / getSimmulationIntervalMS());
+}
 void State::resetGenerator()
 {
     this->gen_pros.resetClock();
     this->gen_sin.resetClock();
+    this->gen_skok.resetClock();
 }
 
 void State::setPIDProportional(double k)

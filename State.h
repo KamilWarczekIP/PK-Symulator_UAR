@@ -5,6 +5,7 @@
 #include "GeneratorProstokatny.h"
 #include "GeneratorSinusoida.h"
 #include "UAR.h"
+#include "generatorskokjednostkowy.hpp"
 
 class SaveStateInterface;
 
@@ -13,7 +14,7 @@ class State : public QObject
 {
     Q_OBJECT
 public:
-    enum class TypGeneratora { Sinusoidalny, Prostokatny, Reczny };
+    enum class TypGeneratora { Sinusoidalny, Prostokatny, SkokJednostkowy };
 
 
     static State &getInstance();
@@ -31,6 +32,7 @@ public:
     void setGeneneratorPeriodMS(uint32_t period);
     void setGeneratorSkladowaStala(double skladowa_stala);
     uint8_t getGeneneratorPeriodJumpMS();
+    void setGeneratorUnitJumpTimeMS(uint32_t time);
     void resetGenerator();
 
     void setPIDProportional(double k);
@@ -68,6 +70,7 @@ private:
     UAR uar;
     GeneratorSinusoida gen_sin;
     GeneratorProstokatny gen_pros;
+    GeneratorSkokJednostkowy gen_skok;
     Generator* choosen_generator;
     bool simmulation_running;
     QTimer *simmulation_timer;
