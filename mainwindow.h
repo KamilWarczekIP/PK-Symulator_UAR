@@ -49,7 +49,6 @@ private slots:
     void on_spinBox_symulacja_okno_obserwacji_valueChanged(int arg1);
     void on_spinBox_symulacja_okno_obserwacji_editingFinished();
     void on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased();
-    void on_checkBoxOgraniczenia_checkStateChanged(const Qt::CheckState &arg1);
     void on_pushButton_reset_pam_calk_clicked();
     void on_radioButton_stala_calkowania_przed_clicked();
     void on_radioButton_stala_calkowania_pod_clicked();
@@ -66,6 +65,7 @@ private slots:
     void on_doubleSpinBox_pid_Td_editingFinished();
     void on_horizontalSlider_pid_Td_sliderReleased();
     void on_pushButton_reset_pam_roz_clicked();
+    void on_checkBoxOgraniczenia_clicked();
 
 private:
     void updateUiFromState();

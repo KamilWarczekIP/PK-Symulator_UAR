@@ -85,14 +85,14 @@ void DialogArx::on_opoznienie_wartosc_valueChanged(int arg1)
 
 void DialogArx::on_zaklocenie_suwak_valueChanged(int value)
 {
-    ui->zaklocenie_wartosc->setValue(value);
-    aktualizuj_widok((double)value);
+    ui->zaklocenie_wartosc->setValue((double)value / 100.0);
+    aktualizuj_widok((double)value / 100.0);
 }
 
-void DialogArx::on_zaklocenie_wartosc_valueChanged(int arg1)
+void DialogArx::on_zaklocenie_wartosc_valueChanged(double arg1)
 {
-    ui->zaklocenie_suwak->setValue(arg1);
-    aktualizuj_widok((double)arg1);
+    ui->zaklocenie_suwak->setValue(arg1 * 100);
+    aktualizuj_widok(arg1);
 }
 
 void DialogArx::ustaw_wykres()

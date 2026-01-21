@@ -20,7 +20,7 @@ class DialogArx : public QDialog
     private slots:
         void zaczytaj_dane();
         void on_zaklocenie_suwak_valueChanged(int value);
-        void on_zaklocenie_wartosc_valueChanged(int arg1);
+        void on_zaklocenie_wartosc_valueChanged(double arg1);
         void on_opoznienie_suwak_valueChanged(int value);
         void on_opoznienie_wartosc_valueChanged(int arg1);
         void on_dodaj_wspolczynnik_clicked();

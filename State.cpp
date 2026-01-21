@@ -5,7 +5,7 @@
 
 
 State::State()
-    : uar(UAR(ARX({1.0}, {1.0}), RegulatorPID(0.0)))
+    : uar(UAR(ARX({0.0}, {0.9}), RegulatorPID(0.4, 0.5, 0.1)))
     , simmulation_running(false)
     , gen_pros{}
     , gen_sin{}

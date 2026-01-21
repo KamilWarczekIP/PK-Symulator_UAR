@@ -150,27 +150,11 @@ wartości we/wy</string>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Współczynnik K</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
-               <widget class="QSlider" name="horizontalSlider_pid_k">
-                <property name="minimum">
-                 <number>-1000</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="singleStep">
-                 <number>1</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Współczynnik K</string>
                 </property>
                </widget>
               </item>
@@ -193,24 +177,27 @@ wartości we/wy</string>
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Stała całkowania TI</string>
+             <widget class="QSlider" name="horizontalSlider_pid_k">
+              <property name="minimum">
+               <number>-1000</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+              <property name="singleStep">
+               <number>1</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
-               <widget class="QSlider" name="horizontalSlider_pid_Ti">
-                <property name="minimum">
-                 <number>-1000</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Stała całkowania TI</string>
                 </property>
                </widget>
               </item>
@@ -236,24 +223,24 @@ wartości we/wy</string>
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>Stała różniczkowania TD</string>
+             <widget class="QSlider" name="horizontalSlider_pid_Ti">
+              <property name="minimum">
+               <number>-1000</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
-               <widget class="QSlider" name="horizontalSlider_pid_Td">
-                <property name="minimum">
-                 <number>-1000</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Stała różniczkowania TD</string>
                 </property>
                </widget>
               </item>
@@ -278,6 +265,19 @@ wartości we/wy</string>
               </item>
              </layout>
             </item>
+            <item>
+             <widget class="QSlider" name="horizontalSlider_pid_Td">
+              <property name="minimum">
+               <number>-1000</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item>
@@ -285,19 +285,6 @@ wartości we/wy</string>
             <property name="sizeConstraint">
              <enum>QLayout::SetMinimumSize</enum>
             </property>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item>
              <widget class="QRadioButton" name="radioButton_stala_calkowania_pod">
               <property name="text">
@@ -316,6 +303,19 @@ przed całką</string>
                <bool>true</bool>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_reset_pam_calk">
@@ -390,36 +390,11 @@ RÓŻNICZKUJĄCEJ</string>
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>Okres (T)</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <item>
-               <widget class="QSlider" name="horizontalSlider_generator_okres">
-                <property name="minimum">
-                 <number>200</number>
-                </property>
-                <property name="maximum">
-                 <number>20000</number>
-                </property>
-                <property name="singleStep">
-                 <number>200</number>
-                </property>
-                <property name="pageStep">
-                 <number>200</number>
-                </property>
-                <property name="value">
-                 <number>200</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="tickPosition">
-                 <enum>QSlider::NoTicks</enum>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Okres (T)</string>
                 </property>
                </widget>
               </item>
@@ -448,27 +423,36 @@ RÓŻNICZKUJĄCEJ</string>
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>Wypełnienie (p)</string>
+             <widget class="QSlider" name="horizontalSlider_generator_okres">
+              <property name="minimum">
+               <number>200</number>
+              </property>
+              <property name="maximum">
+               <number>20000</number>
+              </property>
+              <property name="singleStep">
+               <number>200</number>
+              </property>
+              <property name="pageStep">
+               <number>200</number>
+              </property>
+              <property name="value">
+               <number>200</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::NoTicks</enum>
               </property>
              </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_9">
               <item>
-               <widget class="QSlider" name="horizontalSlider_generator_wypelnienie">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Wypełnienie (p)</string>
                 </property>
                </widget>
               </item>
@@ -495,6 +479,22 @@ RÓŻNICZKUJĄCEJ</string>
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="QSlider" name="horizontalSlider_generator_wypelnienie">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>50</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -569,27 +569,11 @@ RÓŻNICZKUJĄCEJ</string>
              <enum>QLayout::SetMaximumSize</enum>
             </property>
             <item>
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Interwał czasowy</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_12">
               <item>
-               <widget class="QSlider" name="horizontalSlider_symulacja_interwal">
-                <property name="minimum">
-                 <number>20</number>
-                </property>
-                <property name="maximum">
-                 <number>500</number>
-                </property>
-                <property name="value">
-                 <number>200</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Interwał czasowy</string>
                 </property>
                </widget>
               </item>
@@ -612,27 +596,27 @@ RÓŻNICZKUJĄCEJ</string>
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Okno obserwacji</string>
+             <widget class="QSlider" name="horizontalSlider_symulacja_interwal">
+              <property name="minimum">
+               <number>20</number>
+              </property>
+              <property name="maximum">
+               <number>500</number>
+              </property>
+              <property name="value">
+               <number>200</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
               <item>
-               <widget class="QSlider" name="horizontalSlider_symulacja_okno_obserwacji">
-                <property name="minimum">
-                 <number>5</number>
-                </property>
-                <property name="maximum">
-                 <number>50</number>
-                </property>
-                <property name="value">
-                 <number>10</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Okno obserwacji</string>
                 </property>
                </widget>
               </item>
@@ -642,7 +626,7 @@ RÓŻNICZKUJĄCEJ</string>
                  <string> s</string>
                 </property>
                 <property name="minimum">
-                 <number>5</number>
+                 <number>10</number>
                 </property>
                 <property name="maximum">
                  <number>50</number>
@@ -653,6 +637,22 @@ RÓŻNICZKUJĄCEJ</string>
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="QSlider" name="horizontalSlider_symulacja_okno_obserwacji">
+              <property name="minimum">
+               <number>10</number>
+              </property>
+              <property name="maximum">
+               <number>50</number>
+              </property>
+              <property name="value">
+               <number>10</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -747,19 +747,9 @@ RÓŻNICZKUJĄCEJ</string>
     </property>
     <addaction name="actionzapisz_ustawienia"/>
     <addaction name="actionwczytaj_ustawienia"/>
-    <addaction name="actioneksport_wykres_w"/>
     <addaction name="actionokno_debugowania"/>
    </widget>
-   <widget class="QMenu" name="menuzachowanie">
-    <property name="title">
-     <string>wygląd</string>
-    </property>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="actionMINECRAAAAAAFT"/>
-   </widget>
    <addaction name="menuplik"/>
-   <addaction name="menuzachowanie"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -789,7 +779,7 @@ RÓŻNICZKUJĄCEJ</string>
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="actioneksport_wykres_w">
+  <action name="action">
    <property name="text">
     <string>eksport wykresów</string>
    </property>

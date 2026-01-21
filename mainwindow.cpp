@@ -176,8 +176,8 @@ MainWindow::MainWindow(QWidget *parent)
     update_charts_timer->start();
     QObject::connect(update_charts_timer, &QTimer::timeout, this, &MainWindow::updateCharts);
 
-    on_spinBox_generator_okres_editingFinished();
     updateUiFromState();
+    on_spinBox_generator_okres_editingFinished();
 
 }
 void MainWindow::updateCharts()
@@ -308,25 +308,23 @@ void MainWindow::recalculate_generator_period()
         new_generator_okres_value += interwal_symulacji;
 
     ui->spinBox_generator_okres->setValue(new_generator_okres_value);
+
+    ui->spinBox_generator_okres->setMinimum(interwal_symulacji * 8);
+    ui->spinBox_generator_okres->setMaximum(interwal_symulacji * 100);
+    ui->spinBox_generator_okres->setSingleStep(interwal_symulacji);
+
+    ui->horizontalSlider_generator_okres->setMinimum(interwal_symulacji * 8);
+    ui->horizontalSlider_generator_okres->setMaximum(interwal_symulacji * 100);
+    ui->horizontalSlider_generator_okres->setSingleStep(interwal_symulacji);
+    ui->horizontalSlider_generator_okres->setPageStep(interwal_symulacji);
 }
 
 void MainWindow::on_spinBox_symulacja_interwal_editingFinished()
 {
     State().setSimmulationIntervalMS(ui->spinBox_symulacja_interwal->value());
 
-    uint32_t interwal_symulacji = State().getSimmulationIntervalMS();
-
 
     recalculate_generator_period();
-
-    ui->spinBox_generator_okres->setMinimum(interwal_symulacji * 4);
-    ui->spinBox_generator_okres->setMaximum(interwal_symulacji * 100);
-    ui->spinBox_generator_okres->setSingleStep(interwal_symulacji);
-
-    ui->horizontalSlider_generator_okres->setMinimum(interwal_symulacji * 4);
-    ui->horizontalSlider_generator_okres->setMaximum(interwal_symulacji * 100);
-    ui->horizontalSlider_generator_okres->setSingleStep(interwal_symulacji);
-    ui->horizontalSlider_generator_okres->setPageStep(interwal_symulacji);
 }
 void MainWindow::on_horizontalSlider_symulacja_interwal_sliderReleased()
 {
@@ -449,11 +447,6 @@ void MainWindow::on_spinBox_symulacja_okno_obserwacji_editingFinished()
 void MainWindow::on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased()
 {
     //TODO
-}
-
-void MainWindow::on_checkBoxOgraniczenia_checkStateChanged(const Qt::CheckState &arg1)
-{
-    State().setARXLimitsEnabled(arg1 == Qt::Checked);
 }
 
 // PID - kontrolki całkowania i rozniczkowania
@@ -581,3 +574,10 @@ void MainWindow::przelaczOknoDebugowania()
     else
         debug_dialog->hide();
 }
+
+
+void MainWindow::on_checkBoxOgraniczenia_clicked()
+{
+    State().setARXLimitsEnabled(ui->checkBoxOgraniczenia->isChecked());
+}
+
