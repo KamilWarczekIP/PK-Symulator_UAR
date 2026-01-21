@@ -7,10 +7,12 @@ QList<QPointF>* ListWithExtremes::getList()
 }
 qreal ListWithExtremes::max()
 {
+    if(values.size() == 0) return 0.0;
     return this->values.rbegin()->first;
 }
 qreal ListWithExtremes::min()
 {
+    if(values.size() == 0) return 0.0;
     return this->values.begin()->first;
 }
 void ListWithExtremes::appendLastValue(QPointF new_point)
