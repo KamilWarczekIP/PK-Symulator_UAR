@@ -228,6 +228,11 @@ void DialogArx::on_buttonBox_accepted()
         a[index] = arx_coefficients_items[index]->getA();
         b[index] = arx_coefficients_items[index]->getB();
     }
+    while(a.back() == 0.0 && b.back() == 0.0)
+    {
+        a.pop_back();
+        b.pop_back();
+    }
 
     State().setARXCoefficients(a, b);
     State().setARXTransportDelay(ui->opoznienie_wartosc->value());

@@ -30,7 +30,7 @@ double arxCoefficientItem::getB()
 void arxCoefficientItem::on_doubleSpinBox_a_valueChanged(double arg1)
 {
     ui->horizontalSlider_a->blockSignals(true);
-    ui->horizontalSlider_b->setValue(arg1 * 100);
+    ui->horizontalSlider_a->setValue(arg1 * 100);
     ui->horizontalSlider_a->blockSignals(false);
 }
 
