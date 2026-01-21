@@ -58,31 +58,31 @@ std::pair<bool, const char*> Test::TEST_ListWithExtremes_poprawne_dzialanie()
         bool test_passed = true;
 
         lista.appendLastValue(QPointF(1.0, 4.0));
-        if(lista.getMaxValue() != 4.0) test_passed = false;
-        if(lista.getMinValue() != 4.0) test_passed = false;
+        if(lista.max() != 4.0) test_passed = false;
+        if(lista.min() != 4.0) test_passed = false;
 
         lista.appendLastValue(QPointF(1.1, 4.0));
-        if(lista.getMaxValue() != 4.0) test_passed = false;
-        if(lista.getMinValue() != 4.0) test_passed = false;
+        if(lista.max() != 4.0) test_passed = false;
+        if(lista.min() != 4.0) test_passed = false;
 
         lista.appendLastValue(QPointF(1.8, 7.0));
-        if(lista.getMaxValue() != 7.0) test_passed = false;
-        if(lista.getMinValue() != 4.0) test_passed = false;
+        if(lista.max() != 7.0) test_passed = false;
+        if(lista.min() != 4.0) test_passed = false;
 
 
         lista.appendLastValue(QPointF(1.8, 9.0));
-        if(lista.getMaxValue() != 9.0) test_passed = false;
-        if(lista.getMinValue() != 4.0) test_passed = false;
+        if(lista.max() != 9.0) test_passed = false;
+        if(lista.min() != 4.0) test_passed = false;
 
         lista.deleteFirstValue();
         lista.deleteFirstValue();
-        if(lista.getMaxValue() != 9.0) test_passed = false;
-        if(lista.getMinValue() != 7.0) test_passed = false;
+        if(lista.max() != 9.0) test_passed = false;
+        if(lista.min() != 7.0) test_passed = false;
 
 
         lista.appendLastValue(QPointF(1.8, -1.0));
-        if(lista.getMaxValue() != 9.0)  test_passed = false;
-        if(lista.getMinValue() != -1.0) test_passed = false;
+        if(lista.max() != 9.0)  test_passed = false;
+        if(lista.min() != -1.0) test_passed = false;
         return std::make_pair(test_passed, __FUNCTION__);
     }
     catch(...)

@@ -5,11 +5,11 @@ QList<QPointF>* ListWithExtremes::getList()
 {
     return &this->list;
 }
-qreal ListWithExtremes::getMaxValue()
+qreal ListWithExtremes::max()
 {
     return this->values.rbegin()->first;
 }
-qreal ListWithExtremes::getMinValue()
+qreal ListWithExtremes::min()
 {
     return this->values.begin()->first;
 }
@@ -29,4 +29,9 @@ void ListWithExtremes::deleteFirstValue()
         this->values.erase(list.front().y());
 
     list.pop_front();
+}
+void ListWithExtremes::clear()
+{
+    this->list.clear();
+    this->values.clear();
 }

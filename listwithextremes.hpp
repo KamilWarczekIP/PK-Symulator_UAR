@@ -12,10 +12,11 @@ class ListWithExtremes
 public:
     ListWithExtremes();
     QList<QPointF>* getList();
-    qreal getMaxValue();
-    qreal getMinValue();
+    qreal max();
+    qreal min();
     void appendLastValue(QPointF new_point);
     void deleteFirstValue();
+    void clear();
 };
 
 #endif // LISTWITHEXTREMES_HPP

@@ -5,6 +5,7 @@
 #include <QtCharts>
 #include "UAR.h"
 #include "dialogdebug.hpp"
+#include "listwithextremes.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -68,6 +69,7 @@ private slots:
 
 private:
     void updateUiFromState();
+    void recalculate_generator_period();
 
     uint32_t samples_count;
 
@@ -81,20 +83,19 @@ private:
 
     QTimer *update_charts_timer;
 
-    QList<QPointF> *lista_wartosc_zadana;
-    QList<QPointF> *lista_wartosc_regulowana;
-    QList<QPointF> *lista_uchyb;
-    QList<QPointF> *lista_sterowanie;
-    QList<QPointF> *lista_sterowanie_P;
-    QList<QPointF> *lista_sterowanie_I;
-    QList<QPointF> *lista_sterowanie_D;
+    ListWithExtremes *lista_wartosc_zadana;
+    ListWithExtremes *lista_wartosc_regulowana;
+    ListWithExtremes *uchyb;
+    ListWithExtremes *lista_sterowanie;
+    ListWithExtremes *lista_sterowanie_P;
+    ListWithExtremes *lista_sterowanie_I;
+    ListWithExtremes *lista_sterowanie_D;
 
     qint64 miliseconds_of_simulation;
 
     QElapsedTimer debug_timer;
     int debug_last_time;
 
-    void recalculate_generator_period();
 };
 
 #endif // MAINWINDOW_H
