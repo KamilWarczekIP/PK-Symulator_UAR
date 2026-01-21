@@ -5,7 +5,7 @@
 
 
 State::State()
-    : uar(UAR(ARX({0.0}, {0.9}), RegulatorPID(0.4, 0.5, 0.1)))
+    : uar(UAR(ARX({-0.4}, {0.6}), RegulatorPID(0.5, 5.0, 0.2)))
     , simmulation_running(false)
     , gen_pros{}
     , gen_sin{}
@@ -97,6 +97,11 @@ void State::setGeneneratorAmplitude(const double& amplitude)
 void State::setGeneneratorDutyCycle(const double& duty_cycle)
 {
     this->gen_pros.setDutyCycle(duty_cycle);
+}
+void State::setGeneratorSkladowaStala(double skladowa_stala)
+{
+    this->gen_pros.setBias(skladowa_stala);
+    this->gen_sin.setBias(skladowa_stala);
 }
 void State::setGeneneratorPeriodMS(uint32_t period)
 {

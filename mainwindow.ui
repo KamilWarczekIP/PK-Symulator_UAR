@@ -367,11 +367,6 @@ RÓŻNICZKUJĄCEJ</string>
                   <string>Prostokątny</string>
                  </property>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>Ręczny</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item>
@@ -490,6 +485,43 @@ RÓŻNICZKUJĄCEJ</string>
               </property>
               <property name="value">
                <number>50</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_16">
+              <item>
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Składowa stała (bias)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_generator_bias">
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QSlider" name="horizontalSlider_generator_bias">
+              <property name="minimum">
+               <number>-10000</number>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
               </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>

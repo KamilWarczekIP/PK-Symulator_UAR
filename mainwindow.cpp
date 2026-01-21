@@ -581,3 +581,27 @@ void MainWindow::on_checkBoxOgraniczenia_clicked()
     State().setARXLimitsEnabled(ui->checkBoxOgraniczenia->isChecked());
 }
 
+
+void MainWindow::on_doubleSpinBox_generator_bias_valueChanged(double arg1)
+{
+    ui->horizontalSlider_generator_bias->setValue(arg1 * 100);
+}
+
+
+void MainWindow::on_doubleSpinBox_generator_bias_editingFinished()
+{
+    State().setGeneratorSkladowaStala(ui->doubleSpinBox_generator_bias->value());
+}
+
+
+void MainWindow::on_horizontalSlider_generator_bias_sliderReleased()
+{
+    on_doubleSpinBox_generator_bias_editingFinished();
+}
+
+
+void MainWindow::on_horizontalSlider_generator_bias_valueChanged(int value)
+{
+    ui->doubleSpinBox_generator_bias->setValue(value / 100.0);
+}
+

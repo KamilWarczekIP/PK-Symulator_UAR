@@ -29,6 +29,7 @@ public:
     void setGeneneratorAmplitude(const double& amplitude);
     void setGeneneratorDutyCycle(const double& duty_cycle);
     void setGeneneratorPeriodMS(uint32_t period);
+    void setGeneratorSkladowaStala(double skladowa_stala);
     uint8_t getGeneneratorPeriodJumpMS();
     void resetGenerator();
 

@@ -67,6 +67,14 @@ private slots:
     void on_pushButton_reset_pam_roz_clicked();
     void on_checkBoxOgraniczenia_clicked();
 
+    void on_doubleSpinBox_generator_bias_valueChanged(double arg1);
+
+    void on_doubleSpinBox_generator_bias_editingFinished();
+
+    void on_horizontalSlider_generator_bias_sliderReleased();
+
+    void on_horizontalSlider_generator_bias_valueChanged(int value);
+
 private:
     void updateUiFromState();
     void recalculate_generator_period();

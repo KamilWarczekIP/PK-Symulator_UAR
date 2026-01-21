@@ -335,6 +335,9 @@
    </widget>
   </widget>
   <widget class="QPushButton" name="dodaj_wspolczynnik">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>370</x>
@@ -351,6 +354,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="usun_wspolczynnik">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>510</x>
