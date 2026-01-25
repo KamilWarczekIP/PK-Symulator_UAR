@@ -12,10 +12,10 @@ DialogArx::DialogArx(QWidget *parent)
     ui->setupUi(this);
 
     chart_zaklocenia = new QChart();
-    lineSeries = new QLineSeries();
-    lineSeries->setName("Rozkład normalny");
+    rozklad_zaklocen = new QLineSeries();
+    rozklad_zaklocen->setName("Rozkład normalny");
 
-    chart_zaklocenia->addSeries(lineSeries);
+    chart_zaklocenia->addSeries(rozklad_zaklocen);
     ustaw_wykres();
 
 
@@ -90,22 +90,22 @@ void DialogArx::on_zaklocenie_wartosc_valueChanged(double arg1)
 void DialogArx::ustaw_wykres()
 {
     chart_zaklocenia->removeAllSeries();
-    chart_zaklocenia->removeAxis(axisX_val);
+    chart_zaklocenia->removeAxis(axisX);
     chart_zaklocenia->removeAxis(axisY);
 
-    lineSeries = new QLineSeries(chart_zaklocenia);
-    lineSeries->setName("Gauss");
-    chart_zaklocenia->addSeries(lineSeries);
+    rozklad_zaklocen = new QLineSeries(chart_zaklocenia);
+    rozklad_zaklocen->setName("Gauss");
+    chart_zaklocenia->addSeries(rozklad_zaklocen);
 
-    axisX_val = new QValueAxis(chart_zaklocenia);
-    chart_zaklocenia->addAxis(axisX_val, Qt::AlignBottom);
-    lineSeries->attachAxis(axisX_val);
+    axisX = new QValueAxis(chart_zaklocenia);
+    chart_zaklocenia->addAxis(axisX, Qt::AlignBottom);
+    rozklad_zaklocen->attachAxis(axisX);
 
     axisY = new QValueAxis(chart_zaklocenia);
     axisY->setRange(0.0, 1.0);
     chart_zaklocenia->addAxis(axisY, Qt::AlignLeft);
 
-    lineSeries->attachAxis(axisY);
+    rozklad_zaklocen->attachAxis(axisY);
 
     chart_zaklocenia->legend()->hide();
 
@@ -127,11 +127,11 @@ static double gauss(double x, double sigma)
 
 void DialogArx::aktualizuj_widok(double sigma)
 {
-    lineSeries->clear();
+    rozklad_zaklocen->clear();
 
     if (sigma <= 0.0)
     {
-        axisX_val->setRange(-1.0, 1.0);
+        axisX->setRange(-1.0, 1.0);
         axisY->setRange(0.0, 1.0);
         return;
     }
@@ -148,13 +148,13 @@ void DialogArx::aktualizuj_widok(double sigma)
         double x = minX + i * dx;
         double y = gauss(x, sigma);
 
-        lineSeries->append(x, y);
+        rozklad_zaklocen->append(x, y);
 
         if (y > maxY)
             maxY = y;
     }
 
-    axisX_val->setRange(minX, maxX);
+    axisX->setRange(minX, maxX);
     axisY->setRange(0.0, maxY * 1.1);
 }
 

@@ -37,8 +37,8 @@ class DialogArx : public QDialog
 
         QChart *chart_zaklocenia;
 
-        QLineSeries *lineSeries;
-        QValueAxis  *axisX_val;
+        QLineSeries *rozklad_zaklocen;
+        QValueAxis  *axisX;
         QValueAxis  *axisY;
         QWidget* arx_coefficients_widget;
         QVBoxLayout* arx_coefficients_layout;

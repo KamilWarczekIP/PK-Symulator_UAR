@@ -355,11 +355,11 @@ void MainWindow::on_pushButton_dostosuj_parametry_clicked()
 // Amplituda generatora
 void MainWindow::on_verticalSlider_generator_amplituda_sliderMoved(int position)
 {
-    ui->doubleSpinBox_generator_amplituda->setValue((double) position / 100.0);
+    ui->doubleSpinBox_generator_amplituda->setValue((double) position / SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_generator_amplituda_valueChanged(double arg1)
 {
-    ui->verticalSlider_generator_amplituda->setValue(arg1 * 100.0);
+    ui->verticalSlider_generator_amplituda->setValue(arg1 * SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_generator_amplituda_editingFinished()
 {
@@ -425,8 +425,7 @@ void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg
 // Wypelnienie generatora (P)
 void MainWindow::on_spinBox_generator_wypelnienie_editingFinished()
 {
-    State().setGeneneratorDutyCycle(
-        (double) ui->spinBox_generator_wypelnienie->value() / 100.0);
+    State().setGeneneratorDutyCycle((double) ui->spinBox_generator_wypelnienie->value() / SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_horizontalSlider_generator_wypelnienie_sliderReleased()
 {
@@ -490,7 +489,7 @@ void MainWindow::on_pushButton_reset_pam_roz_clicked()
 // PID - część proporcjonalna (K)
 void MainWindow::on_horizontalSlider_pid_k_valueChanged(int value)
 {
-    ui->doubleSpinBox_pid_k->setValue((double) value / 100.0);
+    ui->doubleSpinBox_pid_k->setValue((double) value / SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_pid_k_editingFinished()
 {
@@ -498,7 +497,7 @@ void MainWindow::on_doubleSpinBox_pid_k_editingFinished()
 }
 void MainWindow::on_doubleSpinBox_pid_k_valueChanged(double arg1)
 {
-    ui->horizontalSlider_pid_k->setValue(arg1 * 100.0);
+    ui->horizontalSlider_pid_k->setValue(arg1 * SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_horizontalSlider_pid_k_sliderReleased()
 {
@@ -508,11 +507,11 @@ void MainWindow::on_horizontalSlider_pid_k_sliderReleased()
 // PID - część całkująca (Ti)
 void MainWindow::on_horizontalSlider_pid_Ti_valueChanged(int value)
 {
-    ui->doubleSpinBox_pid_Ti->setValue((double) value / 100.0);
+    ui->doubleSpinBox_pid_Ti->setValue((double) value / SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_pid_Ti_valueChanged(double arg1)
 {
-    ui->horizontalSlider_pid_Ti->setValue(arg1 * 100.0);
+    ui->horizontalSlider_pid_Ti->setValue(arg1 * SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_pid_Ti_editingFinished()
 {
@@ -526,11 +525,11 @@ void MainWindow::on_horizontalSlider_pid_Ti_sliderReleased()
 // PID - część różniczkująca (Td)
 void MainWindow::on_horizontalSlider_pid_Td_valueChanged(int value)
 {
-    ui->doubleSpinBox_pid_Td->setValue((double) value / 100.0);
+    ui->doubleSpinBox_pid_Td->setValue((double) value / SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_pid_Td_valueChanged(double arg1)
 {
-    ui->horizontalSlider_pid_Td->setValue(arg1 * 100.0);
+    ui->horizontalSlider_pid_Td->setValue(arg1 * SLIDER_TO_SPINBOX_RATIO);
 }
 void MainWindow::on_doubleSpinBox_pid_Td_editingFinished()
 {
@@ -573,11 +572,12 @@ void MainWindow::updateUiFromState()
         break;
     case State::TypGeneratora::Prostokatny:
         gen = gen_prostokatny;
-        this->ui->comboBox_generator_typ->setCurrentIndex(1);
+        this->ui->comboBox_generator_typ->setCurrentIndex(2);
         break;
     case State::TypGeneratora::SkokJednostkowy:
-        gen = gen_prostokatny; //TODO
-        this->ui->comboBox_generator_typ->setCurrentIndex(2);
+        this->ui->comboBox_generator_typ->setCurrentIndex(1);
+        this->ui->spinBox_symulacja_interwal->setValue(State().getSimmulationIntervalMS());
+        return;
         break;
     }
     this->ui->doubleSpinBox_generator_amplituda->setValue(gen->getAmplitude());
@@ -607,7 +607,7 @@ void MainWindow::on_checkBoxOgraniczenia_clicked()
 
 void MainWindow::on_doubleSpinBox_generator_bias_valueChanged(double arg1)
 {
-    ui->horizontalSlider_generator_bias->setValue(arg1 * 100);
+    ui->horizontalSlider_generator_bias->setValue(arg1 * SLIDER_TO_SPINBOX_RATIO);
 }
 
 
@@ -625,12 +625,13 @@ void MainWindow::on_horizontalSlider_generator_bias_sliderReleased()
 
 void MainWindow::on_horizontalSlider_generator_bias_valueChanged(int value)
 {
-    ui->doubleSpinBox_generator_bias->setValue(value / 100.0);
+    ui->doubleSpinBox_generator_bias->setValue(value / SLIDER_TO_SPINBOX_RATIO);
 }
 
 
 void MainWindow::on_doubleSpinBox_generator_czas_skoku_editingFinished()
 {
     State().setGeneratorUnitJumpTimeMS(ui->doubleSpinBox_generator_czas_skoku->value() * 1000);
+    ui->doubleSpinBox_generator_czas_skoku->setValue(0.0);
 }
 

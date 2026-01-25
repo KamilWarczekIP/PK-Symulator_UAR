@@ -76,6 +76,7 @@ private slots:
     void on_doubleSpinBox_generator_czas_skoku_editingFinished();
 
 private:
+    static constexpr const double SLIDER_TO_SPINBOX_RATIO = 100.0;
     void updateUiFromState();
     void recalculate_generator_period();
 
