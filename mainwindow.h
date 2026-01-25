@@ -95,7 +95,7 @@ private:
 
     ListWithExtremes *lista_wartosc_zadana;
     ListWithExtremes *lista_wartosc_regulowana;
-    ListWithExtremes *uchyb;
+    ListWithExtremes *lista_uchyb;
     ListWithExtremes *lista_sterowanie;
     ListWithExtremes *lista_sterowanie_P;
     ListWithExtremes *lista_sterowanie_I;

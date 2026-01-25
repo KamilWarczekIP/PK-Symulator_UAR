@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , samples_count(40)
     , miliseconds_of_simulation(0)
-    , uchyb(new ListWithExtremes())
+    , lista_uchyb(new ListWithExtremes())
     , lista_wartosc_zadana(new ListWithExtremes())
     , lista_wartosc_regulowana(new ListWithExtremes())
     , lista_sterowanie(new ListWithExtremes())
@@ -187,7 +187,7 @@ void MainWindow::updateCharts()
 {
     dynamic_cast<QLineSeries *>(chart_sterowanie->series().at(0))->replace(*lista_sterowanie->getList());
 
-    dynamic_cast<QLineSeries *>(chart_uchyb->series().at(0))->replace(*uchyb->getList());
+    dynamic_cast<QLineSeries *>(chart_uchyb->series().at(0))->replace(*lista_uchyb->getList());
 
     dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(0))->replace(*lista_wartosc_zadana->getList());
     dynamic_cast<QLineSeries *>(chart_wartosc_zadana_i_regulowana->series().at(1))->replace(*lista_wartosc_regulowana->getList());
@@ -200,8 +200,8 @@ void MainWindow::updateCharts()
     constexpr const qreal ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE = 0.1;
 
     // Osie pionowe - skalowanie
-    qreal range_width_uchyb = (uchyb->max() - uchyb->min()) * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
-    chart_uchyb->axes(Qt::Vertical).at(0)->setRange(uchyb->min() - range_width_uchyb, uchyb->max() + range_width_uchyb);
+    qreal range_width_uchyb = (lista_uchyb->max() - lista_uchyb->min()) * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
+    chart_uchyb->axes(Qt::Vertical).at(0)->setRange(lista_uchyb->min() - range_width_uchyb, lista_uchyb->max() + range_width_uchyb);
 
 
     qreal range_width_sterowanie = (lista_sterowanie->max() - lista_sterowanie->min()) * ROZSZEZRENIE_SKALI_WYKRESOW_W_PIONIE;
@@ -248,7 +248,7 @@ void MainWindow::addToPlots(TickData tick_data)
 
     lista_wartosc_zadana->appendLastValue(QPointF(seconds_of_simulation, tick_data.wartosc_zadana));
     lista_wartosc_regulowana->appendLastValue(QPointF(seconds_of_simulation, tick_data.wartosc_regulowana));
-    uchyb->appendLastValue(QPointF(seconds_of_simulation, tick_data.uchyb));
+    lista_uchyb->appendLastValue(QPointF(seconds_of_simulation, tick_data.uchyb));
     lista_sterowanie->appendLastValue(QPointF(seconds_of_simulation, static_cast<double>(tick_data.sterowanie)));
     lista_sterowanie_P->appendLastValue(QPointF(seconds_of_simulation, tick_data.sterowanie.Proportional));
     lista_sterowanie_I->appendLastValue(QPointF(seconds_of_simulation, tick_data.sterowanie.Integral));
@@ -257,8 +257,8 @@ void MainWindow::addToPlots(TickData tick_data)
     // Osie poziome - skalowanie
     constexpr const qreal LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ = 4.0;
 
-    qreal range_start = uchyb->getList()->front().x();
-    qreal range_end = uchyb->getList()->back().x() + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ * (qreal) (interwal_symulacji) / 1000.0;
+    qreal range_start = lista_uchyb->getList()->front().x();
+    qreal range_end = lista_uchyb->getList()->back().x() + LICZBA_DODATKOWYCH_PROBEK_PO_PRAWEJ / interwal_symulacji;
 
     chart_sterowanie->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
     chart_uchyb->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
@@ -266,18 +266,18 @@ void MainWindow::addToPlots(TickData tick_data)
     chart_skladowe_sterowania->axes(Qt::Horizontal).at(0)->setRange(range_start, range_end);
 
 
-    if (uchyb->getList()->count() > liczba_probek) {
+    if (lista_uchyb->getList()->count() > liczba_probek) {
         lista_wartosc_zadana->deleteFirstValue();
         lista_wartosc_regulowana->deleteFirstValue();
-        uchyb->deleteFirstValue();
+        lista_uchyb->deleteFirstValue();
         lista_sterowanie->deleteFirstValue();
         lista_sterowanie_P->deleteFirstValue();
         lista_sterowanie_I->deleteFirstValue();
         lista_sterowanie_D->deleteFirstValue();
-        if (uchyb->getList()->count() > liczba_probek) {
+        if (lista_uchyb->getList()->count() > liczba_probek) {
             lista_wartosc_zadana->deleteFirstValue();
             lista_wartosc_regulowana->deleteFirstValue();
-            uchyb->deleteFirstValue();
+            lista_uchyb->deleteFirstValue();
             lista_sterowanie->deleteFirstValue();
             lista_sterowanie_P->deleteFirstValue();
             lista_sterowanie_I->deleteFirstValue();
@@ -395,6 +395,7 @@ void MainWindow::on_horizontalSlider_generator_okres_sliderReleased()
 //Zmiana używanego generatora
 void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg1)
 {
+    // Dla generatorow okresowych
     ui->horizontalSlider_generator_okres->setEnabled(true);
     ui->doubleSpinBox_generator_czas_skoku->setEnabled(false);
     ui->verticalSlider_generator_amplituda->setEnabled(true);
@@ -411,7 +412,7 @@ void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg
         ui->horizontalSlider_generator_wypelnienie->setEnabled(false);
         State().setGenerator(State::TypGeneratora::Sinusoidalny);
     }
-    if (arg1 == "Skok Jednostkowy") // TODO: dodac skok
+    if (arg1 == "Skok Jednostkowy")
     {
         State().setGenerator(State::TypGeneratora::SkokJednostkowy);
         ui->horizontalSlider_generator_wypelnienie->setEnabled(false);
@@ -449,7 +450,7 @@ void MainWindow::on_pushButton_symulacja_reset_clicked()
     State().resetSimmulation();
 
     this->lista_sterowanie->clear();
-    this->uchyb->clear();
+    this->lista_uchyb->clear();
     this->lista_wartosc_regulowana->clear();
     this->lista_wartosc_zadana->clear();
     this->lista_sterowanie->clear();
