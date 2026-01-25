@@ -92,13 +92,16 @@ $(function(){initNavTree('class_list_with_extremes.html','','class_list_with_ext
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="listwithextremes_8hpp_source.html">listwithextremes.hpp</a>&gt;</code></p>
+<p>Klasa przechowująca dane do wyświetlenie na wykresach. Pozwala na odszukanie i zwrócenie najmniejsze i największej wartości w stałycm czasie.  
+ <a href="#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_list_with_wxtremes_8hpp_source.html">ListWithWxtremes.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Diagram współpracy dla ListWithExtremes:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_list_with_extremes__coll__graph.png" border="0" usemap="#a_list_with_extremes_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="a_list_with_extremes_coll__map" id="a_list_with_extremes_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,158,213"/>
+<area shape="rect" title="Klasa przechowująca dane do wyświetlenie na wykresach. Pozwala na odszukanie i zwrócenie najmniejsze ..." alt="" coords="5,5,158,235"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -106,12 +109,15 @@ Diagram współpracy dla ListWithExtremes:</div>
 Metody publiczne</h2></td></tr>
 <tr class="memitem:abee921f30a348dc000b9a81139a9b60d" id="r_abee921f30a348dc000b9a81139a9b60d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abee921f30a348dc000b9a81139a9b60d">ListWithExtremes</a> ()</td></tr>
 <tr class="memitem:a4fbac223cb013aecf5e968d37e84d389" id="r_a4fbac223cb013aecf5e968d37e84d389"><td class="memItemLeft" align="right" valign="top">QList&lt; QPointF &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fbac223cb013aecf5e968d37e84d389">getList</a> ()</td></tr>
-<tr class="memitem:a8a31aa9e838a2664edc10657081654a0" id="r_a8a31aa9e838a2664edc10657081654a0"><td class="memItemLeft" align="right" valign="top">qreal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a31aa9e838a2664edc10657081654a0">getMaxValue</a> ()</td></tr>
-<tr class="memitem:a9ed4acbe4e2b8aa67d7fa259a7eac6bb" id="r_a9ed4acbe4e2b8aa67d7fa259a7eac6bb"><td class="memItemLeft" align="right" valign="top">qreal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ed4acbe4e2b8aa67d7fa259a7eac6bb">getMinValue</a> ()</td></tr>
+<tr class="memitem:aab8bd58e200ec13d8b2e0e890726cecb" id="r_aab8bd58e200ec13d8b2e0e890726cecb"><td class="memItemLeft" align="right" valign="top">qreal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab8bd58e200ec13d8b2e0e890726cecb">max</a> ()</td></tr>
+<tr class="memitem:a7da8fa8fcf470b1937946f174dc7e6e4" id="r_a7da8fa8fcf470b1937946f174dc7e6e4"><td class="memItemLeft" align="right" valign="top">qreal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7da8fa8fcf470b1937946f174dc7e6e4">min</a> ()</td></tr>
 <tr class="memitem:a5a5835eb082fe7c3d7533a438ac2cd78" id="r_a5a5835eb082fe7c3d7533a438ac2cd78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a5835eb082fe7c3d7533a438ac2cd78">appendLastValue</a> (QPointF new_point)</td></tr>
 <tr class="memitem:aed1880ff07dfe807191dc1befbcd8ebf" id="r_aed1880ff07dfe807191dc1befbcd8ebf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed1880ff07dfe807191dc1befbcd8ebf">deleteFirstValue</a> ()</td></tr>
+<tr class="memitem:a7d7ff588d382ed5b9618b2ba6b7e6340" id="r_a7d7ff588d382ed5b9618b2ba6b7e6340"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d7ff588d382ed5b9618b2ba6b7e6340">clear</a> ()</td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa przechowująca dane do wyświetlenie na wykresach. Pozwala na odszukanie i zwrócenie najmniejsze i największej wartości w stałycm czasie. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="abee921f30a348dc000b9a81139a9b60d" name="abee921f30a348dc000b9a81139a9b60d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abee921f30a348dc000b9a81139a9b60d">&#9670;&#160;</a></span>ListWithExtremes()</h2>
 
@@ -140,6 +146,23 @@ Metody publiczne</h2></td></tr>
           <td class="memname">void ListWithExtremes::appendLastValue </td>
           <td>(</td>
           <td class="paramtype">QPointF</td>          <td class="paramname"><span class="paramname"><em>new_point</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d7ff588d382ed5b9618b2ba6b7e6340" name="a7d7ff588d382ed5b9618b2ba6b7e6340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d7ff588d382ed5b9618b2ba6b7e6340">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ListWithExtremes::clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -181,14 +204,14 @@ Metody publiczne</h2></td></tr>
 
 </div>
 </div>
-<a id="a8a31aa9e838a2664edc10657081654a0" name="a8a31aa9e838a2664edc10657081654a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a31aa9e838a2664edc10657081654a0">&#9670;&#160;</a></span>getMaxValue()</h2>
+<a id="aab8bd58e200ec13d8b2e0e890726cecb" name="aab8bd58e200ec13d8b2e0e890726cecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8bd58e200ec13d8b2e0e890726cecb">&#9670;&#160;</a></span>max()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">qreal ListWithExtremes::getMaxValue </td>
+          <td class="memname">qreal ListWithExtremes::max </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -198,14 +221,14 @@ Metody publiczne</h2></td></tr>
 
 </div>
 </div>
-<a id="a9ed4acbe4e2b8aa67d7fa259a7eac6bb" name="a9ed4acbe4e2b8aa67d7fa259a7eac6bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ed4acbe4e2b8aa67d7fa259a7eac6bb">&#9670;&#160;</a></span>getMinValue()</h2>
+<a id="a7da8fa8fcf470b1937946f174dc7e6e4" name="a7da8fa8fcf470b1937946f174dc7e6e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7da8fa8fcf470b1937946f174dc7e6e4">&#9670;&#160;</a></span>min()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">qreal ListWithExtremes::getMinValue </td>
+          <td class="memname">qreal ListWithExtremes::min </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -216,8 +239,8 @@ Metody publiczne</h2></td></tr>
 </div>
 </div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
-<li><a class="el" href="listwithextremes_8hpp_source.html">listwithextremes.hpp</a></li>
-<li><a class="el" href="listwithextremes_8cpp.html">listwithextremes.cpp</a></li>
+<li><a class="el" href="_list_with_wxtremes_8hpp_source.html">ListWithWxtremes.hpp</a></li>
+<li><a class="el" href="_list_with_wxtremes_8cpp.html">ListWithWxtremes.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

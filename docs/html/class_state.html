@@ -92,25 +92,16 @@ $(function(){initNavTree('class_state.html','','class_state-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Klasa warstwy usług.  
+ <a href="#details">Więcej...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_state_8h_source.html">State.h</a>&gt;</code></p>
-<div class="dynheader">
-Diagram dziedziczenia dla State</div>
-<div class="dyncontent">
-<div class="center"><img src="class_state__inherit__graph.png" border="0" usemap="#a_state_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
-<map name="a_state_inherit__map" id="a_state_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,123,240,1461"/>
-<area shape="rect" title=" " alt="" coords="94,5,152,75"/>
-<area shape="poly" title=" " alt="" coords="123,87,125,123,120,123,123,93"/>
-</map>
-</div>
 <div class="dynheader">
 Diagram współpracy dla State:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_state__coll__graph.png" border="0" usemap="#a_state_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="a_state_coll__map" id="a_state_coll__map">
-<area shape="rect" title=" " alt="" coords="5,123,240,1461"/>
-<area shape="rect" title=" " alt="" coords="94,5,152,75"/>
-<area shape="poly" title=" " alt="" coords="123,87,125,123,120,123,123,93"/>
+<area shape="rect" title="Klasa warstwy usług." alt="" coords="5,5,240,1499"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -118,12 +109,8 @@ Diagram współpracy dla State:</div>
 Typy publiczne</h2></td></tr>
 <tr class="memitem:a839e188a6b92a8e2d69b73c02f29a86c" id="r_a839e188a6b92a8e2d69b73c02f29a86c"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86c">TypGeneratora</a> { <a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86ca6376a6572edb8bb9bfb839975889f873">Sinusoidalny</a>
 , <a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86ca371082d49f2fa541f722c0e927a68872">Prostokatny</a>
-, <a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea">Reczny</a>
+, <a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848">SkokJednostkowy</a>
  }</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-slots" class="groupheader"><a id="pub-slots" name="pub-slots"></a>
-Sloty publiczne</h2></td></tr>
-<tr class="memitem:a8ddce70c7307fe0e3425e14ee584c87c" id="r_a8ddce70c7307fe0e3425e14ee584c87c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ddce70c7307fe0e3425e14ee584c87c">tick</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
@@ -138,7 +125,9 @@ Metody publiczne</h2></td></tr>
 <tr class="memitem:ad58fccfeb748a84eacb8c3e28294cbd7" id="r_ad58fccfeb748a84eacb8c3e28294cbd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad58fccfeb748a84eacb8c3e28294cbd7">setGeneneratorAmplitude</a> (const double &amp;amplitude)</td></tr>
 <tr class="memitem:a8126cb151b5b942e226c089e7cbe6f43" id="r_a8126cb151b5b942e226c089e7cbe6f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8126cb151b5b942e226c089e7cbe6f43">setGeneneratorDutyCycle</a> (const double &amp;duty_cycle)</td></tr>
 <tr class="memitem:a077fd5ca4c731ebc7a13939c21028e6f" id="r_a077fd5ca4c731ebc7a13939c21028e6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a077fd5ca4c731ebc7a13939c21028e6f">setGeneneratorPeriodMS</a> (uint32_t period)</td></tr>
+<tr class="memitem:ac8b75daadce0cdd535174a264ddcdee7" id="r_ac8b75daadce0cdd535174a264ddcdee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8b75daadce0cdd535174a264ddcdee7">setGeneratorSkladowaStala</a> (double skladowa_stala)</td></tr>
 <tr class="memitem:a9cc67a9ee078d240b2f998120ef39f54" id="r_a9cc67a9ee078d240b2f998120ef39f54"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cc67a9ee078d240b2f998120ef39f54">getGeneneratorPeriodJumpMS</a> ()</td></tr>
+<tr class="memitem:ad2fb22b73ba7aec391fd1d8f32fd94b5" id="r_ad2fb22b73ba7aec391fd1d8f32fd94b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2fb22b73ba7aec391fd1d8f32fd94b5">setGeneratorUnitJumpTimeMS</a> (uint32_t time)</td></tr>
 <tr class="memitem:ad1fae3b24c3a78978d4587a9ac6e2a47" id="r_ad1fae3b24c3a78978d4587a9ac6e2a47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1fae3b24c3a78978d4587a9ac6e2a47">resetGenerator</a> ()</td></tr>
 <tr class="memitem:a571911a9003385f606db2e961a9e0b2c" id="r_a571911a9003385f606db2e961a9e0b2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a571911a9003385f606db2e961a9e0b2c">setPIDProportional</a> (double k)</td></tr>
 <tr class="memitem:a744abce496dd9fbc69c175b1b1cd9808" id="r_a744abce496dd9fbc69c175b1b1cd9808"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a744abce496dd9fbc69c175b1b1cd9808">setPIDIntegration</a> (double T_i)</td></tr>
@@ -162,13 +151,16 @@ Metody publiczne</h2></td></tr>
 <tr class="memitem:ae8423af0e5b03cb4ef2d3c02fc11f0b4" id="r_ae8423af0e5b03cb4ef2d3c02fc11f0b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8423af0e5b03cb4ef2d3c02fc11f0b4">setSaveStateObject</a> (<a class="el" href="class_save_state_interface.html">SaveStateInterface</a> *object)</td></tr>
 <tr class="memitem:a6ef44c3a2e38f42557155fd14fb908c4" id="r_a6ef44c3a2e38f42557155fd14fb908c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ef44c3a2e38f42557155fd14fb908c4">saveToFile</a> (std::string path)</td></tr>
 <tr class="memitem:acc81c4cc4b52d64063a33a402e563d2b" id="r_acc81c4cc4b52d64063a33a402e563d2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc81c4cc4b52d64063a33a402e563d2b">readFromFile</a> (std::string path)</td></tr>
+<tr class="memitem:acfa01808f22630fc5dfbf2e75a0bd755" id="r_acfa01808f22630fc5dfbf2e75a0bd755"><td class="memItemLeft" align="right" valign="top">const std::tuple&lt; const <a class="el" href="class_a_r_x.html">ARX</a> *, const <a class="el" href="class_regulator_p_i_d.html">RegulatorPID</a> *, const <a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86c">TypGeneratora</a>, const <a class="el" href="class_generator_sinusoida.html">GeneratorSinusoida</a> *, const <a class="el" href="class_generator_prostokatny.html">GeneratorProstokatny</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfa01808f22630fc5dfbf2e75a0bd755">getAppState</a> ()</td></tr>
+<tr class="memitem:a8ddce70c7307fe0e3425e14ee584c87c" id="r_a8ddce70c7307fe0e3425e14ee584c87c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ddce70c7307fe0e3425e14ee584c87c">tick</a> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Statyczne metody publiczne</h2></td></tr>
-<tr class="memitem:afb475ae6d18f17a89d4e469ba11da6e7" id="r_afb475ae6d18f17a89d4e469ba11da6e7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_state.html">State</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb475ae6d18f17a89d4e469ba11da6e7">getInstance</a> ()</td></tr>
-<tr class="memitem:ad42cea6ba3e967aefd83716a8ec5eb6a" id="r_ad42cea6ba3e967aefd83716a8ec5eb6a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_state.html">State</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad42cea6ba3e967aefd83716a8ec5eb6a">get</a> ()</td></tr>
+<tr class="memitem:a61fc39a383c1fc6b4465289e60e48637" id="r_a61fc39a383c1fc6b4465289e60e48637"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_state.html">State</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61fc39a383c1fc6b4465289e60e48637">getInstance</a> ()</td></tr>
 </table>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Dokumentacja składowych wyliczanych</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa warstwy usług. </p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Dokumentacja składowych wyliczanych</h2>
 <a id="a839e188a6b92a8e2d69b73c02f29a86c" name="a839e188a6b92a8e2d69b73c02f29a86c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a839e188a6b92a8e2d69b73c02f29a86c">&#9670;&#160;</a></span>TypGeneratora</h2>
 
@@ -191,33 +183,25 @@ Statyczne metody publiczne</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Wartości wyliczeń</th></tr><tr><td class="fieldname"><a id="a839e188a6b92a8e2d69b73c02f29a86ca6376a6572edb8bb9bfb839975889f873" name="a839e188a6b92a8e2d69b73c02f29a86ca6376a6572edb8bb9bfb839975889f873"></a>Sinusoidalny&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a839e188a6b92a8e2d69b73c02f29a86ca371082d49f2fa541f722c0e927a68872" name="a839e188a6b92a8e2d69b73c02f29a86ca371082d49f2fa541f722c0e927a68872"></a>Prostokatny&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea" name="a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea"></a>Reczny&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848" name="a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848"></a>SkokJednostkowy&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Dokumentacja funkcji składowych</h2>
-<a id="ad42cea6ba3e967aefd83716a8ec5eb6a" name="ad42cea6ba3e967aefd83716a8ec5eb6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad42cea6ba3e967aefd83716a8ec5eb6a">&#9670;&#160;</a></span>get()</h2>
+<a id="acfa01808f22630fc5dfbf2e75a0bd755" name="acfa01808f22630fc5dfbf2e75a0bd755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfa01808f22630fc5dfbf2e75a0bd755">&#9670;&#160;</a></span>getAppState()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_state.html">State</a> &amp; State::get </td>
+          <td class="memname">const std::tuple&lt; const <a class="el" href="class_a_r_x.html">ARX</a> *, const <a class="el" href="class_regulator_p_i_d.html">RegulatorPID</a> *, const <a class="el" href="#a839e188a6b92a8e2d69b73c02f29a86c">State::TypGeneratora</a>, const <a class="el" href="class_generator_sinusoida.html">GeneratorSinusoida</a> *, const <a class="el" href="class_generator_prostokatny.html">GeneratorProstokatny</a> * &gt; State::getAppState </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -358,8 +342,8 @@ Statyczne metody publiczne</h2></td></tr>
 
 </div>
 </div>
-<a id="afb475ae6d18f17a89d4e469ba11da6e7" name="afb475ae6d18f17a89d4e469ba11da6e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb475ae6d18f17a89d4e469ba11da6e7">&#9670;&#160;</a></span>getInstance()</h2>
+<a id="a61fc39a383c1fc6b4465289e60e48637" name="a61fc39a383c1fc6b4465289e60e48637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61fc39a383c1fc6b4465289e60e48637">&#9670;&#160;</a></span>getInstance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -368,7 +352,7 @@ Statyczne metody publiczne</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_state.html">State</a> &amp; State::getInstance </td>
+          <td class="memname">class <a class="el" href="class_state.html">State</a> &amp; State::getInstance </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -718,6 +702,40 @@ Statyczne metody publiczne</h2></td></tr>
 
 </div>
 </div>
+<a id="ac8b75daadce0cdd535174a264ddcdee7" name="ac8b75daadce0cdd535174a264ddcdee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b75daadce0cdd535174a264ddcdee7">&#9670;&#160;</a></span>setGeneratorSkladowaStala()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void State::setGeneratorSkladowaStala </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>skladowa_stala</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2fb22b73ba7aec391fd1d8f32fd94b5" name="ad2fb22b73ba7aec391fd1d8f32fd94b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2fb22b73ba7aec391fd1d8f32fd94b5">&#9670;&#160;</a></span>setGeneratorUnitJumpTimeMS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void State::setGeneratorUnitJumpTimeMS </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>time</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5246ca69518068b359617d738f180700" name="a5246ca69518068b359617d738f180700"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5246ca69518068b359617d738f180700">&#9670;&#160;</a></span>setOutputCallback()</h2>
 
@@ -855,13 +873,10 @@ Statyczne metody publiczne</h2></td></tr>
 </div>
 </div>
 <a id="a8ddce70c7307fe0e3425e14ee584c87c" name="a8ddce70c7307fe0e3425e14ee584c87c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ddce70c7307fe0e3425e14ee584c87c">&#9670;&#160;</a></span>tick</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ddce70c7307fe0e3425e14ee584c87c">&#9670;&#160;</a></span>tick()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void State::tick </td>
@@ -870,11 +885,6 @@ Statyczne metody publiczne</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel slot">slot</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

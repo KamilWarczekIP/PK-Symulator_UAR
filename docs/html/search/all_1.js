@@ -6,5 +6,8 @@ var searchData=
   ['appendlastvalue_3',['appendLastValue',['../class_list_with_extremes.html#a5a5835eb082fe7c3d7533a438ac2cd78',1,'ListWithExtremes']]],
   ['arx_4',['ARX',['../class_a_r_x.html',1,'ARX'],['../class_a_r_x.html#ae2852296666fda6486b80314cad16b52',1,'ARX::ARX()']]],
   ['arx_2ecpp_5',['ARX.cpp',['../_a_r_x_8cpp.html',1,'']]],
-  ['arx_2eh_6',['ARX.h',['../_a_r_x_8h.html',1,'']]]
+  ['arx_2eh_6',['ARX.h',['../_a_r_x_8h.html',1,'']]],
+  ['arxcoefficientitem_7',['arxCoefficientItem',['../classarx_coefficient_item.html',1,'arxCoefficientItem'],['../classarx_coefficient_item.html#ab69560b7cbd76606751dc82616b0349d',1,'arxCoefficientItem::arxCoefficientItem()']]],
+  ['arxcoefficientitem_2ecpp_8',['ARXCoefficientItem.cpp',['../_a_r_x_coefficient_item_8cpp.html',1,'']]],
+  ['arxcoefficientitem_2ehpp_9',['ARXCoefficientItem.hpp',['../_a_r_x_coefficient_item_8hpp.html',1,'']]]
 ];

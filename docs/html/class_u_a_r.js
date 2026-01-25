@@ -6,5 +6,5 @@ var class_u_a_r =
     [ "getRegulatorPID", "class_u_a_r.html#acf8b6b428aace3112773858b58dbe576", null ],
     [ "resetAll", "class_u_a_r.html#ae934333c24eeced0a14c3d56cbb92be6", null ],
     [ "tick", "class_u_a_r.html#afb9d27fe4e7e24cc6af18d2824512786", null ],
-    [ "tick_more_info", "class_u_a_r.html#a2c5b81c56abb643d4de3ba8f96a7fbc8", null ]
+    [ "tickMoreInfo", "class_u_a_r.html#a4184176c7c2266b6d6efdf61fc7de6ad", null ]
 ];

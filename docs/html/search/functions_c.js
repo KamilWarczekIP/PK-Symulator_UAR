@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['_7edialogarx_0',['~DialogArx',['../class_dialog_arx.html#a891e8143e4836b4f75a825f62ecbec4f',1,'DialogArx']]],
-  ['_7edialogarxcooeficients_1',['~DialogARXCooeficients',['../class_dialog_a_r_x_cooeficients.html#a52cd6e9a217050f2bd71f9444196ff4b',1,'DialogARXCooeficients']]],
-  ['_7edialogarxnoise_2',['~DialogARXnoise',['../class_dialog_a_r_xnoise.html#abece361ec168d8ce742a37c5aa1daa61',1,'DialogARXnoise']]],
-  ['_7emainwindow_3',['~MainWindow',['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow']]]
+  ['uar_0',['UAR',['../class_u_a_r.html#a42a208694800c753d3a08561284f699d',1,'UAR::UAR(ARX &amp;&amp;arx, RegulatorPID &amp;&amp;pid)'],['../class_u_a_r.html#aa4123993963030aa607fe10739087eff',1,'UAR::UAR(ARX &amp;arx, RegulatorPID &amp;pid)']]]
 ];

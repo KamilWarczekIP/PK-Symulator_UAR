@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->ui->centralwidget->setLayout(ui->horizontalLayout_13);
+    this->setWindowTitle("SymulatorUAR");
 
 
     chart_sterowanie = new QChart();
@@ -176,7 +177,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(update_charts_timer, &QTimer::timeout, this, &MainWindow::updateCharts);
 
     updateUiFromState();
-    on_spinBox_generator_okres_editingFinished();
+    on_doubleSpinBox_generator_okres_editingFinished();
 
 }
 void MainWindow::updateCharts()
@@ -314,22 +315,41 @@ void MainWindow::on_horizontalSlider_symulacja_interwal_valueChanged(int value)
 
 void MainWindow::recalculate_generator_period()
 {
+    double interwal_symulacji_w_sekundach = State::getInstance().getSimmulationIntervalMS() / 1000.0;
+    double nowy_okres_generatora_w_sekundach = std::floor(ui->doubleSpinBox_generator_okres->value());
+    if(std::fmod(ui->doubleSpinBox_generator_okres->value(), interwal_symulacji_w_sekundach) > interwal_symulacji_w_sekundach / 2.0)
+        nowy_okres_generatora_w_sekundach += interwal_symulacji_w_sekundach;
+    ui->doubleSpinBox_generator_okres->setValue(nowy_okres_generatora_w_sekundach);
 
-    uint32_t interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
-    int new_generator_okres_value = ui->spinBox_generator_okres->value() / interwal_symulacji * interwal_symulacji;
-    if(ui->spinBox_generator_okres->value() % interwal_symulacji > interwal_symulacji / 2)
-        new_generator_okres_value += interwal_symulacji;
+    ui->doubleSpinBox_generator_okres->setMinimum(interwal_symulacji_w_sekundach * 8.0);
+    ui->doubleSpinBox_generator_okres->setMaximum(interwal_symulacji_w_sekundach * 50.0);
+    ui->doubleSpinBox_generator_okres->setSingleStep(interwal_symulacji_w_sekundach);
 
-    ui->spinBox_generator_okres->setValue(new_generator_okres_value);
+    ui->horizontalSlider_generator_okres->setMinimum(interwal_symulacji_w_sekundach * 8 * SLIDER_TO_SPINBOX_RATIO);
+    ui->horizontalSlider_generator_okres->setMaximum(interwal_symulacji_w_sekundach * 50 * SLIDER_TO_SPINBOX_RATIO);
+    ui->horizontalSlider_generator_okres->setSingleStep(interwal_symulacji_w_sekundach * SLIDER_TO_SPINBOX_RATIO);
+    ui->horizontalSlider_generator_okres->setPageStep(interwal_symulacji_w_sekundach * SLIDER_TO_SPINBOX_RATIO);
 
-    ui->spinBox_generator_okres->setMinimum(interwal_symulacji * 8);
-    ui->spinBox_generator_okres->setMaximum(interwal_symulacji * 100);
-    ui->spinBox_generator_okres->setSingleStep(interwal_symulacji);
 
-    ui->horizontalSlider_generator_okres->setMinimum(interwal_symulacji * 8);
-    ui->horizontalSlider_generator_okres->setMaximum(interwal_symulacji * 100);
-    ui->horizontalSlider_generator_okres->setSingleStep(interwal_symulacji);
-    ui->horizontalSlider_generator_okres->setPageStep(interwal_symulacji);
+    // uint32_t interwal_symulacji = State::getInstance().getSimmulationIntervalMS();
+    // int new_generator_okres_value = (int)(ui->doubleSpinBox_generator_okres->value() * 1000.0) / interwal_symulacji * interwal_symulacji;
+    // if((int)((ui->doubleSpinBox_generator_okres->value() * 1000.0)) % interwal_symulacji > interwal_symulacji / 2)
+    //     new_generator_okres_value += interwal_symulacji;
+
+    // ui->doubleSpinBox_generator_okres->setValue(new_generator_okres_value / 1000.0);
+
+    // ui->doubleSpinBox_generator_okres->setMinimum(interwal_symulacji_w_sekundach * 8.0);
+    // ui->doubleSpinBox_generator_okres->setMaximum(interwal_symulacji_w_sekundach * 100.0);
+    // ui->doubleSpinBox_generator_okres->setSingleStep(interwal_symulacji_w_sekundach);
+
+    // ui->horizontalSlider_generator_okres->setMinimum(interwal_symulacji_w_sekundach * 8 * SLIDER_TO_SPINBOX_RATIO);
+    // ui->horizontalSlider_generator_okres->setMaximum(interwal_symulacji_w_sekundach * 100 * SLIDER_TO_SPINBOX_RATIO);
+    // ui->horizontalSlider_generator_okres->setSingleStep(interwal_symulacji * SLIDER_TO_SPINBOX_RATIO);
+    // ui->horizontalSlider_generator_okres->setPageStep(interwal_symulacji_w_sekundach * SLIDER_TO_SPINBOX_RATIO);
+
+#ifdef DEBUG
+    qDebug() << "Recalc" << nowy_okres_generatora_w_sekundach;
+#endif
 }
 
 void MainWindow::on_spinBox_symulacja_interwal_editingFinished()
@@ -373,20 +393,20 @@ void MainWindow::on_verticalSlider_generator_amplituda_sliderReleased()
 // Okres generatora (T)
 void MainWindow::on_horizontalSlider_generator_okres_valueChanged(int value)
 {
-    ui->spinBox_generator_okres->setValue(value);
+    ui->doubleSpinBox_generator_okres->setValue(value / SLIDER_TO_SPINBOX_RATIO);
 }
-void MainWindow::on_spinBox_generator_okres_valueChanged(int arg1)
+void MainWindow::on_doubleSpinBox_generator_okres_valueChanged(double arg1)
 {
-    ui->horizontalSlider_generator_okres->setValue(arg1);
+    ui->horizontalSlider_generator_okres->setValue(arg1 * SLIDER_TO_SPINBOX_RATIO);
 }
-void MainWindow::on_spinBox_generator_okres_editingFinished()
+void MainWindow::on_doubleSpinBox_generator_okres_editingFinished()
 {
     recalculate_generator_period();
-    State().setGeneneratorPeriodMS(ui->spinBox_generator_okres->value());
+    State().setGeneneratorPeriodMS(ui->doubleSpinBox_generator_okres->value() * 1000.0);
 }
 void MainWindow::on_horizontalSlider_generator_okres_sliderReleased()
 {
-    on_spinBox_generator_okres_editingFinished();
+    on_doubleSpinBox_generator_okres_editingFinished();
 }
 
 //Zmiana używanego generatora
@@ -397,7 +417,7 @@ void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg
     ui->doubleSpinBox_generator_czas_skoku->setEnabled(false);
     ui->verticalSlider_generator_amplituda->setEnabled(true);
     ui->doubleSpinBox_generator_amplituda->setEnabled(true);
-    ui->spinBox_generator_okres->setEnabled(true);
+    ui->doubleSpinBox_generator_okres->setEnabled(true);
     if (arg1 == "Prostokątny")
     {
         ui->horizontalSlider_generator_wypelnienie->setEnabled(true);
@@ -416,7 +436,7 @@ void MainWindow::on_comboBox_generator_typ_currentTextChanged(const QString &arg
         ui->horizontalSlider_generator_okres->setEnabled(false);
         ui->verticalSlider_generator_amplituda->setEnabled(false);
         ui->doubleSpinBox_generator_amplituda->setEnabled(false);
-        ui->spinBox_generator_okres->setEnabled(false);
+        ui->doubleSpinBox_generator_okres->setEnabled(false);
         ui->doubleSpinBox_generator_czas_skoku->setEnabled(true);
     }
 
@@ -582,7 +602,7 @@ void MainWindow::updateUiFromState()
     }
     this->ui->doubleSpinBox_generator_amplituda->setValue(gen->getAmplitude());
     this->ui->doubleSpinBox_generator_bias->setValue(gen->getBias());
-    this->ui->spinBox_generator_okres->setValue(gen->getSamplesPerCycle() * State().getSimmulationIntervalMS());
+    this->ui->doubleSpinBox_generator_okres->setValue(gen->getSamplesPerCycle() * State().getSimmulationIntervalMS() / 1000.0);
     this->ui->spinBox_generator_wypelnienie->setValue(gen_prostokatny->getDutyCycle() * 100.0);
 
     this->ui->spinBox_symulacja_interwal->setValue(State().getSimmulationIntervalMS());
@@ -634,4 +654,7 @@ void MainWindow::on_doubleSpinBox_generator_czas_skoku_editingFinished()
     State().setGeneratorUnitJumpTimeMS(ui->doubleSpinBox_generator_czas_skoku->value() * 1000);
     ui->doubleSpinBox_generator_czas_skoku->setValue(0.0);
 }
+
+
+
 

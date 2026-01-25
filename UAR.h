@@ -3,6 +3,10 @@
 #include "ARX.h"
 #include "RegulatorPID.h"
 
+/**
+ * @brief Prechowuje inforamcje o jednym tiku symulacji
+ *
+ */
 struct TickData
 {
     double wartosc_zadana;

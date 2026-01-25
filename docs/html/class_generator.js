@@ -2,9 +2,9 @@ var class_generator =
 [
     [ "Generator", "class_generator.html#aaaf1e5f3a47ede3ef8a96a301ee04a10", null ],
     [ "advanceClockAndReturn", "class_generator.html#aaea4dd2d574cf658962076427a1e95c6", null ],
-    [ "getAmplitude", "class_generator.html#a88e65ee8e1332540f9649eddd7ae5c1f", null ],
-    [ "getBias", "class_generator.html#a9a0b71c852b96e0f2ac606b20a875563", null ],
-    [ "getSamplesPerCycle", "class_generator.html#a77ad0953b7fef298a707d8b8d6910c37", null ],
+    [ "getAmplitude", "class_generator.html#ada6e8934c7d0c6098b91beab54e7b618", null ],
+    [ "getBias", "class_generator.html#a7462fb16fb6f5ad77af9a7980b36a91c", null ],
+    [ "getSamplesPerCycle", "class_generator.html#a8085a2bfe88269c34624d567edf6d840", null ],
     [ "resetClock", "class_generator.html#ae2d975627a34d706cd86f5238e7b87d8", null ],
     [ "setAmplitude", "class_generator.html#aa5e6f29f5965aa90853f9ce8db03d61d", null ],
     [ "setBias", "class_generator.html#adfe47046f181b0709b70d0d0f02b6aa2", null ],

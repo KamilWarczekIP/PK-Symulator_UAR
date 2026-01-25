@@ -3,8 +3,9 @@ var class_state =
     [ "TypGeneratora", "class_state.html#a839e188a6b92a8e2d69b73c02f29a86c", [
       [ "Sinusoidalny", "class_state.html#a839e188a6b92a8e2d69b73c02f29a86ca6376a6572edb8bb9bfb839975889f873", null ],
       [ "Prostokatny", "class_state.html#a839e188a6b92a8e2d69b73c02f29a86ca371082d49f2fa541f722c0e927a68872", null ],
-      [ "Reczny", "class_state.html#a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea", null ]
+      [ "SkokJednostkowy", "class_state.html#a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848", null ]
     ] ],
+    [ "getAppState", "class_state.html#acfa01808f22630fc5dfbf2e75a0bd755", null ],
     [ "getARXCoefficientsA", "class_state.html#aaf262a5c6d9a5bcc67646942da59cd7a", null ],
     [ "getARXCoefficientsB", "class_state.html#a244178910f1cd858a8e5d3a138a34776", null ],
     [ "getARXInputLimits", "class_state.html#a2fd7e8b411acca20d8c6e67024c477e9", null ],
@@ -32,6 +33,8 @@ var class_state =
     [ "setGeneneratorDutyCycle", "class_state.html#a8126cb151b5b942e226c089e7cbe6f43", null ],
     [ "setGeneneratorPeriodMS", "class_state.html#a077fd5ca4c731ebc7a13939c21028e6f", null ],
     [ "setGenerator", "class_state.html#acf186c66733e8c97a0ec9d2a9a537f86", null ],
+    [ "setGeneratorSkladowaStala", "class_state.html#ac8b75daadce0cdd535174a264ddcdee7", null ],
+    [ "setGeneratorUnitJumpTimeMS", "class_state.html#ad2fb22b73ba7aec391fd1d8f32fd94b5", null ],
     [ "setOutputCallback", "class_state.html#a5246ca69518068b359617d738f180700", null ],
     [ "setPIDDerrivative", "class_state.html#a5bd74dcf7ab687a62b58aebb188f03e5", null ],
     [ "setPIDIntegration", "class_state.html#a744abce496dd9fbc69c175b1b1cd9808", null ],

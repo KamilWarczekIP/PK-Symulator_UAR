@@ -92,41 +92,63 @@ $(function(){initNavTree('class_a_r_x.html','','class_a_r_x-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Klasa implementująca obiek <a class="el" href="class_a_r_x.html" title="Klasa implementująca obiek ARX.">ARX</a>.  
+ <a href="#details">Więcej...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_a_r_x_8h_source.html">ARX.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram współpracy dla ARX:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_r_x__coll__graph.png" border="0" usemap="#a_a_r_x_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="a_a_r_x_coll__map" id="a_a_r_x_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,204,608"/>
+<area shape="rect" title="Klasa implementująca obiek ARX." alt="" coords="5,5,196,672"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
 <tr class="memitem:ae2852296666fda6486b80314cad16b52" id="r_ae2852296666fda6486b80314cad16b52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2852296666fda6486b80314cad16b52">ARX</a> (std::vector&lt; double &gt; &amp;&amp;a, std::vector&lt; double &gt; &amp;&amp;b, uint16_t k=1, double standard_deviation=0.0)</td></tr>
+<tr class="memdesc:ae2852296666fda6486b80314cad16b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktowr obiektu <a class="el" href="class_a_r_x.html" title="Klasa implementująca obiek ARX.">ARX</a>.  <br /></td></tr>
 <tr class="memitem:ade537f24f33ba60fd4ac77214d11da05" id="r_ade537f24f33ba60fd4ac77214d11da05"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade537f24f33ba60fd4ac77214d11da05">tick</a> (double u)</td></tr>
+<tr class="memdesc:ade537f24f33ba60fd4ac77214d11da05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wynikuje jeden krok symualcji dla obiektu.  <br /></td></tr>
 <tr class="memitem:afe2718758d4c13483425103a72659f80" id="r_afe2718758d4c13483425103a72659f80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe2718758d4c13483425103a72659f80">setK</a> (uint16_t k)</td></tr>
-<tr class="memitem:a3a266b40e95a08752a14552e35bffe24" id="r_a3a266b40e95a08752a14552e35bffe24"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a266b40e95a08752a14552e35bffe24">getK</a> ()</td></tr>
-<tr class="memitem:a47d5a82faadf62ffa44b5e957ab9ebdc" id="r_a47d5a82faadf62ffa44b5e957ab9ebdc"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47d5a82faadf62ffa44b5e957ab9ebdc">getA</a> ()</td></tr>
-<tr class="memitem:a4dec9bbca78257fea8bdaddf8c7bec3d" id="r_a4dec9bbca78257fea8bdaddf8c7bec3d"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dec9bbca78257fea8bdaddf8c7bec3d">getB</a> ()</td></tr>
+<tr class="memdesc:afe2718758d4c13483425103a72659f80"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawia opóżnienie transportowe  <br /></td></tr>
+<tr class="memitem:a3e74030dc1538d23bb7148b20544a0f7" id="r_a3e74030dc1538d23bb7148b20544a0f7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e74030dc1538d23bb7148b20544a0f7">getK</a> () const</td></tr>
+<tr class="memdesc:a3e74030dc1538d23bb7148b20544a0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">opóżnienie transportowe  <br /></td></tr>
+<tr class="memitem:ad229ee7398f095d6665addef0ac78f4e" id="r_ad229ee7398f095d6665addef0ac78f4e"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad229ee7398f095d6665addef0ac78f4e">getA</a> () const</td></tr>
+<tr class="memdesc:ad229ee7398f095d6665addef0ac78f4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">tablica współczynników A  <br /></td></tr>
+<tr class="memitem:af8bba827a9bfa716ac22ed633129533d" id="r_af8bba827a9bfa716ac22ed633129533d"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8bba827a9bfa716ac22ed633129533d">getB</a> () const</td></tr>
+<tr class="memdesc:af8bba827a9bfa716ac22ed633129533d"><td class="mdescLeft">&#160;</td><td class="mdescRight">tablica współczynników B  <br /></td></tr>
 <tr class="memitem:aa3f9d12a24e81dba88cc7d64e471a8d8" id="r_aa3f9d12a24e81dba88cc7d64e471a8d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3f9d12a24e81dba88cc7d64e471a8d8">setAB</a> (std::vector&lt; double &gt; a, std::vector&lt; double &gt; b)</td></tr>
+<tr class="memdesc:aa3f9d12a24e81dba88cc7d64e471a8d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawia tablice współczynników A i B. Zwaradca wyjątek przy niepowodzeniu  <br /></td></tr>
 <tr class="memitem:a8c8b7fe3b0de9023d68c30d6be3f64af" id="r_a8c8b7fe3b0de9023d68c30d6be3f64af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c8b7fe3b0de9023d68c30d6be3f64af">reset</a> ()</td></tr>
+<tr class="memdesc:a8c8b7fe3b0de9023d68c30d6be3f64af"><td class="mdescLeft">&#160;</td><td class="mdescRight">resetuje wewnętrzene bufory obiektu. Przydantne podczas resetowania symualcji <a class="el" href="class_u_a_r.html">UAR</a>  <br /></td></tr>
 <tr class="memitem:a52ba1f41750cb8940c6bbcf7f6a1bd67" id="r_a52ba1f41750cb8940c6bbcf7f6a1bd67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52ba1f41750cb8940c6bbcf7f6a1bd67">disableLimits</a> ()</td></tr>
+<tr class="memdesc:a52ba1f41750cb8940c6bbcf7f6a1bd67"><td class="mdescLeft">&#160;</td><td class="mdescRight">wyłącza limity na wejściu i wyjściu  <br /></td></tr>
 <tr class="memitem:a7b8c1614ff11f72c1141e8ea33477b58" id="r_a7b8c1614ff11f72c1141e8ea33477b58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b8c1614ff11f72c1141e8ea33477b58">enableLimits</a> ()</td></tr>
-<tr class="memitem:a31f539ee303e5b832154504e7d5f162b" id="r_a31f539ee303e5b832154504e7d5f162b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31f539ee303e5b832154504e7d5f162b">getLimitsActive</a> ()</td></tr>
+<tr class="memdesc:a7b8c1614ff11f72c1141e8ea33477b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">włącza limity na wejściu i wyjściu  <br /></td></tr>
+<tr class="memitem:a520db8abaa14aab864ed1db7c7f826c4" id="r_a520db8abaa14aab864ed1db7c7f826c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a520db8abaa14aab864ed1db7c7f826c4">getLimitsActive</a> () const</td></tr>
+<tr class="memdesc:a520db8abaa14aab864ed1db7c7f826c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">informuje czy aktywne są limity na wejściu i wyjściu  <br /></td></tr>
 <tr class="memitem:a9870be5f917a9b57fe6f30628fcb506b" id="r_a9870be5f917a9b57fe6f30628fcb506b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9870be5f917a9b57fe6f30628fcb506b">setInputLimits</a> (double low, double high)</td></tr>
+<tr class="memdesc:a9870be5f917a9b57fe6f30628fcb506b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawia limity na wejściu  <br /></td></tr>
 <tr class="memitem:acb43c40299e7cbda5077ac0546cab0c5" id="r_acb43c40299e7cbda5077ac0546cab0c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb43c40299e7cbda5077ac0546cab0c5">setOutputLimits</a> (double low, double high)</td></tr>
-<tr class="memitem:a25720498a89c692501abc0191f1271f5" id="r_a25720498a89c692501abc0191f1271f5"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; double, double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25720498a89c692501abc0191f1271f5">getInputLimits</a> ()</td></tr>
-<tr class="memitem:a5d189b9c527a7decf8a95cb46d575d3d" id="r_a5d189b9c527a7decf8a95cb46d575d3d"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; double, double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d189b9c527a7decf8a95cb46d575d3d">getOutputLimits</a> ()</td></tr>
+<tr class="memdesc:acb43c40299e7cbda5077ac0546cab0c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawia limity na wyjściu  <br /></td></tr>
+<tr class="memitem:a12155f3d9ccc112666e4f9249490aad4" id="r_a12155f3d9ccc112666e4f9249490aad4"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; double, double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12155f3d9ccc112666e4f9249490aad4">getInputLimits</a> () const</td></tr>
+<tr class="memdesc:a12155f3d9ccc112666e4f9249490aad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">zwraca limity na wejściu  <br /></td></tr>
+<tr class="memitem:af266e8d79de2b2aa1e2ed7c2d9984ecc" id="r_af266e8d79de2b2aa1e2ed7c2d9984ecc"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; double, double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af266e8d79de2b2aa1e2ed7c2d9984ecc">getOutputLimits</a> () const</td></tr>
+<tr class="memdesc:af266e8d79de2b2aa1e2ed7c2d9984ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawia limity na wyjściu  <br /></td></tr>
 <tr class="memitem:af238ca6925d01891725c938d1cee2996" id="r_af238ca6925d01891725c938d1cee2996"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af238ca6925d01891725c938d1cee2996">setStandardDeviation</a> (double standard_deviation)</td></tr>
-<tr class="memitem:a0b58c60c32fc07b6f8fac657badb64ae" id="r_a0b58c60c32fc07b6f8fac657badb64ae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b58c60c32fc07b6f8fac657badb64ae">getStandardDeviation</a> ()</td></tr>
+<tr class="memdesc:af238ca6925d01891725c938d1cee2996"><td class="mdescLeft">&#160;</td><td class="mdescRight">ustawia wartość odchylenia dla zakłócen obiektu. Wartość 0.0 wyłącza zakłówcenia  <br /></td></tr>
+<tr class="memitem:a317f5c29a1d0c006c3c58720990b82f5" id="r_a317f5c29a1d0c006c3c58720990b82f5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a317f5c29a1d0c006c3c58720990b82f5">getStandardDeviation</a> () const</td></tr>
+<tr class="memdesc:a317f5c29a1d0c006c3c58720990b82f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">zwraca wartość odchylenia dla zakłócen obiektu  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 Przyjaciele</h2></td></tr>
 <tr class="memitem:a5b78b1c2e1fa07ffed92da365593eaa4" id="r_a5b78b1c2e1fa07ffed92da365593eaa4"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b78b1c2e1fa07ffed92da365593eaa4">Test</a></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa implementująca obiek <a class="el" href="class_a_r_x.html" title="Klasa implementująca obiek ARX.">ARX</a>. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a id="ae2852296666fda6486b80314cad16b52" name="ae2852296666fda6486b80314cad16b52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2852296666fda6486b80314cad16b52">&#9670;&#160;</a></span>ARX()</h2>
 
@@ -156,6 +178,17 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Konstruktowr obiektu <a class="el" href="class_a_r_x.html" title="Klasa implementująca obiek ARX.">ARX</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td></td></tr>
+    <tr><td class="paramname">b</td><td></td></tr>
+    <tr><td class="paramname">k</td><td></td></tr>
+    <tr><td class="paramname">standard_deviation</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Dokumentacja funkcji składowych</h2>
@@ -174,6 +207,8 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>wyłącza limity na wejściu i wyjściu </p>
+
 </div>
 </div>
 <a id="a7b8c1614ff11f72c1141e8ea33477b58" name="a7b8c1614ff11f72c1141e8ea33477b58"></a>
@@ -191,10 +226,12 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>włącza limity na wejściu i wyjściu </p>
+
 </div>
 </div>
-<a id="a47d5a82faadf62ffa44b5e957ab9ebdc" name="a47d5a82faadf62ffa44b5e957ab9ebdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47d5a82faadf62ffa44b5e957ab9ebdc">&#9670;&#160;</a></span>getA()</h2>
+<a id="ad229ee7398f095d6665addef0ac78f4e" name="ad229ee7398f095d6665addef0ac78f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad229ee7398f095d6665addef0ac78f4e">&#9670;&#160;</a></span>getA()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,15 +240,18 @@ Przyjaciele</h2></td></tr>
           <td class="memname">const std::vector&lt; double &gt; ARX::getA </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>tablica współczynników A </p>
+<dl class="section return"><dt>Zwraca</dt><dd>const std::vector&lt;double&gt; </dd></dl>
+
 </div>
 </div>
-<a id="a4dec9bbca78257fea8bdaddf8c7bec3d" name="a4dec9bbca78257fea8bdaddf8c7bec3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dec9bbca78257fea8bdaddf8c7bec3d">&#9670;&#160;</a></span>getB()</h2>
+<a id="af8bba827a9bfa716ac22ed633129533d" name="af8bba827a9bfa716ac22ed633129533d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8bba827a9bfa716ac22ed633129533d">&#9670;&#160;</a></span>getB()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,15 +260,18 @@ Przyjaciele</h2></td></tr>
           <td class="memname">const std::vector&lt; double &gt; ARX::getB </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>tablica współczynników B </p>
+<dl class="section return"><dt>Zwraca</dt><dd>const std::vector&lt;double&gt; </dd></dl>
+
 </div>
 </div>
-<a id="a25720498a89c692501abc0191f1271f5" name="a25720498a89c692501abc0191f1271f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25720498a89c692501abc0191f1271f5">&#9670;&#160;</a></span>getInputLimits()</h2>
+<a id="a12155f3d9ccc112666e4f9249490aad4" name="a12155f3d9ccc112666e4f9249490aad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12155f3d9ccc112666e4f9249490aad4">&#9670;&#160;</a></span>getInputLimits()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,15 +280,18 @@ Przyjaciele</h2></td></tr>
           <td class="memname">const std::pair&lt; double, double &gt; &amp; ARX::getInputLimits </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>zwraca limity na wejściu </p>
+<dl class="section return"><dt>Zwraca</dt><dd>const std::pair&lt;double, double&gt; </dd></dl>
+
 </div>
 </div>
-<a id="a3a266b40e95a08752a14552e35bffe24" name="a3a266b40e95a08752a14552e35bffe24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a266b40e95a08752a14552e35bffe24">&#9670;&#160;</a></span>getK()</h2>
+<a id="a3e74030dc1538d23bb7148b20544a0f7" name="a3e74030dc1538d23bb7148b20544a0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e74030dc1538d23bb7148b20544a0f7">&#9670;&#160;</a></span>getK()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -254,15 +300,18 @@ Przyjaciele</h2></td></tr>
           <td class="memname">double ARX::getK </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>opóżnienie transportowe </p>
+<dl class="section return"><dt>Zwraca</dt><dd>double </dd></dl>
+
 </div>
 </div>
-<a id="a31f539ee303e5b832154504e7d5f162b" name="a31f539ee303e5b832154504e7d5f162b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31f539ee303e5b832154504e7d5f162b">&#9670;&#160;</a></span>getLimitsActive()</h2>
+<a id="a520db8abaa14aab864ed1db7c7f826c4" name="a520db8abaa14aab864ed1db7c7f826c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520db8abaa14aab864ed1db7c7f826c4">&#9670;&#160;</a></span>getLimitsActive()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,15 +320,18 @@ Przyjaciele</h2></td></tr>
           <td class="memname">bool ARX::getLimitsActive </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>informuje czy aktywne są limity na wejściu i wyjściu </p>
+<dl class="section return"><dt>Zwraca</dt><dd>bool </dd></dl>
+
 </div>
 </div>
-<a id="a5d189b9c527a7decf8a95cb46d575d3d" name="a5d189b9c527a7decf8a95cb46d575d3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d189b9c527a7decf8a95cb46d575d3d">&#9670;&#160;</a></span>getOutputLimits()</h2>
+<a id="af266e8d79de2b2aa1e2ed7c2d9984ecc" name="af266e8d79de2b2aa1e2ed7c2d9984ecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af266e8d79de2b2aa1e2ed7c2d9984ecc">&#9670;&#160;</a></span>getOutputLimits()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,15 +340,18 @@ Przyjaciele</h2></td></tr>
           <td class="memname">const std::pair&lt; double, double &gt; &amp; ARX::getOutputLimits </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>ustawia limity na wyjściu </p>
+<dl class="section return"><dt>Zwraca</dt><dd>const std::pair&lt;double, double&gt; </dd></dl>
+
 </div>
 </div>
-<a id="a0b58c60c32fc07b6f8fac657badb64ae" name="a0b58c60c32fc07b6f8fac657badb64ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b58c60c32fc07b6f8fac657badb64ae">&#9670;&#160;</a></span>getStandardDeviation()</h2>
+<a id="a317f5c29a1d0c006c3c58720990b82f5" name="a317f5c29a1d0c006c3c58720990b82f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a317f5c29a1d0c006c3c58720990b82f5">&#9670;&#160;</a></span>getStandardDeviation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,10 +360,13 @@ Przyjaciele</h2></td></tr>
           <td class="memname">double ARX::getStandardDeviation </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>zwraca wartość odchylenia dla zakłócen obiektu </p>
+<dl class="section return"><dt>Zwraca</dt><dd>double </dd></dl>
 
 </div>
 </div>
@@ -326,6 +384,8 @@ Przyjaciele</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>resetuje wewnętrzene bufory obiektu. Przydantne podczas resetowania symualcji <a class="el" href="class_u_a_r.html">UAR</a> </p>
 
 </div>
 </div>
@@ -348,6 +408,15 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>ustawia tablice współczynników A i B. Zwaradca wyjątek przy niepowodzeniu </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td></td></tr>
+    <tr><td class="paramname">b</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a9870be5f917a9b57fe6f30628fcb506b" name="a9870be5f917a9b57fe6f30628fcb506b"></a>
@@ -369,6 +438,15 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>ustawia limity na wejściu </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">low</td><td></td></tr>
+    <tr><td class="paramname">high</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="afe2718758d4c13483425103a72659f80" name="afe2718758d4c13483425103a72659f80"></a>
@@ -385,6 +463,14 @@ Przyjaciele</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>ustawia opóżnienie transportowe </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -407,6 +493,15 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>ustawia limity na wyjściu </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">low</td><td></td></tr>
+    <tr><td class="paramname">high</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="af238ca6925d01891725c938d1cee2996" name="af238ca6925d01891725c938d1cee2996"></a>
@@ -424,6 +519,14 @@ Przyjaciele</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>ustawia wartość odchylenia dla zakłócen obiektu. Wartość 0.0 wyłącza zakłówcenia </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">standard_deviation</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ade537f24f33ba60fd4ac77214d11da05" name="ade537f24f33ba60fd4ac77214d11da05"></a>
@@ -440,6 +543,15 @@ Przyjaciele</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Wynikuje jeden krok symualcji dla obiektu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>wartość na wejściu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>double wartośc na wyjściu </dd></dl>
 
 </div>
 </div>

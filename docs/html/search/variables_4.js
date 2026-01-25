@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uchyb_0',['uchyb',['../struct_tick_data.html#ac7e2c3634107f8e9434f1b9c74478da5',1,'TickData']]]
+  ['proportional_0',['Proportional',['../struct_p_i_d_tick_data.html#a0c64a0ee401db41825b4550f705c9762',1,'PIDTickData']]]
 ];

@@ -6,7 +6,8 @@
 
 
 
-Diagram dziedziczenia dla Generator\+Sinusoida\nopagebreak
+Diagram dziedziczenia dla Generator\+Sinusoida
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Diagram dziedziczenia dla Generator\+Sinusoida\nopagebreak
 \end{figure}
 
 
-Diagram współpracy dla Generator\+Sinusoida\+:\nopagebreak
+Diagram współpracy dla Generator\+Sinusoida\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -40,11 +42,11 @@ void \mbox{\hyperlink{class_generator_a957b177f9aa1182a20d78c851bd0de08}{set\+Sa
 \item 
 void \mbox{\hyperlink{class_generator_adfe47046f181b0709b70d0d0f02b6aa2}{set\+Bias}} (double \mbox{\hyperlink{class_generator_a842934bc8ceedd59c0597f3cbeda8e85}{bias}})
 \item 
-double \mbox{\hyperlink{class_generator_a88e65ee8e1332540f9649eddd7ae5c1f}{get\+Amplitude}} ()
+double \mbox{\hyperlink{class_generator_ada6e8934c7d0c6098b91beab54e7b618}{get\+Amplitude}} () const
 \item 
-uint16\+\_\+t \mbox{\hyperlink{class_generator_a77ad0953b7fef298a707d8b8d6910c37}{get\+Samples\+Per\+Cycle}} ()
+uint16\+\_\+t \mbox{\hyperlink{class_generator_a8085a2bfe88269c34624d567edf6d840}{get\+Samples\+Per\+Cycle}} () const
 \item 
-double \mbox{\hyperlink{class_generator_a9a0b71c852b96e0f2ac606b20a875563}{get\+Bias}} ()
+double \mbox{\hyperlink{class_generator_a7462fb16fb6f5ad77af9a7980b36a91c}{get\+Bias}} () const
 \item 
 void \mbox{\hyperlink{class_generator_ae2d975627a34d706cd86f5238e7b87d8}{reset\+Clock}} ()
 \end{DoxyCompactItemize}
@@ -53,7 +55,7 @@ void \mbox{\hyperlink{class_generator_ae2d975627a34d706cd86f5238e7b87d8}{reset\+
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{class_generator_aaea4dd2d574cf658962076427a1e95c6}{advance\+Clock\+And\+Return}} (double)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em funckja zwiększa zegar wewnętrzny i zwraca wartość podaną jako arguemnt + bias \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_generator}{Generator}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -87,6 +89,9 @@ Generator\+Sinusoida\+::\+Generator\+Sinusoida (\begin{DoxyParamCaption}{}{}\end
 {\footnotesize\ttfamily \label{class_generator_sinusoida_a990c16dff98ae294db2c01d9065ab1fe} 
 double Generator\+Sinusoida\+::tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+\begin{DoxyReturn}{Zwraca}
+double 
+\end{DoxyReturn}
 
 
 Implementuje \mbox{\hyperlink{class_generator_ab6634f2223b14b6406a79bfdb73f886c}{Generator}}.

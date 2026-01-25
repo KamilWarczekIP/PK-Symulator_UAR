@@ -9,6 +9,10 @@ class SaveStateInterface;
 class TimerStateInterface;
 
 
+/**
+ * @brief Klasa warstwy usług
+ *
+ */
 class State
 {
 public:

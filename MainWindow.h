@@ -41,8 +41,7 @@ private slots:
     void on_doubleSpinBox_generator_amplituda_editingFinished();
     void on_verticalSlider_generator_amplituda_sliderReleased();
     void on_horizontalSlider_generator_okres_valueChanged(int value);
-    void on_spinBox_generator_okres_valueChanged(int arg1);
-    void on_spinBox_generator_okres_editingFinished();
+    void on_doubleSpinBox_generator_okres_editingFinished();
     void on_horizontalSlider_generator_okres_sliderReleased();
     void on_comboBox_generator_typ_currentTextChanged(const QString &arg1);
     void on_spinBox_generator_wypelnienie_editingFinished();
@@ -74,6 +73,8 @@ private slots:
     void on_horizontalSlider_generator_bias_sliderReleased();
     void on_horizontalSlider_generator_bias_valueChanged(int value);
     void on_doubleSpinBox_generator_czas_skoku_editingFinished();
+
+    void on_doubleSpinBox_generator_okres_valueChanged(double arg1);
 
 private:
     static constexpr const double SLIDER_TO_SPINBOX_RATIO = 100.0;

@@ -2,18 +2,13 @@
 \hypertarget{class_state}{}\label{class_state}\index{State@{State}}
 
 
+Klasa warstwy usług.  
+
+
+
+
 {\ttfamily \#include $<$State.\+h$>$}
 
-
-
-Diagram dziedziczenia dla State
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{class_state__inherit__graph}
-\end{center}
-\end{figure}
 
 
 Diagram współpracy dla State\+:
@@ -29,13 +24,8 @@ Diagram współpracy dla State\+:
 \item 
 enum class \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86c}{Typ\+Generatora}} \{ \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86ca6376a6572edb8bb9bfb839975889f873}{Sinusoidalny}}
 , \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86ca371082d49f2fa541f722c0e927a68872}{Prostokatny}}
-, \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea}{Reczny}}
+, \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848}{Skok\+Jednostkowy}}
  \}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Sloty publiczne}
-\begin{DoxyCompactItemize}
-\item 
-void \mbox{\hyperlink{class_state_a8ddce70c7307fe0e3425e14ee584c87c}{tick}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Metody publiczne}
 \begin{DoxyCompactItemize}
@@ -62,7 +52,11 @@ void \mbox{\hyperlink{class_state_a8126cb151b5b942e226c089e7cbe6f43}{set\+Genene
 \item 
 void \mbox{\hyperlink{class_state_a077fd5ca4c731ebc7a13939c21028e6f}{set\+Genenerator\+Period\+MS}} (uint32\+\_\+t period)
 \item 
+void \mbox{\hyperlink{class_state_ac8b75daadce0cdd535174a264ddcdee7}{set\+Generator\+Skladowa\+Stala}} (double skladowa\+\_\+stala)
+\item 
 uint8\+\_\+t \mbox{\hyperlink{class_state_a9cc67a9ee078d240b2f998120ef39f54}{get\+Genenerator\+Period\+Jump\+MS}} ()
+\item 
+void \mbox{\hyperlink{class_state_ad2fb22b73ba7aec391fd1d8f32fd94b5}{set\+Generator\+Unit\+Jump\+Time\+MS}} (uint32\+\_\+t time)
 \item 
 void \mbox{\hyperlink{class_state_ad1fae3b24c3a78978d4587a9ac6e2a47}{reset\+Generator}} ()
 \item 
@@ -109,15 +103,20 @@ void \mbox{\hyperlink{class_state_ae8423af0e5b03cb4ef2d3c02fc11f0b4}{set\+Save\+
 void \mbox{\hyperlink{class_state_a6ef44c3a2e38f42557155fd14fb908c4}{save\+To\+File}} (std\+::string path)
 \item 
 void \mbox{\hyperlink{class_state_acc81c4cc4b52d64063a33a402e563d2b}{read\+From\+File}} (std\+::string path)
+\item 
+const std\+::tuple$<$ const \mbox{\hyperlink{class_a_r_x}{ARX}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{class_regulator_p_i_d}{Regulator\+PID}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86c}{Typ\+Generatora}}, const \mbox{\hyperlink{class_generator_sinusoida}{Generator\+Sinusoida}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{class_generator_prostokatny}{Generator\+Prostokatny}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_state_acfa01808f22630fc5dfbf2e75a0bd755}{get\+App\+State}} ()
+\item 
+void \mbox{\hyperlink{class_state_a8ddce70c7307fe0e3425e14ee584c87c}{tick}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Statyczne metody publiczne}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_state}{State}} \& \mbox{\hyperlink{class_state_afb475ae6d18f17a89d4e469ba11da6e7}{get\+Instance}} ()
-\item 
-static \mbox{\hyperlink{class_state}{State}} \& \mbox{\hyperlink{class_state_ad42cea6ba3e967aefd83716a8ec5eb6a}{get}} ()
+static \mbox{\hyperlink{class_state}{State}} \& \mbox{\hyperlink{class_state_a61fc39a383c1fc6b4465289e60e48637}{get\+Instance}} ()
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Opis szczegółowy}
+Klasa warstwy usług. 
 
 \label{doc-enum-members}
 \Hypertarget{class_state_doc-enum-members}
@@ -137,8 +136,8 @@ Sinusoidalny&\\
 Prostokatny&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{Reczny@{Reczny}!State@{State}}\index{State@{State}!Reczny@{Reczny}}}\Hypertarget{class_state_a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea}\label{class_state_a839e188a6b92a8e2d69b73c02f29a86caa2f9753df71148255174871b35df87ea} 
-Reczny&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SkokJednostkowy@{SkokJednostkowy}!State@{State}}\index{State@{State}!SkokJednostkowy@{SkokJednostkowy}}}\Hypertarget{class_state_a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848}\label{class_state_a839e188a6b92a8e2d69b73c02f29a86ca4ab3b7b3d89734ff028ef86dfd9f5848} 
+Skok\+Jednostkowy&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -147,11 +146,11 @@ Reczny&\\
 \label{doc-func-members}
 \Hypertarget{class_state_doc-func-members}
 \doxysubsection{Dokumentacja funkcji składowych}
-\Hypertarget{class_state_ad42cea6ba3e967aefd83716a8ec5eb6a}\index{State@{State}!get@{get}}
-\index{get@{get}!State@{State}}
-\doxysubsubsection{\texorpdfstring{get()}{get()}}
-{\footnotesize\ttfamily \label{class_state_ad42cea6ba3e967aefd83716a8ec5eb6a} 
-\mbox{\hyperlink{class_state}{State}} \& State\+::get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\Hypertarget{class_state_acfa01808f22630fc5dfbf2e75a0bd755}\index{State@{State}!getAppState@{getAppState}}
+\index{getAppState@{getAppState}!State@{State}}
+\doxysubsubsection{\texorpdfstring{getAppState()}{getAppState()}}
+{\footnotesize\ttfamily \label{class_state_acfa01808f22630fc5dfbf2e75a0bd755} 
+const std\+::tuple$<$ const \mbox{\hyperlink{class_a_r_x}{ARX}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{class_regulator_p_i_d}{Regulator\+PID}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86c}{State\+::\+Typ\+Generatora}}, const \mbox{\hyperlink{class_generator_sinusoida}{Generator\+Sinusoida}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{class_generator_prostokatny}{Generator\+Prostokatny}} \texorpdfstring{$\ast$}{*} $>$ State\+::get\+App\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_state_aaf262a5c6d9a5bcc67646942da59cd7a}\index{State@{State}!getARXCoefficientsA@{getARXCoefficientsA}}
 \index{getARXCoefficientsA@{getARXCoefficientsA}!State@{State}}
@@ -201,11 +200,11 @@ uint8\+\_\+t State\+::get\+Genenerator\+Period\+Jump\+MS (\begin{DoxyParamCaptio
 {\footnotesize\ttfamily \label{class_state_a2dfb3b672eae2d6bc649b1d95d8b44b9} 
 \mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86c}{State\+::\+Typ\+Generatora}} State\+::get\+Generator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_state_afb475ae6d18f17a89d4e469ba11da6e7}\index{State@{State}!getInstance@{getInstance}}
+\Hypertarget{class_state_a61fc39a383c1fc6b4465289e60e48637}\index{State@{State}!getInstance@{getInstance}}
 \index{getInstance@{getInstance}!State@{State}}
 \doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
-{\footnotesize\ttfamily \label{class_state_afb475ae6d18f17a89d4e469ba11da6e7} 
-\mbox{\hyperlink{class_state}{State}} \& State\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_state_a61fc39a383c1fc6b4465289e60e48637} 
+class \mbox{\hyperlink{class_state}{State}} \& State\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{class_state_ae1ba3bce43d4ba132f0a05ea87b6a72b}\index{State@{State}!getSimmulationIntervalMS@{getSimmulationIntervalMS}}
 \index{getSimmulationIntervalMS@{getSimmulationIntervalMS}!State@{State}}
@@ -321,6 +320,18 @@ void State\+::set\+Genenerator\+Period\+MS (\begin{DoxyParamCaption}\item[{uint3
 {\footnotesize\ttfamily \label{class_state_acf186c66733e8c97a0ec9d2a9a537f86} 
 void State\+::set\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state_a839e188a6b92a8e2d69b73c02f29a86c}{Typ\+Generatora}}}]{type}{}\end{DoxyParamCaption})}
 
+\Hypertarget{class_state_ac8b75daadce0cdd535174a264ddcdee7}\index{State@{State}!setGeneratorSkladowaStala@{setGeneratorSkladowaStala}}
+\index{setGeneratorSkladowaStala@{setGeneratorSkladowaStala}!State@{State}}
+\doxysubsubsection{\texorpdfstring{setGeneratorSkladowaStala()}{setGeneratorSkladowaStala()}}
+{\footnotesize\ttfamily \label{class_state_ac8b75daadce0cdd535174a264ddcdee7} 
+void State\+::set\+Generator\+Skladowa\+Stala (\begin{DoxyParamCaption}\item[{double}]{skladowa\+\_\+stala}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_state_ad2fb22b73ba7aec391fd1d8f32fd94b5}\index{State@{State}!setGeneratorUnitJumpTimeMS@{setGeneratorUnitJumpTimeMS}}
+\index{setGeneratorUnitJumpTimeMS@{setGeneratorUnitJumpTimeMS}!State@{State}}
+\doxysubsubsection{\texorpdfstring{setGeneratorUnitJumpTimeMS()}{setGeneratorUnitJumpTimeMS()}}
+{\footnotesize\ttfamily \label{class_state_ad2fb22b73ba7aec391fd1d8f32fd94b5} 
+void State\+::set\+Generator\+Unit\+Jump\+Time\+MS (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time}{}\end{DoxyParamCaption})}
+
 \Hypertarget{class_state_a5246ca69518068b359617d738f180700}\index{State@{State}!setOutputCallback@{setOutputCallback}}
 \index{setOutputCallback@{setOutputCallback}!State@{State}}
 \doxysubsubsection{\texorpdfstring{setOutputCallback()}{setOutputCallback()}}
@@ -371,9 +382,9 @@ void State\+::set\+Simmulation\+Running (\begin{DoxyParamCaption}\item[{bool}]{s
 
 \Hypertarget{class_state_a8ddce70c7307fe0e3425e14ee584c87c}\index{State@{State}!tick@{tick}}
 \index{tick@{tick}!State@{State}}
-\doxysubsubsection{\texorpdfstring{tick}{tick}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
 {\footnotesize\ttfamily \label{class_state_a8ddce70c7307fe0e3425e14ee584c87c} 
-void State\+::tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+void State\+::tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 

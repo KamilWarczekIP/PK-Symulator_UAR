@@ -46,6 +46,7 @@ var NAVTREE =
       [ "Składowe plików", "globals.html", [
         [ "Wszystko", "globals.html", null ],
         [ "Funkcje", "globals_func.html", null ],
+        [ "Zmienne", "globals_vars.html", null ],
         [ "Wyliczenia", "globals_enum.html", null ],
         [ "Definicje", "globals_defs.html", null ]
       ] ]
@@ -55,7 +56,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_a_r_x_8cpp.html"
+"_a_r_x_8cpp.html",
+"md__r_e_a_d_m_e.html"
 ];
 
 var SYNCONMSG = 'kliknij żeby wyłączyć pokazywanie otwartego elementu w drzewie zawartości';
