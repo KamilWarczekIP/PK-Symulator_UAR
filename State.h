@@ -85,6 +85,7 @@ private:
 class SaveStateInterface
 {
 public:
+    virtual ~SaveStateInterface() = default;
     virtual void saveToFile(std::string& path, UAR* uar, bool simmulation, State::TypGeneratora typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
     virtual void readFromFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
 };
@@ -92,6 +93,7 @@ public:
 class TimerStateInterface
 {
 public:
+    virtual ~TimerStateInterface() = default;
     virtual void setTimeout(std::function<void()>) = 0;
     virtual void setIntervalMS(unsigned int) = 0;
     virtual unsigned int getIntervalMS() = 0;
