@@ -4,7 +4,7 @@
 #include <QWidget>
 
 namespace Ui {
-class arxCoefficientItem;
+class ArxCoefficientItem;
 }
 
 class arxCoefficientItem : public QWidget
@@ -27,7 +27,7 @@ private slots:
     void on_horizontalSlider_a_valueChanged(int value);
 
 private:
-    Ui::arxCoefficientItem *ui;
+    Ui::ArxCoefficientItem *ui;
 };
 
 #endif // ARXCOEFFICIENTITEM_H
