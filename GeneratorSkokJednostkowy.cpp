@@ -1,4 +1,4 @@
-#include "generatorskokjednostkowy.hpp"
+#include "GeneratorSkokJednostkowy.hpp"
 
 GeneratorSkokJednostkowy::GeneratorSkokJednostkowy()
     :activation_time_int_tikcs{0}

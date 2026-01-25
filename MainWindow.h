@@ -1,11 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "BUILD_DEFINE.h"
+
+#ifdef DEBUG
+    #include "DialogDebug.hpp"
+#endif
+
 #include <QMainWindow>
 #include <QtCharts>
 #include "UAR.h"
-#include "DialogDebug.hpp"
-#include "listwithextremes.hpp"
+#include "ListWithWxtremes.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -47,8 +52,6 @@ private slots:
     void on_pushButton_symulacja_reset_clicked();
     void on_horizontalSlider_symulacja_okno_obserwacji_valueChanged(int value);
     void on_spinBox_symulacja_okno_obserwacji_valueChanged(int arg1);
-    void on_spinBox_symulacja_okno_obserwacji_editingFinished();
-    void on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased();
     void on_pushButton_reset_pam_calk_clicked();
     void on_radioButton_stala_calkowania_przed_clicked();
     void on_radioButton_stala_calkowania_pod_clicked();
@@ -66,15 +69,10 @@ private slots:
     void on_horizontalSlider_pid_Td_sliderReleased();
     void on_pushButton_reset_pam_roz_clicked();
     void on_checkBoxOgraniczenia_clicked();
-
     void on_doubleSpinBox_generator_bias_valueChanged(double arg1);
-
     void on_doubleSpinBox_generator_bias_editingFinished();
-
     void on_horizontalSlider_generator_bias_sliderReleased();
-
     void on_horizontalSlider_generator_bias_valueChanged(int value);
-
     void on_doubleSpinBox_generator_czas_skoku_editingFinished();
 
 private:
@@ -84,27 +82,30 @@ private:
     uint32_t samples_count;
 
     Ui::MainWindow *ui;
-    DialogDebug* debug_dialog;
 
-    QChart *chart_wartosc_zadana_i_regulowana;
-    QChart *chart_uchyb;
-    QChart *chart_sterowanie;
-    QChart *chart_skladowe_sterowania;
+    QChart* chart_wartosc_zadana_i_regulowana;
+    QChart* chart_uchyb;
+    QChart* chart_sterowanie;
+    QChart* chart_skladowe_sterowania;
 
-    QTimer *update_charts_timer;
+    QTimer* update_charts_timer;
 
-    ListWithExtremes *lista_wartosc_zadana;
-    ListWithExtremes *lista_wartosc_regulowana;
-    ListWithExtremes *lista_uchyb;
-    ListWithExtremes *lista_sterowanie;
-    ListWithExtremes *lista_sterowanie_P;
-    ListWithExtremes *lista_sterowanie_I;
-    ListWithExtremes *lista_sterowanie_D;
+    ListWithExtremes* lista_wartosc_zadana;
+    ListWithExtremes* lista_wartosc_regulowana;
+    ListWithExtremes* lista_uchyb;
+    ListWithExtremes* lista_sterowanie;
+    ListWithExtremes* lista_sterowanie_P;
+    ListWithExtremes* lista_sterowanie_I;
+    ListWithExtremes* lista_sterowanie_D;
 
     qint64 miliseconds_of_simulation;
 
+#ifdef DEBUG
     QElapsedTimer debug_timer;
     int debug_last_time;
+
+    DialogDebug* debug_dialog;
+#endif
 
 };
 

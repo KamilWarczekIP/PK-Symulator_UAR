@@ -1,5 +1,6 @@
 #include "State.h"
 #include "QSaveState.hpp"
+#include "QTimerState.hpp"
 #include <cassert>
 #include <stdexcept>
 
@@ -13,20 +14,26 @@ State::State()
 {
     choosen_generator = &gen_sin;
     save = new QSaveState();
-    simmulation_timer = new QTimer();
-    simmulation_timer->setSingleShot(false);
-    simmulation_timer->setInterval(200);
-    simmulation_timer->connect(simmulation_timer, &QTimer::timeout, this, &State::tick);
-    if(simmulation_running)
-        simmulation_timer->start();
-    else
-        simmulation_timer->stop();
+    timer = new QTimerState();
+    timer->setIntervalMS(200);
+    timer->setTimeout(std::bind(&State::tick, this));
+    timer->setRunning(simmulation_running);
+    // simmulation_timer = new QTimer();
+    // simmulation_timer->setSingleShot(false);
+    // simmulation_timer->setInterval(200);
+    // simmulation_timer->connect(simmulation_timer, &QTimer::timeout, this, &State::tick);
+    // if(simmulation_running)
+    //     simmulation_timer->start();
+    // else
+    //     simmulation_timer->stop();
 
 }
 State::~State()
 {
-    delete simmulation_timer;
+    // delete simmulation_timer;
+
     delete save;
+    delete timer;
 }
 
 class State &State::getInstance()
@@ -39,14 +46,16 @@ class State &State::getInstance()
 void State::setSimmulationRunning(bool simmulation_running)
 {
     this->simmulation_running = simmulation_running;
-    if (simmulation_running)
-        simmulation_timer->start();
-    else
-        simmulation_timer->stop();
+    timer->setRunning(simmulation_running);
+    // if (simmulation_running)
+    //     simmulation_timer->start();
+    // else
+    //     simmulation_timer->stop();
 }
 void State::setSimmulationIntervalMS(uint32_t interwal)
 {
-    this->simmulation_timer->setInterval(interwal);
+    timer->setIntervalMS(interwal);
+    // this->simmulation_timer->setInterval(interwal);
 }
 bool State::getSimmulationRunning()
 {
@@ -54,7 +63,8 @@ bool State::getSimmulationRunning()
 }
 uint32_t State::getSimmulationIntervalMS()
 {
-    return simmulation_timer->interval();
+    return timer->getIntervalMS();
+    // return simmulation_timer->interval();
 }
 void State::setOutputCallback(const std::function<void(TickData)> callback)
 {

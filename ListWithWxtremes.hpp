@@ -1,5 +1,5 @@
-#ifndef LISTWITHEXTREMES_HPP
-#define LISTWITHEXTREMES_HPP
+#ifndef LISTWITHWXTREMES_H
+#define LISTWITHWXTREMES_H
 #include <qlist.h>
 #include <qpoint.h>
 #include <map>
@@ -19,4 +19,4 @@ public:
     void clear();
 };
 
-#endif // LISTWITHEXTREMES_HPP
+#endif // LISTWITHWXTREMES_H

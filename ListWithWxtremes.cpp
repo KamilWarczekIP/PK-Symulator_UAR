@@ -1,4 +1,4 @@
-#include "listwithextremes.hpp"
+#include "ListWithWxtremes.hpp"
 
 ListWithExtremes::ListWithExtremes() {}
 QList<QPointF>* ListWithExtremes::getList()

@@ -1,2 +1,2 @@
-#define MAIN // MAIN lub DEBUG lub TEST
-#define DEBUGINNG
+#define MAIN // MAIN lub TEST lub TEST2
+#define DEBUG

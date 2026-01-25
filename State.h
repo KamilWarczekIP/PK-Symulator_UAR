@@ -1,18 +1,16 @@
 #ifndef STATE_H
 #define STATE_H
-#include <QObject>
-#include <QTimer>
 #include "GeneratorProstokatny.h"
 #include "GeneratorSinusoida.h"
 #include "UAR.h"
-#include "generatorskokjednostkowy.hpp"
+#include "GeneratorSkokJednostkowy.hpp"
 
 class SaveStateInterface;
+class TimerStateInterface;
 
 
-class State : public QObject
+class State
 {
-    Q_OBJECT
 public:
     enum class TypGeneratora { Sinusoidalny, Prostokatny, SkokJednostkowy };
 
@@ -61,9 +59,6 @@ public:
     void readFromFile(std::string path);
 
     const std::tuple<const ARX*, const RegulatorPID*, const TypGeneratora,  const GeneratorSinusoida*, const GeneratorProstokatny*> getAppState();
-
-
-public slots:
     void tick();
 
 private:
@@ -73,9 +68,9 @@ private:
     GeneratorSkokJednostkowy gen_skok;
     Generator* choosen_generator;
     bool simmulation_running;
-    QTimer *simmulation_timer;
     std::function<void(TickData)> tick_callback;
     SaveStateInterface* save;
+    TimerStateInterface* timer;
 
     State(const State &) = delete;
     State &operator=(const State &) = delete;
@@ -88,6 +83,15 @@ class SaveStateInterface
 public:
     virtual void saveToFile(std::string& path, UAR* uar, bool simmulation, State::TypGeneratora typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
     virtual void readFromFile(std::string& path, UAR* uar, bool* simmulation, State::TypGeneratora* typ, GeneratorProstokatny* gen_pros, GeneratorSinusoida* gen_sin) = 0;
+};
+
+class TimerStateInterface
+{
+public:
+    virtual void setTimeout(std::function<void()>) = 0;
+    virtual void setIntervalMS(unsigned int) = 0;
+    virtual unsigned int getIntervalMS() = 0;
+    virtual void setRunning(bool running) = 0;
 };
 
 

@@ -1,5 +1,5 @@
-#ifndef GENERATORSKOKJEDNOSTKOWY_HPP
-#define GENERATORSKOKJEDNOSTKOWY_HPP
+#ifndef GENERATORSKOKJEDNOSTKOWY_H
+#define GENERATORSKOKJEDNOSTKOWY_H
 
 #include "Generator.h"
 #include <cstdint>
@@ -14,4 +14,4 @@ public:
     void resetClock();
 };
 
-#endif // GENERATORSKOKJEDNOSTKOWY_HPP
+#endif // GENERATORSKOKJEDNOSTKOWY_H

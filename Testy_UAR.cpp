@@ -1,9 +1,9 @@
 // TU includy:
 #include "BUILD_DEFINE.h"
 
-// ustaw na MAIN aby skompilować program docelowy / ustaw na DEBUG aby skompilować program testujacy
+// ustaw na MAIN aby skompilować program docelowy / ustaw na TEST2 aby skompilować program testujacy
 
-#ifdef DEBUG
+#ifdef TEST2
 
 #include "ARX.h"
 #include "RegulatorPID.h"

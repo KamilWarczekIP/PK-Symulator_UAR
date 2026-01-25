@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "MainWindow.h"
 #include "State.h"
-#include "ui_mainwindow.h"
+#include "ui_MainWindow.h"
 #include "DialogARX.h"
 #include "BUILD_DEFINE.h"
 
@@ -20,22 +20,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->ui->centralwidget->setLayout(ui->horizontalLayout_13);
-    debug_dialog = new DialogDebug(this);
+
 
     chart_sterowanie = new QChart();
-    // chart_sterowanie->setTitle(tr("Sterowanie (Wyjście z regulatora)"));
-    // chart_sterowanie->legend()->hide();
-
     chart_uchyb = new QChart();
-    // chart_uchyb->setTitle(tr("Uchyb"));
-    // chart_uchyb->legend()->hide();
-
     chart_wartosc_zadana_i_regulowana = new QChart();
-    // chart_wartosc_zadana_i_regulowana->setTitle(tr("Wartość zadana i regulowana"));
-    // chart_wartosc_zadana_i_regulowana->legend()->hide();
-
     chart_skladowe_sterowania = new QChart();
-    // chart_wszystko->setTitle(tr("Wszystko"));
+
 
 
     {
@@ -166,12 +157,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     State().setOutputCallback(std::bind(&MainWindow::addToPlots, this, std::placeholders::_1));
 
-    debug_timer.start();
-    debug_last_time = 0;
 
     QObject::connect(ui->actionzapisz_ustawienia, &QAction::triggered, this, &MainWindow::zapiszDoPliku);
     QObject::connect(ui->actionwczytaj_ustawienia, &QAction::triggered, this, &MainWindow::wczytajZPliku);
+#ifdef DEBUG
+    debug_timer.start();
+    debug_last_time = 0;
+    debug_dialog = new DialogDebug(this);
     QObject::connect(ui->actionokno_debugowania, &QAction::triggered, this, &MainWindow::przelaczOknoDebugowania);
+#else
+    ui->menuplik->removeAction(ui->actionokno_debugowania);
+#endif
 
 
     update_charts_timer = new QTimer(this);
@@ -227,15 +223,16 @@ void MainWindow::updateCharts()
     chart_skladowe_sterowania->axes(Qt::Vertical)
         .at(0)
         ->setRange(min_skladowych_sterowania - range_width_skladowych_sterowania, max_skladowych_sterowania + range_width_skladowych_sterowania);
-
-    // qDebug() << "P: " << lista_sterowanie_P->max()
-    //     << "I: " << lista_sterowanie_I->max()
-    //     << "D: " << lista_sterowanie_D->max();
+#ifdef DEBUG
+    qDebug() << "P: " << lista_sterowanie_P->max()
+        << "I: " << lista_sterowanie_I->max()
+        << "D: " << lista_sterowanie_D->max();
+#endif
 }
 
 void MainWindow::addToPlots(TickData tick_data)
 {
-#ifdef DEBUGING
+#ifdef DEBUG
     int debug_current_time = debug_timer.elapsed();
     debug_dialog->write(QString::number(debug_current_time - debug_last_time));
     debug_last_time = debug_current_time;
@@ -470,14 +467,7 @@ void MainWindow::on_spinBox_symulacja_okno_obserwacji_valueChanged(int arg1)
 {
     ui->horizontalSlider_symulacja_okno_obserwacji->setValue(arg1);
 }
-void MainWindow::on_spinBox_symulacja_okno_obserwacji_editingFinished()
-{
-    //TODO
-}
-void MainWindow::on_horizontalSlider_symulacja_okno_obserwacji_sliderReleased()
-{
-    //TODO
-}
+
 
 // PID - kontrolki całkowania i rozniczkowania
 void MainWindow::on_radioButton_stala_calkowania_przed_clicked()
@@ -600,10 +590,12 @@ void MainWindow::updateUiFromState()
 
 void MainWindow::przelaczOknoDebugowania()
 {
+#ifdef DEBUG
     if(debug_dialog->isHidden())
         debug_dialog->show();
     else
         debug_dialog->hide();
+#endif
 }
 
 

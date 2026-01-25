@@ -14,7 +14,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Charts)
 
 set(PROJECT_SOURCES
     main.cpp
-    mainwindow.h mainwindow.cpp
+    MainWindow.h MainWindow.cpp
     Testy_UAR.cpp
     ARX.h ARX.cpp
     RegulatorPID.h RegulatorPID.cpp
@@ -25,24 +25,27 @@ set(PROJECT_SOURCES
     State.h State.cpp
     Test.h Test.cpp
     DialogARX.h DialogARX.cpp
-    DialogARX.ui mainwindow.ui
+    DialogARX.ui MainWindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    find_package(Qt6 REQUIRED COMPONENTS Core)
+
     qt_add_executable(PK-Symulator_UAR
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         BUILD_DEFINE.h
-        media/minecraft_grass.png
+
         DialogARX.h DialogARX.cpp DialogARX.ui
-        listwithextremes.hpp listwithextremes.cpp
+        ListWithWxtremes.hpp ListWithWxtremes.cpp
         Doxyfile
         .gitignore
         .clang-uml
         QSaveState.hpp QSaveState.cpp
         DialogDebug.hpp DialogDebug.cpp DialogDebug.ui
         ARXCoefficientItem.hpp ARXCoefficientItem.cpp ARXCoefficientItem.ui
-        generatorskokjednostkowy.hpp generatorskokjednostkowy.cpp
+        GeneratorSkokJednostkowy.hpp GeneratorSkokJednostkowy.cpp
+        QTimerState.hpp QTimerState.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET nienazwane APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -63,6 +66,7 @@ else()
 endif()
 
 target_link_libraries(PK-Symulator_UAR PRIVATE Qt${QT_VERSION_MAJOR}::Widgets  Qt${QT_VERSION_MAJOR}::Charts)
+target_link_libraries(PK-Symulator_UAR PRIVATE Qt6::Core)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
