@@ -1,9 +1,8 @@
 #include "DialogARX.h"
-#include "ARXCoefficientItem.hpp"
-#include "ui_DialogARX.h"
-#include <QtCharts/QBarCategoryAxis>
 #include <QLineSeries>
-
+#include <QtCharts/QBarCategoryAxis>
+#include "ArxCoefficientItem.hpp"
+#include "ui_DialogARX.h"
 
 DialogArx::DialogArx(QWidget *parent)
     : QDialog(parent)
@@ -18,7 +17,6 @@ DialogArx::DialogArx(QWidget *parent)
     chart_zaklocenia->addSeries(rozklad_zaklocen);
     ustaw_wykres();
 
-
     arx_coefficients_widget = new QWidget();
     arx_coefficients_layout = new QVBoxLayout(arx_coefficients_widget);
     arx_coefficients_widget->setLayout(arx_coefficients_layout);
@@ -26,7 +24,6 @@ DialogArx::DialogArx(QWidget *parent)
 
     zaczytaj_dane();
 }
-
 
 DialogArx::~DialogArx()
 {
@@ -39,20 +36,17 @@ void DialogArx::zaczytaj_dane()
     std::vector<double> a = State().getARXCoefficientsA();
     std::vector<double> b = State().getARXCoefficientsB();
 
-    for(int i = 0; i < a.size(); i++)
-    {
-        addAXRCoefficientItem(a[i], b[i]);
+    for (int i = 0; i < a.size(); i++) {
+        addARXCoefficientItem(a[i], b[i]);
     }
 
-    while(arx_coefficients_items.size() < MIN_WSPOLCZYNNIKOW)
-    {
-        addAXRCoefficientItem(0.0, 0.0);
+    while (arx_coefficients_items.size() < MIN_WSPOLCZYNNIKOW) {
+        addARXCoefficientItem(0.0, 0.0);
         ui->usun_wspolczynnik->setEnabled(false);
     }
 
-    if(a.size() >= MAX_WSPOLCZYNNIKOW)
+    if (a.size() >= MAX_WSPOLCZYNNIKOW)
         ui->dodaj_wspolczynnik->setEnabled(false);
-
 
     ui->opoznienie_wartosc->setValue(State().getARXTransportDelay());
 
@@ -77,8 +71,8 @@ void DialogArx::on_opoznienie_wartosc_valueChanged(int arg1)
 
 void DialogArx::on_zaklocenie_suwak_valueChanged(int value)
 {
-    ui->zaklocenie_wartosc->setValue((double)value / 100.0);
-    aktualizuj_widok((double)value / 100.0);
+    ui->zaklocenie_wartosc->setValue((double) value / 100.0);
+    aktualizuj_widok((double) value / 100.0);
 }
 
 void DialogArx::on_zaklocenie_wartosc_valueChanged(double arg1)
@@ -114,7 +108,6 @@ void DialogArx::ustaw_wykres()
     ui->chart_zaklocenia_view->addWidget(chartView);
 }
 
-
 static double gauss(double x, double sigma)
 {
     if (sigma <= 0.0)
@@ -124,27 +117,24 @@ static double gauss(double x, double sigma)
     return coef * std::exp(-(x * x) / (2.0 * sigma * sigma));
 }
 
-
 void DialogArx::aktualizuj_widok(double sigma)
 {
     rozklad_zaklocen->clear();
 
-    if (sigma <= 0.0)
-    {
+    if (sigma <= 0.0) {
         axisX->setRange(-1.0, 1.0);
         axisY->setRange(0.0, 1.0);
         return;
     }
 
     const double minX = -3.0 * sigma;
-    const double maxX =  3.0 * sigma;
+    const double maxX = 3.0 * sigma;
 
     const double dx = (maxX - minX) / LICZBA_PUNKTOW;
 
     double maxY = 0.0;
 
-    for (int i = 0; i <= LICZBA_PUNKTOW; ++i)
-    {
+    for (int i = 0; i <= LICZBA_PUNKTOW; ++i) {
         double x = minX + i * dx;
         double y = gauss(x, sigma);
 
@@ -158,9 +148,9 @@ void DialogArx::aktualizuj_widok(double sigma)
     axisY->setRange(0.0, maxY * 1.1);
 }
 
-void DialogArx::addAXRCoefficientItem(const double A, const double B)
+void DialogArx::addARXCoefficientItem(const double A, const double B)
 {
-    arxCoefficientItem* item = new arxCoefficientItem(arx_coefficients_items.size() + 1, A, B);
+    ArxCoefficientItem *item = new ArxCoefficientItem(arx_coefficients_items.size() + 1, A, B);
     arx_coefficients_items.push_back(item);
     arx_coefficients_layout->addWidget(item);
     arx_coefficients_widget->adjustSize();
@@ -168,48 +158,41 @@ void DialogArx::addAXRCoefficientItem(const double A, const double B)
 
 void DialogArx::on_dodaj_wspolczynnik_clicked()
 {
+    addARXCoefficientItem(0.0, 0.0);
 
-    addAXRCoefficientItem(0.0, 0.0);
-
-    if(arx_coefficients_items.size() >= MAX_WSPOLCZYNNIKOW)
+    if (arx_coefficients_items.size() >= MAX_WSPOLCZYNNIKOW)
         ui->dodaj_wspolczynnik->setEnabled(false);
 
-    if(arx_coefficients_items.size() > MIN_WSPOLCZYNNIKOW)
+    if (arx_coefficients_items.size() > MIN_WSPOLCZYNNIKOW)
         ui->usun_wspolczynnik->setEnabled(true);
 
     return;
 }
 
-
 void DialogArx::on_usun_wspolczynnik_clicked()
 {
-
-
-    arxCoefficientItem* item = arx_coefficients_items.back();
+    ArxCoefficientItem *item = arx_coefficients_items.back();
     arx_coefficients_layout->removeWidget(item);
     item->deleteLater();
     arx_coefficients_items.pop_back();
 
-    if(arx_coefficients_items.size() < MAX_WSPOLCZYNNIKOW)
+    if (arx_coefficients_items.size() < MAX_WSPOLCZYNNIKOW)
         ui->dodaj_wspolczynnik->setEnabled(true);
 
-    if(arx_coefficients_items.size() <= MIN_WSPOLCZYNNIKOW)
+    if (arx_coefficients_items.size() <= MIN_WSPOLCZYNNIKOW)
         ui->usun_wspolczynnik->setEnabled(false);
     return;
 }
-
 
 void DialogArx::on_buttonBox_accepted()
 {
     std::vector<double> a(arx_coefficients_items.size()), b(arx_coefficients_items.size());
 
-    for(size_t index = 0; index < arx_coefficients_items.size(); index++)
-    {
+    for (size_t index = 0; index < arx_coefficients_items.size(); index++) {
         a[index] = arx_coefficients_items[index]->getA();
         b[index] = arx_coefficients_items[index]->getB();
     }
-    while(a.back() == 0.0 && b.back() == 0.0)
-    {
+    while (a.back() == 0.0 && b.back() == 0.0) {
         a.pop_back();
         b.pop_back();
     }
@@ -220,4 +203,3 @@ void DialogArx::on_buttonBox_accepted()
     State().setARXOutputLimits(ui->ograniczenie_wyj_min->value(), ui->ograniczenie_wyj_max->value());
     State().setARXNoiseStandardDeviation(ui->zaklocenie_wartosc->value());
 }
-

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>arxCoefficientItem</class>
- <widget class="QWidget" name="arxCoefficientItem">
+ <class>ArxCoefficientItem</class>
+ <widget class="QWidget" name="ArxCoefficientItem">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -45,7 +45,7 @@
        <number>1000</number>
       </property>
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
     </item>
@@ -65,7 +65,7 @@
     <item>
      <spacer name="horizontalSpacer">
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Orientation::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -91,7 +91,7 @@
        <number>1000</number>
       </property>
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
     </item>

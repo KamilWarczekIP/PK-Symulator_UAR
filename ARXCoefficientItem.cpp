@@ -1,9 +1,9 @@
-#include "ARXCoefficientItem.hpp"
+#include "ArxCoefficientItem.hpp"
 #include "ui_ARXCoefficientItem.h"
 
-arxCoefficientItem::arxCoefficientItem(qint32 index, double A, double B, QWidget *parent)
+ArxCoefficientItem::ArxCoefficientItem(qint32 index, double A, double B, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::arxCoefficientItem)
+    , ui(new Ui::ArxCoefficientItem)
 {
     ui->setupUi(this);
     this->setLayout(ui->horizontalLayout);
@@ -14,42 +14,39 @@ arxCoefficientItem::arxCoefficientItem(qint32 index, double A, double B, QWidget
     ui->doubleSpinBox_b->setValue(B);
 }
 
-arxCoefficientItem::~arxCoefficientItem()
+ArxCoefficientItem::~ArxCoefficientItem()
 {
     delete ui;
 }
-double arxCoefficientItem::getA()
+double ArxCoefficientItem::getA()
 {
     return ui->doubleSpinBox_a->value();
 }
-double arxCoefficientItem::getB()
+double ArxCoefficientItem::getB()
 {
     return ui->doubleSpinBox_b->value();
 }
 
-void arxCoefficientItem::on_doubleSpinBox_a_valueChanged(double arg1)
+void ArxCoefficientItem::on_doubleSpinBox_a_valueChanged(double arg1)
 {
     ui->horizontalSlider_a->blockSignals(true);
     ui->horizontalSlider_a->setValue(arg1 * 100);
     ui->horizontalSlider_a->blockSignals(false);
 }
 
-void arxCoefficientItem::on_doubleSpinBox_b_valueChanged(double arg1)
+void ArxCoefficientItem::on_doubleSpinBox_b_valueChanged(double arg1)
 {
     ui->horizontalSlider_b->blockSignals(true);
     ui->horizontalSlider_b->setValue(arg1 * 100);
     ui->horizontalSlider_b->blockSignals(false);
 }
 
-void arxCoefficientItem::on_horizontalSlider_a_valueChanged(int value)
+void ArxCoefficientItem::on_horizontalSlider_a_valueChanged(int value)
 {
-    ui->doubleSpinBox_a->setValue((double)value / 100.0);
+    ui->doubleSpinBox_a->setValue((double) value / 100.0);
 }
 
-void arxCoefficientItem::on_horizontalSlider_b_valueChanged(int value)
+void ArxCoefficientItem::on_horizontalSlider_b_valueChanged(int value)
 {
-    ui->doubleSpinBox_b->setValue((double)value / 100.0);
+    ui->doubleSpinBox_b->setValue((double) value / 100.0);
 }
-
-
-

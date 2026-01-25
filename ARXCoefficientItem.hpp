@@ -1,5 +1,5 @@
-#ifndef ARXCOEFFICIENTITEM_H
-#define ARXCOEFFICIENTITEM_H
+#ifndef ArxCoefficientItem_H
+#define ArxCoefficientItem_H
 
 #include <QWidget>
 
@@ -7,13 +7,13 @@ namespace Ui {
 class ArxCoefficientItem;
 }
 
-class arxCoefficientItem : public QWidget
+class ArxCoefficientItem : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit arxCoefficientItem(qint32 index, double A, double B, QWidget *parent = nullptr);
-    ~arxCoefficientItem();
+    explicit ArxCoefficientItem(qint32 index, double A, double B, QWidget *parent = nullptr);
+    ~ArxCoefficientItem();
     double getA();
     double getB();
 
@@ -30,4 +30,4 @@ private:
     Ui::ArxCoefficientItem *ui;
 };
 
-#endif // ARXCOEFFICIENTITEM_H
+#endif // ArxCoefficientItem_H
