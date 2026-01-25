@@ -1,6 +1,6 @@
-#include "dialogarx.h"
-#include "arxcoefficientitem.hpp"
-#include "ui_dialogarx.h"
+#include "DialogARX.h"
+#include "ARXCoefficientItem.hpp"
+#include "ui_DialogARX.h"
 #include <QtCharts/QBarCategoryAxis>
 #include <QLineSeries>
 
@@ -12,25 +12,6 @@ DialogArx::DialogArx(QWidget *parent)
     ui->setupUi(this);
 
     chart_zaklocenia = new QChart();
-
-    connect(ui->SliderA1, &QSlider::valueChanged, ui->SpinA1, &QDoubleSpinBox::setValue);
-    connect(ui->SpinA1, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderA1, &QSlider::setValue);
-
-    connect(ui->SliderA2, &QSlider::valueChanged, ui->SpinA2, &QDoubleSpinBox::setValue);
-    connect(ui->SpinA2, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderA2, &QSlider::setValue);
-
-    connect(ui->SliderA3, &QSlider::valueChanged, ui->SpinA3, &QDoubleSpinBox::setValue);
-    connect(ui->SpinA3, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderA3, &QSlider::setValue);
-
-    connect(ui->SliderB1, &QSlider::valueChanged, ui->SpinB1, &QDoubleSpinBox::setValue);
-    connect(ui->SpinB1, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderB1, &QSlider::setValue);
-
-    connect(ui->SliderB2, &QSlider::valueChanged, ui->SpinB2, &QDoubleSpinBox::setValue);
-    connect(ui->SpinB2, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderB2, &QSlider::setValue);
-
-    connect(ui->SliderB3, &QSlider::valueChanged, ui->SpinB3, &QDoubleSpinBox::setValue);
-    connect(ui->SpinB3, QOverload<double>::of(&QDoubleSpinBox::valueChanged), ui->SliderB3, &QSlider::setValue);
-
     lineSeries = new QLineSeries();
     lineSeries->setName("Rozkład normalny");
 
@@ -191,9 +172,8 @@ void DialogArx::on_dodaj_wspolczynnik_clicked()
     addAXRCoefficientItem(0.0, 0.0);
 
     if(arx_coefficients_items.size() >= MAX_WSPOLCZYNNIKOW)
-    {
         ui->dodaj_wspolczynnik->setEnabled(false);
-    }
+
     if(arx_coefficients_items.size() > MIN_WSPOLCZYNNIKOW)
         ui->usun_wspolczynnik->setEnabled(true);
 

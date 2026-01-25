@@ -1,5 +1,5 @@
-#ifndef ARXCOEFFICIENTITEM_HPP
-#define ARXCOEFFICIENTITEM_HPP
+#ifndef ARXCOEFFICIENTITEM_H
+#define ARXCOEFFICIENTITEM_H
 
 #include <QWidget>
 
@@ -30,4 +30,4 @@ private:
     Ui::arxCoefficientItem *ui;
 };
 
-#endif // ARXCOEFFICIENTITEM_HPP
+#endif // ARXCOEFFICIENTITEM_H

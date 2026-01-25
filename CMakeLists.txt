@@ -24,8 +24,8 @@ set(PROJECT_SOURCES
     GeneratorProstokatny.h GeneratorProstokatny.cpp
     State.h State.cpp
     Test.h Test.cpp
-    dialogarx.h dialogarx.cpp
-    dialogarx.ui mainwindow.ui
+    DialogARX.h DialogARX.cpp
+    DialogARX.ui mainwindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -34,14 +34,14 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         BUILD_DEFINE.h
         media/minecraft_grass.png
-        dialogarx.h dialogarx.cpp dialogarx.ui
+        DialogARX.h DialogARX.cpp DialogARX.ui
         listwithextremes.hpp listwithextremes.cpp
         Doxyfile
         .gitignore
         .clang-uml
         QSaveState.hpp QSaveState.cpp
-        dialogdebug.hpp dialogdebug.cpp dialogdebug.ui
-        arxcoefficientitem.hpp arxcoefficientitem.cpp arxcoefficientitem.ui
+        DialogDebug.hpp DialogDebug.cpp DialogDebug.ui
+        ARXCoefficientItem.hpp ARXCoefficientItem.cpp ARXCoefficientItem.ui
         generatorskokjednostkowy.hpp generatorskokjednostkowy.cpp
     )
 # Define target properties for Android with Qt 6 as:

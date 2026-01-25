@@ -1,5 +1,5 @@
-#include "dialogdebug.hpp"
-#include "ui_dialogdebug.h"
+#include "DialogDebug.hpp"
+#include "ui_DialogDebug.h"
 
 DialogDebug::DialogDebug(QWidget *parent)
     : QDialog(parent)

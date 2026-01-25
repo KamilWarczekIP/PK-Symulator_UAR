@@ -1,5 +1,5 @@
-#ifndef DIALOGDEBUG_HPP
-#define DIALOGDEBUG_HPP
+#ifndef DIALOGDEBUG_H
+#define DIALOGDEBUG_H
 
 #include <QDialog>
 
@@ -20,4 +20,4 @@ private:
     Ui::DialogDebug *ui;
 };
 
-#endif // DIALOGDEBUG_HPP
+#endif // DIALOGDEBUG_H

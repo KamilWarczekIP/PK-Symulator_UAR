@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "State.h"
 #include "ui_mainwindow.h"
-#include "dialogarx.h"
+#include "DialogARX.h"
 #include "BUILD_DEFINE.h"
 
 MainWindow::MainWindow(QWidget *parent)

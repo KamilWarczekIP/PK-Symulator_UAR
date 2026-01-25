@@ -1,5 +1,5 @@
-#include "arxcoefficientitem.hpp"
-#include "ui_arxcoefficientitem.h"
+#include "ARXCoefficientItem.hpp"
+#include "ui_ARXCoefficientItem.h"
 
 arxCoefficientItem::arxCoefficientItem(qint32 index, double A, double B, QWidget *parent)
     : QWidget(parent)

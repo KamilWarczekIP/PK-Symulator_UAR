@@ -2,7 +2,7 @@
 #define DIALOGARX_H
 
 #include "State.h"
-#include "arxcoefficientitem.hpp"
+#include "ARXCoefficientItem.hpp"
 #include <QDialog>
 #include <QtCharts>
 

@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QtCharts>
 #include "UAR.h"
-#include "dialogdebug.hpp"
+#include "DialogDebug.hpp"
 #include "listwithextremes.hpp"
 
 namespace Ui {
